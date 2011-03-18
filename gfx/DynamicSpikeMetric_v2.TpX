@@ -1,0 +1,57 @@
+%<TpX v="4" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3" TeXCenterFigure="1" TeXFigure="none">
+%  <line x1="20.5368" y1="4.27303" x2="135.413" y2="4.27303" arr2="h20" arrs="3" lw="3.00"/>
+%  <line x1="20.5368" y1="11.1152" x2="20.5368" y2="4.27303" lw="3.00"/>
+%  <line x1="34.9413" y1="10.7551" x2="34.9413" y2="3.91292" lw="3.00"/>
+%  <line x1="49.7059" y1="10.7551" x2="49.7059" y2="3.91292" lw="3.00"/>
+%  <line x1="64.1104" y1="11.095" x2="64.1104" y2="4.25287" lw="3.00"/>
+%  <line x1="79.2352" y1="10.7551" x2="79.2352" y2="3.91292" lw="3.00"/>
+%  <line x1="93.7563" y1="11.095" x2="93.7563" y2="4.25287" lw="3.00"/>
+%  <line x1="108.288" y1="10.745" x2="108.288" y2="3.90284" lw="3.00"/>
+%  <line x1="122.809" y1="11.0348" x2="122.809" y2="4.19269" lw="3.00"/>
+%  <line x1="38.0753" y1="45.5789" x2="38.0753" y2="21.3789"/>
+%  <line x1="50.1753" y1="45.5789" x2="50.1753" y2="21.3789"/>
+%  <line x1="68.3253" y1="45.5789" x2="68.3253" y2="21.3789"/>
+%  <line x1="80.4253" y1="45.5789" x2="80.4253" y2="21.3789"/>
+%  <line x1="92.5253" y1="45.5789" x2="92.5253" y2="21.3789"/>
+%  <line x1="110.675" y1="45.5789" x2="110.675" y2="21.3789"/>
+%  <line x1="32.0253" y1="100.029" x2="32.0253" y2="75.829"/>
+%  <line x1="44.1253" y1="100.029" x2="44.1253" y2="75.829"/>
+%  <line x1="62.2753" y1="100.029" x2="62.2753" y2="75.829"/>
+%  <line x1="80.4253" y1="100.029" x2="80.4253" y2="75.829"/>
+%  <line x1="104.625" y1="100.029" x2="104.625" y2="75.829"/>
+%  <line x1="68.3253" y1="100.029" x2="68.3253" y2="75.829"/>
+%  <line x1="32.2911" y1="72.7665" x2="37.0529" y2="49.8503" arr2="h20" arrs="2" lw="3.00"/>
+%  <line x1="44.7908" y1="72.7665" x2="49.5527" y2="49.8503" arr2="h20" arrs="2" lw="3.00"/>
+%  <line x1="61.7548" y1="72.1713" x2="65.0286" y2="49.255" arr2="h20" arrs="2" lw="3.00"/>
+%  <line x1="68.3023" y1="72.7665" x2="68.3023" y2="48.9574" arr2="h20" arrs="2" lw="3.00"/>
+%  <line x1="80.2069" y1="72.7665" x2="80.2069" y2="48.9574" arr2="h20" arrs="2" lw="3.00"/>
+%  <line x1="82.2902" y1="73.3617" x2="92.409" y2="48.9574" arr2="h20" arrs="2" lw="3.00"/>
+%  <line x1="104.909" y1="72.4689" x2="110.563" y2="47.1718" arr2="h20" arrs="2" lw="3.00"/>
+%  <text x="-14.0983" y="84.7993" t="ref" tex="Target, \ensuremath{\mathbf{x}_{ij}^{\ast}}" h="10">
+%    <font face="Arial" bf="1" charset="0"/>
+%  </text>
+%  <text x="-14.5228" y="31.1775" t="test" tex="Trial, \ensuremath{\mathbf{x}_{ij}}" h="10">
+%    <font face="Arial" bf="1" charset="0"/>
+%  </text>
+%  <text x="85" y="-5" t="time (ms)" h="10">
+%    <font face="Arial" bf="1" charset="0"/>
+%  </text>
+%</TpX>
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(436.35, 315.07)(0,0)
+  \put(0,0){\includegraphics{DynamicSpikeMetric_v2.pdf}}
+  \put(6.87,266.23){\fontsize{28.45}{34.14}\selectfont \textbf{Target, \ensuremath{\mathbf{x}_{ij}^{\ast}}}}
+  \put(5.67,114.23){\fontsize{28.45}{34.14}\selectfont \textbf{Trial, \ensuremath{\mathbf{x}_{ij}}}}
+  \put(287.78,11.68){\fontsize{28.45}{34.14}\selectfont \textbf{time (ms)}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(436.35, 315.07)(0,0)
+  \put(0,0){\includegraphics{DynamicSpikeMetric_v2}}
+  \put(6.87,266.23){\fontsize{28.45}{34.14}\selectfont \textbf{Target, \ensuremath{\mathbf{x}_{ij}^{\ast}}}}
+  \put(5.67,114.23){\fontsize{28.45}{34.14}\selectfont \textbf{Trial, \ensuremath{\mathbf{x}_{ij}}}}
+  \put(287.78,11.68){\fontsize{28.45}{34.14}\selectfont \textbf{time (ms)}}
+  \end{picture}%
+\fi
