@@ -1,0 +1,184 @@
+\section{Result 3: Individual Parameter Sensitivity near the Global Optimum}\label{sec:GA:IndividualSensA}
+
+
+\subsection{Individual Parameter Perturbation Analysis}
+
+To further understand how useful each cost function was in
+constraining parameters, a sensitivity analysis on each individual
+parameter is is crucial to understand the behaviour of individual
+parameters close to the global optimum.  The sensitivity analysis of
+the cost function is defined as calculating the learning gradients of
+each parameter on either side of the target value. Parameter values
+were stepped up and down independently, with the steps determined from
+the gene resolution of the parameter in
+Table~\ref{tab:GA:Genome}. Gradients were calculated using a
+least-squares linear regression in MATLAB/GNU Octave and two-sided
+t-tests were performed to determine whether each gradient was
+significantly different from zero.  This was done for the identical
+and the different ANF inputs, robustness was evaluated by comparing
+the ratio of V-shaped to non-V-shaped cost function gradients for
+different inputs.
+
+\medskip{}
+
+Representative examples are given in Figure \ref{Fig:R4}, which show
+the dependence of the cost function on perturbation size when a parameter was
+perturbed from its target value (and all other parameters had their target
+value). A range of different behaviors is evident depending on the particular
+combination of parameter and cost function. The ideal behaviour is shown in
+Figure \ref{Fig:R4}A, which shows the target at a well defined local minimum in
+the cost function, with significantly non-zero gradients bilaterally. Figure
+\ref{Fig:R4}B is a sub-ideal case, with a significantly non-zero gradient
+appearing only unilaterally, a zero gradient on the opposing side.  The
+behaviour shown in Figure \ref{Fig:R4}C, in which the cost function is locally
+flat, implies that the cost function is insensitive to this parameter in the
+vicinity of the target and represents non-ideal behaviour. Finally, Figure
+\ref{Fig:R4}D gives an example of a problematic cost function behaviour, in
+which the minimum occurs at a value other than the target.\todo[inline]{Hamish: I am still not
+happy we understand this well: Pruning of candidates with reduced spikes in
+low rate regions of DS units}. These cases were classified variously as
+bilaterally sensitive (Figure \ref{Fig:R4}A), unilaterally sensitive (Figure
+\ref{Fig:R4}B), insensitive (Figure \ref{Fig:R4}C) or irregular(Figure
+\ref{Fig:R4}D), respectively.
+
+\todo[inline]{ Correlation between relative param error and gradient in Fig 5 to be discussed }
+
+% The gradients of the cost function above and below the target value are plotted
+% in Figure ? for each individual parameter and for the three different cost
+% functions. {\bf order and comment on similarities. Also comment on correlation
+% between parameter sensitivity and parameter error.}
+% 
+% A summary of these data are given in Table ?, which compares the cost
+% function on basis of how many parameters showed sensitivity that was
+% bilateral, unilateral or absent, or contained opposing gradients.
+
+% I would be better to present these results in table comparing
+% For different ANF
+% inputs (Figure~\ref{fig:13}B), 11 parameters were bilaterally
+% sensitive and 8 were unilaterally sensitive, while the ST cost
+% function was completely insensitive to 6 parameters. Three parameters
+% controlling the excitatory synaptic input to DS cells, 4, 5 and 6
+% ($w_{{\rm ANF}\to {\rm DS}} $, $n_{{\rm HSR}\to {\rm DS}} $, $n_{{\rm
+% LSR}\to {\rm DS}} $) had significant opposing gradients below the
+% target, and the inhibitory input parameter 25 ($n_{{\rm TV}\to {\rm
+% DS}} $) above the target suggesting a shifted optimum value.
+
+
+
+ \begin{figure}[thp!]
+   \centering
+   \includegraphics[width=\textwidth]{./gfx/Example_SensAnalysis.eps}  
+  \caption{Examples of ST cost function sensitivity analysis
+    performed on individual parameters, with 10 unit step increments
+    around the parameter's target value and all other target
+    parameters retained. Multiple samples were taken at each point
+    when different inputs were used. The linear regression line
+    (solid) and bootstrapped 95\% confidence interval (dotted line)
+    are shown. The slope was tested for significant difference to a
+    zero gradient either side of the target value. (A) Parameter 3,
+    $n_{{\rm HSR}\to {\rm TS}} $, was V-shaped for identical and
+    different inputs. (B) Parameter 4, $w_{{\rm ANF}\to {\rm DS}} $,
+    was V-shaped for identical inputs, but for different inputs the
+    gradient below the target was significantly opposed to the
+    correct direction. (C) Sensitivity around parameter 23, $s_{{\rm
+        DS}\to {\rm TV}} $, was V-shaped for identical inputs but
+    only one gradient was significant for different inputs. (D) The
+    sensitivity of the ST cost function around parameter 29,
+    $n_{{\rm GLG}\to {\rm DS}} $, produced the largest V-shaped
+    gradients for identical and different inputs.}
+  \label{fig:12}
+\end{figure}
+
+
+
+\begin{figure}[htb]
+  \centering
+  \caption{Parameter sensitivity gradient plots for the ST cost
+    function with ideal input (A) and with different ANF input
+    (B). Parameter gradients that are significantly different from
+    zero (Student's t-test p $<$ 0.05) are shown with asterisk
+    ($\ast$) and error bars that are the standard error of the
+    slope. Gradients that are opposite to expected are shown in
+    solid bars, with significant difference shown with a diamond
+    ($\diamond$).}
+  \label{fig:13}
+\end{figure}
+
+
+
+\begin{figure}[htb]
+  \centering
+  \caption{Parameter sensitivity gradient plots for the IFR cost
+    function with the format similar to Figure~\ref{fig:13}. (A) The
+    IFR-25 cost function with identical input. (B) The IFR-25 cost
+    function with different ANF inputs. (C) The IFR-100 cost
+    function with different ANF inputs.}
+  \label{fig:14}
+\end{figure}
+
+
+
+\begin{figure}[htb]
+  \centering
+  \caption{Parameter sensitivity gradient plots for the AIV cost
+    function with the format similar to Figure~\ref{fig:13}. A The
+    AIV-25 cost function with identical input. (B) The AIV-25 cost
+    function with different ANF inputs. (C) The AIV-100 cost
+    function with different ANF inputs.}
+  \label{fig:15}
+\end{figure}
+
+
+
+
+\subsubsection{Spike Timing}
+
+\subsubsection{Instantaneous Firing Rate}
+
+\subsubsection{Average Intracellular Voltage}
+
+
+\subsubsection{Best Genome Match to Individual Parameter Sensitivity}
+
+% 
+% When the ANF input was slightly different from the ideal input, the optimum
+% increases and the gradient of parameter 1, $w_{{\rm ANF}\to {\rm TS}}
+% $, diminishes (Figure~\ref{fig:12}C). The spread of connections from
+% DS cells to TV cells is wide (target value=8 channels), covering one
+% third of the network (30 channels) so the non-linear jumps could be
+% due to random selection of pre-synaptic cells or confounding effects
+% of TV cells on TS and DS cells. With different inputs, parameter 23
+% ($s_{{\rm DS}\to {\rm TV}} $) sensitivity of the ST cost function was
+% robust below the target but is negative above the target although not
+% significantly. Gradients that oppose the direction toward the target
+% would reduce the effectiveness of optimization, especially
+% gradient-decent methods.  For parameters with a target value close to
+% the minimum range (parameters 17, 20, 26, and 27), the gradient below
+% the target were not considered in the sensitivity analysis.
+% 
+% DS cells have very precise onset spikes and few spikes in the remainder
+% of the stimulus.  If the weight and number of excitatory inputs were
+% reduced, the spike timing difference would not be influence by (or
+% inhibitory input increased), the onset spikes would still occur but
+% the larger difference in the random positions the number of spikes in
+% the sustained period of the stimulus would be reduced and the there
+% would be some benefit to this change in the training data.
+% 
+% The sensitivity to inhibitory parameters of the
+% IFR-25 cost function was not robust to changes in the ANF input
+% (Figure~\ref{fig:14}B) since most gradients were flattened (not
+% significant from zero gradient) or were unilaterally sensitive.  Seven
+% inhibitory parameters had opposing gradients below the target, but
+% only one was significant, 14 ($s_{{\rm DS}\to {\rm TS}} $). Parameter
+% 10 had a significant reduction from identical inputs to different
+% inputs, where it became completely insensitive.
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "GAChapter"
+%%% TeX-PDF-mode: nil
+%%% End: 

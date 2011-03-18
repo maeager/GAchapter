@@ -1,0 +1,87 @@
+#
+# Boxplot demo
+#
+set terminal postscript eps enhanced defaultplex leveldefault color solid dashlength 1.0 linewidth 2.0 butt noclip "Helvetica" 18 
+
+set output '../gfx/boxplot-100.eps'
+
+# color definitions
+set border linewidth 1.5
+set style line 1 lc rgb 'gray30' lt 1 lw 2
+set style line 2 lc rgb 'gray40' lt 1 lw 2
+set style line 3 lc rgb 'gray70' lt 1 lw 2
+set style line 4 lc rgb 'gray90' lt 1 lw 2
+set style line 5 lc rgb 'black' lt 1 lw 2
+set style line 6 lc rgb 'white' lt 1 lw 2
+
+set style fill solid 1.0 border rgb 'grey30'
+
+set key left top
+set border 3
+set bars 2.0
+set tics scale 0.75
+set ytics nomirror #out 0.5 
+
+#set style fill solid 0.25 border -1
+set style boxplot outliers pointtype 7
+set style data boxplot
+set boxwidth  0.5
+set pointsize 0.5
+
+unset key
+
+
+set border 2
+set xtics nomirror
+set ytics nomirror
+
+
+set key left top
+set border 3
+set bars 2.0
+set tics scale 0.75
+set xtics nomirror out ('Target' 0,'ST' 1,'IFR' 2, 'AIV' 3)
+set ytics nomirror #out 0.5 
+
+#set style fill solid 0.25 border -1
+set style boxplot outliers pointtype 7
+set style data boxplot
+set boxwidth  0.5
+set pointsize 0.5
+
+unset key
+set multiplot layout 3,1
+
+set border 2
+set xtics ("Target" 0, "1-step" 0.7, "5-step" 1.3, "ST" 3, "IFR" 4, "AIV" 5) scale 0.0
+set xtics nomirror
+set ytics nomirror
+set yrange [5:20]
+set ylabel "ST" font "Helvetica,20"
+plot 'target_diffAN_100.dat' using (0):1, \
+     'rand1diffAN_100.dat' using (0.75):1, \
+     'rand5diffAN_100.dat' using (1.25):1, \
+     'st_100.dat' using (3):4, \
+     'ifr_100.dat' using (4):4, \
+     'iv_100.dat' using (5):4
+set ylabel "IFR" font "Helvetica,20"
+#set yscale log
+set yrange [0.10:0.2]
+plot 'target_diffAN_100.dat' using (0):3, \
+     'rand1diffAN_100.dat' using (0.75):3, \
+     'rand5diffAN_100.dat' using (1.25):3, \
+     'st_100.dat' using (3):5, \
+     'ifr_100.dat' using (4):5, \
+     'iv_100.dat' using (5):5
+set ylabel "AIV" font "Helvetica,20"
+set yrange [0.02:0.05]
+plot 'target_diffAN_100.dat' using (0):5, \
+     'rand1diffAN_100.dat' using (0.75):5, \
+     'rand5diffAN_100.dat' using (1.25):5, \
+     'st_100.dat' using (3):($6/1), \
+     'ifr_100.dat' using (4):($6/1), \
+     'iv_100.dat' using (5):($6/1)
+
+unset multiplot
+
+#!fixbb ../gfx/boxplot-100.eps

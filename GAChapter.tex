@@ -1,0 +1,100 @@
+\documentclass[11pt,a4paper,twoside,openright]{book}
+
+%\documentclass[11pt,a4paper]
+%,twoside
+%,draft
+%{book} % Use the UniMelb Dissertation Template
+\usepackage{style/uomthesis}
+% User defined commands
+\input{../SimpleResponsesChapter/user-defined}
+\input{../SimpleResponsesChapter/glossary} % My glossary of terms
+\makeglossary
+
+% User defined commands
+%\usepackage{pstricks}
+\usepackage{appendix}
+
+\usepackage{ctable}
+ 
+%  \marginparwidth=3cm
+% \addtolength{\oddsidemargin}{6mm}
+%  \topmargin=0pt
+%  \headsep=10pt
+%  \voffset=-1.54cm
+%  \hoffset=-1.54cm  %default hoffset is zero plus extra 1inch
+%  \textwidth=16cm
+%  \textheight=26cm
+%  \renewcommand{\baselinestretch}{1.5}
+
+
+\DeclareGraphicsRule{eps.gz}{eps}{.eps.bb}{zcat #1}
+\newcommand{\figfont}[1]{\large{\textbf{\textsf{#1}}}}
+
+\graphicspath{{./gfx/}{../figures/}}
+\graphicspath{{../figures/}{/media/data/Work/thesis/GAChapter/gfx/}{/media/data/Work/thesis/GAChapter/archive/gfx/}{/media/data/Work/thesis-gaarticle/gfx/}{/media/data/Work/thesis-gaarticle/GApaper-submission-JCompNeuro/gfx/}}
+%\usepackage[showlabels]{preview}
+%\PreviewEnvironment[{*[][]{}}]{tabularx}
+%\PreviewEnvironment[{*[][]{}}]{figure}
+%\PreviewEnvironment[{*[][]{}}]{array}
+
+\lfoot{\footnotesize\today\ at \thistime}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		% TOC, LOF, LOT
+		{%
+			\singlespacing%
+                        \listoftodos
+			\tableofcontents%
+			%\listoffigures%
+			% Do not include a list of tables if you have less
+			% than 10 tables, as per SGS suggestion.
+			%\listoftables%
+                        \printglossary
+		   \clearpage%
+		}%
+
+%{\today\ Hg changeset \input{.hg/tags.cache}}
+
+\setcounter{chapter}{4}
+\chapter[GAChapter]{GA optimsation of the CN stellate network}
+\label{sec:GAChapter}
+
+
+% \begin{synopsis}
+
+%\end{synopsis}
+
+\include{IntroMethods}
+\newpage
+\include{Results-DiffAN}
+\newpage
+\include{ResultsIdeal}
+\newpage
+\include{ResultsSensAnalysis}
+\newpage
+\include{Discussion}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\begin{appendicies}
+\appendix
+\include{ChapterAppendix}
+%\end{appendicies}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ \bibliographystyle{abbrvnat}%plainnat}%bmc_article} % Style BST file
+ \bibliography{../MyBib}
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% mode: tex-fold
+%%% TeX-PDF-mode: nil
+%%% TeX-master t
+%%% End: 
