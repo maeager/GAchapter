@@ -1,19 +1,18 @@
 
-\section{Chapter 5 Appendix}\label{sec:GA:chapter-5-appendix}
+\section{GAChapter Appendix}\label{sec:GA:chapter-5-appendix}
 
-\subsection{GA Data}
+\subsection{Extra Data}
 
-
-\begin{table}[tp]
+\begin{table}[htp]
   \centering
   \caption{Comparison of best genomes using GA with
     identical inputs. * Indicates the best cost function score from
     each GA}\label{tab:4}
-  % \begin{tabular}{|p{1.5in}|*{3}{c|}} \hline
+  % \begin{tabular}{p{1.5in}*{3}{c}} \hline
   \begin{tabular}{lccc}
-\hline
+\toprule
                    &       ST       &     IFR-25      & IV-25 \\
-\hline
+\midrule
   Target Genome    &       0        &        0        & 0 \\ %\hline
 1-step Population  &  7.32 (0.89)   &  0.184 (0.011)  & 0.134 (0.009)\\ %\hline
 5-step Population  &   10.0 (3.0)   &  0.209 (0.012)  & 0.165 (0.014) \\ %\hline
@@ -22,7 +21,7 @@ IFR 25 Best Genome  &      12.2      & \textbf{0.195}* & 0.180 \\ %\hline
 %IFR 250 Best Genome &      10.8      &      0.207      & 0.178 \\ %\hline
 IV 25 Best Genome  &      9.58      &      0.202      & \textbf{0.158}* \\ %\hline
 %IV 250 Best Genome  &      9.52      &      0.207      & 0.159 \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -49,6 +48,13 @@ IV 25 Best Genome  &      9.58      &      0.202      & \textbf{0.158}* \\ %\hli
 % \hline
 % \end{tabular}
 % \end{table}
+
+
+\subsection{C++ Code: \textsf{ganeuron}}
+
+\subsection{NEURON Code: \textsf{opt4}}
+
+
 
 \clearpage
 

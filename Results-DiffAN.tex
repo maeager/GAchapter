@@ -1,4 +1,4 @@
-\section{Optimisation of BNNs using different  inputs}\label{sec:ResultDiffAN}
+\section{Optimisation of BNNs using different  inputs}\label{sec:GA:ResultDiffAN}
 
 %\subsection{Parameter space sensitivity of cost functions}
 
@@ -16,7 +16,7 @@
 
 The performance of the GA optimization is illustrated by the evolution of the
 best score in each generation for three independent GA runs
-(Figure~\ref{fig:R1}). The best genome score in each generation (solid line)
+(Figure~\ref{fig:GA:R1}). The best genome score in each generation (solid line)
 shows the progress of the optimization by the GA, from large steps initially to
 more incremental improvements as the score tends towards an asymptote.  During
 the later generations the best genome score showed relatively little variability
@@ -35,10 +35,10 @@ the ST and AIV cost functions than for the IFR cost function.
   \caption{Performance of the GAs best performing genome in each
     generation is shown for each simulation. The mark to the right of
     each graph is the mean score and 95 percentile range of the target
-    genome (error bars 2*sd).}\label{fig:R1}
+    genome (error bars 2*sd).}\label{fig:GA:R1}
 \end{figure}
 
-\medskip{}
+\smallskip{}
 
 For all three cost functions the best score obtained by the GA was considerably
 above an error of zero. This does not imply poor performance by the GA, because
@@ -48,9 +48,9 @@ used in the target data. Experimentally the spike times of the auditory nerve
 vary stochastically based on an instantaneous rate function for any given
 stimulus. This stochasticity was incorporated into our model and led to non-zero
 scores, even for the target network. The mean target score is shown by the error
-bars on the right of each plot in Figure~\ref{fig:R1}.
+bars on the right of each plot in Figure~\ref{fig:GA:R1}.
 
-\medskip{}
+\smallskip{}
 
 For the ST and IFR cost functions the best genome score was within the range of
 scores found for the target network, indicating that the GA was able to find a
@@ -59,6 +59,7 @@ cost function. For the AIV cost function, the best genome had a score that was
 greater that the range of scores found for the target network, indicating a
 discrepancy between the behaviour of the best network and that of the target, as
 measured by the cost function.
+
 
 
 
@@ -71,30 +72,32 @@ able to generalize to reproduce network behaviour as measured by the other cost
 functions.
 
 
-\begin{figure}[tb!]
+\begin{figure}[th!]
   \centering
-  \includegraphics[width=\textwidth]{boxplot25-sep-st.eps}\\
-  \includegraphics[width=\textwidth]{boxplot25-sep-ifr.eps}\\
-  \includegraphics[width=\textwidth]{boxplot25-sep-iv.eps}\\
+%  \includegraphics[width=\textwidth]{boxplot25-sep-st.eps}\\
+%  \includegraphics[width=\textwidth]{boxplot25-sep-ifr.eps}\\
+%  \includegraphics[width=\textwidth]{boxplot25-sep-iv.eps}\\
+  \includegraphics[width=\textwidth]{boxplot25-sep.eps}\\
   \caption{Cross comparison of best genomes generated using GA with 25
     repetitions, measured against the target, 1-step and 5-step
     parameter perturbation distributions.  The boxplots show the all
-    three best genomes evaluated ten times for each cost function. 100
-    evaluations of the target genomes were evaluated and 1000
-    parameter perturbations were evaluated for the 1-step and 5-step
-    distributions.}\label{fig:R2}
+    three best genomes evaluated ten times for each cost function,
+    plus an accumulation boxplot of all three. 100 evaluations of the
+    target genomes were evaluated and 1000 parameter perturbations
+    were evaluated for the 1-step and 5-step
+    distributions.}\label{fig:GA:R2A}
 \end{figure}
 
-\medskip{}
+\smallskip{}
 
-The results are shown in Figure~\ref{fig:R2A}, which compares the mean score
-evaluated using the ST, IFR and AIV cost functions (Figures ~\ref{fig:R2A}A,
-~\ref{fig:R2A}B and ~\ref{fig:R2A}C, respectively) for each of the three best genomes
-obtained from GA runs trained with the different cost functions. In general, the
-lowest scores were obtained when using the same cost function for evaluation as
-was used for training of the best genome. 
+The results are shown in Figure~\ref{fig:GA:R2A}, which compares the mean
+score evaluated using the ST, IFR and AIV cost functions (top to
+bottom, respectively) for each of the three best genomes obtained from
+GA runs trained with the different cost functions. In general, the
+lowest scores were obtained when using the same cost function for
+evaluation as was used for training of the best genome.
 
-\medskip{}
+\smallskip{}
 
 One AIV trained best genome generated ST scores around the target distribution,
 however, the top graph shows that overall the IFR and AIV best genomes performed
@@ -133,7 +136,7 @@ the AIV cost function (bottom plot), but did not reach the target genome scores.
 % poorly.
 
 
-% \begin{tabularx}{0.95\textwidth}{X|c|c}
+% \begin{tabularx}{0.95\textwidth}{Xcc}
 %   Simulation                & MeanPE  & Score   \\\hline
 %   stdyn diffAN sim1 min ga  & 22.1167 & 	10.1671 \\ 
 %   stdyn diffAN sim2 min ga  & 31.6833 & 	10.0115 \\ 
@@ -148,38 +151,39 @@ the AIV cost function (bottom plot), but did not reach the target genome scores.
 
 \clearpage
 
-\begin{figure}[tb!]
-  \centering
-  \includegraphics[width=\textwidth]{BestGenomesReRaw_CombinedLog}
-  \caption{Parameter errors of the best genomes in 3 GA
-    simulations for each cost function: ST (${\color{halfgray} \diamond }$), IFR (${\color{black} \diamond }$), and AIV (${\circ}$). Errors were normalised in terms
-    of the target parameter values ( (target - bestgenome) / target )}\label{fig:R2b}
-\end{figure}
-
 
 
 
 \subsubsection{Match to Target Parameters}
 
 A further way to evaluate GA performance is to compare the parameter values
-between the best and target genomes by evaluating the relative error between
-parameters (i.e. (target value - best value)/target value) . Individual relative
-parameter errors are shown in Figure~\ref{fig:R2} for each of the best genomes
-trained on a particular cost function. Parameters were ordered by increasing
-mean relative error across all genomes.
+between the best and target genomes by evaluating the relative error
+between parameters (i.e. (target value - best value)/target value). Individual 
+relative parameter errors are shown in Figure~\ref{fig:GA:R2} for
+each of the best genomes trained on a particular cost function. Parameters
+were ordered by increasing mean relative error across all genomes.
 
-\medskip{}
+\smallskip{}
 
-The plot shows a fairly similar level and pattern of performance across genomes
-trained with the three different cost functions. Parameters were either
-reasonably or poorly constrained independent of the cost function being used in
-training. 
+\begin{figure}[th!]
+  \centering
+  \includegraphics[width=\textwidth]{BestGenomesReRaw_CombinedLog}
+  \caption{Parameter errors of the best genomes in 3 GA
+    simulations for each cost function: ST (${\color{halfgray} \diamond }$), IFR (${\color{black} \diamond }$), and AIV (${\circ}$). Errors were normalised in terms
+    of the target parameter values ( (target - bestgenome) / target )}\label{fig:GA:R2}
+\end{figure}
 
-\medskip{}
 
-In terms of parameter type, all bandwidth parameters were in the upper half of
-genome errors whereas synapse number parameters were predominantly in the lower
-half.  Weight parameters are spread over the whole range.
+The plot shows a similar level and pattern of performance across
+genomes trained with the three different cost functions. Parameters were
+either reasonably or poorly constrained independent of the cost function
+being used in training.
+
+\smallskip{}
+
+In terms of parameter type, all bandwidth parameters were in the upper half
+of genome errors whereas synapse number parameters were predominantly in
+the lower half.  Weight parameters are spread over the whole range.
 
 
 % {\it Still concerned that units are wrong. Percent error? Also v.hard compare
@@ -207,14 +211,14 @@ half.  Weight parameters are spread over the whole range.
 % that there was less difference between a good genome and a bad
 % genome.  The best genome obtained by the IFR-25 cost function with
 % different inputs had a score of 0.263~sp/ms and a mean parameter
-% error of 0.273 (Figure~\ref{fig:8}D).
+% error of 0.273 (Figure~\ref{fig:GA:8}D).
 % 
 % The performance of the best genome generated by the AIV-25
 % cost function with different inputs was very accurate for inhibitory
-% parameters (Figure~\ref{fig:8}G) presumably due to subthreshold
+% parameters (Figure~\ref{fig:GA:8}G) presumably due to subthreshold
 % information within the intracellular voltages.
 
-\subsection{Parameter Sensitivity}
+\subsection{Parameter Sensitivity}\label{sec:GA:param-sens-results}
 
 % Estimate of best performance possible given noisy input.
 % 
@@ -225,10 +229,10 @@ half.  Weight parameters are spread over the whole range.
 % Roughly equal sensitivity across cost functions.
 % 
 % The GA run using the ST cost
-% function and different ANF inputs (Figure~\ref{fig:5}B) had a similar
+% function and different ANF inputs (Figure~\ref{fig:GA:5}B) had a similar
 % learning profile, but there was less variability in the 25--75
 % percentile range in the later generations and the best genome score
-% was 9.72~ms (Figure~\ref{fig:5}B).
+% was 9.72~ms (Figure~\ref{fig:GA:5}B).
 % 
 % 
 % 
@@ -239,7 +243,7 @@ half.  Weight parameters are spread over the whole range.
 % between a good genome and a bad genome.  The best genome obtained by
 % the IFR-25 cost function with different inputs had a score of
 % 0.263~sp/ms and a mean parameter error of 0.273
-% (Figure~\ref{fig:8}D).
+% (Figure~\ref{fig:GA:8}D).
 % 
 % The AIV-25 and
 % AIV-250 cost functions with different inputs scored, 0.208~and 0.188
@@ -249,12 +253,12 @@ half.  Weight parameters are spread over the whole range.
 % different inputs were, 0.258, 0.207 and 0.275, respectively (Figure
 % 8F-H).
 
-\subsubsection{Simultaneous Parameter Perturbation Analysis}
+\subsubsection{Simultaneous Parameter Perturbation Analysis}\label{sec:GA:simult-param-pert}
 
 To better understand the relationship between cost function scores and the match
 to target parameter values a parameter sensitivity analysis was performed. This
 involved measuring the change in the cost function due to simultaneous
-perturbations in all parameters.  Figure~\ref{fig:R3} shows the distribution of
+perturbations in all parameters.  Figure~\ref{fig:GA:R3} shows the distribution of
 cost function scores for different degrees of random simultaneous parameter
 perturbation. Two populations of 1000 genomes were generated, one with parameter
 values allowed to vary uniformly by 1 unit step either side of the target
@@ -263,7 +267,7 @@ unit steps.  In the 5 units step experiment, one parameter covers 11
 combinations, including the target value.
 
 
-\begin{figure}[tb!]
+\begin{figure}[th!]
   \centering
   \includegraphics[width=\textwidth]{Histograms-Normalised.eps}  
   \caption{Histograms of simultaneous parameter perturbation of each cost
@@ -275,50 +279,50 @@ combinations, including the target value.
     (thin line) from the target. The input spike generation and network
     connections for each parameter set (genome) were randomly generated for each
     evaluation.  All graphs are normalised to the peak value in each
-    histogram.\label{fig:R3}}
+    histogram.}\label{fig:GA:R3}
 \end{figure}
 
 % In total the 5 units step experiment covers 9.72\% of
 % the total parameter space and the 1 unit step experiment covers
 % 2.65\%. {\bf What does this mean?? 11\% relative error = 1 step on average}
 
-\medskip{}
+\smallskip{}
 
 In general, 1 unit step perturbations produced cost function scores both
 slightly above and slightly below the range produced by the target network
-(compare histograms in dashed versus bold lines, respectively). Five unit step
-perturbations produced cost functions scores that were largely or wholly above
-the target network range (compare histograms in thin solid versus bold lines,
-respectively). This pattern was consistent across the three cost function
-types. The shift of cost function scores to progressively higher values with
-progressively larger perturbations is expected and desirable. It forms the basis
-by which the GA performs optimization by comparing candidate genomes to the
-target.
+(compare histograms in dashed versus bold lines, respectively). Five unit
+step perturbations produced cost functions scores that were wholly above
+the target network range (compare histograms in thin solid versus bold
+lines, respectively). This pattern was consistent across the three cost
+function types. The shift of cost function scores to progressively higher
+values with progressively larger perturbations is expected and
+desirable. It forms the basis by which the GA performs optimization by
+comparing candidate genomes to the target.
 
 % The distribution of cost functions scores for the 5 unit step perturbation is
-% less highly sensitivecost function in the vicinity of the target parameter
-% valuesSeparated from target distribution for the IFR cost function than for
+% less highly sensitive cost function in the vicinity of the target parameter
+% values. Separated from target distribution for the IFR cost function than for
 % either of the other cost functions. This is consistent with generally poorer
 % performance of the IFR cost function.
 
-\medskip{}
+\smallskip{}
 
 Best genomes scores from GA runs trained with either the ST or the IFR cost
 function lay inside the range produced by the 1 unit step perturbation, whereas
 best genomes scores from the GA runs trained with the AIV cost function were at
 the upper limit of the range produced by 5 unit step perturbations. In fact,
-Fig.~\ref{fig:R2} shows that all best genomes scored equally badly when
+Fig.~\ref{fig:GA:R2} shows that all best genomes scored equally badly when
 evaluated 100 times with the AIV cost function. Given this difference in AIV
 cost function scores, it is worth noting again that pattern of change in cost
 function distributions with perturbation size was fairly consistent across cost
 function types. This suggests that the AIV cost function is equally well behaved
 in the vicinity of the target compared to the other two cost functions. In this
 case, the reason the best genomes trained with any cost function were unable to
-attain a score in the target range (bottom plot of Figure~\ref{fig:R2}) was not
-due to a poorly behaved cost function. % but further explanation is unknown
+attain a score in the target range (bottom plot of Figure~\ref{fig:GA:R2}) was not
+due to a poorly behaved cost function. \todo[inline]{but further explanation is unknown.}
 
 
-\medskip{}
+\smallskip{}
 
 It is, perhaps, surprising that the 1 unit step perturbations could produced a
 network with lower cost function scores than the target network, albeit
@@ -333,10 +337,9 @@ consistent with the observation that for larger, 5 unit step perturbations this
 effect was much diminished or absent.
 
 
-
 % When the target parameters were evaluated 100 times with different
 % ANF input spikes the distribution of the ST cost function scores
-% moved to 9.72~ms ($\pm$ 0.06~ms) (Figure~\ref{fig:9}B).  The 1-step
+% moved to 9.72~ms ($\pm$ 0.06~ms) (Figure~\ref{fig:GA:9}B).  The 1-step
 % distribution compressed around 9.79~ms for different inputs, As
 % indicators of the GA's final performance, the best genomes produced
 % by the GA of 8.45~ms (identical inputs) and 9.72~ms (different
@@ -348,22 +351,22 @@ effect was much diminished or absent.
 % Different ANF inputs had an adverse effect on the learning
 % performance of the IFR-25 cost function, with the GA unable to find
 % reasonable estimates near the global optimum
-% (Figure~\ref{fig:10}B). The 1 step and 5 step scores were
+% (Figure~\ref{fig:GA:10}B). The 1 step and 5 step scores were
 % distributed around or close to the target scores showing a
 % compression of the global optimum around 0.25~sp/ms
-% (Figure~\ref{fig:10}B).
+% (Figure~\ref{fig:GA:10}B).
 % 
 % 
 % Using different inputs, the target value of the AIV-25
 % cost function is shifted to just above 0.2~mV, with the 1- and 5-step
 % not far above. The best performing genomes in the GA were very close
 % to the range of the 1-step and target genome scores (inset
-% Figure~\ref{fig:11}B).
+% Figure~\ref{fig:GA:11}B).
 
 
 
 
-\subsection{Effects of Noise}
+\subsection{Effects of Noise}\label{sec:GA:effects-noise}
 
 Noise from auditory nerve inputs could have a significant impact on
 the GA optimization, with noise potentially preventing the GA from
@@ -379,60 +382,57 @@ utility of this approach by comparing GA performance for 100 versus 25
 stochastically distinct repetitions of the AN input for both target
 and candidate genomes.
 
-\medskip{}
+\smallskip{}
 
 
 \subsubsection{Increased Stimulus Presentations}
 
-
-\begin{figure}[tb!]
+\begin{figure}[th!]
   \centering
   % \figfont{A}\hspace{3.2in}\figfont{B}\\
   \includegraphics[width=\textwidth]{All100GAPerf-Log.eps}
   \caption{Performance of the GAs best performing genome run with 100
-    repetitions in the fitness function. Each generation is shown for
-    each simulation. The mark to the right of each graph is the mean
+    repetitions in the fitness function. GA simulations run with 25 repetitions are shown in grey. The mark to the right of each graph is the mean
     score and error bars showing the range of 2 times standard
-    deviation away from the mean target genome score.}\label{fig:R5}
+    deviation away from the mean target genome score.}\label{fig:GA:R5}
 \end{figure}
 
-Figure \ref{Fig:R5} shows the evolution of best genome scores when 100
+Figure~\ref{fig:GA:R5} shows the evolution of best genome scores when 100
 repetitions were used for the target and candidate genomes instead of
 25 (as used in the results presented thus far). Overall the use of
 increased repetitions of the stimulus resulted in reduced cost
 function scores but did not result in better GA performance. This is
-shown by the analysis given in Figure~\ref{fig:R6}.
+shown by the analysis given in Figure~\ref{fig:GA:R6}.
 
-\medskip{}
+\smallskip{}
 
-Similar to Fig~\ref{fig:R2}A, the figure compares scores across best genomes
+Similar to Fig~\ref{fig:GA:R2}A, the figure compares scores across best genomes
 trained with different cost function types (ST, IFR or AIV) and different
 numbers of repetition (25 or 100) giving a total of six different best genomes
 types: ST25, ST100, IFR25, IFR100, AIV25 and AIV100. The three different graphs
-(Fig~\ref{fig:R2}A-C) correspond to evaluation of these best genomes using the
+(Fig~\ref{fig:GA:R2}A-C) correspond to evaluation of these best genomes using the
 three different cost function types. The top of the lighter bars give the mean
 score when 100 repetitions were used for evaluation, while the top of the
 (appended) dark bars gives the mean score when only 25 repetitions were used
 for evaluation.
 
-\begin{figure}[tb!]
+\begin{figure}[th!]
   \centering
-  \includegraphics[width=\linewidth]{Histograms100-MaxNorm.eps}  
+  \includegraphics[width=\textwidth]{Histograms100-MaxNorm.eps}  
   \caption{Histograms of simultaneous parameter perturbation using 100
-    repetitions. All graphs are similar to Fig.~\ref{fig:R4}.}
-  % The
-  % distribution of genomes evaluated during one GA are shown in gray
-  % and the best scores of 3 simulation are pointed to by the
-  % arrows. The histograms show the distributions of 100 target genome
-  % scores (thick line), 1000 genomes deviated by 1 unit step away from
-  % the target value (dashed line), and 1000 genomes deviated by 5 steps
-  % (thin line) from the target. The input spike generation and network
-  % connections for each parameter set (genome) were randomly generated
-  % for each evaluation. 
-  \label{fig:R6}
+    repetitions. Similar to Fig.~\ref{fig:GA:R4}, the distribution of
+    genomes evaluated during the GA are shown in gray and the eventual
+    best score is pointed to by the arrow. The histograms show the
+    distributions of 100 target genome scores (thick line), 1000
+    genomes deviated by 1 unit step away from the target value (dashed
+    line), and 1000 genomes deviated by 5 steps (thin line) from the
+    target. The input spike generation and network connections for
+    each parameter set (genome) were randomly generated for each
+    evaluation.}
+  \label{fig:GA:R6}
 \end{figure}
 
-\medskip{}
+\smallskip{}
 
 In all cases the use of 100 repetitions to evaluate the cost function
 resulted in lower scores than when 25 repetitions were used (i.e. the
@@ -448,13 +448,13 @@ IFR25, IFR100, AIV25 and AIV100 cost functions). The exception was the
 AIV100 trained genome when evaluated by the ST cost
 function. % check statistical difference of AIV in ST
 
-\medskip{}
+\smallskip{}
 
 This implies that, although the increased number of repetitions
 reduced noise (and therefore cost function scores), this was not a
 factor limiting GA performance.
 
-\begin{figure}[tb!]
+\begin{figure}[th!]
   \centering
   \includegraphics[width=\textwidth]{best25+100.eps}
   \caption{Comparison of Best genomes trained with different inputs
@@ -462,30 +462,30 @@ factor limiting GA performance.
     each GA best genomes were run 10 times. For reference, horizontal
     lines show the the median of the distribution of parameter
     perturbation for 1-step (dark line) and 5-steps (light
-    line).}\label{fig:R7}
+    line).}\label{fig:GA:R7}
 \end{figure}
 
 
-\begin{table}[tb]
+\begin{table}[th]
   \centering
-  \begin{tabularx}{0.95\textwidth}{X|c|c|c}
-    Cost Function &  PE$^*$ & Final GA Score & \\[0.5ex]\hline
-    ST (ms)    & 1.977 &     7.86038    &  7.89 (0.04) \\
-    IFR (spikes/ms)& 2.169 &    0.154698    & 0.1557 (0.00086) \\
-    AIV (mV/ms)  & 2.325 &   0.0292369    & 0.0292 (0.000098)\\ \hline
-  \end{tabularx}
-  \caption{Best genomes obtained from GA's run with 100 repetitions. $*$ Mean relative parameter error }
+  \begin{tabularx}{0.95\textwidth}{Xccc}
+Cost Function  & PE$^*$ & Final GA Score & Mean (S.D)\\[0.5ex]\hline
+   ST (ms)     & 1.977  &    7.86038     & 7.89 (0.04) \\
+IFR (spikes/ms)& 2.169  &    0.154698    & 0.1557 (8.6E-4) \\
+ AIV (mV/ms)   & 2.325  &   0.0292369    & 0.0292 (9.8E-5)\\ \hline
+\end{tabularx}
+  \caption{Best genomes obtained from GA's run with 100 repetitions. $*$ Mean relative parameter error. }
   \label{tab:BestGenome100}
 \end{table}
 
-\begin{figure}[tb!]
+\begin{figure}[th!]
   \centering
   \includegraphics[width=\textwidth]{boxplot-100+25.eps}\\
   \caption{Cross comparison of best genomes generated using GA with
     100 repetitions, measured against the target, 1-step and 5-step
     parameter perturbation distributions.  The boxplots show the best
     genomes evaluated ten times for each cost
-    function. }\label{fig:BestGenome100+25}
+    function. }\label{fig:GA:BestGenome100+25}
 \end{figure}
 
 

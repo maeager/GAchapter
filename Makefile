@@ -63,7 +63,7 @@ onlysources.tex	?= GAChapter.tex #IntroMethods.tex Results-DiffAN.tex ResultsSen
 #onlysources.eps	?=
 #
 # If you list files here, they will be treated as _include_ files
-includes.tex		?=  IntroMethods.tex
+#includes.tex		?=  IntroMethods.tex
 #includes.tex.sh	?=
 #includes.tex.pl	?=
 #includes.tex.py	?=

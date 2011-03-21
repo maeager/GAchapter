@@ -78,28 +78,28 @@ ivga25_diffAN_sim3_min_ga=-diffx./targetparameters;
 figure;
 subplot(131);
 xlimit = [1e-4 1e2];
-SensVBestGenomeErrorCombined(stdyn_diffAN_sens_grad1,stdyn_diffAN_sens_grad2,stdyn_diffAN_sim1_min_ga,stdyn_diffAN_sim2_min_ga,stdyn_diffAN_sim3_min_ga,xlimit)
-xlabel('Parameter Gradient (\Delta \Psi_{ST}/(\Delta {p}_i/t_{i}))','fontsize',20);
-ylabel('Best Genome Error','fontsize',20);
-set(gca,'xtick', [1e-3 1e-2 1e-1])
+SensVBestGenomeErrorCombined(stdyn_diffAN_sens_grad1,stdyn_diffAN_sens_grad2,stdyn_diffAN_sim1_min_ga,stdyn_diffAN_sim2_min_ga,stdyn_diffAN_sim3_min_ga,xlimit);
+xlabel('\Delta \Psi_{ST}/(\Delta {p}_i/p^\ast_{i})','fontsize',20);
+ylabel('Relative Genome Error','fontsize',20);
+set(gca,'xtick', [1e-3 1e-2 1e-1 1 1e1]);
 
 subplot(132);
 xlimit=[1e-5 1e-1];
-SensVBestGenomeErrorCombined(ifr25_diffAN_sens_grad1,ifr25_diffAN_sens_grad2,ifrga25_diffAN_sim1_min_ga,ifrga25_diffAN_sim2_min_ga,ifrga25_diffAN_sim3_min_ga,xlimit)
-xlabel('Parameter Gradient (\Delta \Psi_{IFR}/(\Delta {p}_i/target))','fontsize',20);
+SensVBestGenomeErrorCombined(ifr25_diffAN_sens_grad1,ifr25_diffAN_sens_grad2,ifrga25_diffAN_sim1_min_ga,ifrga25_diffAN_sim2_min_ga,ifrga25_diffAN_sim3_min_ga,xlimit);
+xlabel('\Delta \Psi_{IFR}/(\Delta {p}_i/p^\ast_i)','fontsize',20);
 %ylabel('Best Relative Genome Error ((b-t)/t) ','fontsize',20);
-set(gca,'xtick', [1e-5 1e-4 1e-3 1e-2])
+set(gca,'xtick', [1e-4 1e-3 1e-2]);
 
 
 subplot(133);
 xlimit=[1e-6 1e0];
-SensVBestGenomeErrorCombined(iv25_diffAN_sens_grad1,iv25_diffAN_sens_grad2,ivga25_diffAN_sim1_min_ga,ivga25_diffAN_sim2_min_ga,ivga25_diffAN_sim3_min_ga,xlimit)
-xlabel('Parameter Gradient (\Delta \Psi_{AIV}/\Delta {p}_i)','fontsize',20);
+SensVBestGenomeErrorCombined(iv25_diffAN_sens_grad1,iv25_diffAN_sens_grad2,ivga25_diffAN_sim1_min_ga,ivga25_diffAN_sim2_min_ga,ivga25_diffAN_sim3_min_ga,xlimit);
+xlabel('\Delta \Psi_{AIV}/(\Delta {p}_i/p^\ast_i)','fontsize',20);
 %ylabel('Best Genome Error','fontsize',20);
-set(gca,'xtick', [1e-5 1e-4 1e-3 1e-2 1e-1])
+set(gca,'xtick', [1e-5 1e-4 1e-3 1e-2 1e-1]);
 
 
 %Combined
 
 print -depsc2 -r600 '../gfx/CombinedBestGenomeVSens-All.eps' 
-
+print -deps -r600 '../gfx/CombinedBestGenomeVSens-All-Mono.eps' 

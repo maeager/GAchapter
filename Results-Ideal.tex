@@ -1,14 +1,172 @@
-\section{Optimisation of BNNs using Ideal inputs}
+\section{Optimisation of BNNs using Ideal inputs \textbf{OR} Expanded results}
 
 To understand the of optimising BNNs it may appear that to use ideal
 inputs is not intuitive; however, the methods and techniques of GA
 optimisation in this chapter were initially refined using an ideal
 environment.
 
+\todo[inline]{This is an attempt to include excess material into the
+  thesis that was chucked out after the failure of the JNeuroPhysiol
+  submissions. Anything with 250 repetitions has been removed}
+
+
 \subsection{Genetic Algorithm Performance}
 
 
- \todo[inline]{Summary of Ideal Input GA performance}
+\todo[inline]{Summary of Ideal Input GA performance}
+
+The performance of the GA optimization is illustrated by the evolution
+of the population of genome scores (Figures~\ref{fig:GA:5}
+to~\ref{fig:GA:7}) and by the best score in each generation. The
+evolutions of the population scores are represented in
+Figure~\ref{fig:GA:5} by the 25--75 percentile range of scores in each
+generation (shaded area). The best genome score in each generation
+(solid line) shows the different learning phases of the GA, from large
+steps initially to more incremental improvements as the GA tends
+towards an asymptote. The parameter error between the best genome's
+parameters and the target parameters are shown in Figure~\ref{fig:GA:8},
+a combined parameter error is calculated by normalizing each parameter
+by its range and finding the mean absolute error.
+
+\smallskip{}
+
+\begin{figure}[htb]
+\figfont{A}\hspace{2.2in}\figfont{B} \hfill \\
+\resizebox{5in}{!}{\includegraphics{STDYN25NormGAPerf.eps}\hspace{1cm}\includegraphics{STDYN25DiffANGAPerf.eps}}\hfill\\
+ \caption{ST cost function GA performance for ideal (A) and different (B) inputs.}\label{fig:GA:5}
+\end{figure}
+
+\begin{figure}[ht!]
+\figfont{A}\hspace{2.2in}\figfont{B} \hfill \\
+\resizebox{5in}{!}{\includegraphics{IFRGA25NormGAPerf.eps}\hspace{1cm}%
+\includegraphics{IFRGA25DiffANGAPerf.eps}}\hfill\\
+ \caption{}\label{fig:GA:6}
+\end{figure}
+
+\begin{figure}[ht!]
+\figfont{A}\hspace{2.2in}\figfont{B} \hfill \\
+\resizebox{5in}{!}{\includegraphics{IVGA25NormGAPerf.eps}\hspace{1cm}%
+\includegraphics{IVGA25DiffANGAPerf.eps}}\hfill\\
+ \caption{}\label{fig:GA:7}
+\end{figure}
+
+
+
+ \begin{figure}[thb!]
+%  \psfrag{0030}[br][br][1][0]{${s}_{GLG\rightarrow{DS}}$}
+%  \psfrag{0029}[br][br][1][0]{${n}_{GLG\rightarrow{DS}}$}
+%  \psfrag{0028}[br][br][1][0]{${w}_{GLG\rightarrow{DS}}$}
+%  \psfrag{0027}[br][br][1][0]{${o}_{DS\rightarrow{TV}}$}
+%  \psfrag{0026}[br][br][1][0]{${s}_{TV\rightarrow{DS}}$}
+%  \psfrag{0025}[br][br][1][0]{${n}_{TV\rightarrow{DS}}$}
+%  \psfrag{0024}[br][br][1][0]{${w}_{TV\rightarrow{DS}}$}
+%  \psfrag{0023}[br][br][1][0]{${s}_{DS\rightarrow{TV}}$}
+%  \psfrag{0022}[br][br][1][0]{${n}_{DS\rightarrow{TV}}$}
+%  \psfrag{0021}[br][br][1][0]{${w}_{DS\rightarrow{TV}}$}
+%  \psfrag{0020}[br][br][1][0]{${s}_{GLG\rightarrow{TS}}$}
+%  \psfrag{0019}[br][br][1][0]{${n}_{GLG \rightarrow{TS}}$}
+%  \psfrag{0018}[br][br][1][0]{${w}_{GLG\rightarrow{TS}}$}
+% \psfrag{0017}[br][br][1][0]{${s}_{TV\rightarrow{TS}}$}
+% \psfrag{0016}[br][br][1][0]{${n}_{TV\rightarrow{TS}}$}
+% \psfrag{0015}[br][br][1][0]{${w}_{TV\rightarrow{TS}}$}
+% \psfrag{0014}[br][br][1][0]{${s}_{DS\rightarrow{TS}}$}
+% \psfrag{0013}[br][br][1][0]{${n}_{DS\rightarrow{TS}}$}
+% \psfrag{0012}[br][br][1][0]{${w}_{DS\rightarrow{TS}}$}
+% \psfrag{0011}[br][br][1][0]{${n}_{LSR\rightarrow{GLG}}$}
+% \psfrag{0010}[br][br][1][0]{${w}_{LSR\rightarrow{GLG}}$}
+% \psfrag{0009}[br][br][1][0]{${n}_{HSR\rightarrow{TV}}$}
+% \psfrag{0008}[br][br][1][0]{${n}_{LSR\rightarrow{TV}}$}
+% \psfrag{0007}[br][br][1][0]{${w}_{ANF\rightarrow{TV}}$}
+% \psfrag{0006}[br][br][1][0]{${n}_{HSR\rightarrow{DS}}$}
+% \psfrag{0005}[br][br][1][0]{${n}_{LSR\rightarrow{DS}}$}
+% \psfrag{0004}[br][br][1][0]{${w}_{ANF\rightarrow{DS}}$}
+%  \psfrag{0003}[br][br][1][0]{${n}_{HSR\rightarrow{TS}}$}
+%  \psfrag{0002}[br][br][1][0]{${n}_{LSR\rightarrow{TS}}$}
+% \psfrag{0001}[br][br][1][0]{${w}_{ANF\rightarrow{TS}}$}
+% \psfrag{H}[br][br][1][0]{\figfont{\Large{H}}}
+% \psfrag{G}[br][br][1][0]{\figfont{\Large{G}}}
+% \psfrag{F}[br][br][1][0]{\figfont{\Large{F}}}
+% \psfrag{E}[br][br][1][0]{\figfont{\Large{E}}}
+% \psfrag{D}[br][br][1][0]{\figfont{\Large{D}}}
+% \psfrag{C}[br][br][1][0]{\figfont{\Large{C}}}
+% \psfrag{B}[br][br][1][0]{\figfont{\Large{B}}}
+% \psfrag{A}[br][br][1][0]{\figfont{\Large{A}}}
+ \resizebox{5in}{!}{\includegraphics{BestGenomes-4.0.eps}}
+ \caption{}
+     \label{fig:GA:8}
+ \end{figure}
+
+
+For the ST cost function with identical ANF inputs
+(Figure~\ref{fig:GA:5}A) the population scores were initially spread over
+a wide range of values. As the GA progressed there was rapid
+improvement in the first 50 generations. The results then asymptote to
+a mean score around 30 ms per spike train, although there was
+fluctuation throughout the remaining generations.  The best score
+after 200 generations was 8.45 ms with the best genome steadily
+improving until the final generation.  The GA run using the ST cost
+function and different ANF inputs (Figure~\ref{fig:GA:5}B) had a similar
+learning profile, but there was less variability in the 25--75
+percentile range in the later generations and the best genome score
+was 9.72~ms (Figure~\ref{fig:GA:5}B).  The best genome for the identical
+inputs was also closer to the target parameter values shown in
+Figure~\ref{fig:GA:8}A, with a normalized mean parameter error of 0.221,
+while the different inputs GA's best genome was 0.252 (Figure
+8B). Some parameters were well constrained by the GA and were robust
+to changes in the input, such as the excitatory input corresponding to
+the ANF input to the CN cells (parameters 1 to 11 or \wANFTS to
+\wLSRGLG) and some inhibitory parameters (12, 18, and 20 corresponding
+to \wDSTS, \wGLGTS, and \sGLGTS respectively).
+
+\smallskip{} 
+
+The GA was run with different combinations of the IFR cost function,
+first using 25 repetitions in the training data (IFR-25) with
+identical ANF inputs in the GA evaluation, secondly using IFR-25 with
+different ANF inputs, and lastly using 100 repetitions in the training
+data (IFR-100) with different ANF inputs. Figure~\ref{fig:GA:6}A, shows
+the GA performance of the IFR-25 cost function with identical
+inputs. The range of the 25--75 percentile population evolved quite
+rapidly before settling between 0.3~and 0.25~sp/ms.  The histogram of
+evaluated scores peaks around 0.25~sp/ms with a tail toward 0.2 sp/ms.
+The best genome's score of 0.195~sp/ms is equivalent to an average
+PSTH error of 11.8~spikes per cell. In terms of the parameter error
+from the target, the IFR-25 cost function with identical inputs
+returned the closest genome to the target of 0.201
+(Figure~\ref{fig:GA:8}C) for all GA simulations. When the inputs were
+randomized and the training data (25~reps) remained the same, the GA
+populations' learning was considerably slower and the search space was
+more compact, Figure 6B. \todo[inline]{linkback to previous
+  section}. This meant that there was less difference between a good
+genome and a bad genome.  The best genome obtained by the IFR-25 cost
+function with different inputs had a score of 0.263~sp/ms and a mean
+parameter error of 0.273 (Figure~\ref{fig:GA:8}D). The GA run using the
+IFR-100 cost function with different inputs shifted the general
+population of GA scores lower than the IFR-25 cost function, with
+population scores between 0.25~and 0.15~sp/ms. The learning was rapid
+in the first 50 generations but reached a steady state and the best
+genome score was not improved beyond the 150th generation
+(Figure~\ref{fig:GA:6}C).  %The best genome's obtained the worst mean
+%parameter error of 0.297~for all GA simulations (Figure~\ref{fig:GA:8}E).
+
+The GA performance was similar for each of the AIV cost functions
+conditions in Figure~\ref{fig:GA:7}. The initial population of each AIV
+cost function method ranged from 0.5~to 0.4~in the 25-75\% population
+score, with a rapid learning phase in the first 50 generations and a
+gradual learning phase and a smooth distribution of scores.  The
+AIV-25 cost function with identical ANF inputs produced the lowest AIV
+cost function score, 0.151~mV (Figure~\ref{fig:GA:7}A).  The AIV-25 and
+AIV-250 cost functions with different inputs scored, 0.208~and 0.188
+mV, respectively.  The mean parameter errors of the best genome for
+the AIV-25 cost function with identical inputs, the AIV-25 cost
+function with different inputs and the AIV-250 cost function with
+different inputs were, 0.258, 0.207 and 0.275, respectively (Figure
+8F-H).  The performance of the best genome generated by the AIV-25
+cost function with different inputs was very accurate for inhibitory
+parameters (Figure~\ref{fig:GA:8}G) presumably due to subthreshold
+information within the intracellular voltages. \todo[inline]{remove or replace 250 with 100}
+
+
 % 
 % Faster evolution?? Does not look like it to me.
 % 
@@ -54,10 +212,26 @@ environment.
 % {\it Comment: Need to say something about the match to target parameters.}
 
 
-
-
-
 \subsection{Parameter space sensitivity of cost functions}
 
 
+\subsubsection{Spike Timing}
+\subsubsection{Instantaneous Firing Rate}
+\subsubsection{Average Intracellular Voltage}
+
+% The distribution of 1 step and 5 step parameter variations was
+% separated with identical inputs but was still significantly different
+% for simulations with different inputs.
+
+
 \subsection{Performance of best genomes and comparison of cost functions }
+
+\todo[inline]{refine J Neurophysiol section to go here}
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "GAChapter"
+%%% TeX-PDF-mode: nil
+%%% End: 

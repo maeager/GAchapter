@@ -24,14 +24,14 @@ bestgenome =[bestgenome1' bestgenome2' bestgenome3' ]; %bestgenome4'];
 %size(passed_ttest);
 %size(bestgenome);
 
-plot(abs(which_gradient(find(passed_ttest))),       abs(bestgenome(find(passed_ttest))),'rd','markersize',10); 
+plot(abs(which_gradient(find(passed_ttest))),       abs(bestgenome(find(passed_ttest))),'rs','markersize',7); 
  plot(abs(which_gradient(find(~passed_ttest))),       abs(bestgenome(find(~passed_ttest))),'bd','markersize',10);
  perfect = find(~bestgenome);
  for i=1:length(perfect)
    if passed_ttest(perfect(i)) 
-     plot(abs(which_gradient(perfect(i))),0.1,'ro','markersize',10);
+     plot(abs(which_gradient(perfect(i))),0.01,'ro','markersize',10);
    else 
-     plot(abs(which_gradient(perfect(i))),0.1,'bo','markersize',10);
+     plot(abs(which_gradient(perfect(i))),0.01,'bo','markersize',10);
    end
  end
 
@@ -45,16 +45,18 @@ ytmp=y(:);
 [B,BINT,R,Rint,STATS] = regress(ytmp,xtmp);
 [ss ii ] = sort(xtmp(:,1));
 xmax = xtmp(ii(find((xtmp(ii,1)*B(1)+B(2))>0)),1);  
-plot([min(xtmp(:,1)) xmax(end)],[min(x) xmax(end)]*B(1)+B(2),'k','linewidth',3);
-text(0,0,'Linear (Pass Only)','fontsize',20,'units','normalized','position', [0.05 0.95 0],'verticalalignment','middle');
-text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.9 0]);
-text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.85 0]);
-text(0,0,['R^2=' num2str(STATS(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.8 0]);
+%plot([min(xtmp(:,1)) xmax(end)],[min(x) xmax(end)]*B(1)+B(2),'k','linewidth',3);
+%text(0,0,'Linear (Pass Only)','fontsize',20,'units','normalized','position', [0.05 0.95 0],'verticalalignment','middle');
+%text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.9 0]);
+%text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.85 0]);
+%text(0,0,['R^2=' num2str(STATS(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.8 0]);
 
 disp('Linear (Pass Only)');
 disp(['m=' num2str(B(1),'%0.3g')]);
-disp(['p-value=' num2str(STATS(3),'%0.3g')]);
 disp(['R^2=' num2str(STATS(1),'%0.3g')]);
+disp(['F=' num2str(STATS(2),'%0.3g')]);
+disp(['p=' num2str(STATS(3),'%0.3g')]);
+disp(['est error var=' num2str(STATS(4),'%0.3g')]);
 
 
 
@@ -63,17 +65,19 @@ xtmp=[log10(x(:)) ones(length(x),1)]; %input matrix for regress function
 ytmp=log10(y(:));
 ytmp(find(((~y))'))=0.1;
 [B,BINT,R,Rint,STATS] = regress(ytmp,xtmp);
-plot([min(x) max(x)],[10^(min(xtmp(:,1))*(B(1))+B(2)) 10^(max(xtmp(:,1))*(B(1))+B(2))],'k--');
-text(0,0,'LOGLOG (Pass Only)','fontsize',20,'units','normalized','position', [0.95 0.95 0],'verticalalignment','middle','horizontalalignment','right');
-text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.9 0],'horizontalalignment','right');
+%plot([min(x) max(x)],[10^(min(xtmp(:,1))*(B(1))+B(2)) 10^(max(xtmp(:,1))*(B(1))+B(2))],'k--');
+%text(0,0,'LOGLOG (Pass Only)','fontsize',20,'units','normalized','position', [0.95 0.95 0],'verticalalignment','middle','horizontalalignment','right');
+%text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.9 0],'horizontalalignment','right');
 				%'(' num2str(10^(abs(B(1))),'%0.3g') ')'
-text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.85 0],'horizontalalignment','right');
-text(0,0,['R^2=' num2str(STATS(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.8 0],'horizontalalignment','right');
+%text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.85 0],'horizontalalignment','right');
+%text(0,0,['R^2=' num2str(STATS(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.8 0],'horizontalalignment','right');
 
 disp('LogLog (Pass Only)');
 disp(['m=' num2str(B(1),'%0.3g')]);
-disp(['p-value=' num2str(STATS(3),'%0.3g')]);
 disp(['R^2=' num2str(STATS(1),'%0.3g')]);
+disp(['F=' num2str(STATS(2),'%0.3g')]);
+disp(['p=' num2str(STATS(3),'%0.3g')]);
+disp(['est error var=' num2str(STATS(4),'%0.3g')]);
 
 
 
@@ -86,16 +90,21 @@ ytmp=y(:);
 % Grab the last point before crossing the x-axis
 [ss ii ] = sort(xtmp(:,1));
 xmax = xtmp(ii(find((xtmp(ii,1)*B(1)+B(2))>0)),1);  
-plot([min(xtmp(:,1)) xmax(end)],[min(x) xmax(end)]*B(1)+B(2),'b','linewidth',3);
-text(0,0,'Linear','fontsize',20,'units','normalized','position', [0.05 0.2  0],'verticalalignment','middle');
-text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.15 0],'verticalalignment','middle');
-text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.1 0],'verticalalignment','middle');
-text(0,0,['R^2=' num2str(STATS(1),'%0.3g')], 'fontsize',20,'units','normalized','position',[0.05 0.05 0],'verticalalignment','middle');
+
+plot([min(xtmp(:,1)) xmax(end)],[min(x) xmax(end)]*B(1)+B(2),'k','linewidth',4);
+
+
+%text(0,0,'Linear','fontsize',20,'units','normalized','position', [0.05 0.2  0],'verticalalignment','middle');
+%text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.15 0],'verticalalignment','middle');
+%text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.05 0.1 0],'verticalalignment','middle');
+%text(0,0,['R^2=' num2str(STATS(1),'%0.3g')], 'fontsize',20,'units','normalized','position',[0.05 0.05 0],'verticalalignment','middle');
 
 disp('Linear (All)');
 disp(['m=' num2str(B(1),'%0.3g')]);
-disp(['p-value=' num2str(STATS(3),'%0.3g')]);
 disp(['R^2=' num2str(STATS(1),'%0.3g')]);
+disp(['F=' num2str(STATS(2),'%0.3g')]);
+disp(['p=' num2str(STATS(3),'%0.3g')]);
+disp(['est error var=' num2str(STATS(4),'%0.3g')]);
 
 
 
@@ -105,17 +114,19 @@ xtmp=[log10(x(:)) ones(length(x),1)]; %input matrix for regress function
 ytmp=log10(y(:));
 ytmp(find(((~y))'))=0.1;
 [B,BINT,R,Rint,STATS] = regress(ytmp(:),xtmp);
-plot([min(x(:,1)) max(x(:,1))],[10^(min(xtmp(:,1))*(B(1))+B(2))      10^(max(xtmp(:,1))*(B(1))+B(2))],'b--');
+plot([min(x(:,1)) max(x(:,1))],[10^(min(xtmp(:,1))*(B(1))+B(2))      10^(max(xtmp(:,1))*(B(1))+B(2))],'k--');
 
-text(0,0,'LOGLOG','fontsize',20,'units','normalized','position', [0.95 0.2 0],'verticalalignment','middle','horizontalalignment','right');
-text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.15 0],'horizontalalignment','right','verticalalignment','middle');% '(' num2str(10^(abs(B(1))),'%0.3g') ')'
-text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.1 0],'horizontalalignment','right','verticalalignment','middle');
-text(0,0,['R^2=' num2str(STATS(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.05 0],'horizontalalignment','right','verticalalignment','middle');
+%text(0,0,'LOGLOG','fontsize',20,'units','normalized','position', [0.95 0.2 0],'verticalalignment','middle','horizontalalignment','right');
+%text(0,0,['m=' num2str(B(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.15 0],'horizontalalignment','right','verticalalignment','middle');% '(' num2str(10^(abs(B(1))),'%0.3g') ')'
+%text(0,0,['p-value=' num2str(STATS(3),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.1 0],'horizontalalignment','right','verticalalignment','middle');
+%text(0,0,['R^2=' num2str(STATS(1),'%0.3g')],'fontsize',20,'units','normalized','position', [0.95 0.05 0],'horizontalalignment','right','verticalalignment','middle');
 
 disp('LogLog (All)');
 disp(['m=' num2str(B(1),'%0.3g')]);
-disp(['p-value=' num2str(STATS(3),'%0.3g')]);
 disp(['R^2=' num2str(STATS(1),'%0.3g')]);
+disp(['F=' num2str(STATS(2),'%0.3g')]);
+disp(['p=' num2str(STATS(3),'%0.3g')]);
+disp(['est error var=' num2str(STATS(4),'%0.3g')]);
 
 
-set(gca,'fontsize',20,'xlim',xlimit ,'ylim',[1e-1 1e3],'ytick', [1 10  100] ); %[1e-6 1e-2]
+set(gca,'fontsize',20,'xlim',xlimit ,'ylim',[0.005 1e2]);%,'ytick', [0.01 0.1 1 10  100] ); %[1e-6 1e-2]

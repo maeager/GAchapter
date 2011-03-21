@@ -1,11 +1,9 @@
 
 %\PARstart{U}{se} the force Luke...
 
-
-
 \section{Introduction}\label{sec:GA:intro}
 
-Innovative methodologies, such as multi-unit recording
+Innovative methodologies, such as multi-unit recording 
 \citep{BrownKassEtAl:2004} and optical recording using voltage-sensitive dyes
 \citep{GrinvaldHildesheim:2004,YangDoiEtAl:2000}, are enabling neuroscientists
 to monitor the simultaneous activity of networks of neurons with a higher degree
@@ -20,7 +18,7 @@ required to achieve observed phenomena in the network, (b) how do extrinsic and
 intrinsic noise sources affect the model, and (c) how do we reliably constrain
 the many free parameters in a model given limited experimental data.
 
-\medskip{} 
+\smallskip{} 
 
 One set of approaches to constraining BNNs, denoted as ``bottom-up'',
 is to construct them using detailed knowledge of specific neurons and
@@ -44,7 +42,7 @@ to BNNs because the input/output relationships of Hodgkin-Huxley-type
 models are not analytical, making them unsuitable for error
 back-propagation.
 
-\medskip{} 
+\smallskip{} 
 
 The particular challenges of constraining network parameters in BNNs
 or ensembles of spiking neural networks, which have been discussed
@@ -57,13 +55,13 @@ methods
 \citep{SameshimaBaccala:1999,DahlhausEichlerEtAl:1997,TheunissenSenEtAl:2000},
 information theoretical approaches using maximum likelihood
 \citep{YamadaMatsumotoEtAl:1996,Chichilnisky:2001,OkatanWilsonEtAl:2005,PaninskiPillowEtAl:2004},
-evolutionary algorithm methods \citep{TakahamaSakai:2005,Yao:1999},
-and other non-linear approaches \citep{Eblen-ZajjurSalasEtAl:1999}.
+evolutionary algorithm methods~\citep{TakahamaSakai:2005,Yao:1999},
+and other non-linear approaches~\citep{Eblen-ZajjurSalasEtAl:1999}.
 However, most of these efforts have been restricted to single neuron
 models or networks of integrate-and-fire neural models rather than
 BNNs.
 
-\medskip{} 
+\smallskip{} 
 
 Genetic Algorithms (GAs) belong to a class of optimization algorithms
 that mimic the process of evolution through natural selection. The
@@ -91,7 +89,7 @@ in removing the hand-tuning of parameters, but the application to
 medium and large-scale networks may require more techniques from the
 top-down methods in cost analysis and optimization algorithms.
 
-\medskip{} 
+\smallskip{} 
 
 This section of the thesis investigates the application of GAs in
 constraining synaptic parameters in a topographically-ordered BNN, using the
@@ -106,9 +104,7 @@ the algorithms to find the known neural parameters was assessed. To analyze the
 robustness of the cost functions to synaptic noise and the effects of
 trial-to-trial variability we incorporated these effects into the model.
 
-
 \subsection{Stellate Microcircuit of the Cochlear Nucleus}\label{sec:GA:stell-micr-cochl}
-
 
 The network used as the basis for optimising BNNs lies in the cochlear
 nucleus (CN, Figure~\ref{fig:GA:CNdiagram}), which is the gateway
@@ -163,9 +159,9 @@ example network.
 \begin{figure}[t!]
 \centering
 \figfont{A}\hfill\\
-\resizebox{3.5in}{!}{\includegraphics{SimpleCircuit3}}
+\resizebox{3in}{!}{\includegraphics{SimpleCircuit3}}
 \figfont{B}\hfill\\
-\resizebox{3.5in}{!}{\includegraphics{NetworkProjections3}}
+\resizebox{3in}{!}{\includegraphics{NetworkProjections3}}
 \caption{(A) Stellate microcircuit showing synaptic interaction within one
   iso-frequency lamina of the ventral CN (dotted lines) and TV cells of the
   dorsal CN\@. Excitatory synapses from ANFs (arrows) are modulated within the
@@ -183,7 +179,7 @@ example network.
 \label{fig:GA:MicroCN}
 \end{figure}
 
-\medskip{} 
+\smallskip{} 
 
 The tonotopic organization of the auditory pathway (i.e.\ the
 continuous mapping of sound frequency to place of resonance in the
@@ -193,12 +189,12 @@ nerve fibers (ANFs)
 enter the brainstem ventrally and bifurcate, so that each fiber sends
 axonal collaterals to the ventral and dorsal sections of the cochlear
 nucleus, to organized iso-frequency lamina. ANFs are categorized into
-high spontaneous rate (HSR, Figure~\ref{fig:GA:CNdiagram} solid line)
+high spon\-taneous rate (HSR, Figure~\ref{fig:GA:CNdiagram} solid line)
 and low spontaneous rate (LSR, Figure~\ref{fig:GA:CNdiagram} dashed
 line) fibers. LSR fibers have a higher threshold than HSR fibers and
 do not saturate in response to loud sounds.
 
-\medskip{} 
+\smallskip{} 
 
 The connectivity of the cell types involved in the stellate
 microcircuit is shown in Figure~\ref{fig:GA:MicroCN}. Fast,
@@ -224,7 +220,11 @@ circuits from the olivary complex to the ventral CN are also known to
 use GABA as a neurotransmitter \citep{SaintMorestEtAl:1989}, however
 this is not included in the model.
 
-\medskip{} 
+\smallskip{} 
+
+\section{Methods}
+
+\subsection{Genetic Algorithm Implementation }
 
 For a model constraining problem, genetic algorithms work by searching
 across successive generations of models for the model that is
@@ -246,7 +246,7 @@ adequate mixing of the best performing genomes in the population and
 mutations are introduced to ensure diversity. The best members of the
 population are usually copied (cloned) in the new population.
 
-\medskip{} 
+\smallskip{} 
 
 In this work, all GA simulations ran with 100~genomes in each
 population and evolved for 200~generations. From each population, a
@@ -271,15 +271,15 @@ For the group of 95~genomes, a random bit mutation was implemented
 with probability 0.01. The best performing genome string at the end of
 the 200th generation was declared the winner.
 
-\medskip{} 
+\smallskip{} 
 
 Parameters that were optimized were the synaptic weights, number of
 synaptic connections per neuron and a parameter describing the spatial
 variance of connections (details are given in the
 section~\ref{sec:GA:connectivity} Connectivity). The genome encoding
-scheme, shown in Table~\ref{tab:GA:3}, describes the number of bits
+scheme, shown in Table~\ref{tab:GA:Genome}, describes the number of bits
 used for each parameter and the range of values that each parameter
-could take.  For example, the first parameter in Table~\ref{tab:GA:3},
+could take.  For example, the first parameter in Table~\ref{tab:GA:Genome},
 $w_{{\rm ANF}\to{\rm TS}}$ models the strength of synapses from ANF to
 TS cells. It was encoded over the range 0.0-0.0051 $\mu$S using 8~bits
 by assigning 0b00000000~to 0.0~and 0b11111111~to 0.0051, and linearly
@@ -289,16 +289,16 @@ parameters or 1 (synaptic connection or frequency channel) for all
 others. The number of bits representing each parameter was chosen so
 that the maximum value lay outside of known physiological
 values. Genomes were formed by concatenating all these parameter bit
-strings in the order given in Table~\ref{tab:GA:3}.
+strings in the order given in Table~\ref{tab:GA:Genome}.
 
-\medskip{}
+\smallskip{}
 
 To test the application of GA's for optimizing parameters of a BNN, a
 network with a known set of parameters was created, this is referred
 to as the target network.  This allowed us to assess the GA by how
 well the algorithm was able to recover the target parameters. The
 target parameters were randomly selected from within the physiological
-range of values and given in Table~\ref{tab:GA:3}.  Target data were
+range of values and given in Table~\ref{tab:GA:Genome}.  Target data were
 generated from the target network and used as training data for the GA
 by incorporating them in an error-based cost function.  A notch-noise
 stimulus (described under Stimulus Generation) was chosen to present
@@ -313,6 +313,50 @@ notch-noise. Figure~\ref{fig:GA:Costfunctions}B illustrates response
 to 250~repetitions for a single TS cell in the center of the network,
 at the rising edge of the notch (arrow in
 Figure~\ref{fig:GA:Costfunctions}A).
+
+\begin{table}[tp]
+ \centering
+ \caption{Network Parameter-to-Genome Encoding Scheme}\label{tab:GA:Genome}
+ \begin{tabularx}{\textwidth}{lcccXX}
+\hline
+  &           Parameter           & Binary Bits & \multicolumn{2}{c}{Range} & Target Value \\[0.5ex]\hline
+1  & $w_{{\rm ANF}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00270 \\ %\hline
+2  & $n_{{\rm LSR}\to {\rm TS}} $  &      5      &  0  &         31          & 7 \\ %\hline
+3  & $n_{{\rm HSR}\to {\rm TS}} $  &      5      &  0  &         31          & 22 \\ %\hline
+4  & $w_{{\rm ANF}\to {\rm DS}} $  &      8      & 0.0 &       0.0051        & 0.00178 \\ %\hline
+5  & $n_{{\rm ANF}\to {\rm DS}} $  &      6      &  0  &         63          & 27 \\ %\hline
+6  & $n_{{\rm HSR}\to {\rm DS}} $  &      6      &  0  &         63          & 59 \\ %\hline
+7  & $w_{{\rm ANF}\to {\rm TV}} $  &      8      & 0.0 &       0.0051        & 0.00091 \\ %\hline
+8  & $n_{{\rm LSR}\to {\rm TV}} $  &      5      &  0  &         31          & 13 \\ %\hline
+9  & $n_{{\rm HSR}\to {\rm TV}} $  &      5      &  0  &         31          & 16 \\ %\hline
+10 & $w_{{\rm LSR}\to {\rm GLG}} $ &      8      & 0.0 &       0.0051        & 0.00150 \\   %\hline
+11 & $n_{{\rm LSR}\to {\rm GLG}} $ &      5      &  0  &         31          & 16 \\   %\hline
+12 &  $w_{{\rm DS}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00028 \\ %\hline
+13 &  $n_{{\rm DS}\to {\rm TS}} $  &      5      &  0  &         31          & 14 \\ %\hline
+14 &  $s_{{\rm DS}\to {\rm TS}} $  &      6      &  0  &         63          & 15 \\   %\hline
+15 &  $w_{{\rm TV}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00040 \\ %\hline
+16 &  $n_{{\rm TV}\to {\rm TS}} $  &      5      &  0  &         31          & 12 \\ %\hline
+17 &  $s_{{\rm TV}\to {\rm TS}} $  &      5      &  0  &         31          & 3 \\   %\hline
+18 & $w_{{\rm GLG}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00022 \\ %\hline
+19 & $n_{{\rm GLG}\to {\rm TS}} $  &      5      &  0  &         31          & 7 \\ %\hline
+20 & $s_{{\rm GLG}\to {\rm TS}} $  &      5      &  0  &         31          & 3 \\   %\hline
+21 &  $w_{{\rm DS}\to {\rm TV}} $  &      8      & 0.0 &       0.0051        & 0.00042 \\ %\hline
+22 &  $n_{{\rm DS}\to {\rm TV}} $  &      6      &  0  &         63          & 18 \\ %\hline
+23 &  $s_{{\rm DS}\to {\rm TV}} $  &      6      &  0  &         63          & 8 \\   %\hline
+24 &  $w_{{\rm TV}\to {\rm DS}} $  &      8      & 0.0 &       0.0051        & 0.00016 \\ %\hline
+25 &  $n_{{\rm TV}\to {\rm DS}} $  &      6      &  0  &         63          & 7   \\ %\hline
+26 &  $s_{{\rm TV}\to {\rm DS}} $  &      6      &  0  &         63          & 3 \\   %\hline
+27 &  $o_{{\rm DS}\to {\rm TV}} $  &      5      &  0  &         31          & 3 \\ %\hline
+28 & $w_{{\rm GLG}\to {\rm DS}} $  &      8      & 0.0 &       0.0051        & 0.00246 \\   %\hline
+29 & $n_{{\rm GLG}\to {\rm DS}} $  &      5      &  0  &         31          & 7 \\ %\hline
+30 & $s_{{\rm GLG}\to {\rm TDS}} $ &      5      &  0  &         31          & 5 \\[0.5ex]\hline
+\end{tabularx}\\
+ \footnotesize{Units of weights are $\mu$S. $n$ and $s$ parameters are
+   unitless integers. The resolution of weight parameters were set to
+   0.0001 $\mu$S and other parameters to 1.}
+\end{table}
+
+
 
 
 \subsection{Cost functions}\label{sec:GA:cost-functions}
@@ -374,7 +418,7 @@ sources of noise and trial-to-trial variability. The metric we used
 for comparing trial and target spike trains applied a cost based on
 relative timing of spikes, for a review see \citet{Victor:2005}.
 
-\medskip{}
+\smallskip{}
 
 The spike timing (ST) cost function was defined as:
 \begin{equation} \label{eq:GA:2} 
@@ -411,7 +455,7 @@ find the minimum distance between two spike trains, as illustrated in
 \label{fig:GA:DynSpikeMetric}
 \end{figure}
 
-\medskip{}
+\smallskip{}
 
 Figure~\ref{fig:GA:DynSpikeMetric}.  In this process, a trial spike train, $x_{ij}$,
 was mapped onto a target spike train, $x_{ik}^{*}$, by a process of
@@ -424,7 +468,7 @@ measured as the time difference between the spikes. The spikes to
 select for comparison were chosen such that the overall cost was
 minimized.
 
-\medskip{}
+\smallskip{}
 
 We chose the minimum value of $D(x_{ij} ,x_{ik}^{*} )$ over 25~target
 network spike-time vectors, $x_{ik}^{*}$, $k=1,\dots,25$, to reduce
@@ -434,7 +478,7 @@ network produces no output spikes, $D(x_{ij} ,x_{ik}^{*})$ is the sum
 of the target spike times, no target neurons produced empty spike
 trains.
 
-\medskip{}
+\smallskip{}
 
 To illustrate the behavior of this cost function in the ideal case,
 where ANF inputs to the trial network are the identical those used in
@@ -462,7 +506,7 @@ from the mean squared error between each neuron's PSTH, $r_{i} $, and
 the corresponding target neuron's PSTH, $r_{i}^{*} $, it was
 normalized to obtain a firing rate (spikes per ms) error per stimulus.
 
-\medskip{}
+\smallskip{}
 
 The IFR cost function is defined as:
 \begin{equation} \label{eq:GA:3} 
@@ -478,7 +522,7 @@ PSTH\@. The units for $\Psi_{{\rm IFR}}$ are spikes per millisecond
 per stimulus per neuron, but we shall use spikes per ms for the
 remainder of this study.
 
-\medskip{}
+\smallskip{}
 
 To increase robustness of the IFR cost function to input and
 trial-to-trial variability, target data from 250 repetitions was used
@@ -492,7 +536,7 @@ compared to the 25 repetitions in Figure~\ref{fig:GA:Costfunctions}E. Each PSTH 
 60~ms in duration (50~ms stimulus then 10~ms silence) and discretized
 using a bin width of $W=0.25$~ms (total number of bins $B=241$).
 
-\medskip{}
+\smallskip{}
 
 While the minimum value that $\Psi_{{\rm IFR}}$ can attain is zero, in
 practice it will be greater than zero even when the trial network
@@ -517,14 +561,14 @@ repetitions has been used to categorize physiological responses,
 especially different stellate cells
 \citep{PaoliniClareyEtAl:2004,PaoliniClareyEtAl:2005}.
 
-\medskip{}
+\smallskip{}
 
 The AIV cost function is defined using the mean-squared error between
 averaged IV waveforms of each trial neuron, $\bar{v}_{i}^{}$, and the
 corresponding target averaged IV waveform, $\bar{v}_{i}^{*}$, it is
 normalized to obtain a voltage (mV) error per neuron per stimulus.
 
-\medskip{}
+\smallskip{}
 
 The AIV cost function is defined as:
 \begin{equation} \label{eq:GA:4} 
@@ -536,7 +580,7 @@ The AIV cost function is defined as:
 the number of cells in the network, and $R$ is the number of
 repetitions.
 
-\medskip{}
+\smallskip{}
 
 Figures~\ref{fig:GA:Costfunctions}F and~\ref{fig:GA:Costfunctions}G show examples of averaged IV
 waveforms, $\bar{v}$, from a TS cell averaged over 25~or
@@ -545,7 +589,7 @@ trial-to-trial variation with more repetitions. Action potentials were
 clipped at 0~mV so that irregular peak heights did not affect the
 average waveform.
 
-\medskip{}
+\smallskip{}
 
 The minimum value of $\Psi_{{\rm AIV}}$ is zero.  Similar to
 $\Psi_{{\rm IFR}}$, in practice the minimum value of $\Psi_{{\rm
@@ -654,7 +698,7 @@ I_{{\rm h}} (t,V)=\bar{g}_{{\rm h}} r (V-E_{{\rm h}} )
   \end{equation}
 \end{itemize}
 
-\medskip{}
+\smallskip{}
 
 The form of the Hodgkin-Huxley sodium current was:
 \begin{equation} \label{eq:GA:10} 
@@ -667,7 +711,7 @@ $I_{{\rm h}}$, and each of their activation and deactivation functions
 detail by \citet{RothmanManis:2003} and the NEURON source code is
 freely available online at ModelDB \citep{HinesMorseEtAl:2004}.
 
-\medskip{}
+\smallskip{}
 
 Table~\ref{tab:GA:CellTypes} shows the maximum conductances, $\bar{g}$, for each
 cell type in the network.  The neurons in the ventral CN differ in
@@ -700,10 +744,91 @@ cell type from the literature
 at 37$^\circ$C, and matched them to the model types in
 \citet{RothmanManis:2003}.
 
+\smallskip{}
+
+
+\begin{table}[tp]
+  \centering
+  \caption{Model and Simulation Parameters}\label{tab:GA:GeneralParams}
+  \begin{tabularx}{\textwidth}{ccX}  
+%{\linewidth}{{X>{\hsize=.5\hsize}X>{\hsize=1.5\hsize}X}} %
+\toprule
+           \textbf{Parameter}             &               \textbf{Value}               & \textbf{Comment} \\ \midrule 
+                    \multicolumn{2}{l}{Auditory Model Parameters}                      & Cat model, Normal Hearing    \cite{HeinzZhangEtAl:2001} \\ %\hline
+       Greenwood function for cats        & $f=456.0\times 10^{\frac{x}{11.9} } -0.8$  & Basilar membrane position, $x$, and characteristic frequency, $f$, \cite{Greenwood:1990} \\ %\hline
+                Low Freq.                 &                   200~Hz                   & \\ %\hline
+               High Freq.                 &                   30~kHz                   & \\ %\hline
+           Frequency Channels             &                     60                     & Centre frequencies determined by Greenwood    function \\ %\hline
+\begin{minipage}[c]{1in} 
+$s_{{\rm ANF}\to {\rm TS}}$\\ 
+$s_{{\rm ANF}\to {\rm TV}}$ 
+\end{minipage}  
+                                          &  0 channels                                & all ANF inputs to TS and TV cells come    from their own CF channel \\ %\hline
+   $s_{{\rm ANF}\to {\rm DS}} $                 &    
+\begin{minipage}[c]{2in}\begin{center}
+Above CF: 3 channels\\ 
+Below CF: 6 channels    
+\end{center}\end{minipage}                                                             & \~{}1 octave above, \~{}2 octaves below CF \cite{PalmerJiangEtAl:1996} \\ % \hline
+   $s_{{\rm ANF}\to {\rm GLG}}$                & 3 channels                                  & \\ %\hline
+    AN first spike latency function      & where A0 = 8.3~ms, A1 = 6.49                &  \citep{CarneyYin:1988} \\ %\hline 
+   AN delay to CN units                  &    \begin{minipage}[c]{2in}\begin{center}  
+TS: 1.6~ms, DS: 1.2~ms,\\        
+TV: 2.0~ms, Golgi: 2.3~ms      
+\end{center}\end{minipage}                                                             & \\ \midrule
+  \multicolumn{2}{l}{Membrane Current Model Parameters}   & \cite{RothmanManis:2003} \\ %\hline
+             $C_m$              & $0.9\quad\mu{F}cm^{-2}$ & Specific membrane capacitance   \\ %\hline
+          Temperature           &       37$^\circ$C       & \cite{RothmanManis:2003a,RothmanManis:2003b} used 22$^\circ$C   for their slice preparation. \\ %\hline
+           $Q_{10}$             &            3            & Membrane current model temperature quality factor   effects the activation and deactivation functions' time   constants. $Q=Q_{10}^{((37^\circ -22^\circ )/10)}$ \\ %\hline   
+          $E_{\rm K}$           &         -72~mV          & Potassium reversal potential \\ %\hline
+         $E_{\rm Na}$           &          0~mV           & Sodium reversal potential \\ %\hline
+          $E_{\rm h}$           &         -43~mV          & Ih reversal potential \\ %\hline
+           $\varphi$            &           0.5           & KLT variable \\ \midrule 
+\multicolumn{2}{l}{Synapse Parameters}       & \\ %\hline
+     $\tau _{{\rm AMPA}}$       &         0.36~ms         & VCN neurons, mature guinea pig \cite{GardnerTrussellEtAl:1999} \\ %\hline
+         $E_{\rm Exc}$          &          0~mV           & \\ %\hline
+     $\tau _{{\rm Gly1}}$       &         0.4~ms          & \multirow{2}{*}{MNTB neurons, mature guinea pig \cite{LeaoOleskevichEtAl:2004}} \\ %\hline
+     $\tau _{{\rm Gly2}}$       &         2.5~ms          & \\
+     $\tau _{{\rm GABA1}}$      &         0.7~ms          & \multirow{2}{*}{MNTB neurons, mature guinea pig \cite{AwatramaniTurecekEtAl:2005}}\\
+     $\tau _{{\rm GABA2}}$      &          9~ms           & \\ %\hline
+        $E_{{\rm Cl}}$          &         -75~mV          & Chlorine reversal potential in Glycine and GABA-A receptors \\ %\hline
+           $\eta $           & \begin{minipage}[c]{2in}\begin{center}
+ $\eta = \frac{1}{-\exp(t'/\tau_{Inh1})+\exp(t'/\tau_{inh2})}$ \\
+ $t'=\frac{\tau_{Inh1}\tau_{Inh2}}{\tau_{Inh2}-\tau_{Inh1}}
+ \ln(\tau_{Inh2}/\tau_{Inh1})$
+ \end{center}   \end{minipage}                         & Normalization factor for  double exponential synapse (\textit{exp2syn}) model \cite{HinesCarnevale:2000} \\ \midrule
+\multicolumn{2}{l}{NEURON Simulation Parameters} & \\ %\hline
+        $dt$         &          0.1~ms           & Integration time step \\ %\hline
+\textit{secondorder} &             2             & Crank-Nicholson method \\ %\hline
+        $R$          &            25             & Stimulus repetition \\ %\hline
+        $M$          &            240            & Total number of cells \\ %\hline
+        $W$          &          0.2~ms           & PSTH bin width \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[tp]
+  \centering
+  \caption{Cell-type Membrane Current Parameters}\label{tab:GA:CellTypes}
+  \begin{tabularx}{0.8\linewidth}{lcccc}\hline
+                Cells                 &   TS   &   DS   &   TV    & Golgi \\ %\hline
+         Current Clamp Model          &  I-t   &  I-II  &   I-c   & I-c \\[0.5ex] \hline
+ $\bar{g}_{{\rm Na}} $, S cm$^{-2}$   & 0.235  & 0.235  &  0.235  & 0.235 \\ %\hline
+ $\bar{g}_{{\rm KHT}} $, S cm$^{-2}$  & 0.018  &  0.02  &  0.019  & 0.019 \\ %\hline
+$\bar{g}_{{\rm  KLT}} $, S cm$^{-2}$  &   0    & 0.0047 &    0    & 0 \\ %\hline
+ $\bar{g}_{{\rm KA}} $, S cm$^{-2}$   & 0.0153 &   0    &    0    & 0 \\ %\hline
+ $\bar{g}_{{\rm h}} $, mS cm$^{-2}$   & 0.0618 & 0.247  & 0.06178 & 0.6178 \\ %\hline
+$\bar{g}_{{\rm leak}} $, mS cm$^{-2}$ & 0.471  & 0.471  &  0.471  & 0.962 \\ %\hline
+        Soma Diameter, $\mu$m         &   21   &   25   &  19.5   & 15 \\ %\hline
+    Input Resistance, M$\Omega $      &  163   &   73   &   170   & 130 \\ \hline
+\end{tabularx}
+\end{table}
+
+
+
 \subsubsection{Synapse Models}
 
 Synapses were modeled with either a single or a double exponential
-time-dependent conductance change with the current density described
+ggtime-dependent conductance change with the current density described
 by $I_{{\rm SYN}} (t)=g_{{\rm SYN}} (t)(V-E_{{\rm rev}} )$, where
 $E_{\rm rev}$ is the associated reversal potential. The strength of
 the synapses was determined by a normalized weight parameter, $w$, and
@@ -771,7 +896,7 @@ interchangeable with frequency-specific connectivity.  Connection
 parameters that are fixed are shown in Table~\ref{tab:GA:GeneralParams} and
 parameters used in the optimization are shown in Table~\ref{tab:GA:Genome}.
 
-\medskip{}
+\smallskip{}
 
 Auditory nerve projections to each CN cell-type share the same
 synaptic weight, $w_{{\rm ANF}} $, but HSR and LSR fibers have
@@ -801,18 +926,18 @@ mean in the random allocation process.
 
 To test the performances of the cost functions in GA optimizations,
 sets of target data were produced using a target CN network with
-parameters shown in Table~\ref{tab:GA:Genome}.  The GA was run with each cost
-function using two conditions: 1) with identical ANF spike times as
-used in creating the target data, and 2) with different ANF spike
-times, derived from the same instantaneous rate function but where the
-spike times were recalculated for each evaluation.  The performance of
-the GA was evaluated by examining the behavior of the best genomes in
-relation to the scores of other genomes with small parameter
-deviations, the relative parameter difference between the best genome,
-and target genome (parameters of the target network) and the
-robustness of the optimization when using different ANF inputs.
+parameters shown in Table~\ref{tab:GA:Genome}.  The GA was run with
+each cost function using two conditions: 1) with identical ANF spike
+times as used in creating the target data, and 2) with different ANF
+spike times, derived from the same instantaneous rate function but
+where the spike times were recalculated for each evaluation.  The
+performance of the GA was evaluated by examining the behavior of the
+best genomes in relation to the scores of other genomes with small
+parameter deviations, the relative parameter difference between the
+best genome, and target genome (parameters of the target network) and
+the robustness of the optimization when using different ANF inputs.
 
-\medskip{}
+\smallskip{}
 
 To test the sensitivity and robustness of the cost functions to
 parameter variation, two analysis techniques were used. Sensitivity is
@@ -831,139 +956,24 @@ between -5 and 5.  Robustness was measured by re-evaluating the two
 genome sets above with different ANF input spikes regenerated for
 every genome.
 
-\medskip{}
+\smallskip{}
 
-Second, the sensitivity analysis of the cost functions to individual parameter
-variation at the global optimum is shown in section~\ref{sec:GA:IndividualSensA}. Parameter values were
-stepped up and down independently (steps were determined from the gene
-resolution in Table~\ref{tab:GA:Genome}) to determine the cost function
-learning gradient on either side of the target value. Gradients were
-calculated using a least-squares linear regression in MATLAB and
-two-sided t-tests were performed to determine whether each gradient
-was significantly different from zero.  This was done for the
-identical and the different ANF inputs, robustness was evaluated by
-comparing the ratio of V-shaped to non-V-shaped cost function
-gradients for different inputs.
+Second, the sensitivity analysis of the cost functions to individual
+parameter variation at the global optimum is shown in
+section~\ref{sec:GA:IndividualSensA}. Parameter values were stepped up
+and down independently (steps were determined from the gene resolution
+in Table~\ref{tab:GA:Genome}) to determine the cost function learning
+gradient on either side of the target value. Gradients were calculated
+using a least-squares linear regression in MATLAB and two-sided
+t-tests were performed to determine whether each gradient was
+significantly different from zero.  This was done for the identical
+and the different ANF inputs, robustness was evaluated by comparing
+the ratio of V-shaped to non-V-shaped cost function gradients for
+different inputs.
 
-\medskip{}
 
 
-\begin{table}[pt]
-  \centering
-  \caption{Model and Simulation Parameters}\label{tab:GA:GeneralParams}
-  \begin{tabularx}{\linewidth}{XcX} %
-\toprule
-           \textbf{Parameter}             &               \textbf{Value}               & \textbf{Comment} \\ \otoprule 
-                    \multicolumn{2}{l}{Auditory Model Parameters}                      & Cat model, Normal Hearing    \cite{HeinzZhangEtAl:2001} \\ %\hline
-       Greenwood function for cats        & $f=456.0\times 10^{\frac{x}{11.9} } -0.8$  & Basilar membrane position, $x$, and characteristic frequency, $f$, \cite{Greenwood:1990} \\ %\hline
-                Low Freq.                 &                   200~Hz                   & \\ %\hline
-               High Freq.                 &                   30~kHz                   & \\ %\hline
-           Frequency Channels             &                     60                     & Centre frequencies determined by Greenwood    function \\ %\hline
-\begin{minipage}[c]{1in} 
-$s_{{\rm ANF}\to {\rm TS}}$\\ 
-$s_{{\rm ANF}\to {\rm TV}}$ 
-\end{minipage}  
-                                          &  0 channels                                & all ANF inputs to TS and TV cells come    from their own CF channel \\ %\hline
-   $s_{{\rm ANF}\to {\rm DS}} $                 &    
-\begin{minipage}[c]{2in}\begin{center}
-Above CF: 3 channels\\ 
-Below CF: 6 channels    
-\end{center}\end{minipage}                                                             & \~{}1 octave above, \~{}2 octaves below CF \cite{PalmerJiangEtAl:1996} \\ % \hline
-   $s_{{\rm ANF}\to {\rm GLG}}$                & 3 channels                                  & \\ %\hline
-    AN first spike latency function      & where A0 = 8.3~ms, A1 = 6.49                &  \citep{CarneyYin:1988} \\ %\hline 
-   AN delay to CN units                  &    \begin{minipage}[c]{2in}\begin{center}  
-TS: 1.6~ms, DS: 1.2~ms,\\        
-TV: 2.0~ms, Golgi: 2.3~ms      
-\end{center}\end{minipage}                                                             & \\ \midrule
-  \multicolumn{2}{l}{Membrane Current Model Parameters}   & \cite{RothmanManis:2003} \\ %\hline
-             $C_m$              & $0.9\quad\mu{F}cm^{-2}$ & Specific membrane capacitance   \\ %\hline
-          Temperature           &       37$^\circ$C       & \cite{RothmanManis:2003a,RothmanManis:2003b} used 22$^\circ$C   for their slice preparation. \\ %\hline
-           $Q_{10}$             &            3            & Membrane current model temperature quality factor   effects the activation and deactivation functions' time   constants. $Q=Q_{10}^{((37^\circ -22^\circ )/10)}$ \\ %\hline   
-          $E_{\rm K}$           &         -72~mV          & Potassium reversal potential \\ %\hline
-         $E_{\rm Na}$           &          0~mV           & Sodium reversal potential \\ %\hline
-          $E_{\rm h}$           &         -43~mV          & Ih reversal potential \\ %\hline
-           $\varphi$            &           0.5           & KLT variable \\ \midrule 
-\multicolumn{2}{l}{Synapse Parameters}       & \\ %\hline
-     $\tau _{{\rm AMPA}}$       &         0.36~ms         & ventral CN neurons, mature guinea   pig \cite{GardnerTrussellEtAl:1999} \\ %\hline
-         $E_{\rm Exc}$          &          0~mV           & \\ %\hline
-     $\tau _{{\rm Gly1}}$       &         0.4~ms          & \multirow{2}{*}{MNTB neurons,     mature guinea pig \cite{LeaoOleskevichEtAl:2004}} \\ %\hline
-     $\tau _{{\rm Gly2}}$       &         2.5~ms          & \\
-     $\tau _{{\rm GABA1}}$      &         0.7~ms          & \multirow{2}{*}{MNTB neurons, mature guinea pig \cite{AwatramaniTurecekEtAl:2005}}\\
-     $\tau _{{\rm GABA2}}$      &          9~ms           & \\ %\hline
-        $E_{{\rm Cl}}$          &         -75~mV          & Chlorine reversal potential in Glycine   and GABA-A receptors \\ %\hline
-           $\eta $           & \begin{minipage}[c]{2in}\begin{center}
- $\eta = \frac{1}{-\exp(t'/\tau_{Inh1})+\exp(t'/\tau_{inh2})}$ \\
- $t'=\frac{\tau_{Inh1}\tau_{Inh2}}{\tau_{Inh2}-\tau_{Inh1}}
- \ln(\tau_{Inh2}/\tau_{Inh1})$
- \end{center}   \end{minipage}                         & Normalization factor for  double exponential synapse (\textit{exp2syn}) model \cite{HinesCarnevale:2000} \\ \midrule
-\multicolumn{2}{l}{NEURON Simulation Parameters} & \\ %\hline
-        $dt$         &          0.1~ms           & Integration time step \\ %\hline
-\textit{secondorder} &             2             & Crank-Nicholson method \\ %\hline
-        $R$          &            25             & Stimulus repetition \\ %\hline
-        $M$          &            240            & Total number of cells \\ %\hline
-        $W$          &          0.2~ms           & PSTH bin width \\
-\bottomrule
-\end{tabularx}
-\end{table}
 
-\begin{table}[tp]
-  \centering
-  \caption{Cell-type Membrane Current Parameters}\label{tab:GA:CellTypes}
-  \begin{tabularx}{0.8\linewidth}{lcccc}\hline
-                Cells                 &   TS   &   DS   &   TV    & Golgi \\ %\hline
-         Current Clamp Model          &  I-t   &  I-II  &   I-c   & I-c \\[0.5ex] \hline
- $\bar{g}_{{\rm Na}} $, S cm$^{-2}$   & 0.235  & 0.235  &  0.235  & 0.235 \\ %\hline
- $\bar{g}_{{\rm KHT}} $, S cm$^{-2}$  & 0.018  &  0.02  &  0.019  & 0.019 \\ %\hline
-$\bar{g}_{{\rm  KLT}} $, S cm$^{-2}$  &   0    & 0.0047 &    0    & 0 \\ %\hline
- $\bar{g}_{{\rm KA}} $, S cm$^{-2}$   & 0.0153 &   0    &    0    & 0 \\ %\hline
- $\bar{g}_{{\rm h}} $, mS cm$^{-2}$   & 0.0618 & 0.247  & 0.06178 & 0.6178 \\ %\hline
-$\bar{g}_{{\rm leak}} $, mS cm$^{-2}$ & 0.471  & 0.471  &  0.471  & 0.962 \\ %\hline
-        Soma Diameter, $\mu$m         &   21   &   25   &  19.5   & 15 \\ %\hline
-    Input Resistance, M$\Omega $      &  163   &   73   &   170   & 130 \\ \hline
-\end{tabularx}
-\end{table}
-
-\begin{table}[tp]
- \centering
- \caption{Network Parameter-to-Genome Encoding Scheme}\label{tab:GA:Genome}
- \begin{tabularx}{\textwidth}{lcccXX}
-\hline
-  &           Parameter           & Binary Bits & \multicolumn{2}{c}{Range} & Target Value \\[0.5ex]\hline
-1  & $w_{{\rm ANF}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00270 \\ %\hline
-2  & $n_{{\rm LSR}\to {\rm TS}} $  &      5      &  0  &         31          & 7 \\ %\hline
-3  & $n_{{\rm HSR}\to {\rm TS}} $  &      5      &  0  &         31          & 22 \\ %\hline
-4  & $w_{{\rm ANF}\to {\rm DS}} $  &      8      & 0.0 &       0.0051        & 0.00178 \\ %\hline
-5  & $n_{{\rm ANF}\to {\rm DS}} $  &      6      &  0  &         63          & 27 \\ %\hline
-6  & $n_{{\rm HSR}\to {\rm DS}} $  &      6      &  0  &         63          & 59 \\ %\hline
-7  & $w_{{\rm ANF}\to {\rm TV}} $  &      8      & 0.0 &       0.0051        & 0.00091 \\ %\hline
-8  & $n_{{\rm LSR}\to {\rm TV}} $  &      5      &  0  &         31          & 13 \\ %\hline
-9  & $n_{{\rm HSR}\to {\rm TV}} $  &      5      &  0  &         31          & 16 \\ %\hline
-10 & $w_{{\rm LSR}\to {\rm GLG}} $ &      8      & 0.0 &       0.0051        & 0.00150 \\   %\hline
-11 & $n_{{\rm LSR}\to {\rm GLG}} $ &      5      &  0  &         31          & 16 \\   %\hline
-12 &  $w_{{\rm DS}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00028 \\ %\hline
-13 &  $n_{{\rm DS}\to {\rm TS}} $  &      5      &  0  &         31          & 14 \\ %\hline
-14 &  $s_{{\rm DS}\to {\rm TS}} $  &      6      &  0  &         63          & 15 \\   %\hline
-15 &  $w_{{\rm TV}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00040 \\ %\hline
-16 &  $n_{{\rm TV}\to {\rm TS}} $  &      5      &  0  &         31          & 12 \\ %\hline
-17 &  $s_{{\rm TV}\to {\rm TS}} $  &      5      &  0  &         31          & 3 \\   %\hline
-18 & $w_{{\rm GLG}\to {\rm TS}} $  &      8      & 0.0 &       0.0051        & 0.00022 \\ %\hline
-19 & $n_{{\rm GLG}\to {\rm TS}} $  &      5      &  0  &         31          & 7 \\ %\hline
-20 & $s_{{\rm GLG}\to {\rm TS}} $  &      5      &  0  &         31          & 3 \\   %\hline
-21 &  $w_{{\rm DS}\to {\rm TV}} $  &      8      & 0.0 &       0.0051        & 0.00042 \\ %\hline
-22 &  $n_{{\rm DS}\to {\rm TV}} $  &      6      &  0  &         63          & 18 \\ %\hline
-23 &  $s_{{\rm DS}\to {\rm TV}} $  &      6      &  0  &         63          & 8 \\   %\hline
-24 &  $w_{{\rm TV}\to {\rm DS}} $  &      8      & 0.0 &       0.0051        & 0.00016 \\ %\hline
-25 &  $n_{{\rm TV}\to {\rm DS}} $  &      6      &  0  &         63          & 7   \\ %\hline
-26 &  $s_{{\rm TV}\to {\rm DS}} $  &      6      &  0  &         63          & 3 \\   %\hline
-27 &  $o_{{\rm DS}\to {\rm TV}} $  &      5      &  0  &         31          & 3 \\ %\hline
-28 & $w_{{\rm GLG}\to {\rm DS}} $  &      8      & 0.0 &       0.0051        & 0.00246 \\   %\hline
-29 & $n_{{\rm GLG}\to {\rm DS}} $  &      5      &  0  &         31          & 7 \\ %\hline
-30 & $s_{{\rm GLG}\to {\rm TDS}} $ &      5      &  0  &         31          & 5 \\[0.5ex]\hline
-\end{tabularx}\\
- \footnotesize{Units of weights are $\mu$S. $n$ and $s$ parameters are
-   unitless integers. The resolution of weight parameters were set to
-   0.0001 $\mu$S and other parameters to 1.}
-\end{table}
 
 
 %%% Local Variables: 
