@@ -14,7 +14,7 @@
 %\usepackage{pstricks}
 \usepackage{appendix}
 
-\usepackage{ctable}
+\usepackage{booktabs}
  
 %  \marginparwidth=3cm
 % \addtolength{\oddsidemargin}{6mm}
@@ -31,7 +31,7 @@
 \newcommand{\figfont}[1]{\large{\textbf{\textsf{#1}}}}
 
 \graphicspath{{./gfx/}{../figures/}}
-\graphicspath{{../figures/}{/media/data/Work/thesis/GAChapter/gfx/}{/media/data/Work/thesis/GAChapter/archive/gfx/}{/media/data/Work/thesis-gaarticle/gfx/}{/media/data/Work/thesis-gaarticle/GApaper-submission-JCompNeuro/gfx/}}
+\graphicspath{{../figures/}{/media/data/Work/thesis/GAChapter/gfx/}{/media/data/Work/thesis/GAChapter/archive/gfx/}{/media/data/Work/thesis-gaarticle/newgfx/}{/media/data/Work/thesis-gaarticle/GApaper-submission-JCompNeuro/gfx/}}
 %\usepackage[showlabels]{preview}
 %\PreviewEnvironment[{*[][]{}}]{tabularx}
 %\PreviewEnvironment[{*[][]{}}]{figure}
@@ -70,7 +70,7 @@
 \newpage
 \include{Results-DiffAN}
 \newpage
-\include{ResultsIdeal}
+\include{Results-Ideal}
 \newpage
 \include{ResultsSensAnalysis}
 \newpage
@@ -86,9 +86,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  \bibliographystyle{abbrvnat}%plainnat}%bmc_article} % Style BST file
- \bibliography{../MyBib}
-
-
+ \bibliography{/media/data/Work/thesis/MyBib}
 
 \end{document}
 
