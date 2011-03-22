@@ -31,12 +31,14 @@ by its range and finding the mean absolute error.
 \smallskip{}
 
 \begin{figure}[htb]
+\centering
 \figfont{A}\hspace{2.2in}\figfont{B} \hfill \\
 \resizebox{5in}{!}{\includegraphics{STDYN25NormGAPerf.eps}\hspace{1cm}\includegraphics{STDYN25DiffANGAPerf.eps}}\hfill\\
  \caption{ST cost function GA performance for ideal (A) and different (B) inputs.}\label{fig:GA:5}
 \end{figure}
 
 \begin{figure}[ht!]
+\centering
 \figfont{A}\hspace{2.2in}\figfont{B} \hfill \\
 \resizebox{5in}{!}{\includegraphics{IFRGA25NormGAPerf.eps}\hspace{1cm}%
 \includegraphics{IFRGA25DiffANGAPerf.eps}}\hfill\\
@@ -44,6 +46,7 @@ by its range and finding the mean absolute error.
 \end{figure}
 
 \begin{figure}[ht!]
+\centering
 \figfont{A}\hspace{2.2in}\figfont{B} \hfill \\
 \resizebox{5in}{!}{\includegraphics{IVGA25NormGAPerf.eps}\hspace{1cm}%
 \includegraphics{IVGA25DiffANGAPerf.eps}}\hfill\\
@@ -91,10 +94,70 @@ by its range and finding the mean absolute error.
 % \psfrag{C}[br][br][1][0]{\figfont{\Large{C}}}
 % \psfrag{B}[br][br][1][0]{\figfont{\Large{B}}}
 % \psfrag{A}[br][br][1][0]{\figfont{\Large{A}}}
- \resizebox{5in}{!}{\includegraphics{BestGenomes-4.0.eps}}
- \caption{}
+% \resizebox{5in}{!}{\includegraphics{BestGenomes-4.0.eps}}
+ \caption{Best Genomes}
      \label{fig:GA:8}
  \end{figure}
+
+  \begin{figure}[htb]
+    \centering
+    \caption{Distribution of the ST cost function scores for parameter
+      deviations near the global optimum with identical (A) or
+      different ANF inputs (B). Each figure contains a histogram of
+      cost function scores (darkest to lightest) for the target
+      genome, 5-step parameter deviation population, 1-step parameter
+      deviation population, and genomes evaluated by the GA trained
+      with the ST cost function.  Histograms of the ST cost function
+      evaluated GA scores are truncated at 50 rather than the maximum
+      score of 330~ms.  Arrow indicates the location of the GA's best
+      genome score.}
+    \label{fig:GA:9}
+  \end{figure}
+
+
+
+  \begin{figure}[htb]
+    \centering
+
+    \caption{Distribution of the IFR cost function scores for
+      parameter deviations near the global optimum in the same format
+      as Figure~\ref{fig:GA:9}.  (A) The IFR-25 cost function with
+      identical ANF inputs has an ideal optimum and a differentiated
+      space around the target with minimal overlap between 1- and
+      5-step populations. (B) Compression and shift of scores near the
+      target parameters, reduces the effectiveness of the IFR-25 cost
+      function with different ANF inputs in the GA optimization. (C)
+      The IFR-250 cost function with different ANF inputs is more
+      robust to changes in the input, with a reduced target score and
+      a search space that allows the GA to find scores with the 1-step
+      population range (inset).}
+    \label{fig:GA:10}
+  \end{figure}
+
+
+
+  \begin{figure}[htb]
+    \centering
+    \caption{Distribution of the AIV cost function scores for
+      parameter deviations near the global optimum in the same format
+      as Figure~\ref{fig:GA:9}.  (A) The AIV-25 cost function with
+      identical inputs, has a target at zero and a clear distinction
+      between the distributions of the 1- and 5-step parameter
+      deviations.  (B) The AIV-25 cost function with different inputs
+      shows an overlap of target scores and the 1-step parameter
+      deviation scores (inset) around 0.2~mV. 5-step scores are
+      separated from the target and the cost function provides an
+      effective learning environment for the GA the find scores nearer
+      to the target. (C) The smoothing of the training data in the
+      AIV-250 cost function with different inputs, reduces the target
+      scores to around 0.12~mV, but is not distinct from very good
+      genomes (1-step). The GA's best genome score of 0.188~mV and
+      some 1-step variation members outperform the target genome
+      (inset). (C) With different inputs the AIV-250 cost function
+      target values shift above 0.2~mV and there is greater overlap in
+      the 1- and 5-step parameter deviation distributions.}
+    \label{fig:GA:11}
+  \end{figure}
 
 
 For the ST cost function with identical ANF inputs
