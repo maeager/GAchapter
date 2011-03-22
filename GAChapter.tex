@@ -14,7 +14,7 @@
 %\usepackage{pstricks}
 \usepackage{appendix}
 
-\usepackage{booktabs}
+\usepackage{booktabs,longtable,ltxtable}
  
 %  \marginparwidth=3cm
 % \addtolength{\oddsidemargin}{6mm}
@@ -61,12 +61,12 @@
 \chapter[GAChapter]{GA optimsation of the CN stellate network}
 \label{sec:GAChapter}
 
-
-% \begin{synopsis}
-
+%\begin{synopsis}
 %\end{synopsis}
 
+\newpage
 \include{IntroMethods}
+{\small\LTXtable{\textwidth}{ModelTable.tex}}
 \newpage
 \include{Results-DiffAN}
 \newpage
@@ -80,7 +80,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %\begin{appendicies}
-\appendix
+%\appendix
 \include{ChapterAppendix}
 %\end{appendicies}
 

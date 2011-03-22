@@ -1,6 +1,5 @@
 
-\section{Sensitivity Analysis of Individual Parameters near the Global Optimum}\label{sec:GA:IndividualSensA}
-
+\section[Individual parameter sensitivity]{Sensitivity Analysis of Individual Parameters near the Global Optimum}\label{sec:GA:IndividualSensA}
 
 \subsection{Individual Parameter Perturbation Analysis}\label{sec:GA:indiv-param-pert}
 
@@ -314,6 +313,8 @@ close to the range termination), the other gradient was used. X was
 the relative parameter error of the best genomes as used previously
 ($\left|p^\ast_i-{p}_i\right|/p^\ast_i$).
 
+\smallskip{}
+
 The regression analysis was performed for both linear and log-log
 models. An additional test was done on data points restricted to those
 whose cost function gradient passed the t-test in
@@ -366,20 +367,22 @@ LogLog (Pass Only) & -0.344 &  0.0122  & 0.126  & 11.1 & 0.324\\[0.5ex] \hline
 \end{table}
 
 
-\todo[inline]{In summary, a log-log correlation has been observed
-  between the each of their cost function gradients near the target
-  and the best genomes trained with their cost
-  function. Table~\ref{tab:GA:BGvGrad-ST} shows a poor linear fit of
-  the ST best genomes in Figure~\ref{fig:GA:BestGenomeVGradient}, but
-  a log-log model provides a better fit, independent of the gradients'
-  significance. This behaviour was repeated for analysis of IFR
-  (Table~\ref{tab:GA:BGvGrad-IFR}) and AIV
-  (Table~\ref{tab:GA:BGvGrad-AIV}) best genomes; with the exception of
-  linear fit p-value of all AIV best genomes less than 0.05.  \\ 
-  The few perfect scores that were eliminated in the log-log
-  regression analysis, should not take away from the conclusion that
-  the GA's eventual best genome relative error was directly
-  log-correlated with the cost function gradients around the target.}
+\todo[inline]{This paragraph has not been vetted.}
+
+In summary, a log-log correlation has been observed between the each
+of their cost function gradients near the target and the best genomes
+trained with their cost function. Table~\ref{tab:GA:BGvGrad-ST} shows
+a poor linear fit of the ST best genomes in
+Figure~\ref{fig:GA:BestGenomeVGradient}, but a log-log model provides
+a better fit, independent of the gradients' significance. This
+behaviour was repeated for analysis of IFR
+(Table~\ref{tab:GA:BGvGrad-IFR}) and AIV
+(Table~\ref{tab:GA:BGvGrad-AIV}) best genomes; with the exception of
+linear fit p-value of all AIV best genomes less than 0.05.  The few
+perfect scores that were eliminated in the log-log regression
+analysis, should not take away from the conclusion that the GA's
+eventual best genome relative error was directly log-correlated with
+the cost function gradients around the target.
 
 
 %%% Local Variables: 

@@ -7,7 +7,7 @@
   \centering
   \caption{Comparison of best genomes using GA with
     identical inputs. * Indicates the best cost function score from
-    each GA}\label{tab:4}
+    each GA}\label{tab:GA:4}
   % \begin{tabular}{p{1.5in}*{3}{c}} \hline
   \begin{tabular}{lccc}
 \toprule
@@ -26,16 +26,16 @@ IV 25 Best Genome  &      9.58      &      0.202      & \textbf{0.158}* \\ %\hli
 \end{table}
 
 
-% \begin{table}[tp]
-%  \centering
-%  \caption{Comparison of Best genomes trained with different
-%    inputs.  Target genome and each GA best genomes were run 100
-%    times. One thousand genomes were run with different inputs in the 1
-%    step and 5 step parameter variation population.}\label{tab:5}
-%  % \begin{tabular}{|p{1.1in}|p{0.3in}|p{0.3in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|}\hline
-%  \begin{tabular}{p{1.0in}*{10}{c}}
-% \hline
-%                         & \multicolumn{2}{c}{ST}  & \multicolumn{2}{c}{IFR-25} & \multicolumn{2}{c}{IFR-250} & \multicolumn{2}{c}{AIV-25} & \multicolumn{2}{c}{AIV-250} \\
+\begin{table}[tp]
+ \centering
+ \caption{Comparison of Best genomes trained with different
+   inputs.  Target genome and each GA best genomes were run 100
+   times. One thousand genomes were run with different inputs in the 1
+   step and 5 step parameter variation population.}\label{tab:GA:5}
+ % \begin{tabular}{|p{1.1in}|p{0.3in}|p{0.3in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|}\hline
+ \begin{tabular}{p{1.0in}*{10}{c}}
+\hline
+                        & \multicolumn{2}{c}{ST}  & \multicolumn{2}{c}{IFR-25} & \multicolumn{2}{c}{IFR-100} & \multicolumn{2}{c}{AIV-25} & \multicolumn{2}{c}{AIV-100} \\
 % \hline
 %     Target Genome       &      9.72      & (0.06) &     0.237      &  (0.001)  &     0.157      &  (0.001)   &      0.206      & (9e-4) & 0.128 & (0.001) \\ %\hline
 %   1-step Population     &      9.79      & (0.23) &     0.237      &  (0.001)  &     0.158      &  (0.001)   &      0.207      & (0.001) & 0.129 & (0.002) \\ %\hline
@@ -46,8 +46,8 @@ IV 25 Best Genome  &      9.58      &      0.202      & \textbf{0.158}* \\ %\hli
 %  IV 25 GA Best Genome   &      11.3      & (0.1)  &     0.238*     &  (0.001)  &     0.159*     &   (9e-4)   & \textbf{0.211*} & (9e-4) & 0.136* & (8e-4) \\    % \hline
 % IV 250 GA Best Genome   &      10.4      & (0.1)  &      0.24      &  (0.001)  &     0.161      &  (0.001)   &      0.213      & (9e-4) & \textbf{0.138} & (0.001) \\
 % \hline
-% \end{tabular}
-% \end{table}
+ \end{tabular}
+ \end{table}
 
 
 \subsection{C++ Code: \textsf{ganeuron}}
