@@ -1,7 +1,7 @@
-\section{Optimisation of BNNs using Ideal inputs \textbf{OR} Expanded results}
+\section{Optimisation of {\BNN}s using Ideal inputs \textbf{OR} Expanded results}
 
-To understand the of optimising BNNs it may appear that to use ideal
-inputs is not intuitive; however, the methods and techniques of GA
+To understand the of optimising {\BNN}s it may appear that to use ideal
+inputs is not intuitive; however, the methods and techniques of {\GA}
 optimisation in this chapter were initially refined using an ideal
 environment.
 
@@ -13,16 +13,16 @@ environment.
 \subsection{Genetic Algorithm Performance}
 
 
-\todo[inline]{Summary of Ideal Input GA performance}
+\todo[inline]{Summary of Ideal Input {\GA} performance}
 
-The performance of the GA optimization is illustrated by the evolution
+The performance of the {\GA} optimization is illustrated by the evolution
 of the population of genome scores (Figures~\ref{fig:GA:5}
 to~\ref{fig:GA:7}) and by the best score in each generation. The
 evolutions of the population scores are represented in
 Figure~\ref{fig:GA:5} by the 25--75 percentile range of scores in each
 generation (shaded area). The best genome score in each generation
-(solid line) shows the different learning phases of the GA, from large
-steps initially to more incremental improvements as the GA tends
+(solid line) shows the different learning phases of the {\GA}, from large
+steps initially to more incremental improvements as the {\GA} tends
 towards an asymptote. The parameter error between the best genome's
 parameters and the target parameters are shown in Figure~\ref{fig:GA:8},
 a combined parameter error is calculated by normalizing each parameter
@@ -34,7 +34,7 @@ by its range and finding the mean absolute error.
 \centering
 \figfont{A}\hspace{2.2in}\figfont{B} \hfill \\
 \resizebox{5in}{!}{\includegraphics{STDYN25NormGAPerf.eps}\hspace{1cm}\includegraphics{STDYN25DiffANGAPerf.eps}}\hfill\\
- \caption{ST cost function GA performance for ideal (A) and different (B) inputs.}\label{fig:GA:5}
+ \caption{ST cost function {\GA} performance for ideal (A) and different (B) inputs.}\label{fig:GA:5}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -103,13 +103,13 @@ by its range and finding the mean absolute error.
     \centering
     \caption{Distribution of the ST cost function scores for parameter
       deviations near the global optimum with identical (A) or
-      different ANF inputs (B). Each figure contains a histogram of
+      different {\ANF} inputs (B). Each figure contains a histogram of
       cost function scores (darkest to lightest) for the target
       genome, 5-step parameter deviation population, 1-step parameter
-      deviation population, and genomes evaluated by the GA trained
+      deviation population, and genomes evaluated by the {\GA} trained
       with the ST cost function.  Histograms of the ST cost function
-      evaluated GA scores are truncated at 50 rather than the maximum
-      score of 330~ms.  Arrow indicates the location of the GA's best
+      evaluated {\GA} scores are truncated at 50 rather than the maximum
+      score of 330~ms.  Arrow indicates the location of the {\GA}s best
       genome score.}
     \label{fig:GA:9}
   \end{figure}
@@ -122,14 +122,14 @@ by its range and finding the mean absolute error.
     \caption{Distribution of the IFR cost function scores for
       parameter deviations near the global optimum in the same format
       as Figure~\ref{fig:GA:9}.  (A) The IFR-25 cost function with
-      identical ANF inputs has an ideal optimum and a differentiated
+      identical {\ANF} inputs has an ideal optimum and a differentiated
       space around the target with minimal overlap between 1- and
       5-step populations. (B) Compression and shift of scores near the
       target parameters, reduces the effectiveness of the IFR-25 cost
-      function with different ANF inputs in the GA optimization. (C)
-      The IFR-250 cost function with different ANF inputs is more
+      function with different {\ANF} inputs in the {\GA} optimization. (C)
+      The IFR-250 cost function with different {\ANF} inputs is more
       robust to changes in the input, with a reduced target score and
-      a search space that allows the GA to find scores with the 1-step
+      a search space that allows the {\GA} to find scores with the 1-step
       population range (inset).}
     \label{fig:GA:10}
   \end{figure}
@@ -147,11 +147,11 @@ by its range and finding the mean absolute error.
       shows an overlap of target scores and the 1-step parameter
       deviation scores (inset) around 0.2~mV. 5-step scores are
       separated from the target and the cost function provides an
-      effective learning environment for the GA the find scores nearer
+      effective learning environment for the {\GA} the find scores nearer
       to the target. (C) The smoothing of the training data in the
       AIV-250 cost function with different inputs, reduces the target
       scores to around 0.12~mV, but is not distinct from very good
-      genomes (1-step). The GA's best genome score of 0.188~mV and
+      genomes (1-step). The {\GA}s best genome score of 0.188~mV and
       some 1-step variation members outperform the target genome
       (inset). (C) With different inputs the AIV-250 cost function
       target values shift above 0.2~mV and there is greater overlap in
@@ -160,35 +160,35 @@ by its range and finding the mean absolute error.
   \end{figure}
 
 
-For the ST cost function with identical ANF inputs
+For the ST cost function with identical {\ANF} inputs
 (Figure~\ref{fig:GA:5}A) the population scores were initially spread over
-a wide range of values. As the GA progressed there was rapid
+a wide range of values. As the {\GA} progressed there was rapid
 improvement in the first 50 generations. The results then asymptote to
 a mean score around 30 ms per spike train, although there was
 fluctuation throughout the remaining generations.  The best score
 after 200 generations was 8.45 ms with the best genome steadily
-improving until the final generation.  The GA run using the ST cost
-function and different ANF inputs (Figure~\ref{fig:GA:5}B) had a similar
+improving until the final generation.  The {\GA} run using the ST cost
+function and different {\ANF} inputs (Figure~\ref{fig:GA:5}B) had a similar
 learning profile, but there was less variability in the 25--75
 percentile range in the later generations and the best genome score
 was 9.72~ms (Figure~\ref{fig:GA:5}B).  The best genome for the identical
 inputs was also closer to the target parameter values shown in
 Figure~\ref{fig:GA:8}A, with a normalized mean parameter error of 0.221,
-while the different inputs GA's best genome was 0.252 (Figure
-8B). Some parameters were well constrained by the GA and were robust
+while the different inputs {\GA}s best genome was 0.252 (Figure
+8B). Some parameters were well constrained by the {\GA} and were robust
 to changes in the input, such as the excitatory input corresponding to
-the ANF input to the CN cells (parameters 1 to 11 or \wANFTS to
+the {\ANF} input to the {\CN} cells (parameters 1 to 11 or \wANFTS to
 \wLSRGLG) and some inhibitory parameters (12, 18, and 20 corresponding
 to \wDSTS, \wGLGTS, and \sGLGTS respectively).
 
 \smallskip{} 
 
-The GA was run with different combinations of the IFR cost function,
+The {\GA} was run with different combinations of the IFR cost function,
 first using 25 repetitions in the training data (IFR-25) with
-identical ANF inputs in the GA evaluation, secondly using IFR-25 with
-different ANF inputs, and lastly using 100 repetitions in the training
-data (IFR-100) with different ANF inputs. Figure~\ref{fig:GA:6}A, shows
-the GA performance of the IFR-25 cost function with identical
+identical {\ANF} inputs in the {\GA} evaluation, secondly using IFR-25 with
+different {\ANF} inputs, and lastly using 100 repetitions in the training
+data (IFR-100) with different {\ANF} inputs. Figure~\ref{fig:GA:6}A, shows
+the {\GA} performance of the IFR-25 cost function with identical
 inputs. The range of the 25--75 percentile population evolved quite
 rapidly before settling between 0.3~and 0.25~sp/ms.  The histogram of
 evaluated scores peaks around 0.25~sp/ms with a tail toward 0.2 sp/ms.
@@ -196,28 +196,28 @@ The best genome's score of 0.195~sp/ms is equivalent to an average
 PSTH error of 11.8~spikes per cell. In terms of the parameter error
 from the target, the IFR-25 cost function with identical inputs
 returned the closest genome to the target of 0.201
-(Figure~\ref{fig:GA:8}C) for all GA simulations. When the inputs were
-randomized and the training data (25~reps) remained the same, the GA
+(Figure~\ref{fig:GA:8}C) for all {\GA} simulations. When the inputs were
+randomized and the training data (25~reps) remained the same, the {\GA}
 populations' learning was considerably slower and the search space was
 more compact, Figure 6B. \todo[inline]{linkback to previous
   section}. This meant that there was less difference between a good
 genome and a bad genome.  The best genome obtained by the IFR-25 cost
 function with different inputs had a score of 0.263~sp/ms and a mean
-parameter error of 0.273 (Figure~\ref{fig:GA:8}D). The GA run using the
+parameter error of 0.273 (Figure~\ref{fig:GA:8}D). The {\GA} run using the
 IFR-100 cost function with different inputs shifted the general
-population of GA scores lower than the IFR-25 cost function, with
+population of {\GA} scores lower than the IFR-25 cost function, with
 population scores between 0.25~and 0.15~sp/ms. The learning was rapid
 in the first 50 generations but reached a steady state and the best
 genome score was not improved beyond the 150th generation
 (Figure~\ref{fig:GA:6}C).  %The best genome's obtained the worst mean
-%parameter error of 0.297~for all GA simulations (Figure~\ref{fig:GA:8}E).
+%parameter error of 0.297~for all {\GA} simulations (Figure~\ref{fig:GA:8}E).
 
-The GA performance was similar for each of the AIV cost functions
+The {\GA} performance was similar for each of the AIV cost functions
 conditions in Figure~\ref{fig:GA:7}. The initial population of each AIV
 cost function method ranged from 0.5~to 0.4~in the 25-75\% population
 score, with a rapid learning phase in the first 50 generations and a
 gradual learning phase and a smooth distribution of scores.  The
-AIV-25 cost function with identical ANF inputs produced the lowest AIV
+AIV-25 cost function with identical {\ANF} inputs produced the lowest AIV
 cost function score, 0.151~mV (Figure~\ref{fig:GA:7}A).  The AIV-25 and
 AIV-250 cost functions with different inputs scored, 0.208~and 0.188
 mV, respectively.  The mean parameter errors of the best genome for
@@ -233,7 +233,7 @@ information within the intracellular voltages. \todo[inline]{remove or replace 2
 % 
 % Faster evolution?? Does not look like it to me.
 % 
-% Cost function scores for the best genomes emerging from the GAs in
+% Cost function scores for the best genomes emerging from the {\GA}s in
 % the absence of noise are given in row 2 of Table ? for all three
 % cost functions. For ease of comparison the equivalent scores in the
 % case with noisy inputs are repeated in row 1.  In general, across
@@ -252,7 +252,7 @@ information within the intracellular voltages. \todo[inline]{remove or replace 2
 % also be seen that score obtained by best genome corresponds
 % approximately to the mode of the 5 unit step distribution of scores
 % and approaches the range of scores obtained from 1 unit step
-% perturbations. This suggests that the GA was able to perform
+% perturbations. This suggests that the {\GA} was able to perform
 % reasonably well up to the point at which the cost function became
 % discontinuous (i.e. at the target).
 % 
@@ -278,18 +278,95 @@ information within the intracellular voltages. \todo[inline]{remove or replace 2
 \subsection{Parameter space sensitivity of cost functions}
 
 
-\subsubsection{Spike Timing}
-\subsubsection{Instantaneous Firing Rate}
-\subsubsection{Average Intracellular Voltage}
-
 % The distribution of 1 step and 5 step parameter variations was
 % separated with identical inputs but was still significantly different
 % for simulations with different inputs.
 
 
-\subsection{Performance of best genomes and comparison of cost functions }
+%\subsection{Performance of best genomes and comparison of cost functions }
 
 \todo[inline]{refine J Neurophysiol section to go here}
+
+%\subsection{ Parameter space sensitivity of cost functions}
+
+
+Figures~\ref{fig:GA:9}--\ref{fig:GA:11} show the distribution of cost function
+scores for different types of random parameter variations. Two
+populations of 1000 genomes were generated, one with parameter values
+allowed to vary uniformly by 1 unit steps either side of the target
+(eg. -1, 0 or 1 steps), and the second population was varied up to 5
+units steps.  In the 5 units step experiment, one weight parameter
+covers 11 combinations, including the target value, or 4\% of the
+parameter space. In total the 5 units step experiment covers 9.72\% of
+the total parameter space and the 1 unit step experiment covers
+2.65\%.
+
+\smallskip{}
+
+Figure~\ref{fig:GA:9} shows the effects of small parameter deviations
+on the ST cost function, with identical and different {\ANF} inputs, on
+the search space close to the target. The ST cost function with
+identical {\ANF} inputs (Figure~\ref{fig:GA:9}A) has an optimum score at zero where
+the target data was reproduced. When the target parameters were
+evaluated 100 times with different {\ANF} input spikes the distribution
+of the ST cost function scores moved to 9.72 ms ($\pm$ 0.06 ms)
+(Figure~\ref{fig:GA:9}B). For a small perturbation of parameter values, 1 unit
+steps, and no input noise most scores fell within a small range of
+scores around 7.5 ms, with a small percentage (10.6\%) falling below
+this. The 1-step distribution compressed around 9.79 ms for different
+inputs, As indicators of the {\GA}s final performance, the best genomes
+produced by the {\GA} of 8.45 ms (identical inputs) and 9.72 ms
+(different inputs) were very reasonable estimates.  The shape of the
+ST cost function distributions of 5 step populations scores were very
+similar except for a positive shift with different inputs with means
+10 ms and 11.8 ms, respectively.
+
+\smallskip{}
+
+The parameter sensitivity of the IFR cost functions produced expected
+results for different {\ANF} inputs or smoothing of the PSTHs.  The
+IFR-25 cost function with identical inputs (Figure~\ref{fig:GA:10}A) behaves similarly to the ST
+cost function, with an ideal target at zero, 1 step scores spread over
+two peaks (around 0.15 and below 0.2 spikes per ms), and a majority of
+5-step scores above the distribution of 1-step scores.  Different ANF
+inputs had an adverse effect on the learning performance of the IFR-25
+cost function, with the {\GA} unable to find reasonable estimates near
+the global optimum (Figure~\ref{fig:GA:10}B). The 1 step and 5 step scores were
+distributed around or close to the target scores showing a compression
+of the global optimum around 0.25 sp/ms (Figure~\ref{fig:GA:10}B).  For the IFR
+cost function with 250 repetitions, the results are improved with the
+target shifted lower and the {\GA} searching closer to the optimal
+genome (Figure~\ref{fig:GA:10}C). The target and 1 step distribution lie around
+0.16~sp/ms and the 5-step scores are spread up to 0.2~sp/ms.
+
+\smallskip{}
+
+The AIV-25 cost function in Figure~\ref{fig:GA:11}A with identical ANF
+inputs resembles the distribution seen in the ST cost function
+(Figure~\ref{fig:GA:9}A).  The target network configuration's AIV
+waveforms overlap precisely with the target training data producing
+zero error in the AIV cost function. The introduction of uniform
+parameter variation shows an incremental pattern as genomes with the 1
+step distribution closer to the target value than most genomes varied
+by 5 steps.  Good genomes were difficult to find as the {\GA} struggled
+to locate genomes with scores within the range of the 1-step
+distribution. Using different inputs, the target value of the AIV-25
+cost function is shifted to just above 0.2 mV, with the 1- and 5-step
+not far above. The best performing genomes in the {\GA} were very close
+to the range of the 1-step and target genome scores (inset
+Figure~\ref{fig:GA:11}B). Smoothing the training data with the 250
+repetitions of IV waveforms shifts the mean target score up to 0.128
+mV (Figure~\ref{fig:GA:11}C).  The 1 and 5 step distributions are
+slightly overlapping but the greater distribution of 5 step scores
+indicate that the cost function could strongly differentiate the
+genomes that were closer to the target.  The AIV-250 cost function
+with different {\ANF} inputs (Figure~\ref{fig:GA:11}C) still provided
+enough information to distinguish between poorer genomes (5 step) and
+good genomes (1 step) despite some ambiguity in the target.  The {\GA}
+was unable to find many reasonable genomes within and below the range
+of 1- and 5- step scores, but the eventual winner finished just inside
+the 5-step scores.
+
 
 
 
