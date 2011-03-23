@@ -1,5 +1,5 @@
 
-\section[Individual parameter sensitivity]{Sensitivity Analysis of Individual Parameters near the Global Optimum}\label{sec:GA:IndividualSensA}
+\section[Individual parameter sensitivity]{Sensitivity Analysis of Individual Parameters near the Global Optimum}\label{sec:GA:IndividualSens}
 
 \subsection{Individual Parameter Perturbation Analysis}\label{sec:GA:indiv-param-pert}
 
@@ -15,7 +15,7 @@ Table~\ref{tab:GA:Genome}. Gradients were calculated using a
 least-squares linear regression in MATLAB/GNU Octave and two-sided
 t-tests were performed to determine whether each gradient was
 significantly different from zero.  This was done for the identical
-and the different ANF inputs, robustness was evaluated by comparing
+and the different {\ANF} inputs, robustness was evaluated by comparing
 the ratio of V-shaped to non-V-shaped cost function gradients for
 different inputs.
 
@@ -48,7 +48,7 @@ unilaterally sensitive (Figure \ref{fig:GA:R4}B), insensitive (Figure
 % ($w_{{\rm ANF}\to {\rm TS}} $ and $s_{{\rm DS}\to {\rm TV}} $) was
 % significantly different from a flat gradient both above (Students'
 % t-test p$<$0.0001) and below (p$<$0.0001) the target value.  When the
-% ANF input was slightly different from the ideal input, the optimum
+% {\ANF} input was slightly different from the ideal input, the optimum
 % increases and the gradient of parameter 1, $w_{{\rm ANF}\to {\rm TS}}
 % $, diminishes (Figure~\ref{fig:GA:12}C). The spread of connections from
 % DS cells to TV cells is wide (target value=8 channels), covering one
@@ -63,7 +63,7 @@ would reduce the effectiveness of optimization, especially
 gradient-decent methods.  For parameters with a target value close to
 the minimum range (parameters 17, 20, 26, and 27), the gradient below
 the target were not considered in the sensitivity analysis.  Even with
-identical ANF inputs and the same random seed, a change in the number
+identical {\ANF} inputs and the same random seed, a change in the number
 of connections or spread parameters will alter the allocation of
 synapses within the network.
 
@@ -109,7 +109,7 @@ synapses within the network.
 \subsubsection{Spike Timing}
 
 The ST cost function showed sensitivity to 27 of the 30 parameters on
-both sides of the target values with the identical ANF input (Figure
+both sides of the target values with the identical {\ANF} input (Figure
 13A), 2 parameters on one side and only one parameter 25 ($n_{{\rm
     TV}\to {\rm DS}} $) was completely insensitive. For different ANF
 inputs (Figure~\ref{fig:GA:13}B), 11 parameters were bilaterally
@@ -138,7 +138,7 @@ number of individual parameters with significant learning gradients
 was reduced for the ST cost function with different inputs and there
 were four parameters with significant opposing gradients (Figure 13B),
 the cost function still produced a distinctive optimum (Figure 9B) and
-the GA was able to find genomes close to the global optimum.
+the {\GA} was able to find genomes close to the global optimum.
 
 \smallskip{}
 
@@ -153,7 +153,7 @@ the GA was able to find genomes close to the global optimum.
 % target, and the inhibitory input parameter 25 ($n_{{\rm TV}\to {\rm
 % DS}} $) above the target suggesting a shifted optimum value.
 
-% When the ANF input was slightly different from the ideal input, the optimum
+% When the {\ANF} input was slightly different from the ideal input, the optimum
 % increases and the gradient of parameter 1, $w_{{\rm ANF}\to {\rm TS}}
 % $, diminishes (Figure~\ref{fig:GA:12}C). The spread of connections from
 % DS cells to TV cells is wide (target value=8 channels), covering one
@@ -185,7 +185,7 @@ the GA was able to find genomes close to the global optimum.
     \includegraphics{STDYN_SensDiffv2_Bar2.eps}%
   }
   \caption{Parameter sensitivity gradient plots for the ST cost
-    function with ideal input (A) and with different ANF input
+    function with ideal input (A) and with different {\ANF} input
     (B). Parameter gradients that are significantly different from
     zero (Student's t-test p $<$ 0.05) are shown with asterisk
     ($\ast$) and error bars that are the standard error of the
@@ -203,7 +203,7 @@ the identical inputs was significant for 54 of the possible 55
 parameter gradients (Figure~\ref{fig:GA:14}A).  This matches the
 well-defined global optimum of uniform parameter variation in
 Figure~\ref{fig:GA:10}A.  The sensitivity to inhibitory parameters of the
-IFR-25 cost function was not robust to changes in the ANF input
+IFR-25 cost function was not robust to changes in the {\ANF} input
 (Figure~\ref{fig:GA:14}B) since most gradients were flattened (not
 significant from zero gradient) or were unilaterally sensitive.  Seven
 inhibitory parameters had opposing gradients below the target, but
@@ -218,7 +218,7 @@ inputs, where it became completely insensitive. %  The individual
 
 
 % The sensitivity to inhibitory parameters of the
-% IFR-25 cost function was not robust to changes in the ANF input
+% IFR-25 cost function was not robust to changes in the {\ANF} input
 % (Figure~\ref{fig:GA:14}B) since most gradients were flattened (not
 % significant from zero gradient) or were unilaterally sensitive.  Seven
 % inhibitory parameters had opposing gradients below the target, but
@@ -235,7 +235,7 @@ inputs, where it became completely insensitive. %  The individual
  \caption{Parameter sensitivity gradient plots for the IFR cost function
     with the format similar to Figure~\ref{fig:GA:13}. (A) The IFR-25 cost
     function with identical input. (B) The IFR-25 cost function with
-    different ANF inputs. %(C) The IFR-100 cost function with different ANF
+    different {\ANF} inputs. %(C) The IFR-100 cost function with different ANF
 %    inputs.
 }
   \label{fig:GA:14}
@@ -248,7 +248,7 @@ Figure~\ref{fig:GA:15}A shows the individual parameter sensitivity of the
 AIV-25 cost function with identical inputs was similar to the IFR-25 cost
 functions with 54 of the possible 55 parameters having significant
 gradients.  The parameter sensitivity of the AIV-25 cost function was
-reasonably robust to changes in the ANF input despite a flattening of the
+reasonably robust to changes in the {\ANF} input despite a flattening of the
 gradients (Figure~\ref{fig:GA:15}B), especially for excitatory parameters
 (1-11). Thirteen parameters remained bilaterally sensitive parameters and 6
 were unilaterally sensitive.  % The AIV-250 cost function also had flattened
@@ -269,8 +269,8 @@ were unilaterally sensitive.  % The AIV-250 cost function also had flattened
   \caption{Parameter sensitivity gradient plots for the AIV cost
     function with the format similar to Figure~\ref{fig:GA:13}. A The
     AIV-25 cost function with identical input. (B) The AIV-25 cost
-    function with different ANF inputs.% (C) The AIV-100 cost
-%    function with different ANF inputs.
+    function with different {\ANF} inputs.% (C) The AIV-100 cost
+%    function with different {\ANF} inputs.
 }
   \label{fig:GA:15}
 \end{figure}
@@ -289,9 +289,9 @@ were unilaterally sensitive.  % The AIV-250 cost function also had flattened
 \begin{figure}[th]
   \centering
   \includegraphics[width=\textwidth]{CombinedBestGenomeVSens-All}  
-  \caption{Correlation of relative parameter error in GA best genomes
+  \caption{Correlation of relative parameter error in {\GA} best genomes
     against the sensitivity gradient of the training cost function
-    (different ANF inputs, 25 repetitions). A Spike timing cost
+    (different {\ANF} inputs, 25 repetitions). A Spike timing cost
     function (linear correlation p=0.0932 ,R$^2$=0.0317). B
     Instantaneous firing rate cost function (linear correlation
     p=0.0213 ,R$^2$=0.0588).  C Average intracellular voltage cost
@@ -380,7 +380,7 @@ behaviour was repeated for analysis of IFR
 (Table~\ref{tab:GA:BGvGrad-AIV}) best genomes; with the exception of
 linear fit p-value of all AIV best genomes less than 0.05.  The few
 perfect scores that were eliminated in the log-log regression
-analysis, should not take away from the conclusion that the GA's
+analysis, should not take away from the conclusion that the {\GA}s
 eventual best genome relative error was directly log-correlated with
 the cost function gradients around the target.
 

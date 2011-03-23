@@ -34,7 +34,7 @@
 \begin{minipage}[c]{1in} % 
 $s_{{\rm ANF}\to {\rm TS}}$\\ 
 $s_{{\rm ANF}\to {\rm TV}}$ % 
-\end{minipage}                   &  0     & all ANF inputs to TS and TV cells come    from their own CF channel \\ %\hline
+\end{minipage}                   &  0     & all {\ANF} inputs to TS and TV cells come    from their own CF channel \\ %\hline
    $s_{{\rm ANF}\to {\rm DS}} $  (channels)               &   \begin{minipage}[c]{2in}\begin{center} %
 Above CF: 3 \\[-0.5ex]
 Below CF: 6 %    
@@ -44,15 +44,15 @@ Below CF: 6 %
 ANF latency function (ms)&See Eq.~\ref{eq:GA:delay} & Cat model \citep{CarneyYin:1988} \\ %\hline 
       $A_{0}$ (ms) & 8.3& \\
  $A_1$ (cm)&6.49  &  \\
-    AN to CN delay adjustment& & {Conduction delay adjustment calculated from mean FSL of high CF units } \\
+    AN to {\CN} delay adjustment& & {Conduction delay adjustment calculated from mean FSL of high CF units } \\
 \dANFTS ~(ms) &1.6& mean FSL 3.6~ms \citep{RhodeSmith:1986}  \\
 \dANFDS ~(ms) & 1.2& mean FSL 3.2~ms \citep{RhodeSmith:1986}\\        
 \dANFTV ~(ms) & 2.0& mean FSL 4.0~ms \citep{OertelWickesberg:1993} \\
 \dANFGLG ~(ms) & 2.3& 0.7~ms more than VCN core units \citep{FerragamoGoldingEtAl:1998}  \\ \midrule
   \multicolumn{2}{l}{\bf Membrane Current Model Parameters}   & \citep{RothmanManis:2003b} \\ %\hline
-             $C_m \quad\mu{F}/cm^{2}$         & 0.9 & Specific membrane capacitance   \\ %\hline
+             $C_m$ ($\mu$F/cm$^{2}$)         & 0.9 & Specific membrane capacitance   \\ %\hline
           Temperature     ($^\circ$C)      &       37       & \citep{RothmanManis:2003a,RothmanManis:2003b} used 22$^\circ$C   for their slice preparation. \\ %\hline
-           $Q_{10}$             &            3            & Membrane current model temperature quality factor   effects the activation and deactivation functions' time   constants. $Q=Q_{10}^{((37^\circ -22^\circ )/10)}$ \\ %\hline   
+           Q$_{10}$             &            3            & Membrane current model temperature quality factor   effects the activation and deactivation functions' time   constants. $Q=Q_{10}^{((37^\circ -22^\circ )/10)}$ \\ %\hline   
           $E_{\rm K}$    ~(mV)       &         -72         & Potassium reversal potential \\ %\hline
          $E_{\rm Na}$    ~(mV)       &          0          & Sodium reversal potential \\ %\hline
           $E_{\rm h}$    ~(mV)       &         -43         & Ih reversal potential \\ %\hline

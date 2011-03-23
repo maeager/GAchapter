@@ -10,11 +10,11 @@ voltage-sensitive dyes
 neuroscientists to monitor the simultaneous activity of networks of
 neurons with a higher degree of spatial and temporal accuracy than has
 been achieved previously at the network level. At the same time,
-modeling biophysically-based neural networks (BNN) is becoming more
+modeling \gls{BNN}s is becoming more
 accessible and faster to run with modern computing power. (By
 biophysically-based we mean models that include a description of
 currents flowing through membrane ion channels, such as the
-Hodgkin-Huxley model.)  To develop larger BNN's, with complex network
+Hodgkin-Huxley model.)  To develop larger {\BNN}s, with complex network
 behavior a number of interrelated issues need to be considered: (a)
 what level of neuronal detail is required to achieve observed
 phenomena in the network, (b) how do extrinsic and intrinsic noise
@@ -23,7 +23,7 @@ many free parameters in a model given limited experimental data.
 
 \smallskip{} 
 
-One set of approaches to constraining BNNs, denoted as ``bottom-up'',
+One set of approaches to constraining {\BNN}s, denoted as ``bottom-up'',
 is to construct them using detailed knowledge of specific neurons and
 their membrane current properties. These bottom-up approaches to
 neural modeling have been quite successful at representing single cell
@@ -41,20 +41,19 @@ are highly efficient and generally involve a gradient-decent search
 with a training method called back-propagation, where the output error
 is calculated back through the network
 \citep{RumelhartHintonEtAl:1986a}. These algorithms are not applicable
-to BNNs because the input/output relationships of Hodgkin-Huxley-type
+to {\BNN}s because the input/output relationships of Hodgkin-Huxley-type
 models are not analytical, making them unsuitable for error
 back-propagation.
 
 \smallskip{} 
 
-The particular challenges of constraining network parameters in BNNs
+The particular challenges of constraining network parameters in {\BNN}s
 or ensembles of spiking neural networks, which have been discussed
 previously \citep{EggertHemmen:2001,Brette:2007} focus on the
-analytical methods characterizing the spike output
-\citep{Victor:2005,KostalLanskyEtAl:2007,BrownKassEtAl:2004}. Inferring
+analytical methods characterizing the spike output~\citep{Victor:2005,KostalLanskyEtAl:2007,BrownKassEtAl:2004}. Inferring
 the connectivity within a network requires a cost analysis of the
 spiking output.  This has progressed from ensemble feature-based
-methods
+methods~
 \citep{SameshimaBaccala:1999,DahlhausEichlerEtAl:1997,TheunissenSenEtAl:2000},
 information theoretical approaches using maximum likelihood
 \citep{YamadaMatsumotoEtAl:1996,Chichilnisky:2001,OkatanWilsonEtAl:2005,PaninskiPillowEtAl:2004},
@@ -62,23 +61,23 @@ evolutionary algorithm methods~\citep{TakahamaSakai:2005,Yao:1999},
 and other non-linear approaches~\citep{Eblen-ZajjurSalasEtAl:1999}.
 However, most of these efforts have been restricted to single neuron
 models or networks of integrate-and-fire neural models rather than
-BNNs.
+{\BNN}s.
 
 \smallskip{} 
 
 Genetic Algorithms (GAs) belong to a class of optimization algorithms
 that mimic the process of evolution through natural selection. The
-primary strength of GAs relative to other optimization techniques,
-such as gradient-descent, is that GAs can avoid getting caught in
+primary strength of {\GA}s relative to other optimization techniques,
+such as gradient-descent, is that {\GA}s can avoid getting caught in
 local minima \citep{Goldberg:1989,Whitley:1995}. Since
-\citet{Holland:1975} first used GAs to evolve the connectivity and
+\citet{Holland:1975} first used {\GA}s to evolve the connectivity and
 synaptic weights of artificial neural networks, some other hybrid
-methods have been proposed \citep{Yao:1999,Whitley:1995}. Existing
+methods have been proposed~\citep{Yao:1999,Whitley:1995}. Existing
 examples of biophysically-based neural models that have been
-constrained using GAs are limited to single and multi-compartmental
-single cell models
+constrained using {\GA}s are limited to single and multi-compartmental
+single cell models~
 \citep{KerenPeledEtAl:2005,VanierBower:1999,VanDeEtAl:2008} or small
-microcircuits \citep{TaylorEnoka:2004}.  They are generally regarded
+microcircuits~\citep{TaylorEnoka:2004}.  They are generally regarded
 as an effective method in automated
 parameter-searches. \citet{KerenPeledEtAl:2005} used intracellular
 recordings from a cortical pyramidal cell to constrain the membrane
@@ -87,17 +86,17 @@ was filtered out, enabling the model data to be fit to experimental
 recordings. \citet{TaylorEnoka:2004} used a microcircuit of spinal
 motor units that was trained using feature-based analysis of the
 output to fit the membrane and synaptic parameters.  Ongoing work in
-BNN modeling \citep{VanierBower:1999,VanDeEtAl:2008} is making headway
+{\BNN} modeling \citep{VanierBower:1999,VanDeEtAl:2008} is making headway
 in removing the hand-tuning of parameters, but the application to
 medium and large-scale networks may require more techniques from the
 top-down methods in cost analysis and optimization algorithms.
 
 \smallskip{} 
 
-This section of the thesis investigates the application of GAs in
-constraining synaptic parameters in a topographically-ordered BNN,
+This section of the thesis investigates the application of {\GA}s in
+constraining synaptic parameters in a topographically-ordered {\BNN},
 using the example of a network in the auditory brainstem. The design
-of the GA, outlined in the Methods, includes the specification of a
+of the {\GA}, outlined in the Methods, includes the specification of a
 cost function that measures how well the model network reproduces the
 target data. We assess three alternate cost functions derived, in
 different ways, from the output of neural responses in the
@@ -112,7 +111,7 @@ variability we incorporated these effects into the model.
 \subsection{Stellate Microcircuit of the Cochlear
   Nucleus}\label{sec:GA:stell-micr-cochl}
 
-The network used as the basis for optimising BNNs lies in the cochlear
+The network used as the basis for optimising {\BNN}s lies in the cochlear
 nucleus (CN, Figure~\ref{fig:GA:CNdiagram}), which is the gateway
 between the peripheral auditory system and the central nervous system,
 with six distinct pathways to higher auditory nuclei
@@ -137,12 +136,12 @@ example network.
    \caption{Diagram of the mammalian cochlear nucleus. Auditory nerve
      fibers (ANFs) sensitive to particular frequencies project to the
      cochlear nucleus (CN) in a tono-topically organized fashion and
-     bifurcate to innervate both the ventral CN and dorsal CN\@. The
-     CN comprises two main divisions, ventral and dorsal CN, plus an
+     bifurcate to innervate both the {\VCN} and {\DCN}\@. The
+     {\CN} comprises two main divisions, ventral and dorsal CN, plus an
      outer layer of small cells known as the granule cell domain
-     (GCD). Type I ANFs are characterized into two groups based on
+     (GCD). Type I {\ANF}s are characterized into two groups based on
      their spontaneous rate: high (HSR, solid line) and low (LSR,
-     dashed line). Only LSR and smaller type II ANFs project to the
+     dashed line). Only LSR and smaller type II {\ANF}s project to the
      GCD\@.  Golgi cells in the GCD are the only known source of
      GABAergic cells within the ventral CN, and it is presumed that
      they synapse with TS and DS cells
@@ -168,20 +167,20 @@ example network.
 \figfont{B}\hspace{3in}\\
 \resizebox{3in}{!}{\includegraphics{NetworkProjections3}}\\
 \caption{(A) Stellate microcircuit showing synaptic interaction within
-  one iso-frequency lamina of the ventral CN (dotted lines) and TV
-  cells of the dorsal CN\@. Excitatory synapses from ANFs (arrows) are
+  one iso-frequency lamina of the ventral {\CN} (dotted lines) and TV
+  cells of the dorsal CN\@. Excitatory synapses from {\ANF}s (arrows) are
   modulated within the network by glycinergic (triangle) and GABAergic
   (T) inputs. (B)~ANFs are ordered into a wide range of frequency
-  channels that are mapped to the ventral CN and dorsal CN in an
+  channels that are mapped to the ventral {\CN} and dorsal CN in an
   orderly, tono-topic fashion. Topographic organization of lateral
-  connections in the CN stellate network shows the range of inputs to
+  connections in the {\CN} stellate network shows the range of inputs to
   TS cells from Golgi, DS and TV cells. Dendritic morphologies of
-  cells characterize the range of ANF inputs and hence determine their
-  frequency response. ANF input to TS and TV cells are restricted to
+  cells characterize the range of {\ANF} inputs and hence determine their
+  frequency response. {\ANF} input to TS and TV cells are restricted to
   one iso-frequency lamina, whereas DS dendrites span 1/3 of the
   ventral CN\@. DS cells' axonal plexus typically covers 1/3 of the
-  ventral CN and one half of the dorsal CN, giving them a strong
-  influence throughout the CN \cite{ArnottWallaceEtAl:2004}.}
+  ventral {\CN} and one half of the dorsal CN, giving them a strong
+  influence throughout the {\CN} \cite{ArnottWallaceEtAl:2004}.}
 \label{fig:GA:MicroCN}
 \end{figure}
 
@@ -189,12 +188,12 @@ example network.
 
 The tonotopic organization of the auditory pathway (i.e.\ the
 continuous mapping of sound frequency to place of resonance in the
-cochlea) is transferred to the CN through the population of auditory
+cochlea) is transferred to the {\CN} through the population of auditory
 nerve fibers (ANFs)
 \citep{Lorente:1981}. Figure~\ref{fig:GA:CNdiagram} shows that ANFs
 enter the brainstem ventrally and bifurcate, so that each fiber sends
 axonal collaterals to the ventral and dorsal sections of the cochlear
-nucleus, to organized iso-frequency lamina. ANFs are categorized into
+nucleus, to organized iso-frequency lamina. {\ANF}s are categorized into
 high spontaneous rate (HSR, Figure~\ref{fig:GA:CNdiagram} solid line)
 and low spontaneous rate (LSR, Figure~\ref{fig:GA:CNdiagram} dashed
 line) fibers. LSR fibers have a higher threshold than HSR fibers and
@@ -220,9 +219,9 @@ properties of TS cells
 inhibit TV cell responses to loud clicks
 \citep{SpirouDavisEtAl:1999}. GABAergic inhibition from Golgi cells
 (Figure~\ref{fig:GA:CNdiagram}) modulates the level of excitation
-necessary to reach threshold for all CN cells
+necessary to reach threshold for all {\CN} cells
 \citep{CasparyBackoffEtAl:1994,FerragamoGoldingEtAl:1998}. Feedback
-circuits from the olivary complex to the ventral CN are also known to
+circuits from the olivary complex to the ventral {\CN} are also known to
 use GABA as a neurotransmitter \citep{SaintMorestEtAl:1989}, however
 this is not included in the model.
 
@@ -254,7 +253,7 @@ population are usually copied (cloned) in the new population.
 
 \smallskip{} 
 
-In this work, all GA simulations ran with 100~genomes in each
+In this work, all {\GA} simulations ran with 100~genomes in each
 population and evolved for 200~generations. From each population, a
 new population was created by cloning the five best genomes and
 performing the following procedure for the remaining 95~genomes.
@@ -286,7 +285,7 @@ section~\ref{sec:GA:connectivity} Connectivity). The genome encoding
 scheme, shown in Table~\ref{tab:GA:Genome}, describes the number of bits
 used for each parameter and the range of values that each parameter
 could take.  For example, the first parameter in Table~\ref{tab:GA:Genome},
-$w_{{\rm ANF}\to{\rm TS}}$ models the strength of synapses from ANF to
+$w_{{\rm ANF}\to{\rm TS}}$ models the strength of synapses from {\ANF} to
 TS cells. It was encoded over the range 0.0-0.0051 $\mu$S using 8~bits
 by assigning 0b00000000~to 0.0~and 0b11111111~to 0.0051, and linearly
 interpolating all values within the range. This procedure was used for
@@ -299,14 +298,14 @@ strings in the order given in Table~\ref{tab:GA:Genome}.
 
 \smallskip{}
 
-To test the application of GA's for optimizing parameters of a BNN, a
+To test the application of {\GA}s for optimizing parameters of a {\BNN}, a
 network with a known set of parameters was created, this is referred
-to as the target network.  This allowed us to assess the GA by how
+to as the target network.  This allowed us to assess the {\GA} by how
 well the algorithm was able to recover the target parameters. The
 target parameters were randomly selected from within the physiological
 range of values and given in Table~\ref{tab:GA:Genome}.  Target data
 were generated from the target network and used as training data for
-the GA by incorporating them in an error-based cost function.  A
+the {\GA} by incorporating them in an error-based cost function.  A
 notch-noise stimulus (described under Stimulus Generation) was chosen
 to present to the network as it produced a spectrally rich response
 that was spread over the whole frequency range of the target network.
@@ -369,7 +368,7 @@ Figure~\ref{fig:GA:Costfunctions}A).
 
 \subsection{Cost functions}\label{sec:GA:cost-functions}
 
-At the core of a GA optimization is a cost function, which is given,
+At the core of a {\GA} optimization is a cost function, which is given,
 here, by an error measure of some observable output of a trial network
 against the output of the target network. In this work, the total cost
 function score is calculated using the output of all cells in the
@@ -487,7 +486,7 @@ trains.
 \smallskip{}
 
 To illustrate the behavior of this cost function in the ideal case,
-where ANF inputs to the trial network are the identical those used in
+where {\ANF} inputs to the trial network are the identical those used in
 the 25~repetitions of the target data and the target network
 parameters are used, the value of $\Psi_{{\rm ST}}$ is zero. The
 maximum value of $\Psi_{{\rm ST}}$ observed in this study was
@@ -618,7 +617,7 @@ model. Numerical integration was performed using the Crank-Nicholson
 method with second order accuracy (in NEURON $secondorder=2$) and
 fixed time step of 0.1~ms. Genetic algorithms and sensitivity analysis
 were implemented in C++ using GAlib \citep{Wall:2006} and the parallel
-virtual machine libraries \citep{GeistBeguelinEtAl:1994}. GA
+virtual machine libraries \citep{GeistBeguelinEtAl:1994}. {\GA}
 simulations were distributed on a cluster of nine PCs (3GHz Pentium4)
 and a 64-CPU SGI Altix with a master-slave paradigm.
 
@@ -631,7 +630,7 @@ narrow band-stop filter. Gaussian white noise was generated with a
 octave, 30~dB band-stop, 100-tap FIR filter centered at 5~kHz. A 50~ms
 stimulus was presented at 60~dB SPL with 5~ms onset/offset ramps, a
 20~ms delay and 10~ms pause after the stimulus. Notch noise stimuli
-have been used in experimental studies of the CN to measure the
+have been used in experimental studies of the {\CN} to measure the
 asymmetric, wide-band suppression of TV cells by DS cells
 \citep{ReissYoung:2005} and to estimate the frequency range of ANFs
 converging on DS cells \citep{PalmerJiangEtAl:1996}.
@@ -688,7 +687,7 @@ $I_{{\rm KA}} $ are three types of potassium current densities,
 $I_{{\rm h}} $ is a hyperpolarization-activated current density, and
 $I_{{\rm SYN}} $ are synaptic input current densities.  The potassium
 and mixed-cation current models used here come from an investigation
-of isolated ventral CN cells
+of isolated ventral {\CN} cells
 \citep{RothmanManis:2003,RothmanManis:2003a,RothmanManis:2003b}, which
 yielded accurate mathematical descriptions of (subsequent variables
 are defined in Table~\ref{tab:GA:GeneralParams}):
@@ -729,7 +728,7 @@ freely available online at ModelDB \citep{HinesMorseEtAl:2004}.
 
 Table~\ref{tab:GA:CellTypes} shows the maximum conductances,
 $\bar{g}$, for each cell type in the network.  The neurons in the
-ventral CN differ in their composition of these currents on the basis
+ventral {\CN} differ in their composition of these currents on the basis
 of their current-clamp type. They are classified as either type I or
 type II based on their response to intracellular current injection
 \citep{OertelWuEtAl:1988}. The response of type I neurons to current
@@ -741,8 +740,8 @@ TS cells are type I, they have additional A-type transient potassium
 channels, $I_{{\rm
     KA}}$~\citep{FerragamoGoldingEtAl:1998,RothmanManis:2003b}. Type
 II responses have only one phasic AP at the start of the stimulus,
-characteristic of ventral CN bushy cells, which enables them to
-rapidly follow ANF input events
+characteristic of ventral {\CN} bushy cells, which enables them to
+rapidly follow {\ANF} input events
 \citep{OertelWuEtAl:1988,SmithRhode:1989}. $I_{{\rm KLT}} $ is present
 in type-II units and is active at resting membrane potential, which
 allow for rapid changes depending on the input. DS cells respond with
@@ -795,15 +794,15 @@ decay time-constants as follows:
 \end{eqnarray}
 \noindent where $\eta$ normalizes the peak of the double-exponential
 function to one (see Table~\ref{tab:GA:GeneralParams}). Excitatory
-inputs to CN cells from type-I ANF terminals were mediated by fast
+inputs to {\CN} cells from type-I {\ANF} terminals were mediated by fast
 glutamatergic AMPA receptors with a decay time constant of $\tau
 _{{\rm AMPA}} = 0.36$ ms
 \citep{Gardner:2000,GardnerTrussellEtAl:1999}, and the reversal
 potential was 0~mV. We used the values from glycinergic currents
-recorded in mature CN neurons, which have a fast rise time, $\tau_{{\rm Gly1}} = 0.4$ ms, and a decay time constant $\tau_{{\rm Gly2}}
+recorded in mature {\CN} neurons, which have a fast rise time, $\tau_{{\rm Gly1}} = 0.4$ ms, and a decay time constant $\tau_{{\rm Gly2}}
 = 2.5$ ms
 \citep{AwatramaniTurecekEtAl:2005,HartyManis:1998,LeaoOleskevichEtAl:2004,LimOleskevichEtAl:2003}.
-Measured values in GABAA receptor currents in CN cells have a fast
+Measured values in \GABAa receptor currents in {\CN} cells have a fast
 (9~ms) and a slow (150~ms) decay component
 \citep{AwatramaniTurecekEtAl:2005,DavisYoung:2000}, but for short
 stimuli only the fast component was modeled ($\tau_{{\rm GABA1}}
@@ -812,7 +811,7 @@ stimuli only the fast component was modeled ($\tau_{{\rm GABA1}}
 \subsubsection{Delay and Latency}
 
 Mean first spike latency to CF tones and click stimuli were used to
-set delay times between ANFs and CN cells
+set delay times between {\ANF}s and {\CN} cells
 \citep{EagerGraydenEtAl:2006}. The delay function in the AN model was
 derived from the work of \citet{CarneyYin:1988} in cats and
 defined as:
@@ -823,12 +822,12 @@ where $x$ is the distance along the basilar membrane, $f$ is the
 characteristic frequency (Hz) at this location, and constants $A_0$
 and $A_1$ are 8.3~ms and 6.49~cm, respectively. The delay was defined
 using the first spike latency of high frequency units as the sum of
-the ANF first spike latency, ANF conduction delay, and the synaptic
+the {\ANF} first spike latency, ANF conduction delay, and the synaptic
 transmission delay.  The first spike latency measured in high CF units
 in the AN model for HSR fibers was 1.5~ms.  Synaptic transmission
 delay between adjacent neurons is typically measured in experiments to
-be 0.5~ms. The delay between ventral and dorsal CN neurons is 1.0~ms
-\citep{WickesbergOertel:1993}.  The additional delay from the ANF to
+be 0.5~ms. The delay between ventral and dorsal {\CN} neurons is 1.0~ms
+\citep{WickesbergOertel:1993}.  The additional delay from the {\ANF} to
 each cell type was calculated to be TS 1.6ms \citep{RhodeSmith:1986},
 DS 1.2~ms \citep{RhodeOertelEtAl:1983}, TV 2.0~ms
 \citep{SpirouDavisEtAl:1999}, and Golgi 2.3~ms
@@ -838,15 +837,15 @@ matched the experimental data.
 \subsubsection{Connectivity}\label{sec:GA:connectivity}
 
 Like many other neural complexes in the brain, the likelihood of
-connectivity between two cells in the CN is a function of distance and
+connectivity between two cells in the {\CN} is a function of distance and
 cell type. Connectivity between individual cells was described by a
 synaptic weight, $w$, the number of synapses, $n$, and the spatial
-bandwidth, $\sqrt{s} $, which were taken to be uniform for each
+bandwidth, $\sqrt{s}$, which were taken to be uniform for each
 connection type.  The allocation of pre-synaptic cells to
 post-synaptic cells was a random process modeled here using a Gaussian
 function, with mean equal to the post-synaptic cell's CF channel and
 variance equal to $s$/2. Topographical connectivity in this model was
-based on position within the CN (Figure~\ref{fig:GA:MicroCN}B), but is
+based on position within the {\CN} (Figure~\ref{fig:GA:MicroCN}B), but is
 easily interchangeable with frequency-specific connectivity.
 Connection parameters that are fixed are shown in
 Table~\ref{tab:GA:GeneralParams} and parameters used in the
@@ -854,22 +853,22 @@ optimization are shown in Table~\ref{tab:GA:Genome}.
 
 \smallskip{}
 
-Auditory nerve projections to each CN cell-type share the same
+Auditory nerve projections to each {\CN} cell-type share the same
 synaptic weight, $w_{{\rm ANF}} $, but HSR and LSR fibers have
 different parameters encoding the number of inputs ($n_{{\rm HSR}} $,
-$n_{{\rm LSR}} $). ANFs with similar characteristic frequencies are
+$n_{{\rm LSR}} $). {\ANF}s with similar characteristic frequencies are
 spatially organized into 60 iso-frequency lamina or channels. TS and
 TV cells' dendrites are located within isofrequency lamina, so
 synapses are chosen from fibres in the channel ($s=0$, see
 Table~\ref{tab:GA:GeneralParams}). DS cells have many arborizations
-extending perpendicular to ANF axons and have a typical physiological
+extending perpendicular to {\ANF} axons and have a typical physiological
 responses to frequencies 2 octaves below and 1 octave above their CF
 \citep{PalmerJiangEtAl:1996,PaoliniClark:1999} (see fixed parameters
 in Table~\ref{tab:GA:GeneralParams}).  Physiological evidence in the
-golgi cell domain of the ventral CN shows that neurons have monotonic,
+golgi cell domain of the ventral {\CN} shows that neurons have monotonic,
 non-saturating rate-level curves, similar to LSR ANFs
-\citep{GhoshalKim:1996a}. ANF labeling evidence shows the absence of
-HSR ANFs in the Golgi cell domain of the CN
+\citep{GhoshalKim:1996a}. {\ANF} labeling evidence shows the absence of
+HSR {\ANF}s in the Golgi cell domain of the CN
 \citep{Liberman:1991,Ryugo:2008,RhodeOertelEtAl:1983}, so the strength
 of Golgi excitation is given by $w_{{\rm LSR}\to {\rm GLG}} $ and
 $n_{{\rm LSR}\to {\rm GLG}} $. Wide-band inhibition of TV cells by DS
@@ -878,20 +877,20 @@ $, to account for the asymmetry of wideband suppression found in TV
 cells \citep{ReissYoung:2005}.  The offset was added to the Gaussian
 mean in the random allocation process.
 
-\subsection{Analysis of GA and Cost Functions}\label{sec:GA:analysis-ga-cost}
+\subsection{Analysis of {\GA} and Cost Functions}\label{sec:GA:analysis-ga-cost}
 
-To test the performances of the cost functions in GA optimizations,
-sets of target data were produced using a target CN network with
-parameters shown in Table~\ref{tab:GA:Genome}.  The GA was run with
-each cost function using two conditions: 1) with identical ANF spike
+To test the performances of the cost functions in {\GA} optimizations,
+sets of target data were produced using a target {\CN} network with
+parameters shown in Table~\ref{tab:GA:Genome}.  The {\GA} was run with
+each cost function using two conditions: 1) with identical {\ANF} spike
 times as used in creating the target data, and 2) with different ANF
 spike times, derived from the same instantaneous rate function but
 where the spike times were recalculated for each evaluation.  The
-performance of the GA was evaluated by examining the behavior of the
+performance of the {\GA} was evaluated by examining the behavior of the
 best genomes in relation to the scores of other genomes with small
 parameter deviations, the relative parameter difference between the
 best genome, and target genome (parameters of the target network) and
-the robustness of the optimization when using different ANF inputs.
+the robustness of the optimization when using different {\ANF} inputs.
 
 \smallskip{}
 
@@ -909,21 +908,21 @@ each parameter was randomly varied by -1, 0 or +1 unit steps (0.001
 for weight parameters and 1 for other parameters) with equal
 probability. The same was also done for 1000 genomes with unit steps
 between -5 and 5.  Robustness was measured by re-evaluating the two
-genome sets above with different ANF input spikes regenerated for
+genome sets above with different {\ANF} input spikes regenerated for
 every genome.
 
 \smallskip{}
 
 Second, the sensitivity analysis of the cost functions to individual
 parameter variation at the global optimum is shown in
-section~\ref{sec:GA:IndividualSensA}. Parameter values were stepped up
+section~\ref{sec:GA:IndividualSens}. Parameter values were stepped up
 and down independently (steps were determined from the gene resolution
 in Table~\ref{tab:GA:Genome}) to determine the cost function learning
 gradient on either side of the target value. Gradients were calculated
 using a least-squares linear regression in MATLAB and two-sided
 t-tests were performed to determine whether each gradient was
 significantly different from zero.  This was done for the identical
-and the different ANF inputs, robustness was evaluated by comparing
+and the different {\ANF} inputs, robustness was evaluated by comparing
 the ratio of V-shaped to non-V-shaped cost function gradients for
 different inputs.
 
