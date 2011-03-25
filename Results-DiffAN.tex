@@ -1,4 +1,4 @@
-\section{Optimisation of {\BNN}s using different  inputs}\label{sec:GA:ResultDiffAN}
+\section{Optimisation of {BNN}s using different  inputs}\label{sec:GA:ResultDiffAN}
 
 %\subsection{Parameter space sensitivity of cost functions}
 
@@ -32,7 +32,7 @@ the ST and AIV cost functions than for the IFR cost function.
   \centering
   % \figfont{A}\hspace{3.2in}\figfont{B}\\
   \includegraphics[width=\textwidth]{All25GAPerf-Stretch.eps}
-  \caption{Performance of the {\GA}s best performing genome in each
+  \caption{Performance of the {GA}s best performing genome in each
     generation is shown for each simulation. The mark to the right of
     each graph is the mean score and 95 percentile range of the target
     genome (error bars 2*sd).}\label{fig:GA:R1}
@@ -78,7 +78,7 @@ functions.
 %  \includegraphics[width=\textwidth]{boxplot25-sep-ifr.eps}\\
 %  \includegraphics[width=\textwidth]{boxplot25-sep-iv.eps}\\
   \includegraphics[width=\textwidth]{boxplot25-sep.eps}\\
-  \caption{Cross comparison of best genomes generated using {\GA} with 25
+  \caption{Cross comparison of best genomes generated using {GA} with 25
     repetitions, measured against the target, 1-step and 5-step
     parameter perturbation distributions.  The boxplots show the all
     three best genomes evaluated ten times for each cost function,
@@ -168,7 +168,7 @@ were ordered by increasing mean relative error across all genomes.
 \begin{figure}[th!]
   \centering
   \includegraphics[width=\textwidth]{BestGenomesReRaw_CombinedLog}
-  \caption{Parameter errors of the best genomes in 3 {\GA}
+  \caption{Parameter errors of the best genomes in 3 {GA}
     simulations for each cost function: ST (${\color{halfgray} \diamond }$), IFR (${\color{black} \diamond }$), and AIV (${\circ}$). Errors were normalised in terms
     of the target parameter values ( (target - bestgenome) / target )}\label{fig:GA:R2}
 \end{figure}
@@ -272,7 +272,7 @@ combinations, including the target value.
   \includegraphics[width=\textwidth]{Histograms-Normalised.eps}  
   \caption{Histograms of simultaneous parameter perturbation of each cost
     function. The distribution of genomes in gray are all genomes evaluated by
-    the {\GA} that obtained the lowest score. The best scores of 3 {\GA} simulations
+    the {GA} that obtained the lowest score. The best scores of 3 {GA} simulations
     are pointed to by the arrows. The histograms show the distributions of 100
     target genome scores (thick line), 1000 genomes deviated by 1 unit step away
     from the target value (dashed line), and 1000 genomes deviated by 5 steps
@@ -390,9 +390,9 @@ and candidate genomes.
 \begin{figure}[th!]
   \centering
   % \figfont{A}\hspace{3.2in}\figfont{B}\\
-  \includegraphics[width=\textwidth]{All100GAPerf-Log.eps}
-  \caption{Performance of the {\GA}s best performing genome run with 100
-    repetitions in the fitness function. {\GA} simulations run with 25 repetitions are shown in grey. The mark to the right of each graph is the mean
+  \includegraphics[width=\textwidth]{All100GAPerf-Stretch.eps}
+  \caption{Performance of the {GA}s best performing genome run with 100
+    repetitions in the fitness function. {GA} simulations run with 25 repetitions are shown in grey. The mark to the right of each graph is the mean
     score and error bars showing the range of 2 times standard
     deviation away from the mean target genome score.}\label{fig:GA:R5}
 \end{figure}
@@ -421,7 +421,7 @@ for evaluation.
   \includegraphics[width=\textwidth]{Histograms100-MaxNorm.eps}  
   \caption{Histograms of simultaneous parameter perturbation using 100
     repetitions. Similar to Fig.~\ref{fig:GA:R4}, the distribution of
-    genomes evaluated during the {\GA} are shown in gray and the eventual
+    genomes evaluated during the {GA} are shown in gray and the eventual
     best score is pointed to by the arrow. The histograms show the
     distributions of 100 target genome scores (thick line), 1000
     genomes deviated by 1 unit step away from the target value (dashed
@@ -435,11 +435,11 @@ for evaluation.
 \smallskip{}
 
 In all cases the use of 100 repetitions to evaluate the cost function
-resulted in lower scores than when 25 repetitions were used (i.e. the
+resulted in lower scores than when 25 repetitions were used (i.e.\ the
 top of the dark bar lies above the top of the light bar). This did not
 imply that genomes trained with 100 repetitions attained lower scores
 than those trained with 25 repetitions, once the comparison was made
-using the same cost function (i.e. same type, same number of
+using the same cost function (i.e.\ same type, same number of
 repetitions). In nearly all cases, scores for genomes trained using
 different numbers of repetition (25 or 100), but the same type of cost
 function (ST, IFR or AIV), obtained similar scores, regardless of the
@@ -459,7 +459,7 @@ factor limiting {\GA} performance.
   \includegraphics[width=\textwidth]{best25+100.eps}
   \caption{Comparison of Best genomes trained with different inputs
     using 100 or 25 repetitions.  Target genome was run 100 times and
-    each {\GA} best genomes were run 10 times. For reference, horizontal
+    each {GA} best genomes were run 10 times. For reference, horizontal
     lines show the the median of the distribution of parameter
     perturbation for 1-step (dark line) and 5-steps (light
     line).}\label{fig:GA:R7}
@@ -474,18 +474,18 @@ Cost Function  & PE$^*$ & Final {\GA} Score & Mean (S.D)\\[0.5ex]\hline
 IFR (spikes/ms)& 2.169  &    0.154698    & 0.1557 (8.6E-4) \\
  AIV (mV/ms)   & 2.325  &   0.0292369    & 0.0292 (9.8E-5)\\ \hline
 \end{tabularx}
-  \caption{Best genomes obtained from {\GA}s run with 100 repetitions. $*$ Mean relative parameter error. }
+  \caption{Best genomes obtained from {GA}s run with 100 repetitions. $*$ Mean relative parameter error. }
   \label{tab:BestGenome100}
 \end{table}
 
 \begin{figure}[th!]
   \centering
   \includegraphics[width=\textwidth]{boxplot-100+25.eps}\\
-  \caption{Cross comparison of best genomes generated using {\GA} with
+  \caption{Cross comparison of best genomes generated using {GA} with
     100 repetitions, measured against the target, 1-step and 5-step
     parameter perturbation distributions.  The boxplots show the best
     genomes evaluated ten times for each cost
-    function. }\label{fig:GA:BestGenome100+25}
+    function. }\label{fig:GA:BestGenome10025}
 \end{figure}
 
 

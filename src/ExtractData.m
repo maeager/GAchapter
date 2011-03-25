@@ -2,6 +2,9 @@
 
 load target_diffAN_100
 load target_normdiff
+#load rand5norm
+#load rand1norm
+
 load rand5diffAN
 load rand1diffAN
 load rand1diffAN_100
@@ -110,6 +113,23 @@ rand5diffAN(:,IFRPOSITION)= rand5diffAN(:,IFRPOSITION)*IFRCOSTFACTOR;
 rand5diffAN_100(:,IFRPOSITION100)= rand5diffAN_100(:,IFRPOSITION100)*IFRCOSTFACTOR100;
 
 
+%% Grab original score from GA run
+
+st_sim1_bg_score =  st_sim1(1,STIDX); 
+st_sim2_bg_score = st_sim2(1,STIDX);  
+st_sim3_bg_score = st_sim3(1,STIDX);  
+st_100_bg_score  = st_100 (1,ST100);  
+
+ifr_sim1_bg_score =  ifr_sim1(1,IFRIDX); 
+ifr_sim2_bg_score = ifr_sim2(1,IFRIDX);  
+ifr_sim3_bg_score = ifr_sim3(1,IFRIDX);  
+ifr_100_bg_score  = ifr_100 (1,IFR100);  
+
+iv_sim1_bg_score =  iv_sim1(1,IVIDX); 
+iv_sim2_bg_score = iv_sim2(1,IVIDX);  
+iv_sim3_bg_score = iv_sim3(1,IVIDX);  
+iv_100_bg_score  = iv_100 (1,IV100);  
+
 
 %% Correct best genomes by removing original score, calculated during
 %% the GA
@@ -171,108 +191,128 @@ iv_100(1:end-1,IV100) = iv_100(2:end,IV100); iv_100 = iv_100(1:end-1,:);
 
 # %% Table
 
-# mean_target_diffAN = mean(target_diffAN);
-#  std_target_diffAN=std(target_diffAN);
+mean_target_ideal = mean(target_normal);
+ std_target_ideal=std(target_normal);
 
-# mean_target_diffAN_100 = mean(target_diffAN_100);
-#  std_target_diffAN_100=std(target_diffAN_100);
+mean_target_diffAN = mean(target_diffAN);
+ std_target_diffAN=std(target_diffAN);
+
+mean_target_diffAN_100 = mean(target_diffAN_100);
+ std_target_diffAN_100=std(target_diffAN_100);
+
+mean_rand1diffAN = mean(rand1diffAN);
+ std_rand1diffAN=std(rand1diffAN);
+
+mean_rand5diffAN = mean(rand5diffAN);
+ std_rand5diffAN=std(rand5diffAN);
+
+mean_rand1diffAN_100 = mean(rand1diffAN_100);
+ std_rand1diffAN_100 = std(rand1diffAN_100);
+
+mean_rand5diffAN_100 = mean(rand5diffAN_100);
+ std_rand5diffAN_100 = std(rand5diffAN_100);
 
 
-# mean_st_sim1=mean(st_sim1) ;
-#  std_st_sim1=std(st_sim1) ;
-# mean_st_sim2=mean(st_sim2) ;
-#  std_st_sim2=std(st_sim2) ;
-# mean_st_sim3=mean(st_sim3) ;
-#  std_st_sim3=std(st_sim3) ;
-# mean_st_sim=mean([ st_sim1;st_sim2;st_sim3]) ;
-#  std_st_sim=std([ st_sim1;st_sim2;st_sim3]) ;
-# mean_st_100=mean(st_100)  ;
-#  std_st_100=std(st_100)  ;
+mean_st_sim1=mean(st_sim1) ;
+ std_st_sim1=std(st_sim1) ;
+mean_st_sim2=mean(st_sim2) ;
+ std_st_sim2=std(st_sim2) ;
+mean_st_sim3=mean(st_sim3) ;
+ std_st_sim3=std(st_sim3) ;
+mean_st_sim=mean([ st_sim1;st_sim2;st_sim3]) ;
+ std_st_sim=std([ st_sim1;st_sim2;st_sim3]) ;
+mean_st_100=mean(st_100)  ;
+ std_st_100=std(st_100)  ;
         
-# mean_ifr_sim1=mean(ifr_sim1) ;
-#  std_ifr_sim1=std(ifr_sim1) ;
-# mean_ifr_sim2=mean(ifr_sim2) ;
-#  std_ifr_sim2=std(ifr_sim2) ;
-# mean_ifr_sim3=mean(ifr_sim3) ;
-#  std_ifr_sim3=std(ifr_sim3) ;
-# mean_ifr_sim=mean([ ifr_sim1;ifr_sim2;ifr_sim3]) ;
-#  std_ifr_sim=std([ ifr_sim1;ifr_sim2;ifr_sim3]) ;
-# mean_ifr_100 =mean(ifr_100 ) ;
-#  std_ifr_100 =std(ifr_100 ) ;
+mean_ifr_sim1=mean(ifr_sim1) ;
+ std_ifr_sim1=std(ifr_sim1) ;
+mean_ifr_sim2=mean(ifr_sim2) ;
+ std_ifr_sim2=std(ifr_sim2) ;
+mean_ifr_sim3=mean(ifr_sim3) ;
+ std_ifr_sim3=std(ifr_sim3) ;
+mean_ifr_sim=mean([ ifr_sim1;ifr_sim2;ifr_sim3]) ;
+ std_ifr_sim=std([ ifr_sim1;ifr_sim2;ifr_sim3]) ;
+mean_ifr_100 =mean(ifr_100 ) ;
+ std_ifr_100 =std(ifr_100 ) ;
         
-# mean_iv_sim1=mean(iv_sim1)  ;
-#  std_iv_sim1=std(iv_sim1)  ;
-# mean_iv_sim2=mean(iv_sim2) ;
-#  std_iv_sim2=std(iv_sim2) ;
-# mean_iv_sim3=mean(iv_sim3) ;
-#  std_iv_sim3=std(iv_sim3) ;
-# mean_iv_sim=mean([ iv_sim1;iv_sim2;iv_sim3]) ;
-#  std_iv_sim=std([ iv_sim1;iv_sim2;iv_sim3]) ;
-# mean_iv_100=mean(iv_100)  ;
-#  std_iv_100=std(iv_100)  ;
+mean_iv_sim1=mean(iv_sim1)  ;
+ std_iv_sim1=std(iv_sim1)  ;
+mean_iv_sim2=mean(iv_sim2) ;
+ std_iv_sim2=std(iv_sim2) ;
+mean_iv_sim3=mean(iv_sim3) ;
+ std_iv_sim3=std(iv_sim3) ;
+mean_iv_sim=mean([ iv_sim1;iv_sim2;iv_sim3]) ;
+ std_iv_sim=std([ iv_sim1;iv_sim2;iv_sim3]) ;
+mean_iv_100=mean(iv_100)  ;
+ std_iv_100=std(iv_100)  ;
 
 # %% Table 1: 25 repetitions
 
-# fid = fopen("best_genomes_25.tex","w+")
-# fprintf(fid,"\\begin{tabular}{p{1.0in}*{4}{c}} \n")
-# fprintf(fid,"& ST & IFR & AIV \\\\\\hline\n")
-# fprintf(fid,"Target & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline \n", mean_target_diffAN(STPOSITION),  std_target_diffAN(STPOSITION), mean_target_diffAN(IFRPOSITION),  std_target_diffAN(IFRPOSITION), mean_target_diffAN(IVPOSITION),  std_target_diffAN(IVPOSITION))
+fid = fopen("best_genomes_25.tex","w+")
+fprintf(fid,"\\begin{tabularx}{X*{4}{c}} \\toprule\n")
+fprintf(fid,"& ST & IFR & AIV \\\\ \\toprule\n")
+fprintf(fid,"Target & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\ \n", mean_target_diffAN(STPOSITION),  std_target_diffAN(STPOSITION), mean_target_diffAN(IFRPOSITION),  std_target_diffAN(IFRPOSITION), mean_target_diffAN(IVPOSITION),  std_target_diffAN(IVPOSITION))
+fprintf(fid,"1-step & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\ \n", mean_rand1diffAN(STPOSITION),  std_rand1diffAN(STPOSITION), mean_rand1diffAN(IFRPOSITION),  std_rand1diffAN(IFRPOSITION), mean_rand1diffAN(IVPOSITION),  std_rand1diffAN(IVPOSITION))
+fprintf(fid,"5-step & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\midrule \n", mean_rand5diffAN(STPOSITION),  std_rand5diffAN(STPOSITION), mean_rand5diffAN(IFRPOSITION),  std_rand5diffAN(IFRPOSITION), mean_rand5diffAN(IVPOSITION),  std_rand5diffAN(IVPOSITION))
 
-# fprintf(fid,"  ST 1 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim1(STIDX),std_st_sim1(STIDX),  mean_st_sim1(IFRIDX),std_st_sim1(IFRIDX), mean_st_sim1(IVIDX),std_st_sim1(IVIDX))
-# fprintf(fid,"  ST 2 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim2(STIDX),std_st_sim2(STIDX),  mean_st_sim2(IFRIDX),std_st_sim2(IFRIDX), mean_st_sim2(IVIDX),std_st_sim2(IVIDX))
-# fprintf(fid,"  ST 3 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim3(STIDX),std_st_sim3(STIDX),  mean_st_sim3(IFRIDX),std_st_sim3(IFRIDX), mean_st_sim3(IVIDX),std_st_sim3(IVIDX))
+fprintf(fid,"  ST 1 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim1(STIDX),std_st_sim1(STIDX),  mean_st_sim1(IFRIDX),std_st_sim1(IFRIDX), mean_st_sim1(IVIDX),std_st_sim1(IVIDX))
+fprintf(fid,"  ST 2 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim2(STIDX),std_st_sim2(STIDX),  mean_st_sim2(IFRIDX),std_st_sim2(IFRIDX), mean_st_sim2(IVIDX),std_st_sim2(IVIDX))
+fprintf(fid,"  ST 3 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim3(STIDX),std_st_sim3(STIDX),  mean_st_sim3(IFRIDX),std_st_sim3(IFRIDX), mean_st_sim3(IVIDX),std_st_sim3(IVIDX))
 
-# fprintf(fid,"ST  Ave.  & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_st_sim(STIDX),std_st_sim(STIDX),  mean_st_sim(IFRIDX),std_st_sim(IFRIDX), mean_st_sim(IVIDX),std_st_sim(IVIDX))
+fprintf(fid,"ST  Ave.  & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\midrule\n", mean_st_sim(STIDX),std_st_sim(STIDX),  mean_st_sim(IFRIDX),std_st_sim(IFRIDX), mean_st_sim(IVIDX),std_st_sim(IVIDX))
 
-# fprintf(fid,"  IFR 1 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim1(STIDX),std_ifr_sim1(STIDX),  mean_ifr_sim1(IFRIDX),std_ifr_sim1(IFRIDX), mean_ifr_sim1(IVIDX),std_ifr_sim1(IVIDX))
-# fprintf(fid,"  IFR 2 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim2(STIDX),std_ifr_sim2(STIDX),  mean_ifr_sim2(IFRIDX),std_ifr_sim2(IFRIDX), mean_ifr_sim2(IVIDX),std_ifr_sim2(IVIDX))
-# fprintf(fid,"  IFR 3 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim3(STIDX),std_ifr_sim3(STIDX),  mean_ifr_sim3(IFRIDX),std_ifr_sim3(IFRIDX), mean_ifr_sim3(IVIDX),std_ifr_sim3(IVIDX))
+fprintf(fid,"  IFR 1 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim1(STIDX),std_ifr_sim1(STIDX),  mean_ifr_sim1(IFRIDX),std_ifr_sim1(IFRIDX), mean_ifr_sim1(IVIDX),std_ifr_sim1(IVIDX))
+fprintf(fid,"  IFR 2 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim2(STIDX),std_ifr_sim2(STIDX),  mean_ifr_sim2(IFRIDX),std_ifr_sim2(IFRIDX), mean_ifr_sim2(IVIDX),std_ifr_sim2(IVIDX))
+fprintf(fid,"  IFR 3 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim3(STIDX),std_ifr_sim3(STIDX),  mean_ifr_sim3(IFRIDX),std_ifr_sim3(IFRIDX), mean_ifr_sim3(IVIDX),std_ifr_sim3(IVIDX))
 
-# fprintf(fid,"IFR Ave. & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_ifr_sim(STIDX),std_ifr_sim(STIDX),  mean_ifr_sim(IFRIDX),std_ifr_sim(IFRIDX), mean_ifr_sim(IVIDX),std_ifr_sim(IVIDX))
+fprintf(fid,"IFR Ave. & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\midrule\n", mean_ifr_sim(STIDX),std_ifr_sim(STIDX),  mean_ifr_sim(IFRIDX),std_ifr_sim(IFRIDX), mean_ifr_sim(IVIDX),std_ifr_sim(IVIDX))
 
-# fprintf(fid,"  IV 1 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim1(STIDX),std_iv_sim1(STIDX),  mean_iv_sim1(IFRIDX),std_iv_sim1(IFRIDX), mean_iv_sim1(IVIDX),std_iv_sim1(IVIDX))
-# fprintf(fid,"  IV 2 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim2(STIDX),std_iv_sim2(STIDX),  mean_iv_sim2(IFRIDX),std_iv_sim2(IFRIDX), mean_iv_sim2(IVIDX),std_iv_sim2(IVIDX))
-# fprintf(fid,"  IV 3 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim3(STIDX),std_iv_sim3(STIDX),  mean_iv_sim3(IFRIDX),std_iv_sim3(IFRIDX), mean_iv_sim3(IVIDX),std_iv_sim3(IVIDX))
+fprintf(fid,"  AIV 1 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim1(STIDX),std_iv_sim1(STIDX),  mean_iv_sim1(IFRIDX),std_iv_sim1(IFRIDX), mean_iv_sim1(IVIDX),std_iv_sim1(IVIDX))
+fprintf(fid,"  AIV 2 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim2(STIDX),std_iv_sim2(STIDX),  mean_iv_sim2(IFRIDX),std_iv_sim2(IFRIDX), mean_iv_sim2(IVIDX),std_iv_sim2(IVIDX))
+fprintf(fid,"  AIV 3 & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim3(STIDX),std_iv_sim3(STIDX),  mean_iv_sim3(IFRIDX),std_iv_sim3(IFRIDX), mean_iv_sim3(IVIDX),std_iv_sim3(IVIDX))
 
-# fprintf(fid,"IV Ave. & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_iv_sim(STIDX),std_iv_sim(STIDX),  mean_iv_sim(IFRIDX),std_iv_sim(IFRIDX), mean_iv_sim(IVIDX),std_iv_sim(IVIDX))
-# fprintf(fid,"\\end{tabular}")
-# fclose(fid)
-
-
-# % Table 2: Cross comparison of 25 + 100 rep best genomes
-
-# fid = fopen("best_genomes_100.tex","w+")
-# fprintf(fid,"\\begin{tabular}{p{1.0in}*{7}{c}} \n")
-# fprintf(fid," & ST-25 & ST-100 & IFR-25 & IFR-100 & AIV-25 & AIV-100 \\\\[2pt]\\hline\n")
-# fprintf(fid,"Target & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_target_diffAN(STPOSITION),  std_target_diffAN(STPOSITION), mean_target_diffAN_100(STPOSITION100),  std_target_diffAN_100(STPOSITION100), mean_target_diffAN(IFRPOSITION),  std_target_diffAN(IFRPOSITION), mean_target_diffAN_100(IFRPOSITION100),  std_target_diffAN_100(IFRPOSITION100), mean_target_diffAN(IVPOSITION),  std_target_diffAN(IVPOSITION), mean_target_diffAN_100(IVPOSITION100),  std_target_diffAN_100(IVPOSITION100))
-
-# fprintf(fid,"  ST-25 1 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim1(STIDX),std_st_sim1(STIDX),mean_st_sim1(ST100),std_st_sim1(ST100),  mean_st_sim1(IFRIDX),std_st_sim1(IFRIDX),  mean_st_sim1(IFR100),std_st_sim1(IFR100), mean_st_sim1(IVIDX),std_st_sim1(IVIDX), mean_st_sim1(IV100),std_st_sim1(IV100))
-# fprintf(fid,"  ST-25 2 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim2(STIDX),std_st_sim2(STIDX),mean_st_sim2(ST100),std_st_sim2(ST100),  mean_st_sim2(IFRIDX),std_st_sim2(IFRIDX),  mean_st_sim2(IFR100),std_st_sim2(IFR100), mean_st_sim2(IVIDX),std_st_sim2(IVIDX), mean_st_sim2(IV100),std_st_sim2(IV100))
-# fprintf(fid,"  ST-25 3 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim3(STIDX),std_st_sim3(STIDX),mean_st_sim3(ST100),std_st_sim3(ST100),  mean_st_sim3(IFRIDX),std_st_sim3(IFRIDX),  mean_st_sim3(IFR100),std_st_sim3(IFR100), mean_st_sim3(IVIDX),std_st_sim3(IVIDX), mean_st_sim3(IV100),std_st_sim3(IV100))
-
-# fprintf(fid,"ST-25 Ave. & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_st_sim(STIDX),std_st_sim(STIDX),mean_st_sim(ST100),std_st_sim(ST100),  mean_st_sim(IFRIDX),std_st_sim(IFRIDX),  mean_st_sim(IFR100),std_st_sim(IFR100), mean_st_sim(IVIDX),std_st_sim(IVIDX), mean_st_sim(IV100),std_st_sim(IV100))
+fprintf(fid,"AIV Ave. & %2.2f (%.2f) & %.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\bottomrule\n", mean_iv_sim(STIDX),std_iv_sim(STIDX),  mean_iv_sim(IFRIDX),std_iv_sim(IFRIDX), mean_iv_sim(IVIDX),std_iv_sim(IVIDX))
+fprintf(fid,"\\end{tabularx}")
+fclose(fid)
 
 
-# fprintf(fid,"  IFR-25 1 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim1(STIDX),std_ifr_sim1(STIDX),mean_ifr_sim1(ST100),std_ifr_sim1(ST100),  mean_ifr_sim1(IFRIDX),std_ifr_sim1(IFRIDX),  mean_ifr_sim1(IFR100),std_ifr_sim1(IFR100), mean_ifr_sim1(IVIDX),std_ifr_sim1(IVIDX), mean_ifr_sim1(IV100),std_ifr_sim1(IV100))
-# fprintf(fid,"  IFR-25 2 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim2(STIDX),std_ifr_sim2(STIDX),mean_ifr_sim2(ST100),std_ifr_sim2(ST100),  mean_ifr_sim2(IFRIDX),std_ifr_sim2(IFRIDX),  mean_ifr_sim2(IFR100),std_ifr_sim2(IFR100), mean_ifr_sim2(IVIDX),std_ifr_sim2(IVIDX), mean_ifr_sim2(IV100),std_ifr_sim2(IV100))
-# fprintf(fid,"  IFR-25 3 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim3(STIDX),std_ifr_sim3(STIDX),mean_ifr_sim3(ST100),std_ifr_sim3(ST100),  mean_ifr_sim3(IFRIDX),std_ifr_sim3(IFRIDX),  mean_ifr_sim3(IFR100),std_ifr_sim3(IFR100), mean_ifr_sim3(IVIDX),std_ifr_sim3(IVIDX), mean_ifr_sim3(IV100),std_ifr_sim3(IV100))
+% Table 2: Cross comparison of 25 + 100 rep best genomes
 
-# fprintf(fid,"IFR-25 Ave. &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_ifr_sim(STIDX),std_ifr_sim(STIDX),mean_ifr_sim(ST100),std_ifr_sim(ST100),  mean_ifr_sim(IFRIDX),std_ifr_sim(IFRIDX),  mean_ifr_sim(IFR100),std_ifr_sim(IFR100), mean_ifr_sim(IVIDX),std_ifr_sim(IVIDX), mean_ifr_sim(IV100),std_ifr_sim(IV100))
-
-
-# fprintf(fid,"  AIV-25 1 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim1(STIDX),std_iv_sim1(STIDX),mean_iv_sim1(ST100),std_iv_sim1(ST100),  mean_iv_sim1(IFRIDX),std_iv_sim1(IFRIDX),  mean_iv_sim1(IFR100),std_iv_sim1(IFR100), mean_iv_sim1(IVIDX),std_iv_sim1(IVIDX), mean_iv_sim1(IV100),std_iv_sim1(IV100))
-# fprintf(fid,"  AIV-25 2 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim2(STIDX),std_iv_sim2(STIDX),mean_iv_sim2(ST100),std_iv_sim2(ST100),  mean_iv_sim2(IFRIDX),std_iv_sim2(IFRIDX),  mean_iv_sim2(IFR100),std_iv_sim2(IFR100), mean_iv_sim2(IVIDX),std_iv_sim2(IVIDX), mean_iv_sim2(IV100),std_iv_sim2(IV100))
-# fprintf(fid,"  AIV-25 3 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim3(STIDX),std_iv_sim3(STIDX),mean_iv_sim3(ST100),std_iv_sim3(ST100),  mean_iv_sim3(IFRIDX),std_iv_sim3(IFRIDX),  mean_iv_sim3(IFR100),std_iv_sim3(IFR100), mean_iv_sim3(IVIDX),std_iv_sim3(IVIDX), mean_iv_sim3(IV100),std_iv_sim3(IV100))
-
-# fprintf(fid,"AIV-25 Ave. &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_iv_sim(STIDX),std_iv_sim(STIDX),mean_iv_sim(ST100),std_iv_sim(ST100),  mean_iv_sim(IFRIDX),std_iv_sim(IFRIDX),  mean_iv_sim(IFR100),std_iv_sim(IFR100), mean_iv_sim(IVIDX),std_iv_sim(IVIDX), mean_iv_sim(IV100),std_iv_sim(IV100))
+fid = fopen("best_genomes_100.tex","w+")
+fprintf(fid,"\\begin{tabularx}{X*{7}{c}} \\toprule\n")
+fprintf(fid," & ST-25 & ST-100 & IFR-25 & IFR-100 & AIV-25 & AIV-100 \\\\[0.5ex]\\toprule\n")
+fprintf(fid,"Target & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\ \n", mean_target_diffAN(STPOSITION),  std_target_diffAN(STPOSITION), mean_target_diffAN_100(STPOSITION100),  std_target_diffAN_100(STPOSITION100), mean_target_diffAN(IFRPOSITION),  std_target_diffAN(IFRPOSITION), mean_target_diffAN_100(IFRPOSITION100),  std_target_diffAN_100(IFRPOSITION100), mean_target_diffAN(IVPOSITION),  std_target_diffAN(IVPOSITION), mean_target_diffAN_100(IVPOSITION100),  std_target_diffAN_100(IVPOSITION100))
+fprintf(fid,"1-step & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\ \n", mean_rand1diffAN(STPOSITION),  std_rand1diffAN(STPOSITION), mean_rand1diffAN_100(STPOSITION100),  std_rand1diffAN_100(STPOSITION100), mean_rand1diffAN(IFRPOSITION),  std_rand1diffAN(IFRPOSITION), mean_rand1diffAN_100(IFRPOSITION100),  std_rand1diffAN_100(IFRPOSITION100), mean_rand1diffAN(IVPOSITION),  std_rand1diffAN(IVPOSITION), mean_rand1diffAN_100(IVPOSITION100),  std_rand1diffAN_100(IVPOSITION100))
+fprintf(fid,"5-step & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\midrule\n", mean_rand5diffAN(STPOSITION),  std_rand5diffAN(STPOSITION), mean_rand5diffAN_100(STPOSITION100),  std_rand5diffAN_100(STPOSITION100), mean_rand5diffAN(IFRPOSITION),  std_rand5diffAN(IFRPOSITION), mean_rand5diffAN_100(IFRPOSITION100),  std_rand5diffAN_100(IFRPOSITION100), mean_rand5diffAN(IVPOSITION),  std_rand5diffAN(IVPOSITION), mean_rand5diffAN_100(IVPOSITION100),  std_rand5diffAN_100(IVPOSITION100))
 
 
-# fprintf(fid,"ST-100 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_100(STIDX),std_st_100(STIDX),mean_st_100(ST100),std_st_100(ST100),  mean_st_100(IFRIDX),std_st_100(IFRIDX),  mean_st_100(IFR100),std_st_100(IFR100), mean_st_100(IVIDX),std_st_100(IVIDX), mean_st_100(IV100),std_st_100(IV100))
-# fprintf(fid,"IFR-100 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_100(STIDX),std_ifr_100(STIDX),mean_ifr_100(ST100),std_ifr_100(ST100),  mean_ifr_100(IFRIDX),std_ifr_100(IFRIDX),  mean_ifr_100(IFR100),std_ifr_100(IFR100), mean_ifr_100(IVIDX),std_ifr_100(IVIDX), mean_ifr_100(IV100),std_ifr_100(IV100))
-# fprintf(fid,"AIV-100 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[2pt]\\hline\n", mean_iv_100(STIDX),std_iv_100(STIDX),mean_iv_100(ST100),std_iv_100(ST100),  mean_iv_100(IFRIDX),std_iv_100(IFRIDX),  mean_iv_100(IFR100),std_iv_100(IFR100), mean_iv_100(IVIDX),std_iv_100(IVIDX), mean_iv_100(IV100),std_iv_100(IV100))
-# fprintf(fid,"\\end{tabular}")
+fprintf(fid,"  ST-25 1 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim1(STIDX),std_st_sim1(STIDX),mean_st_sim1(ST100),std_st_sim1(ST100),  mean_st_sim1(IFRIDX),std_st_sim1(IFRIDX),  mean_st_sim1(IFR100),std_st_sim1(IFR100), mean_st_sim1(IVIDX),std_st_sim1(IVIDX), mean_st_sim1(IV100),std_st_sim1(IV100))
+fprintf(fid,"  ST-25 2 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim2(STIDX),std_st_sim2(STIDX),mean_st_sim2(ST100),std_st_sim2(ST100),  mean_st_sim2(IFRIDX),std_st_sim2(IFRIDX),  mean_st_sim2(IFR100),std_st_sim2(IFR100), mean_st_sim2(IVIDX),std_st_sim2(IVIDX), mean_st_sim2(IV100),std_st_sim2(IV100))
+fprintf(fid,"  ST-25 3 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_sim3(STIDX),std_st_sim3(STIDX),mean_st_sim3(ST100),std_st_sim3(ST100),  mean_st_sim3(IFRIDX),std_st_sim3(IFRIDX),  mean_st_sim3(IFR100),std_st_sim3(IFR100), mean_st_sim3(IVIDX),std_st_sim3(IVIDX), mean_st_sim3(IV100),std_st_sim3(IV100))
 
-# fclose(fid)
+fprintf(fid,"ST-25 Ave. & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\midrule\n", mean_st_sim(STIDX),std_st_sim(STIDX),mean_st_sim(ST100),std_st_sim(ST100),  mean_st_sim(IFRIDX),std_st_sim(IFRIDX),  mean_st_sim(IFR100),std_st_sim(IFR100), mean_st_sim(IVIDX),std_st_sim(IVIDX), mean_st_sim(IV100),std_st_sim(IV100))
+
+
+fprintf(fid,"  IFR-25 1 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim1(STIDX),std_ifr_sim1(STIDX),mean_ifr_sim1(ST100),std_ifr_sim1(ST100),  mean_ifr_sim1(IFRIDX),std_ifr_sim1(IFRIDX),  mean_ifr_sim1(IFR100),std_ifr_sim1(IFR100), mean_ifr_sim1(IVIDX),std_ifr_sim1(IVIDX), mean_ifr_sim1(IV100),std_ifr_sim1(IV100))
+fprintf(fid,"  IFR-25 2 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim2(STIDX),std_ifr_sim2(STIDX),mean_ifr_sim2(ST100),std_ifr_sim2(ST100),  mean_ifr_sim2(IFRIDX),std_ifr_sim2(IFRIDX),  mean_ifr_sim2(IFR100),std_ifr_sim2(IFR100), mean_ifr_sim2(IVIDX),std_ifr_sim2(IVIDX), mean_ifr_sim2(IV100),std_ifr_sim2(IV100))
+fprintf(fid,"  IFR-25 3 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_sim3(STIDX),std_ifr_sim3(STIDX),mean_ifr_sim3(ST100),std_ifr_sim3(ST100),  mean_ifr_sim3(IFRIDX),std_ifr_sim3(IFRIDX),  mean_ifr_sim3(IFR100),std_ifr_sim3(IFR100), mean_ifr_sim3(IVIDX),std_ifr_sim3(IVIDX), mean_ifr_sim3(IV100),std_ifr_sim3(IV100))
+
+fprintf(fid,"IFR-25 Ave. &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\midrule\n", mean_ifr_sim(STIDX),std_ifr_sim(STIDX),mean_ifr_sim(ST100),std_ifr_sim(ST100),  mean_ifr_sim(IFRIDX),std_ifr_sim(IFRIDX),  mean_ifr_sim(IFR100),std_ifr_sim(IFR100), mean_ifr_sim(IVIDX),std_ifr_sim(IVIDX), mean_ifr_sim(IV100),std_ifr_sim(IV100))
+
+
+fprintf(fid,"  AIV-25 1 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim1(STIDX),std_iv_sim1(STIDX),mean_iv_sim1(ST100),std_iv_sim1(ST100),  mean_iv_sim1(IFRIDX),std_iv_sim1(IFRIDX),  mean_iv_sim1(IFR100),std_iv_sim1(IFR100), mean_iv_sim1(IVIDX),std_iv_sim1(IVIDX), mean_iv_sim1(IV100),std_iv_sim1(IV100))
+fprintf(fid,"  AIV-25 2 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim2(STIDX),std_iv_sim2(STIDX),mean_iv_sim2(ST100),std_iv_sim2(ST100),  mean_iv_sim2(IFRIDX),std_iv_sim2(IFRIDX),  mean_iv_sim2(IFR100),std_iv_sim2(IFR100), mean_iv_sim2(IVIDX),std_iv_sim2(IVIDX), mean_iv_sim2(IV100),std_iv_sim2(IV100))
+fprintf(fid,"  AIV-25 3 &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_iv_sim3(STIDX),std_iv_sim3(STIDX),mean_iv_sim3(ST100),std_iv_sim3(ST100),  mean_iv_sim3(IFRIDX),std_iv_sim3(IFRIDX),  mean_iv_sim3(IFR100),std_iv_sim3(IFR100), mean_iv_sim3(IVIDX),std_iv_sim3(IVIDX), mean_iv_sim3(IV100),std_iv_sim3(IV100))
+
+fprintf(fid,"AIV-25 Ave. &%2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex]\\midrule\n", mean_iv_sim(STIDX),std_iv_sim(STIDX),mean_iv_sim(ST100),std_iv_sim(ST100),  mean_iv_sim(IFRIDX),std_iv_sim(IFRIDX),  mean_iv_sim(IFR100),std_iv_sim(IFR100), mean_iv_sim(IVIDX),std_iv_sim(IVIDX), mean_iv_sim(IV100),std_iv_sim(IV100))
+
+
+fprintf(fid,"ST-100 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_st_100(STIDX),std_st_100(STIDX),mean_st_100(ST100),std_st_100(ST100),  mean_st_100(IFRIDX),std_st_100(IFRIDX),  mean_st_100(IFR100),std_st_100(IFR100), mean_st_100(IVIDX),std_st_100(IVIDX), mean_st_100(IV100),std_st_100(IV100))
+fprintf(fid,"IFR-100 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\\n", mean_ifr_100(STIDX),std_ifr_100(STIDX),mean_ifr_100(ST100),std_ifr_100(ST100),  mean_ifr_100(IFRIDX),std_ifr_100(IFRIDX),  mean_ifr_100(IFR100),std_ifr_100(IFR100), mean_ifr_100(IVIDX),std_ifr_100(IVIDX), mean_ifr_100(IV100),std_ifr_100(IV100))
+fprintf(fid,"AIV-100 & %2.2f (%.2f) & %2.2f (%.2f) & %.4g (%.1e) &%.4g (%.1e) &%.4g (%.1e) & %.4g (%.1e) \\\\[0.5ex] \\bottomrule \n", mean_iv_100(STIDX),std_iv_100(STIDX),mean_iv_100(ST100),std_iv_100(ST100),  mean_iv_100(IFRIDX),std_iv_100(IFRIDX),  mean_iv_100(IFR100),std_iv_100(IFR100), mean_iv_100(IVIDX),std_iv_100(IVIDX), mean_iv_100(IV100),std_iv_100(IV100))
+fprintf(fid,"\\end{tabularx}")
+
+fclose(fid)
 
 
 

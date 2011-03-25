@@ -24,7 +24,7 @@ load ivga25_diffAN_sim3
 load iv100_diffAN
 
 gen=[1:201];
-LABELSIZE=20;
+LABELSIZE=30;
 CFLABELSIZE=30;
 AXISFONTSIZE=16;
 LINEWIDTH=2;
@@ -82,8 +82,15 @@ end
 plot([205:215], ones(1,11)*(stdyn_target_diffAN_stats(6)-stdyn_target_diffAN_stats(7)*2),'k-','linewidth',2);
 plot([205:215], ones(1,11)*(stdyn_target_diffAN_stats(6)+stdyn_target_diffAN_stats(7)*2),'k-','linewidth',2);
 plot(ones(1,3)*210,[stdyn_target_diffAN_stats(6)-stdyn_target_diffAN_stats(7)*2  stdyn_target_diffAN_stats(6) stdyn_target_diffAN_stats(6)+stdyn_target_diffAN_stats(7)*2],'k-','linewidth',2);
-set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'box','off','ylim',ST_YLIM,'linewidth',LINEWIDTH); %
 text(105,ST_YMAX,"ST (ms)",'fontsize',LABELSIZE,'verticalalignment','top','horizontalalignment','center');
+
+set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'box','off', \
+    "linewidth",LINEWIDTH, \
+    "yscale","log", "ylim",[7 ST_YMAX], \
+    "ytick",[7:10 20:10:50], \
+    "yticklabel",cellstr(num2str([7:10 20:10:50]',2)));
+
+
 
 #Best genomes per generation
 subplot(1,3,2);
@@ -106,8 +113,15 @@ plot(ones(1,3)*210,[ifrga_target_diffAN_stats(6)-ifrga_target_diffAN_stats(7)*2 
 
 
 xlabel('Generation','fontsize',LABELSIZE,'fontname','Helvetica');
-set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'box','off','ylim',IFR_YLIM,'linewidth',LINEWIDTH); 
 text(105,IFR_YMAX,"IFR (spikes/ms)",'fontsize',LABELSIZE,'verticalalignment','top','horizontalalignment','center');
+
+set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215], \
+    "box","off", \
+    "linewidth",LINEWIDTH, \
+    "yscale","log", \
+    "ylim",[0.2 0.3], \
+    "ytick",[0.2:0.01:0.3], \
+    "yticklabel",cellstr(num2str([0.2:0.01:0.3]',2)));
 
 #Best genomes per generation
 subplot(1,3,3);
@@ -130,31 +144,33 @@ plot(ones(1,3)*210,[ivga_target_diffAN_stats(6)-ivga_target_diffAN_stats(7)*2  i
 
 
 xlabel('Generation','fontsize',LABELSIZE,'fontname','Helvetica');
-set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'ylim',AIV_YLIM,'box','off','linewidth',LINEWIDTH);
+%set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'ylim',AIV_YLIM,'box','off','linewidth',LINEWIDTH);
 text(105,AIV_YMAX,"AIV (mV)",'fontsize',LABELSIZE,'verticalalignment','top','horizontalalignment','center');
 
-print -depsc2 -r600  ../gfx/All25GAPerf-Stretch.eps;
-system('fixbb ../gfx/All25GAPerf-Stretch.eps');
-for i=1:3
-  axis(get(gcf,'children')(i),"square")
-end
-print -depsc2 -r600  ../gfx/All25GAPerf.eps;
-system('fixbb ../gfx/All25GAPerf.eps');
-% Print Log figure 
- for i=1:3
-   axis(get(gcf,'children')(i),"normal")
- end
- for i=1:3
-   set(get(gcf,'children')(i),"yscale","log")
- end
-
-set(get(gcf,'children')(2),"ylim",[0.2 IFR_YMAX],  "ytick",[0.2:0.1:0.4],"yticklabel",cellstr(num2str([0.2:0.1:0.4]',2)));
-set(get(gcf,'children')(1),"ylim",[0.15 AIV_YMAX], "ytick",[0.15:0.05:0.4],"yticklabel",cellstr(num2str([0.15:0.05:0.4]',2))); 
-set(get(gcf,'children')(3),"ylim",[7 ST_YMAX],"ytick",[7:9 10:10:50],"yticklabel",cellstr(num2str([7:9 10:10:50]',2)));
-
+set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215], \
+    'box','off','linewidth',LINEWIDTH, \
+    "yscale","log","ylim",[0.15 AIV_YMAX], \
+    "ytick",[0.15:0.05:0.4],\
+    "yticklabel",cellstr(num2str([0.15:0.05:0.4]',2))); 
 
  print -depsc2 -r600  ../gfx/All25GAPerf-Log.eps;
  system('fixbb ../gfx/All25GAPerf-Log.eps');
+
+
+
+set(get(gcf,'children')(3),"yscale","linear","ylim",[0 ST_YMAX],"ytick",[0:10:50],"yticklabel",cellstr(num2str([0:10:50]',2)));
+set(get(gcf,'children')(2),"yscale","linear","ylim",[0 IFR_YMAX],  "ytick",[0:0.05:0.3],"yticklabel",cellstr(num2str([0:0.05:0.3]',2)));
+set(get(gcf,'children')(1),"yscale","linear","ylim",[0 AIV_YMAX], "ytick",[0:0.05:0.4],"yticklabel",cellstr(num2str([0:0.05:0.4]',2))); 
+
+print -depsc2 -r600  ../gfx/All25GAPerf-Stretch.eps;
+system('fixbb ../gfx/All25GAPerf-Stretch.eps');
+# for i=1:3
+#   axis(get(gcf,'children')(i),"square")
+# end
+# print -depsc2 -r600  ../gfx/All25GAPerf.eps;
+# system('fixbb ../gfx/All25GAPerf.eps');
+
+
 
 
 
@@ -187,15 +203,21 @@ plot([205:215], ones(1,11)*(stdyn_target_diffAN_100_stats(6)+stdyn_target_diffAN
 plot(ones(1,3)*210,[stdyn_target_diffAN_100_stats(6)-stdyn_target_diffAN_100_stats(7)*2  stdyn_target_diffAN_100_stats(6) stdyn_target_diffAN_100_stats(6)+stdyn_target_diffAN_100_stats(7)*2],'k-','linewidth',2);
 
 
-set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'box','off','ylim',ST_YLIM,'linewidth',LINEWIDTH); %
 text(105,ST_YMAX,"ST (ms)",'fontsize',LABELSIZE,'verticalalignment','top','horizontalalignment','center');
+
+set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'box','off', \
+    "linewidth",LINEWIDTH, \
+    "yscale","log","ylim",[5 ST_YMAX], \
+    "ytick",[5:10 20:10:50], \
+    "yticklabel",cellstr(num2str([5:10 20:10:50]',2)));
+
 
 #Best genomes per generation
 subplot(1,3,2);
 hold on;
 
 stairs(gen,ifr100_diffAN_bog(:,4)*IFRCOSTFACTOR100,'k--');
- set(get(gca,'children')(1),'linewidth',LINEWIDTH*2);
+set(get(gca,'children')(1),'linewidth',LINEWIDTH*2);
 stairs(gen,ifrga25_diffAN_sim1_bog(:,4)*IFRCOSTFACTOR,'k');
 stairs(gen,ifrga25_diffAN_sim2_bog(:,4)*IFRCOSTFACTOR,'k');
 stairs(gen,ifrga25_diffAN_sim3_bog(:,4)*IFRCOSTFACTOR,'k');
@@ -211,8 +233,13 @@ plot(ones(1,3)*210,[ifrga_target_diffAN_100_stats(6)-ifrga_target_diffAN_100_sta
 
 
 xlabel('Generation','fontsize',LABELSIZE,'fontname','Helvetica');
-set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'box','off','ylim',IFR_YLIM,'linewidth',LINEWIDTH); 
 text(105,IFR_YMAX,"IFR (spikes/ms)",'fontsize',LABELSIZE,'verticalalignment','top','horizontalalignment','center');
+
+set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'box','off', \
+    "linewidth",LINEWIDTH, \
+    "yscale","log","ylim",[0.1 IFR_YMAX], \
+    "ytick",[0.1:0.1:0.4], \
+    "yticklabel",cellstr(num2str([0.1:0.1:0.4]',2)));
 
 #Best genomes per generation
 subplot(1,3,3);
@@ -232,29 +259,36 @@ plot(ones(1,3)*210,[ivga_target_diffAN_100_stats(6)-ivga_target_diffAN_100_stats
 
 
 xlabel('Generation','fontsize',LABELSIZE,'fontname','Helvetica');
-set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215],'ylim',AIV_YLIM,'box','off','linewidth',LINEWIDTH);
 text(105,AIV_YMAX,"AIV (mV)",'fontsize',LABELSIZE,'verticalalignment','top','horizontalalignment','center');
 
-print -depsc2 -r600  ../gfx/All100GAPerf-Stretch.eps;
-system('fixbb ../gfx/All100GAPerf-Stretch.eps');
-for i=1:3
-  axis(get(gcf,'children')(i),"square")
-end
-print -depsc2 -r600  ../gfx/All100GAPerf.eps;
-system('fixbb ../gfx/All100GAPerf.eps');
-% Print Log figure 
- for i=1:3
-   axis(get(gcf,'children')(i),"normal")
- end
- for i=1:3
-   set(get(gcf,'children')(i),"yscale","log")
- end
+set(gca,'fontsize',AXISFONTSIZE,'xlim',[-10 215], \
+    'box','off','linewidth',LINEWIDTH, \
+    "yscale","log","ylim",[0.01 AIV_YMAX], \
+    "ytick",[0.01:0.01:0.1 0.2:0.1:0.4],\
+    "yticklabel",cellstr(num2str([0.01:0.01:0.1 0.2:0.1:0.4]',2))); 
 
-set(get(gcf,'children')(2),"ylim",[0.1 IFR_YMAX],"ytick",[0.1:0.1:0.4],"yticklabel",cellstr(num2str([0.2:0.1:0.4]',2)));
-set(get(gcf,'children')(1),"ylim",[0.01 AIV_YMAX],"ytick",[0.01:0.01:0.1 0.2:0.1:0.4],"yticklabel",cellstr(num2str([0.15:0.05:0.4]',2))); 
-set(get(gcf,'children')(3),"ylim",[5 ST_YMAX],"ytick",[6:9 10:10:50],"yticklabel",cellstr(num2str([7:9 10:10:50]',2)));
+
+%set(get(gcf,'children')(2),"yscale","log","ylim",[0.1 IFR_YMAX],"ytick",[0.1:0.1:0.4],"yticklabel",cellstr(num2str([0.1:0.1:0.4]',2)));
+%set(get(gcf,'children')(3),"yscale","log","ylim",[5 ST_YMAX],"ytick",[5:10 20:10:50],"yticklabel",cellstr(num2str([5:10 20:10:50]',2)));
 
 
  print -depsc2 -r600  ../gfx/All100GAPerf-Log.eps;
  system('fixbb ../gfx/All100GAPerf-Log.eps');
+
+
+set(get(gcf,'children')(3),"yscale","linear","ylim",[0 ST_YMAX],"ytick",[0:10:50],"yticklabel",cellstr(num2str([0:10:50]',2)));
+set(get(gcf,'children')(2),"yscale","linear","ylim",[0 IFR_YMAX],  "ytick",[0:0.05:0.3],"yticklabel",cellstr(num2str([0:0.05:0.3]',2)));
+set(get(gcf,'children')(1),"yscale","linear","ylim",[0 AIV_YMAX], "ytick",[0:0.05:0.4],"yticklabel",cellstr(num2str([0:0.05:0.4]',2))); 
+
+print -depsc2 -r600  ../gfx/All100GAPerf-Stretch.eps;
+system('fixbb ../gfx/All100GAPerf-Stretch.eps');
+# for i=1:3
+#   axis(get(gcf,'children')(i),"square")
+# end
+# print -depsc2 -r600  ../gfx/All100GAPerf.eps;
+# system('fixbb ../gfx/All100GAPerf.eps');
+
+
+
+
 
