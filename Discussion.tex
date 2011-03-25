@@ -17,7 +17,7 @@
 
 \section{Discussion}\label{sec:GA:discussion}
 
-\subsection[General performance of {GA}s]{General performance of {\GA}s for optimising network
+\subsection[General performance of {GA}s]{General performance of {GA}s for optimising network
   parameters}\label{sec:GA:general-perf-disc}
 
 This chapter tested the ability of \glsreset{GA} to learn the network
@@ -51,12 +51,12 @@ improved match to the target genome.
 * All performed similarly in most measures of comparison, X-comp and PE analysis \\
 * X-comp: all best genomes performed similarly in IFR and AIV, but ST was better in it's won CF \\
 * PE: similar trend/pattern similar PEvP in each given parameter (note significance of different parameter types - orders of 2 or 3 between spread/numberand weight parameters) \\
-* noteworthy: ST Xcomp: expected result AIV Xcmomp: ST does not perform poorly on AIV given different characteristics of CF, i.e. spike timing does not provide information about sub-threshold membrane potential, a relevant factor in the AIV CF.  But this is good because, ST can be obtained in extra cellular recordings more easily in vivo and can be obtained on a larger number of simultaneous units than intracellular recordings. \\
+* noteworthy: ST Xcomp: expected result AIV Xcmomp: ST does not perform poorly on AIV given different characteristics of CF, i.e.\ spike timing does not provide information about sub-threshold membrane potential, a relevant factor in the AIV CF.  But this is good because, ST can be obtained in extra cellular recordings more easily in vivo and can be obtained on a larger number of simultaneous units than intracellular recordings. \\
 * IFR consistently off in ST and AIV AIV CF also limited  ST and IFR best genomes to same limit as AV best genome \\
 }
 
 Noteworthy results of the cross comparison analysis in Figures~\ref{fig:R2}
-and \ref{fig:R7}, show that the best genomes performed as expected by
+and~\ref{fig:R7}, show that the best genomes performed as expected by
 beating other best genomes in it's own cost function. The ST cost function
 trained best genomes performed as expected; constrained well for its own
 cost function but less well for the other two. Secondly, IFR best genomes
@@ -65,7 +65,7 @@ the same region as other best genomes in the AIV cost function. One AIV
 trained best genome performed well in both ST and IFR cost functions, but
 this was not consistent for all three best genomes.
 
-Given different characteristics of the cost functions, i.e. spike timing
+Given different characteristics of the cost functions, i.e.\ spike timing
 does not provide information about sub-threshold membrane potential, a
 relevant factor in the AIV cost function.  The advantage of using real ST
 data is that it can be obtained in extra cellular recordings more easily
@@ -151,7 +151,7 @@ functions. When the number of repetitions in the training data was
 increased by a factor of 4 (the IFR-100 cost function), there was a
 reduction in the value of all cost function scores
 (Figure~\ref{fig:GA:R6}B) and the performance of the best genomes was good
-(Figure \ref{fig:GA:R7}). However, the performance of both the IFR-25 and
+(Figure~\ref{fig:GA:R7}). However, the performance of both the IFR-25 and
 IFR-100 best genomes when measured using the other cost functions was poor,
 this suggests that the networks constrained by the IFR cost functions were
 unable to accurately reproduce the behaviour of networks in terms of
@@ -309,8 +309,8 @@ The IFR-25 cost function sensitivity measure gave a ratio of 7:23
 (Figure~\ref{fig:GA:14}), demonstrating a high susceptibility to input
 noise. Constraint of inhibitory connections (parameters 12-30) in the IFR
 best genomes (Figure~\ref{fig:GA:8}) was very poor, resulting from the flat
-and insignificant cost function gradients near the global optimum (Figure
-~\ref{fig:GA:14}).
+and insignificant cost function gradients near the global optimum 
+(Figure~\ref{fig:GA:14}).
 
 \smallskip{}
 
@@ -334,37 +334,35 @@ receive input from the pre-synaptic cell group.
 \subsection{Comparison with other studies}\label{sec:GA:comp-with-other}
 
 
-\todo[inline]{{\GA} could not have done an better than any other optimisation techniques.
-Evolutionary vs Grad decent studies?  Consistency, efficiency for {\BNN}s.}
+\todo[inline]{{GA} could not have done an better than any other optimisation techniques. Evolutionary vs Grad decent studies?  Consistency, efficiency for {BNN}s.}
 
 \smallskip{}
 
-\todo[inline]{*Studies with  other cost functions - do they get close to target? ISI CF studies?
-Are there any studies showing ST and IFR/AIV? any comparisons?}
+\todo[inline]{*Studies with  other cost functions - do they get close to target? ISI CF studies? Are there any studies showing ST and IFR/AIV? any comparisons?}
 
 The primary motivation for using evolutionary techniques to establish the
 weighting values rather than traditional gradient decent techniques such as
 back propagation, lies in the inherent problems associated with gradient
-decent techniques. ack-propogation is easily trapped in local maxima, has
+decent techniques. Back-propogation is easily trapped in local maxima, has
 poor performance with multimodal or un-differentiable functions, and
 sensitive to initial conditions. Evolution of the connection of weights can
-use {\GA}'s then back propagation for local refining. Search space for {\BNN}s
+use {\GA}s then back propagation for local refining. Search space for {\BNN}s
 is infinitely large and non-differentiable makes {\GA} approaches a good
 chance for success.
 
-\todo[inline]{ Combination techniques: \citep{AngelineSaundersEtAl:1994} argues that
-{\GA}s are inappropriate for network acquisition and describes his own
-GNARL that simultaneously finds structure and weights for recurrent
-NNs.}
+\todo[inline]{Combination techniques:
+  \citep{AngelineSaundersEtAl:1994} argues that {GA}s are
+  inappropriate for network acquisition and describes his own GNARL
+  that simultaneously finds structure and weights for recurrent NNs.}
 
-\todo[inline]{ Sohn and Dagli 2004: {\GA}s have been used to select the
+\todo[inline]{Sohn and Dagli 2004: {GA}s have been used to select the
   proper feature sets in pattern recognition problems [2-4], to train
   the weights of neural networks [5-7], to find the architecture of
   neural networks [8-10], and to determine initial weights and proper
   parameters of the networks [11-12].}
 
 
-\subsection{Other considerations for constraining {\BNN}s}\label{sec:GA:other-considerations}
+\subsection{Other considerations for constraining {BNN}s}\label{sec:GA:other-considerations}
 
 In this chapter limiting the number of parameters used to define the
 connectivity of a {\BNN} was critical for a practical method of
@@ -381,8 +379,8 @@ realism in {\BNN} optimization.
 
 A final issue that should be considered for modelling and optimizing {\BNN}
 models is computational efficiency. In this paper, the {\CN} stellate network
-consisted of 240 HH-like cells, simulated in NEURON and took approximately
-90 seconds to run a 80~ms stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI
+consisted of 240~{HH}-like cells, simulated in {NEURON} and took approximately
+90~seconds to run a 80~ms stimulus on a 1.8~GHz CPU (32-bit Itanium, SGI
 Altix).  Evaluations the AIV and IFR cost functions were a minor fraction
 of the total computational time, being less than 3 seconds per network. The
 ST cost function was at a considerable disadvantage because its evaluation

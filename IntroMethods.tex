@@ -10,11 +10,11 @@ voltage-sensitive dyes
 neuroscientists to monitor the simultaneous activity of networks of
 neurons with a higher degree of spatial and temporal accuracy than has
 been achieved previously at the network level. At the same time,
-modeling \gls{BNN}s is becoming more
+modeling {\BNN}s is becoming more
 accessible and faster to run with modern computing power. (By
 biophysically-based we mean models that include a description of
 currents flowing through membrane ion channels, such as the
-Hodgkin-Huxley model.)  To develop larger {\BNN}s, with complex network
+{\HH} model.)  To develop larger {\BNN}s, with complex network
 behavior a number of interrelated issues need to be considered: (a)
 what level of neuronal detail is required to achieve observed
 phenomena in the network, (b) how do extrinsic and intrinsic noise
@@ -53,8 +53,7 @@ previously \citep{EggertHemmen:2001,Brette:2007} focus on the
 analytical methods characterizing the spike output~\citep{Victor:2005,KostalLanskyEtAl:2007,BrownKassEtAl:2004}. Inferring
 the connectivity within a network requires a cost analysis of the
 spiking output.  This has progressed from ensemble feature-based
-methods~
-\citep{SameshimaBaccala:1999,DahlhausEichlerEtAl:1997,TheunissenSenEtAl:2000},
+methods~\citep{SameshimaBaccala:1999,DahlhausEichlerEtAl:1997,TheunissenSenEtAl:2000},
 information theoretical approaches using maximum likelihood
 \citep{YamadaMatsumotoEtAl:1996,Chichilnisky:2001,OkatanWilsonEtAl:2005,PaninskiPillowEtAl:2004},
 evolutionary algorithm methods~\citep{TakahamaSakai:2005,Yao:1999},
@@ -72,12 +71,11 @@ such as gradient-descent, is that {\GA}s can avoid getting caught in
 local minima \citep{Goldberg:1989,Whitley:1995}. Since
 \citet{Holland:1975} first used {\GA}s to evolve the connectivity and
 synaptic weights of artificial neural networks, some other hybrid
-methods have been proposed~\citep{Yao:1999,Whitley:1995}. Existing
+methods have been proposed \citep{Yao:1999,Whitley:1995}. Existing
 examples of biophysically-based neural models that have been
 constrained using {\GA}s are limited to single and multi-compartmental
-single cell models~
-\citep{KerenPeledEtAl:2005,VanierBower:1999,VanDeEtAl:2008} or small
-microcircuits~\citep{TaylorEnoka:2004}.  They are generally regarded
+single cell models \citep{KerenPeledEtAl:2005,VanierBower:1999,VanDeEtAl:2008} or small
+microcircuits \citep{TaylorEnoka:2004}.  They are generally regarded
 as an effective method in automated
 parameter-searches. \citet{KerenPeledEtAl:2005} used intracellular
 recordings from a cortical pyramidal cell to constrain the membrane
@@ -116,8 +114,8 @@ nucleus (CN, Figure~\ref{fig:GA:CNdiagram}), which is the gateway
 between the peripheral auditory system and the central nervous system,
 with six distinct pathways to higher auditory nuclei
 \citep{CantBenson:2003}. The principle neurons in the circuit are the
-T-stellate (TS) cells, in the ventral cochlear nucleus (ventral CN,
-Figure~\ref{fig:GA:CNdiagram}), which project to the inferior
+T-stellate (TS) cells, in the \VCN,
+(Figure~\ref{fig:GA:CNdiagram}), which project to the inferior
 colliculus.  They provide a robust spectral representation of sound
 and are implicated in forming part of the main `what' pathway for
 auditory information \citep{YoungOertel:2004}. Experimental evidence
@@ -133,31 +131,30 @@ example network.
  \begin{figure}[pt!]
 \centering
    \resizebox{5in}{!}{\includegraphics{CNConnections3}}
-   \caption{Diagram of the mammalian cochlear nucleus. Auditory nerve
-     fibers (ANFs) sensitive to particular frequencies project to the
-     cochlear nucleus (CN) in a tono-topically organized fashion and
-     bifurcate to innervate both the {\VCN} and {\DCN}\@. The
-     {\CN} comprises two main divisions, ventral and dorsal CN, plus an
-     outer layer of small cells known as the granule cell domain
-     (GCD). Type I {\ANF}s are characterized into two groups based on
-     their spontaneous rate: high (HSR, solid line) and low (LSR,
-     dashed line). Only LSR and smaller type II {\ANF}s project to the
-     GCD\@.  Golgi cells in the GCD are the only known source of
-     GABAergic cells within the ventral CN, and it is presumed that
-     they synapse with TS and DS cells
-     \cite{FerragamoGoldingEtAl:1998}. Glycinergic D-stellate cells
-     (DS) project to wide areas of the ventral CN, dorsal CN, and
-     contralateral CN\@. DS cells are broadly tuned and respond best
-     at the onset of a tone, with a small number of precisely timed
-     spikes, and respond strongly to broad-band noise.  In the deep
-     layer of the dorsal CN, tuberculo-ventral (TV) cells provide a
-     narrow-band on-frequency source of glycinergic inhibition to the
-     ventral CN\@. These neurons respond poorly to clicks and
+   \caption{Diagram of the mammalian cochlear nucleus. {ANF}s
+     sensitive to particular frequencies project to the cochlear
+     nucleus (CN) in a tono-topically organized fashion and bifurcate
+     to innervate both the {VCN} and {DCN}. The {CN} comprises
+     two main divisions, ventral and dorsal CN, plus an outer layer of
+     small cells known as the granule cell domain (GCD). Type I
+     {ANF}s are characterized into two groups based on their
+     spontaneous rate: high (HSR, solid line) and low (LSR, dashed
+     line). Only LSR and smaller type II {ANF}s project to the {GCD}.
+     Golgi cells in the {GCD} are the only known source of {GABA}ergic
+     cells within the VCN, and it is presumed that they synapse with
+     TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic
+     D-stellate cells (DS) project to wide areas of the VCN, DCN,
+     and contralateral {CN}. DS cells are broadly tuned and respond
+     best at the onset of a tone, with a small number of precisely
+     timed spikes, and respond strongly to broad-band noise.  In the
+     deep layer of the DCN, tuberculo-ventral (TV) cells provide
+     a narrow-band on-frequency source of glycinergic inhibition to
+     the VCN. These neurons respond poorly to clicks and
      broad-band noise, due to wide-band inhibition from DS cells
-     \cite{SpirouDavisEtAl:1999}.}%
+     \citep{SpirouDavisEtAl:1999}.}
 \label{fig:GA:CNdiagram}
  \end{figure}
- \clearpage
+% \clearpage
 
 
 \begin{figure}[t!]
@@ -167,21 +164,21 @@ example network.
 \figfont{B}\hspace{3in}\\
 \resizebox{3in}{!}{\includegraphics{NetworkProjections3}}\\
 \caption{(A) Stellate microcircuit showing synaptic interaction within
-  one iso-frequency lamina of the ventral {\CN} (dotted lines) and TV
-  cells of the dorsal CN\@. Excitatory synapses from {\ANF}s (arrows) are
-  modulated within the network by glycinergic (triangle) and GABAergic
-  (T) inputs. (B)~ANFs are ordered into a wide range of frequency
-  channels that are mapped to the ventral {\CN} and dorsal CN in an
-  orderly, tono-topic fashion. Topographic organization of lateral
-  connections in the {\CN} stellate network shows the range of inputs to
-  TS cells from Golgi, DS and TV cells. Dendritic morphologies of
-  cells characterize the range of {\ANF} inputs and hence determine their
-  frequency response. {\ANF} input to TS and TV cells are restricted to
-  one iso-frequency lamina, whereas DS dendrites span 1/3 of the
-  ventral CN\@. DS cells' axonal plexus typically covers 1/3 of the
-  ventral {\CN} and one half of the dorsal CN, giving them a strong
-  influence throughout the {\CN} \cite{ArnottWallaceEtAl:2004}.}
-\label{fig:GA:MicroCN}
+  one iso-frequency lamina of the ventral {CN} (dotted lines) and TV
+  cells of the dorsal CN\@. Excitatory synapses from {ANF}s (arrows)
+  are modulated within the network by glycinergic (triangle) and
+  GABAergic (T) inputs. (B)~ANFs are ordered into a wide range of
+  frequency channels that are mapped to the ventral {CN} and dorsal
+  CN in an orderly, tono-topic fashion. Topographic organization of
+  lateral connections in the {CN} stellate network shows the range of
+  inputs to TS cells from Golgi, DS and TV cells. Dendritic
+  morphologies of cells characterize the range of {ANF} inputs and
+  hence determine their frequency response. {ANF} input to TS and TV
+  cells are restricted to one iso-frequency lamina, whereas DS
+  dendrites span 1/3 of the ventral CN\@. DS cells' axonal plexus
+  typically covers 1/3 of the ventral {CN} and one half of the dorsal
+  CN, giving them a strong influence throughout the {CN}
+  \citep{ArnottWallaceEtAl:2004}.}\label{fig:GA:MicroCN}
 \end{figure}
 
 \smallskip{} 
@@ -195,7 +192,7 @@ enter the brainstem ventrally and bifurcate, so that each fiber sends
 axonal collaterals to the ventral and dorsal sections of the cochlear
 nucleus, to organized iso-frequency lamina. {\ANF}s are categorized into
 high spontaneous rate (HSR, Figure~\ref{fig:GA:CNdiagram} solid line)
-and low spontaneous rate (LSR, Figure~\ref{fig:GA:CNdiagram} dashed
+and low spontaneous rate (LSR, Fiqure~\ref{fig:GA:CNdiagram} dashed
 line) fibers. LSR fibers have a higher threshold than HSR fibers and
 do not saturate in response to loud sounds.
 
@@ -203,13 +200,13 @@ do not saturate in response to loud sounds.
 
 The connectivity of the cell types involved in the stellate
 microcircuit is shown in Figure~\ref{fig:GA:MicroCN}. Fast,
-glycinergic inhibition from tuberculoventral (TV) cells and D-stellate
+glycinergic inhibition from Tuberculoventral (TV) cells and D-stellate
 cells (DS, Figure~\ref{fig:GA:CNdiagram}) is involved in modulating
 the firing rate and spike interval variability in TS cells
 \citep{FerragamoGoldingEtAl:1998,WickesbergOertel:1993}. TV cells in
 the deep layer of the dorsal CN, provide a delayed narrowband
-inhibition to TS and DS cells in the ventral CN\@.  The dendrites of
-DS cells cover 1/3~of the cross-frequency axis in the CN, contributing
+inhibition to TS and DS cells in the \VCN\@.  The dendrites of
+DS cells cover 1/3~of the cross-frequency axis in the \CN, contributing
 to this cell's wide frequency response. In turn this cell is
 responsible for altering the frequency responses in TS and TV cells
 \citep{SpirouDavisEtAl:1999}. DS cells are coincidence detectors and
@@ -222,7 +219,7 @@ inhibit TV cell responses to loud clicks
 necessary to reach threshold for all {\CN} cells
 \citep{CasparyBackoffEtAl:1994,FerragamoGoldingEtAl:1998}. Feedback
 circuits from the olivary complex to the ventral {\CN} are also known to
-use GABA as a neurotransmitter \citep{SaintMorestEtAl:1989}, however
+use {GABA} as a neurotransmitter \citep{SaintMorestEtAl:1989}, however
 this is not included in the model.
 
 \smallskip{} 
@@ -393,7 +390,7 @@ rates, and intracellular voltages.
   presentation of the notch noise stimulus. A rough trace shows the
   relative location of the 30-dB notch in a broadband spectrum from
   0.2~to 30 kHz. Frequency scale is determined by the Greenwood
-  function for the cat \cite{Greenwood:1990}. (B) The reference spikes
+  function for the cat \citep{Greenwood:1990}. (B) The reference spikes
   for a TS cell in the middle of the `target' network (CF 3.45kHz)
   from 250 repetitions of the stimulus are shown. This cell is placed
   at the edge of the spectral notch (arrow in A.). (C) PSTH response
@@ -404,7 +401,7 @@ rates, and intracellular voltages.
   noise captured by the auditory filter at this frequency. (D) PSTH of
   the same cell as in C using only 25 repetitions. The IFR cost
   function normalizes the reference PSTHs and calculates a mean
-  squared error between reference and test PSTHs for every cell in the
+  squared error between reference and test {PSTH}s for every cell in the
   network. (E) Average intracellular voltage, smoothed from 250
   repetitions, for the same TS cell. There is some similarity with the
   PSTH in C, particularly the location of the peaks but contains
@@ -877,7 +874,7 @@ $, to account for the asymmetry of wideband suppression found in TV
 cells \citep{ReissYoung:2005}.  The offset was added to the Gaussian
 mean in the random allocation process.
 
-\subsection{Analysis of {\GA} and Cost Functions}\label{sec:GA:analysis-ga-cost}
+\subsection{Analysis of {GA} and Cost Functions}\label{sec:GA:analysis-ga-cost}
 
 To test the performances of the cost functions in {\GA} optimizations,
 sets of target data were produced using a target {\CN} network with
