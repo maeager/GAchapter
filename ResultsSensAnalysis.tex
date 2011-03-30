@@ -276,13 +276,11 @@ were unilaterally sensitive.  % The AIV-250 cost function also had flattened
 
 
 
-\subsection{Correlation between sensitivity and eventual best genome parameter error}\label{sec:GA:corr-betw-sens}
+\subsection[Correlation between sensitivity and best genome error]{Correlation between cost function sensitivity and GA best genome's parameter error}\label{sec:GA:corr-betw-sens}
 
 \todo[inline]{Correlation between relative param error and gradient in Fig~\ref{fig:GA:BestGenomeVGradient} to be discussedfurther.  The LogLog results indicate a confirmation of our suspicion that the gradient would directly effect the eventual outcome of the best genomes. }
 
 %\subsection{Best Genome Match to Individual Parameter Sensitivity}
-
-
 
 \begin{figure}[th]
   \centering
@@ -332,7 +330,7 @@ LogLog (Pass Only) & -0.322  & 0.00284  & 0.141 & 9.7 & 0.338 \\[0.5ex] \hline
    Linear (All)    & -0.217  &  0.0932  & 0.0317& 2.88& 15     \\
    LogLog (All)    & -0.341  & 3.63e-06 & 0.217 & 24.4& 0.363 \\[1ex] \hline    
  \end{tabular}
- \caption{Best Genome vs.\ Gradient regression for ST cost function. $m$ is the gradient of the linear fit by least squares. $p$ is the p-value for the full model, where values  less than 0.05 indicate a significant gradient. $R^2$ is the sum of the residuals  squared, values above XXX show a good fit to the line.  F is the F-test statistic  indicating a sum of fit. VAR(e) is the estimated error variance.  }
+ \caption{Best Genome vs.\ Gradient regression for ST cost function. $m$ is the gradient of the linear fit by least squares. $p$ is the p-value for the full model, where values  less than 0.05 indicate a significant fit of the model. $R^2$ is the sum of the residuals  squared, values above XXX show a good fit to the line.  F is the F-test statistic  indicating a sum of fit. VAR(e) is the estimated error variance.  }
   \label{tab:GA:BGvGrad-ST}
 \end{table}
 
@@ -378,7 +376,7 @@ behaviour was repeated for analysis of IFR
 (Table~\ref{tab:GA:BGvGrad-AIV}) best genomes; with the exception of
 linear fit p-value of all AIV best genomes less than 0.05.  The few
 perfect scores that were eliminated in the log-log regression
-analysis, should not take away from the conclusion that the {\GA}s
+analysis, should not take away from the conclusion that the {\GAs}
 eventual best genome relative error was directly log-correlated with
 the cost function gradients around the target.
 

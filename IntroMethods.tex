@@ -41,7 +41,7 @@ are highly efficient and generally involve a gradient-decent search
 with a training method called back-propagation, where the output error
 is calculated back through the network
 \citep{RumelhartHintonEtAl:1986a}. These algorithms are not applicable
-to {\BNN}s because the input/output relationships of Hodgkin-Huxley-type
+to {\BNN}s because the input/output relationships of {\HH}-type
 models are not analytical, making them unsuitable for error
 back-propagation.
 
@@ -64,16 +64,16 @@ models or networks of integrate-and-fire neural models rather than
 
 \smallskip{} 
 
-Genetic Algorithms (GAs) belong to a class of optimization algorithms
+\glspl{GA} belong to a class of optimization algorithms
 that mimic the process of evolution through natural selection. The
-primary strength of {\GA}s relative to other optimization techniques,
-such as gradient-descent, is that {\GA}s can avoid getting caught in
+primary strength of {\GAs} relative to other optimization techniques,
+such as gradient-descent, is that {\GAs} can avoid getting caught in
 local minima \citep{Goldberg:1989,Whitley:1995}. Since
-\citet{Holland:1975} first used {\GA}s to evolve the connectivity and
+\citet{Holland:1975} first used {\GAs} to evolve the connectivity and
 synaptic weights of artificial neural networks, some other hybrid
 methods have been proposed \citep{Yao:1999,Whitley:1995}. Existing
 examples of biophysically-based neural models that have been
-constrained using {\GA}s are limited to single and multi-compartmental
+constrained using {\GAs} are limited to single and multi-compartmental
 single cell models \citep{KerenPeledEtAl:2005,VanierBower:1999,VanDeEtAl:2008} or small
 microcircuits \citep{TaylorEnoka:2004}.  They are generally regarded
 as an effective method in automated
@@ -91,7 +91,7 @@ top-down methods in cost analysis and optimization algorithms.
 
 \smallskip{} 
 
-This section of the thesis investigates the application of {\GA}s in
+This section of the thesis investigates the application of {\GAs} in
 constraining synaptic parameters in a topographically-ordered {\BNN},
 using the example of a network in the auditory brainstem. The design
 of the {\GA}, outlined in the Methods, includes the specification of a
@@ -131,7 +131,7 @@ example network.
  \begin{figure}[pt!]
 \centering
    \resizebox{5in}{!}{\includegraphics{CNConnections3}}
-   \caption{Diagram of the mammalian cochlear nucleus. {ANF}s
+   \caption[Diagram of the mammalian cochlear nucleus]{Diagram of the mammalian cochlear nucleus. {ANF}s
      sensitive to particular frequencies project to the cochlear
      nucleus (CN) in a tono-topically organized fashion and bifurcate
      to innervate both the {VCN} and {DCN}. The {CN} comprises
@@ -163,21 +163,19 @@ example network.
 \resizebox{3in}{!}{\includegraphics{SimpleCircuit3}}\\
 \figfont{B}\hspace{3in}\\
 \resizebox{3in}{!}{\includegraphics{NetworkProjections3}}\\
-\caption{(A) Stellate microcircuit showing synaptic interaction within
+\caption[CN stellate microcircuit]{(A) Stellate microcircuit showing synaptic interaction within
   one iso-frequency lamina of the ventral {CN} (dotted lines) and TV
-  cells of the dorsal CN\@. Excitatory synapses from {ANF}s (arrows)
+  cells of the {DCN}\@. Excitatory synapses from {ANF}s (arrows)
   are modulated within the network by glycinergic (triangle) and
   GABAergic (T) inputs. (B)~ANFs are ordered into a wide range of
-  frequency channels that are mapped to the ventral {CN} and dorsal
-  CN in an orderly, tono-topic fashion. Topographic organization of
+  frequency channels that are mapped to the {VCN} and {DCN} in an orderly, tono-topic fashion. Topographic organization of
   lateral connections in the {CN} stellate network shows the range of
   inputs to TS cells from Golgi, DS and TV cells. Dendritic
   morphologies of cells characterize the range of {ANF} inputs and
   hence determine their frequency response. {ANF} input to TS and TV
   cells are restricted to one iso-frequency lamina, whereas DS
   dendrites span 1/3 of the ventral CN\@. DS cells' axonal plexus
-  typically covers 1/3 of the ventral {CN} and one half of the dorsal
-  CN, giving them a strong influence throughout the {CN}
+  typically covers 1/3 of the {CN} and one half of the DCN, giving them a strong influence throughout the {CN}
   \citep{ArnottWallaceEtAl:2004}.}\label{fig:GA:MicroCN}
 \end{figure}
 
@@ -204,7 +202,7 @@ glycinergic inhibition from Tuberculoventral (TV) cells and D-stellate
 cells (DS, Figure~\ref{fig:GA:CNdiagram}) is involved in modulating
 the firing rate and spike interval variability in TS cells
 \citep{FerragamoGoldingEtAl:1998,WickesbergOertel:1993}. TV cells in
-the deep layer of the dorsal CN, provide a delayed narrowband
+the deep layer of the \DCN, provide a delayed narrowband
 inhibition to TS and DS cells in the \VCN\@.  The dendrites of
 DS cells cover 1/3~of the cross-frequency axis in the \CN, contributing
 to this cell's wide frequency response. In turn this cell is
@@ -295,7 +293,7 @@ strings in the order given in Table~\ref{tab:GA:Genome}.
 
 \smallskip{}
 
-To test the application of {\GA}s for optimizing parameters of a {\BNN}, a
+To test the application of {\GAs} for optimizing parameters of a {\BNN}, a
 network with a known set of parameters was created, this is referred
 to as the target network.  This allowed us to assess the {\GA} by how
 well the algorithm was able to recover the target parameters. The
@@ -385,7 +383,7 @@ rates, and intracellular voltages.
     \resizebox{2.5in}{!}{\includegraphics[bb=98 411 304 523,clip]{Figure3}}\\
     \vspace{0.1in}\resizebox{5in}{!}{\includegraphics[bb=98 173 504 411,clip]{Figure3}}
 \end{center}
-\caption{Cost function measures derived from the output of the CN
+\caption[Cost functions]{Cost function measures derived from the output of the CN
   stellate network. (A) Dot raster of TS cell spikes only during a
   presentation of the notch noise stimulus. A rough trace shows the
   relative location of the 30-dB notch in a broadband spectrum from
@@ -445,7 +443,7 @@ find the minimum distance between two spike trains, as illustrated in
 
 \begin{figure}[t!]
  \resizebox{3in}{!}{\input{/media/data/Work/thesis/GAChapter/gfx/DynamicSpikeMetric_v2.TpX}}
- \caption{Spike timing cost function measure computed using a dynamic
+ \caption[Dynamic spike-time algorithm]{Spike timing cost function measure computed using a dynamic
    programming algorithm. A minimum distance matrix between the
    \textit{target} set of spike times and a \textit{trial} set of
    spike times (from the same cell in the network, $i$, is traversed
@@ -668,7 +666,7 @@ similar to those present in ANFs.
 
 \subsubsection{Cell Models}\label{sec:GA:cell-models}
 
-Hodgkin-Huxley-like single compartment conductance models
+\HH single compartment conductance models
 \citep{HodgkinHuxley:1952a} were used to model the cochlear nucleus
 cells. The dynamics of the membrane voltage, $V(t)$, is described by:
 \begin{equation} \label{eq:GA:5} 
@@ -710,7 +708,7 @@ I_{{\rm h}} (t,V)=\bar{g}_{{\rm h}} r (V-E_{{\rm h}} )
 
 \smallskip{}
 
-The form of the Hodgkin-Huxley sodium current was:
+The form of the \HH sodium current was:
 \begin{equation} \label{eq:GA:10} 
 I_{{\rm Na}} (t,V)=\bar{g}_{{\rm Na}} m^{3} h (V-E_{{\rm Na}} )
 \end{equation}
