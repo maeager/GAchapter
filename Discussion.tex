@@ -1,6 +1,6 @@
 
 %% * Discussion
-%% ** General performance of {\GA}s for optimising network parameters
+%% ** General performance of {\GAs} for optimising network parameters
 %% ** Summary of cost functions
 %% *** Spike Timing
 %% *** Instantaneous Firing Rate
@@ -20,15 +20,15 @@
 \subsection[General performance of {GA}s]{General performance of {GA}s for optimising network
   parameters}\label{sec:GA:general-perf-disc}
 
-This chapter tested the ability of \glsreset{GA} to learn the network
+This chapter tested the ability of {\GAs} to learn the network
 parameters of a \glsreset{BNN} of the {\CN} using three cost
 functions. Figure~\ref{fig:GA:R1} showed the typical behaviour of {\GA}
 populations, with a convergence of the best genome toward the minimum value
-and the noisy variation in the population of genome scores. {\GA}s run with
+and the noisy variation in the population of genome scores. {\GAs} run with
 the ST and IFR cost functions were able to consistently achieve convergence
 of the best genome to very near the target score; the deviation was less
 than that due to a 1 unit step perturbation of the target genome. For
-{\GA}s run with the AIV cost function, however, convergence of best genomes
+{\GAs} run with the AIV cost function, however, convergence of best genomes
 was inconsistent and did not reach the target. Instead the AIV scores were
 limited to the upper tail of the distribution obtained with 5 unit step
 parameter perturbations of the target genome.
@@ -346,16 +346,16 @@ back propagation, lies in the inherent problems associated with gradient
 decent techniques. Back-propogation is easily trapped in local maxima, has
 poor performance with multimodal or un-differentiable functions, and
 sensitive to initial conditions. Evolution of the connection of weights can
-use {\GA}s then back propagation for local refining. Search space for {\BNN}s
+use {\GAs} then back propagation for local refining. Search space for {\BNN}s
 is infinitely large and non-differentiable makes {\GA} approaches a good
 chance for success.
 
 \todo[inline]{Combination techniques:
-  \citep{AngelineSaundersEtAl:1994} argues that {GA}s are
+  \citep{AngelineSaundersEtAl:1994} argues that {GAs} are
   inappropriate for network acquisition and describes his own GNARL
   that simultaneously finds structure and weights for recurrent NNs.}
 
-\todo[inline]{Sohn and Dagli 2004: {GA}s have been used to select the
+\todo[inline]{Sohn and Dagli 2004: {GAs} have been used to select the
   proper feature sets in pattern recognition problems [2-4], to train
   the weights of neural networks [5-7], to find the architecture of
   neural networks [8-10], and to determine initial weights and proper

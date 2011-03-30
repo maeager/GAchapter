@@ -29,7 +29,7 @@
 #
 fileinfo	:= LaTeX Makefile
 author		:= Chris Monson
-version		:= 2.2.0-rc5
+version		:= 2.2.0-rc11
 #
 # Note that the user-global version is imported *after* the source directory,
 # so that you can use stuff like ?= to get proper override behavior.
@@ -86,26 +86,80 @@ neverclean		?= *.pdf
 # Makefile.
 #
 # KNOWN ISSUES:
-#	* The following occurs:
-#		file with: \usepackage{named}\bibliographystyle{named}
-#		Compile
-#		change to: \usepackage{apalike}\bibliographystyle{apalike}
-#		Compile again -- BARF!
+# * The following occurs:
+#   file with: \usepackage{named}\bibliographystyle{named}
+#   Compile
+#   change to: \usepackage{apalike}\bibliographystyle{apalike}
+#   Compile again -- BARF!
 #
-#		The workaround: make clean-nographics; make
+#   The workaround: make clean-nographics; make
 #
-#		Note that we may not be able to fix this.  LaTeX itself barfs
-#		on this, not the makefile.  The very first invocation of LaTeX
-#		(when something like this has happened) reads the existing .aux
-#		file and discovers invalid commands like \citeauthoryear that
-#		are only valid in the package that was just removed.  It then
-#		tries to parse them and explodes.  It's not at all clear to me
-#		how to fix this.  I tried removing the .aux files on the first
-#		run of LaTeX, but that necessarily requires more subsequent
-#		rebuilds on common edits.  There does not appear to be a
-#		graceful solution to this issue.
+#   Note that we may not be able to fix this.  LaTeX itself barfs
+#   on this, not the makefile.  The very first invocation of LaTeX
+#   (when something like this has happened) reads the existing .aux
+#   file and discovers invalid commands like \citeauthoryear that
+#   are only valid in the package that was just removed.  It then
+#   tries to parse them and explodes.  It's not at all clear to me
+#   how to fix this.  I tried removing the .aux files on the first
+#   run of LaTeX, but that necessarily requires more subsequent
+#   rebuilds on common edits.  There does not appear to be a
+#   graceful solution to this issue.
+#
 #
 # CHANGES:
+# Chris Monson (2011-03-03):
+# * Bumped version to 2.2.0-rc11
+# * Issue 112: Fixed regression introduced by use of cygpath (ugly warnings)
+# Chris Monson (2011-02-03):
+# * Bumped version to 2.2.0-rc10
+# * Issue 112: Added path normalization for cygwin systems
+# * Fixed a bug in get-missing-inputs where we weren't specifying target files
+# Chris Monson (2011-01-24):
+# * Issue 111: Added .jpeg as a possible image extension
+# Chris Monson (2011-01-21):
+# * Issue 110: Long filenames not produced correctly in .d file
+# * Fixed problem with unknown control sequence error parsing
+# * Fixed problem with \r in fatal output (was interpreted as LF by echo)
+# * Removed a spurious "hi"
+# Chris Monson (2011-01-14):
+# * Bumped version to 2.2.0-rc8
+# * Issue 107: Removed comment with embedded newline, fixing MinGW on Windows 7.
+# Chris Monson (2011-01-07):
+# * Emit an error if .gpi.d files have dependencies with : in the name
+# Chris Monson (2011-01-05):
+# * Bumped version to 2.2.0-rc7
+# * Issue 106: existing graphic dependencies not generated correctly
+# Chris Monson (2011-01-04):
+# * Issue 106: not cleaning eps log files properly
+# * Issue 106: not rebuilding after creating .pdf graphics from .eps
+# * Issue 94: svg going unnecessarily through eps (can't reproduce)
+# Chris Monson (2010-12-31):
+# * Issue 100: make hanging because of faulty graphics detection (sed bug)
+# * Issue 108: do not ignore fatal errors from pdftex
+# Chris Monson (2010-12-23):
+# * Added gpi_global to gnuplot dependencies so that changes are detected
+# Chris Monson (2010-12-20):
+# * Updated build file to be smarter about Python version detection
+# * Created a bunch of test files and supporting scripts
+# * Issue 72: added apacite capaability (thanks to matkarat)
+# Chris Monson (2010-11-23):
+# * Changed to multi-part makefile build (split out sed scripts)
+# * Added build script and supporting infrastructure
+# * Updated test directory format
+# * Added notes about needed test cases
+# * Changed to use -file-line-error and fixed multiple inclusion/error bugs
+# * Added run_sed.py to allow easy testing of sed scripts outside of make
+# Chris Monson (2010-11-11):
+# * Bumped version to 2.2.0-rc7
+# * issue 92: broken hyperref driver detection fixed
+# * issue 101: Broken inkscape conversion
+# * issue 102: Broken specification of font size for gnuplot pdfcairo
+# * Added KEEP_TEMP so that we can avoid deleting useful temporaries for debugging
+# * Restructured gnuplot code to be easier to follow
+# * Fixed a bug in convert-gpi where we were using $< instead of $1
+# Chris Monson (2010-11-03):
+# * Bumped version to 2.2.0-rc6
+# * issue 96: Fix sed errors when using make variables in substitutions
 # Chris Monson (2010-07-28):
 # 	* Bumped version to 2.2.0-rc5 (rc4 is broken)
 # 	* Bail out when we find the use of the import.sty package
@@ -572,8 +626,9 @@ neverclean		?= *.pdf
 #	* For now, we're just GPL 2, not 3.  Maybe it will change later
 #	* Made the version and svninfo into variables
 # Chris Monson (2006-03-27):
-#	* Bumped version to 2.0a1
-#	* Huge, sweeping changes -- automatic dependencies
+# * Bumped version to 2.0a1
+# * Huge, sweeping changes -- automatic dependencies
+#
 
 # IMPORTANT!
 #
@@ -607,9 +662,12 @@ PDFLATEX	?= pdflatex
 XELATEX		?= xelatex
 EPSTOPDF	?= epstopdf
 MAKEINDEX	?= makeindex
+MAKEGLOSSARY    ?= makeglossaries
 KPSEWHICH	?= kpsewhich
 GS		?= gs
 # = OPTIONAL PROGRAMS =
+# == For MikTex under Cygwin, to get path names right
+CYGPATH		?= cygpath
 # == Makefile Color Output ==
 TPUT		?= tput
 # == TeX Generation ==
@@ -618,7 +676,7 @@ PYTHON		?= python
 RST2LATEX	?= rst2latex.py
 # == EPS Generation ==
 DIA		?= dia --nosplash # Diagram Editor
-OCTAVE		?= octave -q	# Matlab/Octave quiet
+OCTAVE		?= GNUTERM=dumb octave -q	# Matlab/Octave quiet, disable x11 terminal
 CONVERT		?= convert	# ImageMagick
 DOT		?= dot		# GraphViz
 DOT2TEX		?= dot2tex	# dot2tex - add options (not -o) as needed
@@ -634,12 +692,28 @@ GUNZIP		?= gunzip	# GZipped EPS
 PSNUP		?= psnup
 # == Viewing Stuff ==
 VIEW_POSTSCRIPT	?= gv
-VIEW_PDF	?= okular
+VIEW_PDF	?= evince
 VIEW_GRAPHICS	?= display
+
+# If cygpath is present, then we create a path-norm function that uses it,
+# otherwise the function is just a no-op.  Issue 112 has details.
+USE_CYGPATH := $(if $(shell $(WHICH) $(CYGPATH) >/dev/null 2>&1),yes,)
+
+# $(call get-cygpath,<path>)
+define get-cygpath
+$(shell $(CYGPATH) -u "$(shell $(CYGPATH) -s -w $1)")
+endef
+
+define path-norm
+$(if $(USE_CYGPATH),$(call get-cygpath,$1),$1)
+endef
 
 # Command options for embedding fonts and postscript->pdf conversion
 PS_EMBED_OPTIONS	?= -dPDFSETTINGS=/printer -dEmbedAllFonts=true -dSubsetFonts=true -dMaxSubsetPct=100
 PS_COMPATIBILITY	?= 1.4
+
+# If set to something, will cause temporary files to not be deleted immediately
+KEEP_TEMP	?=
 
 # Defaults for GPI
 DEFAULT_GPI_EPS_FONTSIZE	?= 22
@@ -661,6 +735,23 @@ $(if $(shell $(WHICH) $(GNUPLOT)),
 endef
 
 GNUPLOT_OUTPUT_EXTENSION	?= $(strip $(call determine-gnuplot-output-extension))
+
+# Internal code should use this because of :=.  This means that the potentially
+# expensive script invocation used to determine whether pdf is available will
+# only be run once.
+GPI_OUTPUT_EXTENSION := $(strip $(GNUPLOT_OUTPUT_EXTENSION))
+
+# Note, if the terminal *does* understand fsize, then we expect this call to
+# create a specific error here: "fsize: expecting font size".  Otherwise, we
+# assume that fsize is not understood.
+GPI_FSIZE_SYNTAX := $(strip \
+$(if \
+  $(filter pdf,$(GPI_OUTPUT_EXTENSION)),\
+  $(if \
+    $(findstring fsize: expecting font size,$(shell $(GNUPLOT) -e "set terminal pdf fsize" 2>&1)),\
+    fsize FONTSIZE,\
+    font ",FONTSIZE"),\
+  FONTSIZE))
 
 define determine-octave-output-extension
 $(if $(shell $(WHICH) $(OCTAVE)),
@@ -748,15 +839,7 @@ GRAY	?= $(call get-default,$(GREY),)
 # Utility Functions and Definitions
 #
 
-# While not exactly a make function, this vim macro is useful.  It takes a
-# verbatim sed script and converts each line to something suitable in a command
-# context.  Just paste the script's contents into the editor, yank this into a
-# register (starting at '0') and run the macro once for each line of the
-# original script:
-#
-# 0i	-e :s/\$/$$/eg :s/'/'"'"'/eg ^Ela'A' \:noh j
-
-# don't call this directly - it is here to avoid calling wildcard more than
+# Don't call this directly - it is here to avoid calling wildcard more than
 # once in remove-files.
 remove-files-helper	= $(if $1,$(RM) $1,$(sh_true))
 
@@ -795,15 +878,15 @@ endef
 # the file generation as quickly as the system does, so $(wildcard ...) doesn't
 # work right.  Blech.
 # $(call remove-temporary-files,filenames)
-remove-temporary-files	= $(if $1,$(RM) $1,:)
+remove-temporary-files	= $(if $(KEEP_TEMP),:,$(if $1,$(RM) $1,:))
 
 # Create an identifier from a file name
 # $(call cleanse-filename,filename)
 cleanse-filename	= $(subst .,_,$(subst /,__,$1))
 
 # Escape dots
-# $(call escape-dots,str)
-escape-dots		= $(subst .,\\.,$1)
+# $(call escape-fname-regex,str)
+escape-fname-regex	= $(subst /,\\/,$(subst .,\\.,$1))
 
 # Test that a file exists
 # $(call test-exists,file)
@@ -871,7 +954,7 @@ sh_false	:= ! :
 
 # Turn off forceful rm (RM is usually mapped to rm -f)
 ifdef SAFE_RM
-RM	:= rm -i
+RM	:= rm
 endif
 
 # Turn command echoing back on with VERBOSE=1
@@ -1015,6 +1098,7 @@ all_files.xvg		?= $(wildcard *.xvg)
 all_files.svg		?= $(wildcard *.svg)
 all_files.png		?= $(wildcard *.png)
 all_files.jpg		?= $(wildcard *.jpg)
+all_files.jpeg		?= $(wildcard *.jpeg)
 all_files.eps.gz	?= $(wildcard *.eps.gz)
 all_files.eps		?= $(wildcard *.eps)
 
@@ -1062,7 +1146,9 @@ files.xvg	:= $(call filter-buildable,xvg)
 files.svg	:= $(call filter-buildable,svg)
 files.png	:= $(call filter-buildable,png)
 files.jpg	:= $(call filter-buildable,jpg)
+files.jpeg	:= $(call filter-buildable,jpeg)
 files.eps.gz	:= $(call filter-buildable,eps.gz)
+files.eps	:= $(call filter-buildable,eps)
 
 # Make all pstex targets secondary.  The pstex_t target requires the pstex
 # target, and nothing else really depends on it, so it often gets deleted.
@@ -1085,7 +1171,9 @@ default_files.xvg	:= $(call filter-default,xvg)
 default_files.svg	:= $(call filter-default,svg)
 default_files.png	:= $(call filter-default,png)
 default_files.jpg	:= $(call filter-default,jpg)
+default_files.jpeg	:= $(call filter-default,jpeg)
 default_files.eps.gz	:= $(call filter-default,eps.gz)
+default_files.eps	:= $(call filter-default,eps)
 
 # Utility function for creating larger lists of files
 # $(call concat-files,suffixes,[prefix])
@@ -1121,6 +1209,7 @@ all_stems.xvg		:= $(call get-stems,xvg,all)
 all_stems.svg		:= $(call get-stems,svg,all)
 all_stems.png		:= $(call get-stems,png,all)
 all_stems.jpg		:= $(call get-stems,jpg,all)
+all_stems.jpeg		:= $(call get-stems,jpeg,all)
 all_stems.eps.gz	:= $(call get-stems,eps.gz,all)
 all_stems.eps		:= $(call get-stems,eps,all)
 
@@ -1339,7 +1428,7 @@ endif
 # Extensions generated by LaTeX invocation that can be removed when complete
 rm_ext		:= \
 	log *.log aux $(pre_pdf_extensions) pdf blg bbl out nav snm toc lof lot lol pfg \
-	fls vrb idx ind ilg glg glo gls lox nls nlo nlg brf mtc maf brf
+	fls vrb idx ind ilg acr acn alg glg glo gls lox nls nlo nlg brf mtc maf brf
 backup_patterns	:= *~ *.bak *.backup body.tmp head.tmp
 
 graph_stem	:= _graph
@@ -2019,62 +2108,48 @@ define ps2pdf
 endef
 
 # Colorize LaTeX output.
-# This uses a neat trick from the Sed & Awk Book from O'Reilly:
-# 1) If a line has a single ending paren, delete it to make a blank line (so
-#	that we catch the first error, which is not always preceded by a blank
-#	line).
-# 2) Ensure that the last line of the file gets appended to the hold buffer,
-# 	and blank it out to trigger end-of-paragraph logic below.
-# 3) When encountering a blank line (LaTeX output helpfully breaks output on
-# 	newlines)
-# 	a) swap the hold buffer (containing the paragraph) into the pattern buffer (putting a blank line into the hold buffer),
-# 	b) remove the newline at the beginning (don't ask),
-# 	c) apply any colorizing substitutions necessary to ensure happiness.
-# 	d) get the newline out of the hold buffer and append it
-# 	e) profit! (print)
-# 4) Anything not colorized is deleted, unless in verbose mode.
-color_tex	:= \
-	$(SED) \
-	-e '$${' \
-	-e '  /^$$/!{' \
-	-e '    H' \
-	-e '    s/.*//' \
-	-e '  }' \
-	-e '}' \
-	-e '/^$$/!{' \
-	-e '  H' \
-	-e '  d' \
-	-e '}' \
-	-e '/^$$/{' \
-	-e '  x' \
-	-e '  s/^\n//' \
-	-e '  /Output written on /{' \
-	-e '    s/.*Output written on \([^(]*\) (\([^)]\{1,\}\)).*/Success!  Wrote \2 to \1/' \
-	-e '    s/[[:digit:]]\{1,\}/$(C_PAGES)&$(C_RESET)/g' \
-	-e '    s/Success!/$(C_SUCCESS)&$(C_RESET)/g' \
-	-e '    s/to \(.*\)$$/to $(C_SUCCESS)\1$(C_RESET)/' \
-	-e '    b end' \
-	-e '  }' \
-	-e '  / *LaTeX Error:.*/{' \
-	-e '    s/.*\( *LaTeX Error:.*\)/$(C_ERROR)\1$(C_RESET)/' \
-	-e '    b end' \
-	-e '  }' \
-	-e '  /.*Warning:.*/{' \
-	-e '    s//$(C_WARNING)&$(C_RESET)/' \
-	-e '    b end' \
-	-e '  }' \
-	-e '  /Underfull.*/{' \
-	-e '    s/.*\(Underfull.*\)/$(C_UNDERFULL)\1$(C_RESET)/' \
-	-e '    b end' \
-	-e '  }' \
-	-e '  /Overfull.*/{' \
-	-e '    s/.*\(Overfull.*\)/$(C_OVERFULL)\1$(C_RESET)/' \
-	-e '    b end' \
-	-e '  }' \
-	-e '  d' \
-	-e '  :end' \
-	-e '  G' \
-	-e '}'
+color_tex := \
+$(SED) \
+-e '$${' \
+-e '  /^$$/!{' \
+-e '    H' \
+-e '    s/.*//' \
+-e '  }' \
+-e '}' \
+-e '/^$$/!{' \
+-e '  H' \
+-e '  d' \
+-e '}' \
+-e '/^$$/{' \
+-e '  x' \
+-e '  s/^\n//' \
+-e '  /Output written on /{' \
+-e '    s/.*Output written on \([^(]*\) (\([^)]\{1,\}\)).*/Success!  Wrote \2 to \1/' \
+-e '    s/[[:digit:]]\{1,\}/$(C_PAGES)&$(C_RESET)/g' \
+-e '    s/Success!/$(C_SUCCESS)&$(C_RESET)/g' \
+-e '    s/to \(.*\)$$/to $(C_SUCCESS)\1$(C_RESET)/' \
+-e '    b end' \
+-e '  }' \
+-e '  / *LaTeX Error:.*/{' \
+-e '    s/.*\( *LaTeX Error:.*\)/$(C_ERROR)\1$(C_RESET)/' \
+-e '    b end' \
+-e '  }' \
+-e '  /.*Warning:.*/{' \
+-e '    s//$(C_WARNING)&$(C_RESET)/' \
+-e '    b end' \
+-e '  }' \
+-e '  /Underfull.*/{' \
+-e '    s/.*\(Underfull.*\)/$(C_UNDERFULL)\1$(C_RESET)/' \
+-e '    b end' \
+-e '  }' \
+-e '  /Overfull.*/{' \
+-e '    s/.*\(Overfull.*\)/$(C_OVERFULL)\1$(C_RESET)/' \
+-e '    b end' \
+-e '  }' \
+-e '  d' \
+-e '  :end' \
+-e '  G' \
+-e '}'
 
 # Colorize BibTeX output.
 color_bib := \
@@ -2131,6 +2206,18 @@ if ! $(MAKEINDEX) -q $1 -t $3 -o $2 $4 > /dev/null || $(EGREP) -q '^!!' $3; then
 fi; \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
+
+# $(call run-makeindex,<input>,<output>,<log>,<extra flags>)
+define run-makeglossary
+success=1; \
+if ! $(MAKEGLOSSARY) $(shell basename $1 .tex) > /dev/null || $(EGREP) -q '^!!' $3; then \
+	$(call colorize-makeindex-errors,$3); \
+	$(RM) -f '$2'; \
+	success=0; \
+fi; \
+[ "$$success" = "1" ] && $(sh_true) || $(sh_false);
+endef
+
 
 # This runs the given script to generate output, and it uses MAKE_RESTARTS to
 # ensure that it never runs it more than once for a particular root make
@@ -2713,7 +2800,13 @@ endif
 # Create the glossary file
 %.gls:	%.glo %.tex
 	$(QUIET)$(call echo-build,$<,$@)
-	$(QUIET)$(call run-makeindex,$<,$@,$*.glg,-s nomencl.ist)
+	$(QUIET)$(call run-makeindex,$<,$@,$*.glg) #,-s nomencl.ist)
+
+# Create the glossary and acronym files from makeglossaries
+%.acr:	%.tex
+	$(QUIET)$(call echo-build,$<,$@)
+	$(QUIET)$(call run-makeglossary,$<,$@,$*.alg) #,-s nomencl.ist)
+
 
 # Create the nomenclature file
 %.nls:	%.nlo %.tex
@@ -3748,6 +3841,7 @@ define help_text
 #        very large, especially when created from bitmaps (don't do this if you
 #        don't have to).  This makefile will unzip them (not in place) to
 #        create the appropriate EPS file.
+#
 #
 endef
 

@@ -12,6 +12,7 @@
 \input{../hg/manuscript/misc/glossary} % My glossary of terms
 \makeglossaries
 
+\usepackage[notcite]{showkeys}
 % User defined commands
 %\usepackage{pstricks}
 \usepackage{appendix}
@@ -45,7 +46,7 @@
 		{%
 			\singlespacing%
 			\tableofcontents%
-			%\listoffigures%
+			\listoffigures%
 			% Do not include a list of tables if you have less
 			% than 10 tables, as per SGS suggestion.
 			%\listoftables%
@@ -55,13 +56,15 @@
 
 
 \setcounter{chapter}{4}
-\chapter[GAChapter]{GA optimsation of the {\CN} stellate network}
-\label{sec:GAChapter}
+\chapter[GAChapter]{Simultaneous Optimisation of Microcircuits using Genetic Algorithms}\label{sec:GAChapter}
+
+%{GA optimsation of the {\CN} stellate network}
 
 \vspace{5cm}
 {\centering \today\, version :\input{.hg/tags.cache}}
 %\begin{synopsis}
 %\end{synopsis}
+
 
 \newpage
 \include{IntroMethods}

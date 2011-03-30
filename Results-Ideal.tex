@@ -1,4 +1,4 @@
-\section{Optimisation of {BNN}s using Ideal inputs \textbf{OR} Expanded results}
+\section{Optimisation of {BNN}s using Ideal inputs \textbf{OR} Expanded results}\label{sec:GA:ResultsIdeal}
 
 To understand the of optimising {\BNN}s it may appear that to use ideal
 inputs is not intuitive; however, the methods and techniques of {\GA}
@@ -101,6 +101,7 @@ by its range and finding the mean absolute error.
 
   \begin{figure}[htb]
     \centering
+    \includegraphics{Histograms-Ideal-ST}
     \caption{Distribution of the ST cost function scores for parameter
       deviations near the global optimum with identical (A) or
       different {ANF} inputs (B). Each figure contains a histogram of
@@ -118,6 +119,7 @@ by its range and finding the mean absolute error.
 
   \begin{figure}[htb]
     \centering
+    \includegraphics{Histograms-Ideal-IFR}
 
     \caption{Distribution of the IFR cost function scores for
       parameter deviations near the global optimum in the same format
@@ -139,6 +141,7 @@ by its range and finding the mean absolute error.
 
   \begin{figure}[htb]
     \centering
+    \includegraphics{Histograms-Ideal-IV}
     \caption{Distribution of the AIV cost function scores for
       parameter deviations near the global optimum in the same format
       as Figure~\ref{fig:GA:9}.  (A) The AIV-25 cost function with
@@ -176,7 +179,7 @@ percentile range in the later generations and the best genome score
 was 9.72~ms (Figure~\ref{fig:GA:5}B).  The best genome for the identical
 inputs was also closer to the target parameter values shown in
 Figure~\ref{fig:GA:8}A, with a normalized mean parameter error of 0.221,
-while the different inputs {\GA}s best genome was 0.252 (Figure
+while the different inputs {\GAs} best genome was 0.252 (Figure
 8B). Some parameters were well constrained by the {\GA} and were robust
 to changes in the input, such as the excitatory input corresponding to
 the {\ANF} input to the {\CN} cells (parameters 1 to 11 or \wANFTS to
@@ -235,7 +238,7 @@ information within the intracellular voltages. \todo[inline]{remove or replace 2
 % 
 % Faster evolution?? Does not look like it to me.
 % 
-% Cost function scores for the best genomes emerging from the {\GA}s in
+% Cost function scores for the best genomes emerging from the {\GAs} in
 % the absence of noise are given in row 2 of Table ? for all three
 % cost functions. For ease of comparison the equivalent scores in the
 % case with noisy inputs are repeated in row 1.  In general, across
@@ -316,7 +319,7 @@ of the ST cost function scores moved to 9.72 ms ($\pm$ 0.06 ms)
 steps, and no input noise most scores fell within a small range of
 scores around 7.5 ms, with a small percentage (10.6\%) falling below
 this. The 1-step distribution compressed around 9.79 ms for different
-inputs, As indicators of the {\GA}s final performance, the best genomes
+inputs, as indicators of the {\GAs} final performance, the best genomes
 produced by the {\GA} of 8.45 ms (identical inputs) and 9.72 ms
 (different inputs) were very reasonable estimates.  The shape of the
 ST cost function distributions of 5 step populations scores were very
@@ -370,7 +373,7 @@ of 1- and 5- step scores, but the eventual winner finished just inside
 the 5-step scores.
 
 
-\subsection{Cross comparison of best genomes}\label{sec:GA:Ideal-cross-comp-best}
+\subsection{Cross comparison of best genomes}\label{sec:GA:Ideal-Xcomp-best}
 
 
 
@@ -421,7 +424,7 @@ genomes not far behind.
 
 \begin{table}[tbh]
   \centering
-  \input{src/best_genomes_Ideal25.tex}
+%  \input{src/best_genomes_25.tex}
   \caption{Cross comparison of best genomes from Ideal GA simulations.}
   \label{tab:GA:IdealXComp}
 \end{table}
