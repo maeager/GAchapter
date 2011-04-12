@@ -1,5 +1,5 @@
 
-%\PARstart{U}{se} the force Luke...
+
 
 \section{Introduction}\label{sec:GA:intro}
 
@@ -413,6 +413,24 @@ rates, and intracellular voltages.
 \subsubsection{Spike Timing Cost Function}\label{sec:GA:spike-timing-cost-fn}
 
 
+\begin{figure}[t!]
+ \resizebox{3in}{!}{\input{/media/data/Work/thesis/GAChapter/gfx/DynamicSpikeMetric_v2.TpX}}
+ \caption[Dynamic spike-time algorithm]{Spike timing cost function measure computed using a dynamic
+   programming algorithm. A minimum distance matrix between the
+   \textit{target} set of spike times and a \textit{trial} set of
+   spike times (from the same cell in the network, $i$, is traversed
+   to find the minimum cumulative path of timing errors. Arrows
+   indicate the possible combinations of spike time errors. For every
+   cell, each repetition in the trial set, $j$, is compared against 25
+   repetitions, $k$, in the training data to find the best fit and to
+   minimize penalties for missing or additional spikes.}
+\label{fig:GA:DynSpikeMetric}
+\end{figure}
+
+\smallskip{}
+
+
+
 Spike times give accurate temporal information but are limited by a
 focus on individual stimulus presentations, which may contain various
 sources of noise and trial-to-trial variability. The metric we used
@@ -433,31 +451,13 @@ number of stimulus repetitions, $x_{ij}$ is the vector containing the
 spike times of the trial network for stimulus repetition $j$ produced
 by neuron $i$, and $x_{ik}^{*}$ is the vector containing the spike
 times of the target network for the stimulus repetition $k$ produced
-by neuron $i$.  The units for $\Psi_{{\rm ST}}$ are ms per cell per
+by neuron $i$.  The units for $\Psi_{{\rm ST}}$ are msec per cell per
 spike train for 60~ms duration spike trains but will be milliseconds
 for the remainder of the study. $D(x_{ij} ,x_{ik}^{*})$ is the
 difference measure between trial and target network spike trains as
 found by dynamic programming.  Dynamic programming is a method for
 analyzing sequential processes \citep{Denardo:1982} and was applied to
-find the minimum distance between two spike trains, as illustrated in
-
-\begin{figure}[t!]
- \resizebox{3in}{!}{\input{/media/data/Work/thesis/GAChapter/gfx/DynamicSpikeMetric_v2.TpX}}
- \caption[Dynamic spike-time algorithm]{Spike timing cost function measure computed using a dynamic
-   programming algorithm. A minimum distance matrix between the
-   \textit{target} set of spike times and a \textit{trial} set of
-   spike times (from the same cell in the network, $i$, is traversed
-   to find the minimum cumulative path of timing errors. Arrows
-   indicate the possible combinations of spike time errors. For every
-   cell, each repetition in the trial set, $j$, is compared against 25
-   repetitions, $k$, in the training data to find the best fit and to
-   minimize penalties for missing or additional spikes.}
-\label{fig:GA:DynSpikeMetric}
-\end{figure}
-
-\smallskip{}
-
-Figure~\ref{fig:GA:DynSpikeMetric}.  In this process, a trial spike
+find the minimum distance between two spike trains, as illustrated in Figure~\ref{fig:GA:DynSpikeMetric}.  In this process, a trial spike
 train, $x_{ij}$, was mapped onto a target spike train, $x_{ik}^{*}$,
 by a process of realignment, without specifically considering
 insertion or deletion of spikes. Insertion and deletion of spikes
@@ -504,7 +504,7 @@ short time bins ($<$1~ms), the estimated firing rate is called the
 instantaneous firing rate (IFR).  The IFR cost function was obtained
 from the mean squared error between each neuron's PSTH, $r_{i} $, and
 the corresponding target neuron's PSTH, $r_{i}^{*} $, it was
-normalized to obtain a firing rate (spikes per ms) error per stimulus.
+normalized to obtain a firing rate (spikes per msec) error per stimulus.
 
 \smallskip{}
 
@@ -519,7 +519,7 @@ number of cells in the network, $T_{{\rm IFR}}=R\times W$ is a
 normalization factor, $R$ is the number of trial repetitions
 ($R=25$~was used in this study), and $W$ is the bin width of the
 PSTH\@. The units for $\Psi_{{\rm IFR}}$ are spikes per millisecond
-per stimulus per neuron, but we shall use spikes per ms for the
+per stimulus per neuron, but we shall use spikes per msec for the
 remainder of this study.
 
 \smallskip{}
@@ -777,7 +777,7 @@ $\bar{g}_{{\rm leak}} $, mS cm$^{-2}$ & 0.471  & 0.471  &  0.471  & 0.962 \\ %\h
 \subsubsection{Synapse Models}
 
 Synapses were modeled with either a single or a double exponential
-ggtime-dependent conductance change with the current density described
+time-dependent conductance change with the current density described
 by $I_{{\rm SYN}} (t)=g_{{\rm SYN}} (t)(V-E_{{\rm rev}} )$, where
 $E_{\rm rev}$ is the associated reversal potential. The strength of
 the synapses was determined by a normalized weight parameter, $w$, and
@@ -790,18 +790,18 @@ decay time-constants as follows:
 \noindent where $\eta$ normalizes the peak of the double-exponential
 function to one (see Table~\ref{tab:GA:GeneralParams}). Excitatory
 inputs to {\CN} cells from type-I {\ANF} terminals were mediated by fast
-glutamatergic AMPA receptors with a decay time constant of $\tau
+glutamatergic-AMPA receptors with a decay time constant of $\tau
 _{{\rm AMPA}} = 0.36$ ms
 \citep{Gardner:2000,GardnerTrussellEtAl:1999}, and the reversal
 potential was 0~mV. We used the values from glycinergic currents
-recorded in mature {\CN} neurons, which have a fast rise time, $\tau_{{\rm Gly1}} = 0.4$ ms, and a decay time constant $\tau_{{\rm Gly2}}
+recorded in mature {\CN} neurons, which have a fast rise time, $\tau_{{\rm Gly1}} = 0.4$ msec, and a decay time constant $\tau_{{\rm Gly2}}
 = 2.5$ ms
 \citep{AwatramaniTurecekEtAl:2005,HartyManis:1998,LeaoOleskevichEtAl:2004,LimOleskevichEtAl:2003}.
 Measured values in \GABAa receptor currents in {\CN} cells have a fast
 (9~ms) and a slow (150~ms) decay component
 \citep{AwatramaniTurecekEtAl:2005,DavisYoung:2000}, but for short
 stimuli only the fast component was modeled ($\tau_{{\rm GABA1}}
-=0.7$ ms, $\tau_{{\rm GABA2}} =9$ ms).
+=0.7$ msec, $\tau_{{\rm GABA2}} =9$ ms).
 
 \subsubsection{Delay and Latency}
 
