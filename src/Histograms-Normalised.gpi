@@ -35,8 +35,8 @@ set format cb "% g"
 set angles radians
 unset grid
 set key title ""
-set key inside right top vertical Right noreverse enhanced autotitles nobox
-set key noinvert samplen 4 spacing 1.25 width 0 height 0 
+set key inside right top vertical Right noreverse enhanced autotitles nobox #inside
+set key noinvert samplen 4 spacing 1.25 width 0 height -1.0 
 #unset key
 unset label
 unset arrow
@@ -140,21 +140,23 @@ set style line 3 linetype 1 linewidth 2 lc rgb "black"
 ## Histogram STDYN
 set size 1,0.33
 set origin 0.0,0.66
-set label "ST" at 6.25,0.8 font "Helvetica,22"
+set xlabel "ST Score (ms)" font "Helvetica,16"
+set label "A" at 6.25,1.1 font "Helvetica,22"
 set arrow 1 from 10.167,-0.3 to 10.167,0
 set arrow 2 from 10.012,-0.3 to 10.012,0
 set arrow 3 from 9.6789,-0.3 to 9.6789,0
 
-plot [5:20] 'HistogramSTDYN-MaxNorm.dat' using 1:11  with filledcurves y1=0 fill transparent solid 1 lc rgb "gray" title "GA genomes", \
-     'HistogramSTDYN-MaxNorm.dat' using 1:9 title "Rand. Param. +/-5" with histep ls 1, \
-     'HistogramSTDYN-MaxNorm.dat' using 1:7 title "Rand. Param. +/-1"  with histep ls 2, \
-     'HistogramSTDYN-MaxNorm.dat' using 1:5  title "Target Genome"   with histep ls 3 
+plot [5:30] 'HistogramSTDYN-MaxNorm.dat' using 1:11  with filledcurves y1=0 fill transparent solid 1 lc rgb "gray" title "GA genomes", \
+     'HistogramSTDYN-MaxNorm.dat' using 1:9 title "Rand. Param. +/- 5" with histep ls 1, \
+     'HistogramSTDYN-MaxNorm.dat' using 1:7 title "Rand. Param. +/- 1"  with histep ls 2, \
+     'HistogramSTDYN-MaxNorm.dat' using 1:5 title "Target Genome"   with histep ls 3 
 
 ## Histogram IFR
 set size 1,0.33
 set origin 0.0,0.33
-set ylabel "# Genomes"
-set label "IFR" at 0.205,0.8 font "Helvetica,22"
+set ylabel "# Genomes" font "Helvetica,16"
+set label "B" at 0.205,1.1 font "Helvetica,22"
+set xlabel "IFR Score (sp/ms)" font "Helvetica,16"
 unset arrow 1
 unset arrow 2
 unset arrow 3
@@ -172,8 +174,8 @@ set origin 0.0,0.0
 #set xlabel "AIV Cost Function Score"
 unset label 
 unset ylabel
-set xlabel "Cost Function Score"
-set label "AIV" at 0.16,0.8 font "Helvetica,22" 
+set xlabel "AIV Score (mV)" font "Helvetica,16"
+set label "C" at 0.16,1.1 font "Helvetica,22" 
 unset arrow 1
 unset arrow 2
 unset arrow 3
