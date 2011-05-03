@@ -64,7 +64,7 @@ models or networks of integrate-and-fire neural models rather than
 
 \smallskip{} 
 
-\glspl{GA} belong to a class of optimization algorithms
+\Glspl{GA} belong to a class of optimization algorithms
 that mimic the process of evolution through natural selection. The
 primary strength of {\GAs} relative to other optimization techniques,
 such as gradient-descent, is that {\GAs} can avoid getting caught in
@@ -114,7 +114,7 @@ nucleus (CN, Figure~\ref{fig:GA:CNdiagram}), which is the gateway
 between the peripheral auditory system and the central nervous system,
 with six distinct pathways to higher auditory nuclei
 \citep{CantBenson:2003}. The principle neurons in the circuit are the
-T-stellate (TS) cells, in the \VCN,
+\TS cells, in the \VCN,
 (Figure~\ref{fig:GA:CNdiagram}), which project to the inferior
 colliculus.  They provide a robust spectral representation of sound
 and are implicated in forming part of the main `what' pathway for
@@ -143,11 +143,11 @@ example network.
      Golgi cells in the {GCD} are the only known source of {GABA}ergic
      cells within the VCN, and it is presumed that they synapse with
      TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic
-     D-stellate cells (DS) project to wide areas of the VCN, DCN,
+     D~stellate cells (DS) project to wide areas of the VCN, DCN,
      and contralateral {CN}. DS cells are broadly tuned and respond
      best at the onset of a tone, with a small number of precisely
      timed spikes, and respond strongly to broad-band noise.  In the
-     deep layer of the DCN, tuberculo-ventral (TV) cells provide
+     deep layer of the DCN, tuberculoventral (TV) cells provide
      a narrow-band on-frequency source of glycinergic inhibition to
      the VCN. These neurons respond poorly to clicks and
      broad-band noise, due to wide-band inhibition from DS cells
@@ -167,7 +167,7 @@ example network.
   one iso-frequency lamina of the ventral {CN} (dotted lines) and TV
   cells of the {DCN}\@. Excitatory synapses from {ANF}s (arrows)
   are modulated within the network by glycinergic (triangle) and
-  GABAergic (T) inputs. (B)~ANFs are ordered into a wide range of
+  GABAergic (bar) inputs. (B)~ANFs are ordered into a wide range of
   frequency channels that are mapped to the {VCN} and {DCN} in an orderly, tono-topic fashion. Topographic organization of
   lateral connections in the {CN} stellate network shows the range of
   inputs to TS cells from Golgi, DS and TV cells. Dendritic
@@ -235,7 +235,7 @@ existing members of the population. In this process a model is
 represented by a genome, which is the result of mapping the model
 parameters into binary strings and concatenating them together. Each
 population of genomes is evaluated for fitness using a carefully
-tailored cost-function, better fitness increases the probability that
+tailored cost function, better fitness increases the probability that
 a genome will contribute to the next population.  The basic principles
 of genetic reproduction, viz.\ crossover operation and mutation, are
 used to generate new genomes from selected existing genomes. A
@@ -259,7 +259,7 @@ selection, $P_i$, is:
 \begin{equation} \label{eq:GA:1} 
 P_{i} =1 - \frac{g_{i} }{G}
 \end{equation}
-\noindent where $g_i$ is the genome's cost-function score, and $G$ is
+\noindent where $g_i$ is the genome's cost function score, and $G$ is
 the sum of all genome scores in the current population (note that the
 sign in front of $g_i$ is negative here, instead of the conventional
 positive, because we use cost-functions corresponding to an error
