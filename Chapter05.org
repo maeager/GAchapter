@@ -31,7 +31,7 @@
   ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
   (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f"
                                    "makeglossaries %b" 
-                                   "make BUILD_STRATEGY=pdflatex Chapter3.pdf"))
+                                   "make BUILD_STRATEGY=pdflatex Chapter05.pdf"))
   (setq org-export-latex-title-command "") 
   (setq org-entities-user '(("space" "\\ " nil " " " " " " " "))) 
   (add-to-list 'org-export-latex-classes '("UoM-draft-org-article"
@@ -324,7 +324,7 @@ linearly scaled so that the probability of selection, $P_i$, is:
 \begin{equation} \label{eq:GA:1} 
 P_{i} = 1 - \frac{c_{i}}{\mathbf{c}}
 \end{equation}
-\noindent where $c_{i}$ is the genome's cost function score, and $\math{c}$ is
+\noindent where $c_{i}$ is the genome's cost function score, and $\mathbf{c}$ is
 the sum of all genome scores in the current population (note that the
 sign in front of $c_{i}$ is negative here, instead of the conventional
 positive, because we use cost-functions corresponding to an error
@@ -1887,48 +1887,48 @@ the 5-step scores.
 
 
 One way to compare the results across the cost functions is to use the
-best genomes found by the \GA trained by each cost function. Table \ref{fig:GA:IdealXComp}
-shows the comparison of the best genomes obtained using the \GA with
-identical inputs.  The target, 1-step and 5-step scores are given as a
-reference for the expected ranges of optimal genomes in each cost
-function.  The \ST cost function was shown to have a well defined
-global optimum at zero and good differentiation between very good
-genomes (1-step) and good genomes (5-step) in Figure 9.  The \ST,
- \AIV-25 and  \AIV-250 best genomes fell within the 1-step and 5-step
-means, but the \IFR cost functions performed poorer as their best
-genomes falling toward the tail region of the \ST cost function 5-step
-distribution (see Figure 9A).  All the best genomes were between the
-1-step and 5-step means for the \IFR-25 cost function with very small
-differences between them (0.195-0.207).  There is good distinction
-between the 1-step and 5-step scores for the  \AIV-25 cost function with
-identical inputs (Figure 11A).  This domain was preferable to the  \AIV
-best genomes, but not so for the spike-based \ST and \IFR cost function
-trained best genomes, which were above the mean of the 5-step
-distribution.
+best genomes found by the \GA trained by each cost function. Table
+\ref{fig:GA:IdealXComp} shows the comparison of the best genomes
+obtained using the \GA with identical inputs.  The target, 1-step and
+5-step scores are given as a reference for the expected ranges of
+optimal genomes in each cost function.  The \ST cost function was shown
+to have a well defined global optimum at zero and good differentiation
+between very good genomes (1-step) and good genomes (5-step) in
+Figure 9.  The \ST, \AIV-25 and \AIV-250 best genomes fell within the
+1-step and 5-step means, but the \IFR cost functions performed poorer as
+their best genomes falling toward the tail region of the \ST cost
+function 5-step distribution (see Figure 9A).  All the best genomes were
+between the 1-step and 5-step means for the \IFR-25 cost function with
+very small differences between them (0.195-0.207).  There is good
+distinction between the 1-step and 5-step scores for the \AIV-25 cost
+function with identical inputs (Figure 11A).  This domain was preferable
+to the \AIV best genomes, but not so for the spike-based \ST and \IFR
+cost function trained best genomes, which were above the mean of the
+5-step distribution.
 
-Table \ref{fig:GA:IdealXComp250} shows the mean and standard deviation of cost function scores
-(evaluated 100 times with different inputs) for the best genomes
-trained with different inputs. The \ST best genome performed better
-than the average target genome score for different inputs (9.63
-compared with 9.72, respectively) but this was not significant. When
-using identical inputs, this best genome performed better (8.02 ms)
-than the best genome trained with identical inputs (8.45 msec) despite a
-larger mean parameter error (Figure 8A and Figure 8B).   \AIV-25 and
- \AIV-250 best genomes fell within the 1-step and 5-step means of the \ST
-cost function, but the \IFR best genomes performed more poorly relative
-to the 5-step population.  The performance of the \IFR-25's best genome
-was the worst in its own category and the compression of scores around
-the target in Figure 10B are highlighted by the narrow range of scores
-in the other best genomes. The \IFR-250 best genome performed slightly
-better, beating the \IFR-25 best genome, in its own cost function. The
- \AIV-25 best genome fell within the 1-step distribution while the
- \AIV-250 and \ST best genomes were closer to the 5-step mean for both
-\IFR cost functions. For the  \AIV-25 and  \AIV-250 cost functions, the
-\IFR-25 and \IFR-250 best genomes were outside the range for a
-reasonable genome (5-step).  The  \AIV-25 best genome (with the lowest
-mean parameter error when using different inputs Figure 8G) scored the
-best values in both  \AIV cost functions, with the \ST and  \AIV-250 best
-genomes not far behind.
+Table \ref{fig:GA:IdealXComp250} shows the mean and standard deviation
+of cost function scores (evaluated 100 times with different inputs) for
+the best genomes trained with different inputs. The \ST best genome
+performed better than the average target genome score for different
+inputs (9.63 compared with 9.72, respectively) but this was not
+significant. When using identical inputs, this best genome performed
+better (8.02 ms) than the best genome trained with identical inputs
+(8.45 msec) despite a larger mean parameter error (Figure 8A and Figure
+8B).  \AIV-25 and \AIV-250 best genomes fell within the 1-step and
+5-step means of the \ST cost function, but the \IFR best genomes
+performed more poorly relative to the 5-step population.  The
+performance of the \IFR-25's best genome was the worst in its own
+category and the compression of scores around the target in Figure 10B
+are highlighted by the narrow range of scores in the other best
+genomes. The \IFR-250 best genome performed slightly better, beating the
+\IFR-25 best genome, in its own cost function. The \AIV-25 best genome
+fell within the 1-step distribution while the \AIV-250 and \ST best
+genomes were closer to the 5-step mean for both \IFR cost functions. For
+the \AIV-25 and \AIV-250 cost functions, the \IFR-25 and \IFR-250 best
+genomes were outside the range for a reasonable genome (5-step).  The
+\AIV-25 best genome (with the lowest mean parameter error when using
+different inputs Figure 8G) scored the best values in both \AIV cost
+functions, with the \ST and \AIV-250 best genomes not far behind.
 
 
 \begin{table}[tbh]
@@ -1947,43 +1947,43 @@ genomes not far behind.
 
 ** Individual Parameter Perturbation Analysis
 
-To further understand how useful each cost function was in
-constraining parameters, a sensitivity analysis on each individual
-parameter is is crucial to understand the behaviour of individual
-parameters close to the global optimum.  The sensitivity analysis of
-the cost function is defined as calculating the learning gradients of
-each parameter on either side of the target value. Parameter values
-were stepped up and down independently, with the steps determined from
-the gene resolution of the parameter in
-Table \ref{tab:GA:Genome}. Gradients were calculated using a
-least-squares linear regression in [[latex:progname][MATLAB]]/[[latex:progname][GNU Octave]] and two-sided
-t-tests were performed to determine whether each gradient was
-significantly different from zero.  This was done for the identical
-and the different \ANF inputs, robustness was evaluated by comparing
-the ratio of V-shaped to non-V-shaped cost function gradients for
-different inputs.
-
+To further understand how useful each cost function was in constraining
+parameters, a sensitivity analysis on each individual parameter is is
+crucial to understand the behaviour of individual parameters close to
+the global optimum.  The sensitivity analysis of the cost function is
+defined as calculating the learning gradients of each parameter on
+either side of the target value. Parameter values were stepped up and
+down independently, with the steps determined from the gene resolution
+of the parameter in Table \ref{tab:GA:Genome}. Gradients were calculated
+using a least-squares linear regression in [[latex:progname][MATLAB]] \slash [[latex:progname][GNU Octave]] and
+two-sided t-tests were performed to determine whether each gradient was
+significantly different from zero.  This was done for the identical and
+the different \ANF inputs, robustness was evaluated by comparing the
+ratio of V-shaped to non-V-shaped cost function gradients for different
+inputs.
 
 
 Representative examples are given in Figure \ref{fig:GA:R4}, which show
 the dependence of the cost function on perturbation size when a
-parameter was perturbed from its target value (and all other
-parameters had their target value). A range of different behaviors is
-evident depending on the particular combination of parameter and cost
+parameter was perturbed from its target value (and all other parameters
+had their target value). A range of different behaviors is evident
+depending on the particular combination of parameter and cost
 function. The ideal behaviour is shown in Figure \ref{fig:GA:R4}A, which
 shows the target at a well defined local minimum in the cost function,
-with significantly non-zero gradients bilaterally. Figure \ref{fig:GA:R4}B is a sub-ideal case, with a significantly non-zero
+with significantly non-zero gradients bilaterally. Figure
+\ref{fig:GA:R4}B is a sub-ideal case, with a significantly non-zero
 gradient appearing only unilaterally, a zero gradient on the opposing
 side.  The behaviour shown in Figure \ref{fig:GA:R4}C, in which the cost
-function is locally flat, implies that the cost function is
-insensitive to this parameter in the vicinity of the target and
-represents non-ideal behaviour. Finally, Figure \ref{fig:GA:R4}D gives an
-example of a problematic cost function behaviour, in which the minimum
-occurs at a value other than the target.\yellownote{Hamish: I am
-  still not happy we understand this well: Pruning of candidates with
-  reduced spikes in low rate regions of \DS units}. These cases were
-classified variously as bilaterally sensitive (Figure \ref{fig:GA:R4}A),
-unilaterally sensitive (Figure \ref{fig:GA:R4}B), insensitive (Figure \ref{fig:GA:R4}C) or irregular(Figure \ref{fig:GA:R4}D), respectively.
+function is locally flat, implies that the cost function is insensitive
+to this parameter in the vicinity of the target and represents non-ideal
+behaviour. Finally, Figure \ref{fig:GA:R4}D gives an example of a
+problematic cost function behaviour, in which the minimum occurs at a
+value other than the target.\yellownote{Hamish: I am still not happy we
+understand this well: Pruning of candidates with reduced spikes in low
+rate regions of \DS units}. These cases were classified variously as
+bilaterally sensitive (Figure \ref{fig:GA:R4}A), unilaterally sensitive
+(Figure \ref{fig:GA:R4}B), insensitive (Figure \ref{fig:GA:R4}C) or
+irregular(Figure \ref{fig:GA:R4}D), respectively.
 #  Figure \ref{fig:GA:12} shows four different examples of the individual
 #  parameter sensitivity for the \ST cost function.  With the identical AN
 #  input, the \ST cost function sensitivity to parameters 1 and 23
@@ -2001,14 +2001,13 @@ unilaterally sensitive (Figure \ref{fig:GA:R4}B), insensitive (Figure \ref{fig:G
 #  robust below the target but is negative above the target although not
 # significantly.  
 
-Gradients that oppose the direction toward the
-target would reduce the effectiveness of optimization, especially
-gradient-decent methods.  For parameters with a target value close to
-the minimum range (parameters 17, 20, 26, and 27), the gradient below
-the target were not considered in the sensitivity analysis.  Even with
-identical \ANF inputs and the same random seed, a change in the
-number of connections or spread parameters will alter the allocation
-of synapses within the network.
+Gradients that oppose the direction toward the target would reduce the
+effectiveness of optimization, especially gradient-decent methods.  For
+parameters with a target value close to the minimum range (parameters
+17, 20, 26, and 27), the gradient below the target were not considered
+in the sensitivity analysis.  Even with identical \ANF inputs and the
+same random seed, a change in the number of connections or spread
+parameters will alter the allocation of synapses within the network.
 
 
 
@@ -2055,8 +2054,8 @@ completely insensitive. For different \ANF inputs (Figure
 \ref{fig:GA:13}B), 11 parameters were bilaterally sensitive and 8 were
 unilaterally sensitive, while the \ST cost function was completely
 insensitive to 6 parameters. Three parameters controlling the excitatory
-synaptic input to \DS cells, 4, 5 and 6 (\wANFDS, \nHSRDS, \nLSRDS)
-had significant opposing gradients below the target, and the inhibitory
+synaptic input to \DS cells, 4, 5 and 6 (\wANFDS, \nHSRDS, \nLSRDS) had
+significant opposing gradients below the target, and the inhibitory
 input parameter 25 (\nTVDS) above the target suggesting a shifted
 optimum value.  \DS cells have very precise onset spikes and few spikes
 in the remainder of the stimulus.  If the weight and number of
@@ -2068,15 +2067,15 @@ the there would be some benefit to this change in the training data.
 
 
 
-The synaptic parameters have a strong influence on the timing of
-spikes in post-synaptic neurons, contributing to changes in the cost
-function score when the parameters are moved further away from the
-target, and provide a well-defined global optimum. Even though the
-number of individual parameters with significant learning gradients
-was reduced for the \ST cost function with different inputs and there
-were four parameters with significant opposing gradients (Figure 13B),
-the cost function still produced a distinctive optimum (Figure 9B) and
-the \GA was able to find genomes close to the global optimum.
+The synaptic parameters have a strong influence on the timing of spikes
+in post-synaptic neurons, contributing to changes in the cost function
+score when the parameters are moved further away from the target, and
+provide a well-defined global optimum. Even though the number of
+individual parameters with significant learning gradients was reduced
+for the \ST cost function with different inputs and there were four
+parameters with significant opposing gradients (Figure 13B), the cost
+function still produced a distinctive optimum (Figure 9B) and the \GA
+was able to find genomes close to the global optimum.
 
 
 
@@ -2135,23 +2134,21 @@ the \GA was able to find genomes close to the global optimum.
 
 Figure \ref{fig:GA:14} shows the individual parameter sensitivity of the
 \IFR cost functions.  The sensitivity of the \IFR-25 cost function with
-the identical inputs was significant for 54 of the possible 55
-parameter gradients (Figure \ref{fig:GA:14}A).  This matches the
-well-defined global optimum of uniform parameter variation in
-Figure \ref{fig:GA:10}A.  The sensitivity to inhibitory parameters of the
-\IFR-25 cost function was not robust to changes in the \ANF input
-(Figure \ref{fig:GA:14}B) since most gradients were flattened (not
-significant from zero gradient) or were unilaterally sensitive.  Seven
-inhibitory parameters had opposing gradients below the target, but
-only one was significant, 14 (\sDSTS). Parameter
-10 had a significant reduction from identical inputs to different
-inputs, where it became completely insensitive. 
-#  The individual
-#  parameter sensitivity of the \IFR-250 cost function with different
-#  inputs (Figure \ref{fig:GA:14}C) is slightly changed from the \IFR-25 cost
-#  function (14 opposing to insensitive, 8 and 10 insensitive to
-#  significant on one side, and 22 and 23 lost sensitivity on one side of
-#  the target).
+the identical inputs was significant for 54 of the possible 55 parameter
+gradients (Figure \ref{fig:GA:14}A).  This matches the well-defined
+global optimum of uniform parameter variation in \IFR-25 cost function
+was not robust to changes in the \ANF input (Figure \ref{fig:GA:14}B)
+since most gradients were flattened (not Figure \ref{fig:GA:10}A.  The
+sensitivity to inhibitory parameters of the significant from zero
+gradient) or were unilaterally sensitive.  Seven inhibitory parameters
+had opposing gradients below the target, but only one was significant,
+14 (\sDSTS). Parameter 10 had a significant reduction from identical
+inputs to different inputs, where it became completely insensitive.
+#  The individual parameter sensitivity of the \IFR-250 cost function
+#  with different inputs (Figure \ref{fig:GA:14}C) is slightly changed
+#  from the \IFR-25 cost function (14 opposing to insensitive, 8 and 10
+#  insensitive to significant on one side, and 22 and 23 lost
+#  sensitivity on one side of the target).
 
 
 #  The sensitivity to inhibitory parameters of the
@@ -2181,14 +2178,14 @@ inputs, where it became completely insensitive.
 
 *** Average Intracellular Voltage
 
-Figure \ref{fig:GA:15}A shows the individual parameter sensitivity of the
- \AIV-25 cost function with identical inputs was similar to the \IFR-25 cost
-functions with 54 of the possible 55 parameters having significant
-gradients.  The parameter sensitivity of the  \AIV-25 cost function was
-reasonably robust to changes in the \ANF input despite a flattening of the
-gradients (Figure \ref{fig:GA:15}B), especially for excitatory parameters
-(1-11). Thirteen parameters remained bilaterally sensitive parameters and 6
-were unilaterally sensitive.  
+Figure \ref{fig:GA:15}A shows the individual parameter sensitivity of
+the \AIV-25 cost function with identical inputs was similar to the
+\IFR-25 cost functions with 54 of the possible 55 parameters having
+significant gradients.  The parameter sensitivity of the \AIV-25 cost
+function was reasonably robust to changes in the \ANF input despite a
+flattening of the gradients (Figure \ref{fig:GA:15}B), especially for
+excitatory parameters (1-11). Thirteen parameters remained bilaterally
+sensitive parameters and 6 were unilaterally sensitive.
 #  The  \AIV-250 cost function also had flattened
 #  gradients with parameters 6, 10, 13 and 21 losing their significance to one
 #  side, while parameters 1 and 19 gained sensitivity to one side of the
@@ -2240,23 +2237,23 @@ were unilaterally sensitive.
  #  
 
 Regression of best genomes against the parameter gradients used the
-function \textsf{regress} from [[latex:progname][GNU Octave]]'s statistics
-toolbox, which is a linear regression tool using least squares fit of
-Y and X \citep{Eaton:2002}. The significant level (alpha) used to
-calculate the confidence interval was set to 0.05. The Y variable was
-dependant on which side of the target the best genome's parameter lay
-to determine the gradient; if there was no gradient (for targets too
-close to the range termination), the other gradient was used. X was
-the relative parameter error of the best genomes as used previously
+function \textsf{regress} from [[latex:progname][GNU Octave]]'s statistics toolbox, which is
+a linear regression tool using least squares fit of Y and X
+\citep{Eaton:2002}. The significant level (alpha) used to calculate the
+confidence interval was set to 0.05. The Y variable was dependant on
+which side of the target the best genome's parameter lay to determine
+the gradient; if there was no gradient (for targets too close to the
+range termination), the other gradient was used. X was the relative
+parameter error of the best genomes as used previously
 ($\frac{\left|p^\ast_i - {p}_i \right|}{p^\ast_i}$).
 
 
 The regression analysis was performed for both linear and log-log
 models. An additional test was done on data points restricted to those
-whose cost function gradient passed the t-test in
-section \ref{sec:GA:indiv-param-pert}. For log-log regression, the
-parameters with a perfect match (i.e.\ error of 0) were ignored due to
-NaN elimination in the regression function.
+whose cost function gradient passed the t-test in section
+\ref{sec:GA:indiv-param-pert}. For log-log regression, the parameters
+with a perfect match (i.e.\ error of 0) were ignored due to NaN
+elimination in the regression function.
 
 
 \begin{table}[th]
@@ -2392,19 +2389,21 @@ generalize in order to mimic network behavior as characterized by all
 three cost function types. Experimentally, spike timing information is
 easier to record in vivo than intracellular voltage.
 
-#  None the less, these best genomes showed degrees of generalized performance
-#  similar to the \ST- or IFR-trained best genomes, in that evaluation with other
-#  cost functions also gave scores that fell in the distribution obtained with 5
-#  unit step parameter perturbations. Further, neither the \ST- or \IFR-trained
-#  best genomes obtained \AIV scores that were any closer to the target \AIV score
-#  than those of the \AIV-trained best genome itself. Thus, the anomalous
-#  discrepancy between target and best genomes scores for the \AIV cost function
-#  is a generally property of the \AIV cost function itself and not related to
-#  which cost function was used to obtain the best genome. Consequently we
-#  conclude that all best genomes obtained a good match to target score,
-#  regardless of the cost function used to train or evaluate them, with the \ST-
-#  and IFR-trained best genomes showing a marginally better match when evaluated
-#  with their own cost function.
+#  None the less, these best genomes showed degrees of generalized
+#  performance similar to the \ST- or IFR-trained best genomes, in that
+#  evaluation with other cost functions also gave scores that fell in
+#  the distribution obtained with 5 unit step parameter
+#  perturbations. Further, neither the \ST- or \IFR-trained best genomes
+#  obtained \AIV scores that were any closer to the target \AIV score
+#  than those of the \AIV-trained best genome itself. Thus, the
+#  anomalous discrepancy between target and best genomes scores for the
+#  \AIV cost function is a generally property of the \AIV cost function
+#  itself and not related to which cost function was used to obtain the
+#  best genome. Consequently we conclude that all best genomes obtained
+#  a good match to target score, regardless of the cost function used to
+#  train or evaluate them, with the \ST- and IFR-trained best genomes
+#  showing a marginally better match when evaluated with their own cost
+#  function.
 
 By contrast to the generally positive conclusions emerging from the
 cross comparison of cost function scores, the relative parameter error
@@ -2444,11 +2443,11 @@ Noise enters the \GA optimization process by stochastic AN inputs, both
 in the data to be fitted and in the model simulations. We considered
 whether this noise reduces the ability of the \GA to find a network
 model that fits the data well. Noise was reduced by increasing the
-number of repetitions used to obtain data for evaluating the cost
 functions, from 25 to 100 (for both target and candidate networks). As
 expected, this reduced noise, as demonstrated by reduced scored for all
-three cost functions. However, this did not lead to improved ability of
-the best genome network to fit the data as demonstrated by the cross
+number of repetitions used to obtain data for evaluating the cost three
+cost functions. However, this did not lead to improved ability of the
+best genome network to fit the data as demonstrated by the cross
 comparison of cost function scores. This showed that best genomes
 trained with either 25 of 100 AN repetitions performed equally well when
 evaluated with the same cost function and the same number of
@@ -3261,11 +3260,9 @@ in the \CN stellate network.
 
 
 
-* Appendix
-
+* Chapter 5 Appendix
 
 ** Extra Data
-
 
 #+caption: {Comparison of best genomes using {GA} with identical inputs. $\dag$ Indicates the best cost function score from    each {GA}}
 #+label: tab:GA:4
@@ -3312,7 +3309,7 @@ in the \CN stellate network.
 #  \input{src/best_genomes_100.tex}
  
 
-** C++ Code: \textsf{ganeuron}
+** \textsf{ganeuron}: C++ parallel GA program using NEURON 
 
 The requirements for [[latex:progname][ganeuron]] are:
  - gcc
@@ -3337,23 +3334,23 @@ The pvm daemon should be run in the background before running the
 [[latex:progname][ganeuron]] programs.
 
 To run the genetic algorithm simulation with 100 slaves, call:
-: $ master <label>  nslaves 100
-\noindent where =<label>= sets the directory name where all result files
-are stored. The cost function label creates a folder in the =genepath= directory, where
-all genome hoc files will be stored. This was set to either =stdyn=, =ivga25=, or =ifrga25= for
-25 repetition optimisation routines. One hundred repetition routines had
-labels with an appended "100" where necessary or replacement of "25".
-
-
+:   $ master <label>  nslaves 100
+\noindent where =<label>= is the cost function label. The master creates a cost function folder
+in the =genepath= directory, where all the genome hoc files  that need to be evaluated will be
+stored for evaluation by the slave processes. The label was set to either =stdyn=, =ivga25=, or =ifrga25= for 25
+repetition optimisation routines. One hundred repetition routines had
+labels with set to either =stdyn100=, =ivga100=, or =ifrga100=.
 The output path for the cost function genomes are compressed by [[latex:progname][packgenomes.sh]] at the end of the GA
-program. The [[latex:progname][packgenomes.sh]] script accepts two arguments, the head
-genome path and the folder name containing the genome hoc files.
+program for storage. 
 
-#+BEGIN_SRC C :export code
-176:  cout << "Cleaning up ... " << endl;
-177:  syscmd = "./packgenomes.sh " + genepath + " " + costfnpath;
-178:  system(syscmd.c_str());
-#+END_SRC
+# The [[latex:progname][packgenomes.sh]] script accepts two arguments, the head
+# genome path and the folder name containing the genome hoc files.
+
+# # + BEGIN_SRC C :export code
+# 176:  cout << "Cleaning up ... " << endl;
+# 177:  syscmd = "./packgenomes.sh " + genepath + " " + costfnpath;
+# 178:  system(syscmd.c_str());
+# # + END_SRC
 
 
 
@@ -3366,14 +3363,18 @@ command line (see GAlib documentation). The default internal variables
 : gaNnGenerations, 200
 
 
-There are hard-coded variables in source files, e.g. =CNmodel= and
-=nrnapp=, that may need to be changed depending on the environment.
+There are hard-coded variables in source files, e.g. =CNmodel=,
+=genepath= and =nrnapp=, that may need to be changed depending on the
+environment.  Note that the libnrnmech shared library was not generated
+in the same directory as the =opt4= NEURON files and is included as an
+argument to the NEURON executable =nrnoc= immediately after '-dll'.
+The =nrnapp= contains a command to =qsub=, the queue manager  In the slave 
 
 #+BEGIN_SRC C :export code
  const string nrnpath("/home/meager/dmf/work/opt4");
  const string nrnapp("qsub -q medium.q -b y 
       -V -cwd -e /dev/null -o /dev/null \
-      /home/meager/nrn-6.1/nrnmpi/ia64/bin/nrniv  \
+      /home/meager/nrn-6.1/nrnmpi/ia64/bin/nrnoc  \
       -dll /home/meager/dmf/work/modfiles/ia64/.libs/libnrnmech.so "); 
  const string returnfile("/home/meager/dmf/work/genes/opt4/tmp.dat");
  //path where genes are stored locally
@@ -3383,13 +3384,12 @@ There are hard-coded variables in source files, e.g. =CNmodel= and
 #+END_SRC
 
 
-
-
 *** Permutations and sensitivity analysis routines
+
+The permutation and sensitivity analysis routines were performed by the program =opt4rand=, generated by the main file =opt4rand.c=. The executable is compiled and installed into the PVM path using the same routines above for the GA master and slave programs.
 
 To run the random permutations routine with 50 slaves:
 : $ opt4rand userand  nslaves 50
-
 
 To run the sensitivity analysis routine, call:
 : $ opt4rand usesens nslaves 50
@@ -3398,22 +3398,54 @@ To generate 100 random simulations of the target set:
 : $ opt4rand nslaves 50 target popsize 100
 
 
-** NEURON Code: \textsf{opt4}}
 
 
 
-The NMODL files 
+* Chapter 5 Source Code
+
+** \textsf{cnstellate} NEURON model of HH-like neurons in the cochlear nucleus
+
+*** NMODL current module files
+
+\begin{lstlisting}[label=lbl:rmvect,caption=\mbox{\textsf{rm\_vect.mod}} contains the Rothman and Manis conductance models for sodium, high threshold potassium, hyperpolarisation-activated, and leak currents.  The original modules were configured for vectorisation and temperature modifications.] \end{lstlisting}
+#+include:  ../../soma/modfiles/rm_vect.mod src c
+\begin{lstlisting}[label=lbl:klt,caption=\mbox{\textsf{klt.mod}} contains the Rothman and Manis conductance models for low threshold potassium current.] \end{lstlisting}
+#+include:  ../../soma/modfiles/klt.mod src c
+\begin{lstlisting}[label=lbl:ka,caption=\mbox{\textsf{ka.mod}} contains the Rothman and Manis conductance models for A-type potassium current.] \end{lstlisting}
+#+include:  ../../soma/modfiles/ka.mod  src c
+
+*** Auditory nerve fibre NMODL interface
+
+\begin{lstlisting}[label=lbl:arlo,caption=\mbox{\textsf{an\_arlo.mod}} contains the NMODL interface to the ARLO auditory nerve model \citep{HeinzZhangEtAl:2001}.] \end{lstlisting}
+#+include:  ../../soma/modfiles/an_arlo.mod src c
+
+
+*** Hoc files
+
+\begin{lstlisting}[label=lbl:amd,caption=\mbox{\textsf{opt4/opt4amd.hoc}} is the main file called by the GA slave program to evaluate the cost function scores. This file creates CN network model and runs the notch noise stimulus through the model and calculates the cost function scores relative to the target network.] \end{lstlisting}
+#+include:  ../../soma/opt4/opt4amd.hoc src octave
 
 
 
+** \textsf{ganeuron}
+
+\begin{lstlisting}[label=lbl:genomeH,caption=\mbox{\textsf{genome.h}} contains global variables shared by master and slave programs.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/genome.h src c++
+\begin{lstlisting}[label=lbl:genomeC,caption=\mbox{\textsf{genome.c}} contains global functions shared by master and slave programs.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/genome.c src c++
+\begin{lstlisting}[label=lbl:masterC,caption=\mbox{\textsf{master.c}} main PVM file for controlling the GA procedure.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/master.c src c++
+\begin{lstlisting}[label=lbl:slaveC,caption=\mbox{\textsf{slave.c}} worker program in GA procedure.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/slave.c src c++
+\begin{lstlisting}[label=lbl:optrandC,caption=\mbox{\textsf{opt4rand.c}} code for generating random permutation and sensitivity analysis routines.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/opt4rand.c src c++
+\begin{lstlisting}[label=lbl:MakefileAimk,caption=\mbox{\textsf{Makefile.aimk}}: PVM makefile.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/Makefile.aimk src makefile
+\begin{lstlisting}[label=lbl:MakefileAimk,caption=\mbox{\textsf{packgenomes.sh}}: compress all hoc files created during GA or permutation into a *.tar.gz file and delete directory.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/packgenomes.sh src sh
 
 
-
-
-
-
-
-
+ 
 ### Local Variables:
 ### mode: org
 ### mode: visual-line
