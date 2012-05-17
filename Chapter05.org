@@ -204,55 +204,59 @@ network.
   \begin{figure}[pt!]
    \centering
      \resizebox{5in}{!}{\includegraphics{CNConnections3}}
-     \caption[Diagram of the mammalian cochlear nucleus]{Diagram of the mammalian
-       cochlear nucleus. \ANFs sensitive to particular frequencies project to the
-       cochlear nucleus (CN) in a tono-topically organized fashion and bifurcate
-       to innervate both the {VCN} and {DCN}. The {CN} comprises two main
-       divisions, ventral and dorsal CN, plus an outer layer of small cells known
-       as the granule cell domain (GCD). Type I {ANF}s are characterized into two
-       groups based on their spontaneous rate: high (HSR, solid line) and low
-       (LSR, dashed line). Only LSR and smaller type II {ANF}s project to the
-       {GCD}.  Golgi cells in the {GCD} are the only known source of {GABA}ergic
-       cells within the VCN, and it is presumed that they synapse with TS and DS
-       cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic D~stellate cells (DS)
-       project to wide areas of the VCN, DCN, and contralateral {CN}. DS cells are
-       broadly tuned and respond best at the onset of a tone, with a small number
-       of precisely timed spikes, and respond strongly to broad-band noise.  In
-       the deep layer of the DCN, tuberculoventral (TV) cells provide a
-       narrow-band on-frequency source of glycinergic inhibition to the VCN. These
-       neurons respond poorly to clicks and broad-band noise, due to wide-band
-       inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
+     \caption[Diagram of the mammalian cochlear nucleus]{Diagram of the
+       mammalian cochlear nucleus. \ANFs sensitive to particular
+       frequencies project to the cochlear nucleus (CN) in a
+       tono-topically organized fashion and bifurcate to innervate both
+       the {VCN} and {DCN}. The {CN} comprises two main divisions, ventral
+       and dorsal CN, plus an outer layer of small cells known as the
+       granule cell domain (GCD). Type I {ANF}s are characterized into two
+       groups based on their spontaneous rate: high (HSR, solid line) and
+       low (LSR, dashed line). Only LSR and smaller type II {ANF}s project
+       to the {GCD}.  Golgi cells in the {GCD} are the only known source
+       of {GABA}ergic cells within the VCN, and it is presumed that they
+       synapse with TS and DS cells
+       \citep{FerragamoGoldingEtAl:1998}. Glycinergic D~stellate cells
+       (DS) project to wide areas of the VCN, DCN, and contralateral
+       {CN}. DS cells are broadly tuned and respond best at the onset of a
+       tone, with a small number of precisely timed spikes, and respond
+       strongly to broad-band noise.  In the deep layer of the DCN,
+       tuberculoventral (TV) cells provide a narrow-band on-frequency
+       source of glycinergic inhibition to the VCN. These neurons respond
+       poorly to clicks and broad-band noise, due to wide-band inhibition
+       from DS cells \citep{SpirouDavisEtAl:1999}.}
   \label{fig:GA:CNdiagram}
   \end{figure}
 #+END_LaTeX
 #  \clearpage
 
 #+BEGIN_LaTeX
-\begin{figure}[t!]
-\centering
-\figfont{A}\hspace{3in}\\
-\resizebox{3in}{!}{\includegraphics{SimpleCircuit3}}\\
-\figfont{B}\hspace{3in}\\
-\resizebox{3in}{!}{\includegraphics{NetworkProjections3}}\\
-\caption[CN stellate microcircuit]{(A) Stellate microcircuit showing synaptic interaction within
-  one iso-frequency lamina of the ventral {CN} (dotted lines) and TV
-  cells of the {DCN}. Excitatory synapses from {ANF}s (arrows)
-  are modulated within the network by glycinergic (triangle) and
-  GABAergic (bar) inputs. (B) ANFs are ordered into a wide range of
-  frequency channels that are mapped to the {VCN} and {DCN} in an orderly, tono-topic fashion. Topographic organization of
-  lateral connections in the {CN} stellate network shows the range of
-  inputs to TS cells from Golgi, DS and TV cells. Dendritic
-  morphologies of cells characterize the range of {ANF} inputs and
-  hence determine their frequency response. {ANF} input to TS and TV
-  cells are restricted to one iso-frequency lamina, whereas DS
-  dendrites span 1/3 of the ventral CN\@. DS cells' axonal plexus
-  typically covers 1/3 of the {CN} and one half of the DCN, giving them a strong influence throughout the {CN}
-  \citep{ArnottWallaceEtAl:2004}.}\label{fig:GA:MicroCN}
-\end{figure}
+  \begin{figure}[t!]
+  \centering
+  \figfont{A}\hspace{3in}\\
+  \resizebox{3in}{!}{\includegraphics{SimpleCircuit3}}\\
+  \figfont{B}\hspace{3in}\\
+  \resizebox{3in}{!}{\includegraphics{NetworkProjections3}}\\
+  \caption[CN stellate microcircuit]{(A) Stellate microcircuit showing
+    synaptic interaction within one iso-frequency lamina of the ventral
+    {CN} (dotted lines) and TV cells of the {DCN}. Excitatory synapses
+    from {ANF}s (arrows) are modulated within the network by glycinergic
+    (triangle) and GABAergic (bar) inputs. (B) ANFs are ordered into a
+    wide range of frequency channels that are mapped to the {VCN} and
+    {DCN} in an orderly, tono-topic fashion. Topographic organization of
+    lateral connections in the {CN} stellate network shows the range of
+    inputs to TS cells from Golgi, DS and TV cells. Dendritic morphologies
+    of cells characterize the range of {ANF} inputs and hence determine
+    their frequency response. {ANF} input to TS and TV cells are
+    restricted to one iso-frequency lamina, whereas DS dendrites span 1/3
+    of the ventral CN\@. DS cells' axonal plexus typically covers 1/3 of
+    the {CN} and one half of the DCN, giving them a strong influence
+    throughout the {CN}
+    \citep{ArnottWallaceEtAl:2004}.}\label{fig:GA:MicroCN}
+  \end{figure}
 #+END_LaTeX
  
-\glsreset{HSR}\glsreset{LSR} 
-The tonotopic organization of the auditory
+\glsreset{HSR}\glsreset{LSR} The tonotopic organization of the auditory
 pathway (i.e.\ the continuous mapping of sound frequency to place of
 resonance in the cochlea) is transferred to the \CN through the
 population of \ANFs \citep{Lorente:1981}. Figure \ref{fig:GA:CNdiagram}
@@ -286,7 +290,7 @@ necessary to reach threshold for all \CN cells
 \citep{CasparyBackoffEtAl:1994,FerragamoGoldingEtAl:1998}. Feedback
 circuits from the olivary complex to the ventral \CN are also known to
 use \GABA as a neurotransmitter \citep{SaintMorestEtAl:1989}, however
-this is not included in the model. 
+this is not included in the model.
 
 * Methods
 
@@ -301,8 +305,8 @@ members of the population. In this process a model is represented by a
 genome, which is the result of mapping the model parameters into binary
 strings and concatenating them together. Each population of genomes is
 evaluated for fitness using a carefully tailored cost function, better
-fitness increases the probability that a genome will contribute to the
 next population.  The basic principles of genetic reproduction, viz.\
+fitness increases the probability that a genome will contribute to the
 crossover operation and mutation, are used to generate new genomes from
 selected existing genomes. A crossover operation breaks two genomes at a
 random location and swaps their tail portions to create two new
@@ -323,37 +327,36 @@ roulette-wheel selection probability function, where each score was
 linearly scaled so that the probability of selection, $P_i$, is:
 \begin{equation} \label{eq:GA:1} 
 P_{i} = 1 - \frac{c_{i}}{\mathbf{c}}
-\end{equation}
-\noindent where $c_{i}$ is the genome's cost function score, and $\mathbf{c}$ is
-the sum of all genome scores in the current population (note that the
-sign in front of $c_{i}$ is negative here, instead of the conventional
-positive, because we use cost-functions corresponding to an error
-term, so that smaller values of $c_{i}$ imply greater
-fitness). Following selection of a genome, crossover occurred with a
-strictly different selected genome, with probability 0.95.
+\end{equation} \noindent where $c_{i}$ is the genome's cost function score,
+and $\mathbf{c}$ is the sum of all genome scores in the current
+population (note that the sign in front of $c_{i}$ is negative here,
+instead of the conventional positive, because we use cost-functions
+corresponding to an error term, so that smaller values of $c_{i}$ imply
+greater fitness). Following selection of a genome, crossover occurred
+with a strictly different selected genome, with probability 0.95.
 Alternatively the selected genome was cloned, with probability 0.05.
-For the group of 95 genomes, a random bit mutation was implemented
-with probability 0.01. The best performing genome string at the end of
-the 200th generation was declared the winner.
+For the group of 95 genomes, a random bit mutation was implemented with
+probability 0.01. The best performing genome string at the end of the
+200th generation was declared the winner.
 
  
 Parameters that were optimized were the synaptic weights, number of
 synaptic connections per neuron and a parameter describing the spatial
-variance of connections (details are given in the
-section \ref{sec:GA:connectivity} Connectivity). The genome encoding
-scheme, shown in Table \ref{tab:GA:Genome}, describes the number of bits
-used for each parameter and the range of values that each parameter
-could take.  For example, the first parameter in Table \ref{tab:GA:Genome},
-\wANFTS models the strength of synapses from \ANF to
-\TS cells. It was encoded over the range 0.0-0.0051 \uS using 8 bits
-by assigning 0b00000000 to 0.0 and 0b11111111 to 0.0051, and linearly
-interpolating all values within the range. This procedure was used for
-all parameters where the unit step was either 0.0001 \uS for weight
-parameters or 1 (synaptic connection or frequency channel) for all
-others. The number of bits representing each parameter was chosen so
-that the maximum value lay outside of known physiological
-values. Genomes were formed by concatenating all these parameter bit
-strings in the order given in Table \ref{tab:GA:Genome}.
+variance of connections (details are given in the section
+\ref{sec:GA:connectivity} Connectivity). The genome encoding scheme,
+shown in Table \ref{tab:GA:Genome}, describes the number of bits used
+for each parameter and the range of values that each parameter could
+take.  For example, the first parameter in Table \ref{tab:GA:Genome},
+\wANFTS models the strength of synapses from \ANF to \TS cells. It was
+encoded over the range 0.0-0.0051 \uS using 8 bits by assigning
+0b00000000 to 0.0 and 0b11111111 to 0.0051, and linearly interpolating
+all values within the range. This procedure was used for all parameters
+where the unit step was either 0.0001 \uS for weight parameters or 1
+(synaptic connection or frequency channel) for all others. The number of
+bits representing each parameter was chosen so that the maximum value
+lay outside of known physiological values. Genomes were formed by
+concatenating all these parameter bit strings in the order given in
+Table \ref{tab:GA:Genome}.
 
 
 To test the application of \GAs for optimizing parameters of a \BNN, a
@@ -376,52 +379,49 @@ firing rate corresponding to the stop band in the notch-noise. Figure
 a single \TS cell in the center of the network, at the rising edge of
 the notch (arrow in Figure \ref{fig:GA:Costfunctions}A).
 
-
-# \begin{center}
 #+BEGIN_LaTeX
-\begin{table}[tp]
- \centering
- \caption{Network Parameter-to-Genome Encoding Scheme}\label{tab:GA:Genome}
- \begin{tabularx}{0.7\textwidth}{lccccc}   \toprule
-  &           Parameter           & Binary Bits & \multicolumn{2}{c}{Range} & Target Value \\\midrule
-1  & \wANFTS  &  8  & 0.0 &  0.0051   & 0.00270 \\ %\hline
-2  & \nLSRTS  &  5  &  0  &    31     & 7 \\ %\hline
-3  & \nHSRTS  &  5  &  0  &    31     & 22 \\ %\hline
-4  & \wANFDS  &  8  & 0.0 &  0.0051   & 0.00178 \\ %\hline
-5  & \nANFDS  &  6  &  0  &    63     & 27 \\ %\hline
-6  & \nHSRDS  &  6  &  0  &    63     & 59 \\ %\hline
-7  & \wANFTV  &  8  & 0.0 &  0.0051   & 0.00091 \\ %\hline
-8  & \nLSRTV  &  5  &  0  &    31     & 13 \\ %\hline
-9  & \nHSRTV  &  5  &  0  &    31     & 16 \\ %\hline
-10 & \wLSRGLG &  8  & 0.0 &  0.0051   & 0.00150 \\   %\hline
-11 & \nLSRGLG &  5  &  0  &    31     & 16 \\   %\hline
-12 &  \wDSTS  &  8  & 0.0 &  0.0051   & 0.00028 \\ %\hline
-13 &  \nDSTS  &  5  &  0  &    31     & 14 \\ %\hline
-14 &  \sDSTS  &  6  &  0  &    63     & 15 \\   %\hline
-15 &  \wTVTS  &  8  & 0.0 &  0.0051   & 0.00040 \\ %\hline
-16 &  \nTVTS  &  5  &  0  &    31     & 12 \\ %\hline
-17 &  \sTVTS  &  5  &  0  &    31     & 3 \\   %\hline
-18 & \wGLGTS  &  8  & 0.0 &  0.0051   & 0.00022 \\ %\hline
-19 & \nGLGTS  &  5  &  0  &    31     & 7 \\ %\hline
-20 & \sGLGTS  &  5  &  0  &    31     & 3 \\   %\hline
-21 &  \wDSTV  &  8  & 0.0 &  0.0051   & 0.00042 \\ %\hline
-22 &  \nDSTV  &  6  &  0  &    63     & 18 \\ %\hline
-23 &  \sDSTV  &  6  &  0  &    63     & 8 \\   %\hline
-24 &  \wTVDS  &  8  & 0.0 &  0.0051   & 0.00016 \\ %\hline
-25 &  \nTVDS  &  6  &  0  &    63     & 7   \\ %\hline
-26 &  \sTVDS  &  6  &  0  &    63     & 3 \\   %\hline
-27 &  \oDSTV  &  5  &  0  &    31     & 3 \\ %\hline
-28 & \wGLGDS  &  8  & 0.0 &  0.0051   & 0.00246 \\   %\hline
-29 & \nGLGDS  &  5  &  0  &    31     & 7 \\ %\hline
-30 & \sGLGDS &  5  &  0  &    31     & 5 \\[0.5ex] \bottomrule
-\end{tabularx}\\
-\vspace{0.5ex} 
-\footnotesize{Units of weights are \uS. /n/ and /s/
-  parameters are unitless integers. The resolution of weight
-  parameters were set to 0.0001 \uS and other parameters to 1.}
-\end{table}
+  \begin{table}[tp]
+   \centering
+   \caption{Network Parameter-to-Genome Encoding Scheme}\label{tab:GA:Genome}
+   \begin{tabularx}{0.7\textwidth}{lccccc}   \toprule
+     & Parameter & Binary Bits & \multicolumn{2}{c}{Range} & Target Value \\\midrule
+  1  &  \wANFTS  &      8      & 0.0 &       0.0051        & 0.00270 \\ %\hline
+  2  &  \nLSRTS  &      5      &  0  &         31          & 7 \\ %\hline
+  3  &  \nHSRTS  &      5      &  0  &         31          & 22 \\ %\hline
+  4  &  \wANFDS  &      8      & 0.0 &       0.0051        & 0.00178 \\ %\hline
+  5  &  \nANFDS  &      6      &  0  &         63          & 27 \\ %\hline
+  6  &  \nHSRDS  &      6      &  0  &         63          & 59 \\ %\hline
+  7  &  \wANFTV  &      8      & 0.0 &       0.0051        & 0.00091 \\ %\hline
+  8  &  \nLSRTV  &      5      &  0  &         31          & 13 \\ %\hline
+  9  &  \nHSRTV  &      5      &  0  &         31          & 16 \\ %\hline
+  10 & \wLSRGLG  &      8      & 0.0 &       0.0051        & 0.00150 \\   %\hline
+  11 & \nLSRGLG  &      5      &  0  &         31          & 16 \\   %\hline
+  12 &  \wDSTS   &      8      & 0.0 &       0.0051        & 0.00028 \\ %\hline
+  13 &  \nDSTS   &      5      &  0  &         31          & 14 \\ %\hline
+  14 &  \sDSTS   &      6      &  0  &         63          & 15 \\   %\hline
+  15 &  \wTVTS   &      8      & 0.0 &       0.0051        & 0.00040 \\ %\hline
+  16 &  \nTVTS   &      5      &  0  &         31          & 12 \\ %\hline
+  17 &  \sTVTS   &      5      &  0  &         31          & 3 \\   %\hline
+  18 &  \wGLGTS  &      8      & 0.0 &       0.0051        & 0.00022 \\ %\hline
+  19 &  \nGLGTS  &      5      &  0  &         31          & 7 \\ %\hline
+  20 &  \sGLGTS  &      5      &  0  &         31          & 3 \\   %\hline
+  21 &  \wDSTV   &      8      & 0.0 &       0.0051        & 0.00042 \\ %\hline
+  22 &  \nDSTV   &      6      &  0  &         63          & 18 \\ %\hline
+  23 &  \sDSTV   &      6      &  0  &         63          & 8 \\   %\hline
+  24 &  \wTVDS   &      8      & 0.0 &       0.0051        & 0.00016 \\ %\hline
+  25 &  \nTVDS   &      6      &  0  &         63          & 7   \\ %\hline
+  26 &  \sTVDS   &      6      &  0  &         63          & 3 \\   %\hline
+  27 &  \oDSTV   &      5      &  0  &         31          & 3 \\ %\hline
+  28 &  \wGLGDS  &      8      & 0.0 &       0.0051        & 0.00246 \\   %\hline
+  29 &  \nGLGDS  &      5      &  0  &         31          & 7 \\ %\hline
+  30 &  \sGLGDS  &      5      &  0  &         31          & 5 \\[0.5ex] \bottomrule
+  \end{tabularx}\\
+  \vspace{0.5ex} 
+  \footnotesize{Units of weights are \uS. /n/ and /s/
+    parameters are unitless integers. The resolution of weight
+    parameters were set to 0.0001 \uS and other parameters to 1.}
+  \end{table}
 #+END_LaTeX
-# \end{center}
 
 ** Cost functions
 
@@ -435,39 +435,39 @@ rates, and intracellular voltages.
 
 #+BEGIN_LaTeX
 \begin{figure}[pt!]
-  \begin{center}
+  \centering
 %\setlength{\unitlength}{1pt}
-    \resizebox{2.5in}{!}{%
+  \resizebox{2.5in}{!}{%
 \begin{picture}(206,108)(0,0)
   \put(0,0){\includegraphics[bb=98 523 304 631,clip]{Figure3}}
   \put(25,48){\thicklines\vector(1,0){10}}
-  \end{picture}}%
-    \resizebox{2.5in}{!}{\includegraphics[bb=98 411 304 523,clip]{Figure3}}\\
-    \vspace{0.1in}\resizebox{5in}{!}{\includegraphics[bb=98 173 504 411,clip]{Figure3}}
-\end{center}
-\caption[Cost functions]{Cost function measures derived from the output of the \CN
-  stellate network. (A) Dot raster of \TS cell spikes only during a
-  presentation of the notch noise stimulus. A rough trace shows the
-  relative location of the 30-dB notch in a broadband spectrum from
-  0.2~to 30 kHz. Frequency scale is determined by the Greenwood
-  function for the cat \citep{Greenwood:1990}. (B) The reference spikes
-  for a \TS cell in the middle of the `target' network (CF 3.45kHz)
-  from 250 repetitions of the stimulus are shown. This cell is placed
-  at the edge of the spectral notch (arrow in A.). (C) PSTH response
-  of the same \TS cell used in B (bin width 0.25~ms, reps. 250). Note
-  the regularly-spaced peaks at the start of the stimulus due to the
-  \TS cells' chopper response characteristics. Irregular peaks
-  throughout the stimulus are due to temporal features of the notch
-  noise captured by the auditory filter at this frequency. (D) \PSTH of
-  the same cell as in C using only 25 repetitions. The \IFR cost
-  function normalizes the reference PSTHs and calculates a mean
-  squared error between reference and test \PSTHs for every cell in the
-  network. (E) Average intracellular voltage, smoothed from 250
-  repetitions, for the same \TS cell. There is some similarity with the
-  \PSTH in C, particularly the location of the peaks but contains
-  subthreshold effects. (F) Average intracellular voltage using 25
-  repetitions is more variable than E since single action potentials
-  can distort the trace.}
+\end{picture}}%
+\resizebox{2.5in}{!}{\includegraphics[bb=98 411 304 523,clip]{Figure3}}\\
+\vspace{0.1in}\resizebox{5in}{!}{\includegraphics[bb=98 173 504 411,clip]{Figure3}}
+    \caption[Cost functions]{Cost function measures derived from the
+      output of the \CN stellate network. (A) Dot raster of \TS cell
+      spikes only during a presentation of the notch noise stimulus. A
+      rough trace shows the relative location of the 30-dB notch in a
+      broadband spectrum from 0.2~to 30 kHz. Frequency scale is
+      determined by the Greenwood function for the cat
+      \citep{Greenwood:1990}. (B) The reference spikes for a \TS cell in
+      the middle of the `target' network (CF 3.45kHz) from 250
+      repetitions of the stimulus are shown. This cell is placed at the
+      edge of the spectral notch (arrow in A.). (C) PSTH response of the
+      same \TS cell used in B (bin width 0.25~ms, reps. 250). Note the
+      regularly-spaced peaks at the start of the stimulus due to the \TS
+      cells' chopper response characteristics. Irregular peaks
+      throughout the stimulus are due to temporal features of the notch
+      noise captured by the auditory filter at this frequency. (D) \PSTH
+      of the same cell as in C using only 25 repetitions. The \IFR cost
+      function normalizes the reference PSTHs and calculates a mean
+      squared error between reference and test \PSTHs for every cell in
+      the network. (E) Average intracellular voltage, smoothed from 250
+      repetitions, for the same \TS cell. There is some similarity with
+      the \PSTH in C, particularly the location of the peaks but
+      contains subthreshold effects. (F) Average intracellular voltage
+      using 25 repetitions is more variable than E since single action
+      potentials can distort the trace.}
 \label{fig:GA:Costfunctions}
 \end{figure}
 \clearpage
@@ -477,19 +477,23 @@ rates, and intracellular voltages.
 
 *** Spike Timing Cost Function
 
-\begin{figure}[t!]
- \resizebox{3in}{!}{\input{/media/data/Work/thesis/GAChapter/gfx/DynamicSpikeMetric_v2.TpX}}
- \caption[Dynamic spike-time algorithm]{Spike timing cost function measure computed using a dynamic
-   programming algorithm. A minimum distance matrix between the
-   \textit{target} set of spike times and a \textit{trial} set of
-   spike times (from the same cell in the network, $i$, is traversed
-   to find the minimum cumulative path of timing errors. Arrows
-   indicate the possible combinations of spike time errors. For every
-   cell, each repetition in the trial set, $j$, is compared against 25
-   repetitions, $k$, in the training data to find the best fit and to
-   minimize penalties for missing or additional spikes.}
-\label{fig:GA:DynSpikeMetric}
-\end{figure}
+#+BEGIN_LaTeX
+  \begin{figure}[t!]
+   \resizebox{3in}{!}{\input{/media/data/Work/thesis/GAChapter/gfx/DynamicSpikeMetric_v2.TpX}}
+   \caption[Dynamic spike-time algorithm]{Spike timing cost function
+     measure computed using a dynamic programming algorithm. A minimum
+     distance matrix between the \textit{target} set of spike times and a
+     \textit{trial} set of spike times (from the same cell in the network,
+     $i$, is traversed to find the minimum cumulative path of timing
+     errors. Arrows indicate the possible combinations of spike time
+     errors. For every cell, each repetition in the trial set, $j$, is
+     compared against 25 repetitions, $k$, in the training data to find
+     the best fit and to minimize penalties for missing or additional
+     spikes.}
+  \label{fig:GA:DynSpikeMetric}
+  \end{figure}
+#+END_LaTeX
+
 
 Temporal information is critical in the mammalian auditory system for
 communication and segregation of sounds \citep{Bregman:1990}.
@@ -501,10 +505,8 @@ timing of spikes, for a review see \citet{Victor:2005}.
 
 The \ST cost function was defined as:
 \begin{equation} \label{eq:GA:2} 
-\PsiST = \frac{1}{N_{{\rm ST}}
-  } \sum _{i=1}^{M}\sum _{j=1}^{R}\mathop{\min}\limits_{k}
-  \left(D\left(x_{ij} ,x_{ik}^{*} \right)\right)
-\end{equation} \noindent where $N_{{\rm ST}} =R \times M$ is a normalization
+\PsiST = \frac{1}{N_{\textrm{ST}}} \sum _{i=1}^{M}\sum _{j=1}^{R}\mathop{\min}\limits_{k} \left(D\left(x_{ij} ,x_{ik}^{*} \right)\right)
+\end{equation} \noindent where $N_{\textrm{ST}} = R \times M$ is a normalization
 factor, $M=240$ is the number of neurons in the network, $R=25$ is the
 total number of stimulus repetitions, $x_{ij}$ is the vector containing the
 spike times of the trial network for stimulus repetition $j$ produced by
@@ -526,7 +528,6 @@ and have been used in single spike trains
 spike in the trial network and a spike in the target network was
 measured as the time difference between the spikes. The spikes to select
 for comparison were chosen such that the overall cost was minimized.
-
 
 
 We chose the minimum value of $D(x_{ij} ,x_{ik}^{\ast} )$ over 25 target
@@ -565,10 +566,10 @@ a firing rate (spikes per msec) error per stimulus.
 
 The  \IFR cost function is defined as:
 \begin{equation} \label{eq:GA:3} 
-\PsiIFR =\frac{1}{T_{{\rm IFR}}} \sqrt{\frac{1}{M} \sum_{i=1}^{M}\frac{1}{B} \left(\sum_{n=1}^{B}(r_{i}
+\PsiIFR =\frac{1}{T_{\textrm{IFR}}} \sqrt{\frac{1}{M} \sum_{i=1}^{M}\frac{1}{B} \left(\sum_{n=1}^{B}(r_{i}
     (n)- r{_{i}}^{\ast} (n))^{2} \right)},
 \end{equation} \noindent where /B/ is the number of bins in the \PSTH,
-/M/ is the number of cells in the network, $T_{{\rm IFR}}=R \times W$ is a
+/M/ is the number of cells in the network, $T_{\textrm{IFR}}=R \times W$ is a
 normalization factor, /R/ is the number of trial repetitions ($R=25$ was
 used in this study), and /W/ is the bin width of the \PSTH. The units
 for \PsiIFR are spikes per millisecond per stimulus per neuron, but we
@@ -643,24 +644,26 @@ spikes were generated and each cell's \AIV was flat.
 
 ** Simulation Environment
 
-Neural models and network connections were generated using the neural
-simulation package [[latex:progname][NEURON]] \citep{CarnevaleHines:2006}. NMODL, an
-extension of [[latex:progname][NEURON]] \citep{HinesCarnevale:2000}, was used to implement
-membrane current models and interface with the auditory nerve
-model. Numerical integration was performed using the Crank-Nicholson
-method with second order accuracy (in [[latex:progname][NEURON]] $secondorder=2$) and fixed
-time step of 0.1 ms. Genetic algorithms and sensitivity analysis were
-implemented in [[latex:progname][C++]] using [[http://lancet.mit.edu/ga][GAlib]] \citep{Wall:2006} and the parallel
-virtual machine libraries \citep{GeistBeguelinEtAl:1994}. \GA
-simulations were distributed on a cluster of nine PCs (3GHz Pentium4)
-and a 64-CPU SGI Altix with a master-slave paradigm.
+Membrane current models, neural models and network connections were
+generated using the neural simulation package [[latex:progname][NEURON]]
+\citep{CarnevaleHines:2006}, as described in Chapter \ref{chp:Methods},
+[[file:../MethodsChapter/Chapter02.org::*Modeling the Cochlear Nucleus
+Stellate Microcircuit]].  Numerical integration was performed using the
+Crank-Nicholson method with second order accuracy and fixed time step of
+0.1 ms. Genetic algorithms and sensitivity analysis were implemented in
+[[latex:progname][C++]] using [[http://lancet.mit.edu/ga][GAlib]] \citep{Wall:2006}. and [[http://www.pvm.com][PVM]] parallel virtual machine
+libraries \citep{GeistBeguelinEtAl:1994}. \GA simulations were
+distributed on a cluster of nine PCs (3GHz Pentium4) and a 64-CPU SGI
+Altix[fn:: System named \textsf{soma} at the Department of Electrical
+and Electronic Engineering and Neuroimaging group, University of
+Melbourne] with a master-slave paradigm.
 
 ** Stimulus Generation
 
 For all simulations, frozen notch noise was used as the stimulus. Notch
 noise is white noise that has been filtered by a narrow band-stop
-filter. Gaussian white noise was generated with a 50 kHz sampling
-frequency in [[latex:progname][MATLAB]] and filtered with a quarter octave, 30 dB band-stop,
+filter. Gaussian white noise was generated in [[latex:progname][MATLAB/GNU Octave]] with a 50 kHz sampling
+frequency and filtered with a quarter octave, 30 dB band-stop,
 100-tap FIR filter centered at 5 kHz. A 50 ms stimulus was presented at
 60 dB \SPL with 5 ms onset/offset ramps, a 20 ms delay and 10 ms pause
 after the stimulus. Notch noise stimuli have been used in experimental
@@ -700,7 +703,6 @@ each fiber from the instantaneous firing rate using a pseudo-random
 spike-generator \citep{JacksonCarney:2005}, with refractory effects
 similar to those present in \ANFs.
 
-
 ** Stellate Microcircuit Model of the Cochlear Nucleus
 
 *** Cell Models
@@ -712,11 +714,12 @@ similar to those present in \ANFs.
 cells. The dynamics of the membrane voltage, $V(t)$, is described by:
 \begin{equation} \label{eq:GA:5} 
 C_{m} \frac{dV}{dt} = - \gleak (V - \Eleak) - \INa - \IKHT - \IKLT - \IKA - \Ih - \sum \ISYN
-\end{equation} \noindent where $C_{m}$ is the specific membrane
-capacitance, \gleak is the specific leak conductance with associated
-leak reversal potential \Eleak, \INa is the sodium current density,
-\IKHT, \IKLT, \IKA are three types of potassium current densities, \Ih
-is a hyperpolarization-activated current density, and \ISYN are synaptic
+\end{equation} 
+\noindent where $C_{m}$ is the specific membrane capacitance, \gleak is the
+specific leak conductance with associated leak reversal potential
+\Eleak, \INa is the sodium current density, \IKHT, \IKLT, \IKA are three
+types of potassium current densities, \Ih is a
+hyperpolarization-activated current density, and \ISYN are synaptic
 input current densities.  The potassium and mixed-cation current models
 used here come from an investigation of isolated ventral \CN cells
 \citep{RothmanManis:2003,RothmanManis:2003a,RothmanManis:2003b}, which
@@ -740,8 +743,6 @@ defined in Table \ref{tab:GA:GeneralParams}):
 \Ih(t,V)=\gh r (V-\Eh )
   \end{equation}
 
-
-
 The form of the \HH sodium current was:
 \begin{equation} \label{eq:GA:10} 
 \INa(t,V)=\gNa m^{3} h (V - \ENa)
@@ -752,8 +753,6 @@ The form of the \HH sodium current was:
 (/a, b, c, h, m, n, p, r, w/ and /z/) are described in
 detail by \citet{RothmanManis:2003} and the [[latex:progname][NEURON]] source code is
 freely available online at [[http://senselab.med.yale.edu/senselab/modeldb][ModelDB]] \citep{HinesMorseEtAl:2004}.
-
-
 
 Table \ref{tab:GA:CellTypes} shows the maximum conductances,
 $\bar{g}$, for each cell type in the network.  The neurons in the
@@ -806,18 +805,17 @@ at 37\degC, and matched them to the model types in
   \end{table}
 #+END_LaTeX
 
-
 *** Synapse Models
 
 Synapses were modeled with either a single or a double exponential
 time-dependent conductance change with the current density described
-by $\ISYN(t)=g_{{\rm SYN}} (t)(V-E_{{\rm rev}} )$, where
-$E_{\rm rev}$ is the associated reversal potential. The strength of
+by $\ISYN(t)=g_{\textrm{SYN}} (t)(V-E_{\textrm{rev}} )$, where
+$E_\textrm{rev}$ is the associated reversal potential. The strength of
 the synapses was determined by a normalized weight parameter, /w/, and
 decay time-constants as follows:
 \begin{eqnarray}
-\label{eq:GA:11} g_{{\rm Exc}} (t) = w_{{\rm Exc}} {\rm exp}(-t/\tau _{{\rm Exc}} ) \quad (\uS) \\
-\label{eq:GA:12} g_{{\rm Inh}} (t) = w_{{\rm Inh}} \eta \left({\rm exp}(-t/\tau_{{\rm Inh2}} )-{\rm exp}(-t/\tau _{{\rm Inh1}} )\right) \quad (\uS) 
+\label{eq:GA:11} g_{\textrm{Exc}} (t) = w_{\textrm{Exc}} \textrm{exp}(-t/\tau _{\textrm{Exc}} ) \quad (\uS) \\
+\label{eq:GA:12} g_{\textrm{Inh}} (t) = w_{\textrm{Inh}} \eta \left(\textrm{exp}(-t/\tau_{\textrm{Inh2}} )-\textrm{exp}(-t/\tau _{\textrm{Inh1}} )\right) \quad (\uS) 
 \end{eqnarray} \noindent where $\eta$ normalizes the peak of the
 double-exponential function to one (see Table
 \ref{tab:GA:GeneralParams}). Excitatory inputs to \CN cells from type-I
@@ -876,8 +874,8 @@ and parameters used in the optimization are shown in Table
 \ref{tab:GA:Genome}.
 
 Auditory nerve projections to each \CN cell-type share the same synaptic
-weight, $w_{{\rm ANF}}$, but \HSR and \LSR fibers have different parameters
-encoding the number of inputs ($n_{{\rm HSR}}$, $n_{{\rm LSR}}$). \ANFs with
+weight, $w_{\textrm{ANF}}$, but \HSR and \LSR fibers have different parameters
+encoding the number of inputs ($n_{\textrm{HSR}}$, $n_{\textrm{LSR}}$). \ANFs with
 similar characteristic frequencies are spatially organized into 60
 iso-frequency lamina or channels. \TS and \TV cells' dendrites are
 located within isofrequency lamina, so synapses are chosen from fibres
@@ -896,6 +894,7 @@ inhibition of \TV cells by \DS cells includes an additional channel
 offset, \oDSTV, to account for the asymmetry of wideband suppression
 found in \TV cells \citep{ReissYoung:2005}.  The offset was added to the
 Gaussian mean in the random allocation process.
+
 
 ** Analysis of GA and Cost Functions
 
@@ -930,8 +929,6 @@ between -5 and 5.  Robustness was measured by re-evaluating the two
 genome sets above with different \ANF input spikes regenerated for
 every genome.
 
-
-
 Second, the sensitivity analysis of the cost functions to individual
 parameter variation at the global optimum is shown in section
 \ref{sec:GA:IndividualSens}. Parameter values were stepped up and down
@@ -953,7 +950,6 @@ non-V-shaped cost function gradients for different inputs.
   :END:
 #  * Parameter space sensitivity of cost functions
 #  \subsection{Performance of best genomes and cross-comparison of cost functions}
-
 
 *  Results of GA optimisations with different inputs
 
@@ -1939,7 +1935,7 @@ functions, with the \ST and \AIV-250 best genomes not far behind.
 \end{table}
 
 
-* Sensitivity Analysis of Individual Parameters near the Global Optimum 
+* Sensitivity Analysis of Individual Parameters near the Global Optimum :noexport:
   :PROPERTIES:
   :SHORTTITLE: Individual parameter sensitivity
   :LABEL:    sec:GA:IndividualSens
@@ -3252,198 +3248,10 @@ in the \CN stellate network.
 
 
 
+## BIBLIOGRAPHY
 \bibliographystyle{abbrvnat}
 \bibliography{../hg/manuscript/bib/MyBib}
-\newpage
-\listoftodos
-
-
-
-
-* Chapter 5 Appendix
-
-** Extra Data
-
-#+caption: {Comparison of best genomes using {GA} with identical inputs. $\dag$ Indicates the best cost function score from    each {GA}}
-#+label: tab:GA:4
-\toprule
-|                      |          ST |        IFR-25 |         IV-25 |
-|----------------------+-------------+---------------+---------------|
-| Target Genome        |           0 |             0 |             0 |
-| 1-step Population    | 7.32 (0.89) | 0.184 (0.011) | 0.134 (0.009) |
-| 5-step Population    |  10.0 (3.0) | 0.209 (0.012) | 0.165 (0.014) |
-| ST Best Genome       |  *8.45*\dag |         0.202 |         0.183 |
-| IFR 25 Best Genome   |        12.2 |   *0.195*\dag |         0.183 |
-| %IFR 250 Best Genome |        10.8 |         0.207 |         0.178 |
-| IV 25 Best Genome    |        9.58 |         0.202 |   *0.158*\dag |
-| %IV 250 Best Genome  |        9.52 |         0.207 |         0.159 |
-\bottomrule
-
-
-
-
-\begin{table}[tbh]
-  \centering
-  \caption{Cross comparison of best genomes from GA simulations using different ANF inputs.}
-  \label{tab:GA:XComp}
-%  \input{tex.src/best_genomes_25}
-\end{table}
-
-
-
-#+name:    best_genomes_summary_table
-#+caption: [Comparison of Best genomes trained with different inputs]{Comparison of Best genomes trained with different   inputs.  Target genome and each {GA} best genomes were run 100   times. One thousand genomes were run with different inputs in the step and 5 step parameter variation population.}
-#+label: tab:GA:5
-#+attr_latex: table tabular
-# \begin{tabular}{|p{1.1in}|p{0.3in}|p{0.3in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|}\hline
-|                        | \multicolumn{2}{c}{ST}  | \multicolumn{2}{c}{IFR-25} | \multicolumn{2}{c}{IFR-100} | \multicolumn{2}{c}{AIV-25} | \multicolumn{2}{c}{AIV-100} |
-|-----------------------------+----------------+--------+----------------+---------+----------------+---------+-----------------+---------+----------------+------------|
-| Target Genome               |           9.72 | (0.06) |          0.237 | (0.001) |          0.157 | (0.001) |           0.206 | (9e-4)  |          0.128 | (0.001)    |
-| 1-step Population           |           9.79 | (0.23) |          0.237 | (0.001) |          0.158 | (0.001) |           0.207 | (0.001) |          0.129 | (0.002)    |
-| 5-step Population           |           11.8 | (2.6)  |          0.246 | (0.006) |          0.171 | (0.009) |           0.219 | (0.008) |          0.149 | (0.01)     |
-| ST {\GA} Best Genome        | \textbf{9.63}* | (0.06) |          0.242 | (0.001) |          0.164 | (9e-4)  |           0.214 | (9e-4)  |          0.140 | (9e-4)     |
-| IFR 25 {\GA} Best    Genome |           15.0 | (0.2)  | \textbf{0.247} | (0.001) |          0.171 | (0.001) |           0.237 | (0.001) |          0.173 | (0.001)    |
-| IFR 250 {\GA} Best Genome   |           16.8 | (0.4)  |          0.243 | (9e-4)  | \textbf{0.165} | (0.001) |           0.244 | (9e-4)  |          0.183 | (0.001)    |
-| IV 25 {\GA} Best Genome     |           11.3 | (0.1)  |         0.238* | (0.001) |         0.159* | (9e-4)  | \textbf{0.211*} | (9e-4)  |         0.136* | (8e-4)     |
-| IV 250 {\GA} Best Genome    |           10.4 | (0.1)  |           0.24 | (0.001) |          0.161 | (0.001) |           0.213 | (9e-4)  | \textbf{0.138} | (0.001)    |
-#  \input{src/best_genomes_100.tex}
- 
-
-** \textsf{ganeuron}: C++ parallel GA program using NEURON 
-
-The requirements for [[latex:progname][ganeuron]] are:
- - gcc
- - pvm 
- - GAlib (version 2.4.7)
- - NEURON
-
-The pvm compilation tool, [[latex:progname][aimk,]] must be included in your path =export
-PATH=$PATH:$PVM_HOME/bin=.
-
-Unpack the [[latex:progname][ganeuron]] package and compile the master and slave GA
-executable files.  The install routine copies them to the pvm path.
-
-#+BEGIN_SRC sh :export code
- $ tar zxvf ganeuron.tar.gz
- $ cd ganeuron/opt4
- $ aimk && aimk install
-#+END_SRC
-
-
-The pvm daemon should be run in the background before running the
-[[latex:progname][ganeuron]] programs.
-
-To run the genetic algorithm simulation with 100 slaves, call:
-:   $ master <label>  nslaves 100
-\noindent where =<label>= is the cost function label. The master creates a cost function folder
-in the =genepath= directory, where all the genome hoc files  that need to be evaluated will be
-stored for evaluation by the slave processes. The label was set to either =stdyn=, =ivga25=, or =ifrga25= for 25
-repetition optimisation routines. One hundred repetition routines had
-labels with set to either =stdyn100=, =ivga100=, or =ifrga100=.
-The output path for the cost function genomes are compressed by [[latex:progname][packgenomes.sh]] at the end of the GA
-program for storage. 
-
-# The [[latex:progname][packgenomes.sh]] script accepts two arguments, the head
-# genome path and the folder name containing the genome hoc files.
-
-# # + BEGIN_SRC C :export code
-# 176:  cout << "Cleaning up ... " << endl;
-# 177:  syscmd = "./packgenomes.sh " + genepath + " " + costfnpath;
-# 178:  system(syscmd.c_str());
-# # + END_SRC
-
-
-
-The GA simulation parameters can override the internal variables on the
-command line (see GAlib documentation). The default internal variables
-: gaNpopulationSize,100
-: gaNpCrossover, 0.9
-: gaNpMutation, 0.005
-: gaNnReplacement, 95
-: gaNnGenerations, 200
-
-
-There are hard-coded variables in source files, e.g. =CNmodel=,
-=genepath= and =nrnapp=, that may need to be changed depending on the
-environment.  Note that the libnrnmech shared library was not generated
-in the same directory as the =opt4= NEURON files and is included as an
-argument to the NEURON executable =nrnoc= immediately after '-dll'.
-The =nrnapp= contains a command to =qsub=, the queue manager  In the slave 
-
-#+BEGIN_SRC C :export code
- const string nrnpath("/home/meager/dmf/work/opt4");
- const string nrnapp("qsub -q medium.q -b y 
-      -V -cwd -e /dev/null -o /dev/null \
-      /home/meager/nrn-6.1/nrnmpi/ia64/bin/nrnoc  \
-      -dll /home/meager/dmf/work/modfiles/ia64/.libs/libnrnmech.so "); 
- const string returnfile("/home/meager/dmf/work/genes/opt4/tmp.dat");
- //path where genes are stored locally
- const string genepath("/home/meager/dmf/work/genes/opt4/"); 
- //Main HOC file for Cochlear Nucleus Model execution
- const string CNModel("/home/meager/dmf/work/opt4/opt4amd2.hoc");
-#+END_SRC
-
-
-*** Permutations and sensitivity analysis routines
-
-The permutation and sensitivity analysis routines were performed by the program =opt4rand=, generated by the main file =opt4rand.c=. The executable is compiled and installed into the PVM path using the same routines above for the GA master and slave programs.
-
-To run the random permutations routine with 50 slaves:
-: $ opt4rand userand  nslaves 50
-
-To run the sensitivity analysis routine, call:
-: $ opt4rand usesens nslaves 50
-
-To generate 100 random simulations of the target set:
-: $ opt4rand nslaves 50 target popsize 100
-
-
-
-
-
-* Chapter 5 Source Code
-
-** \textsf{cnstellate} NEURON model of HH-like neurons in the cochlear nucleus
-
-*** NMODL current module files
-
-\begin{lstlisting}[label=lbl:rmvect,caption=\mbox{\textsf{rm\_vect.mod}} contains the Rothman and Manis conductance models for sodium, high threshold potassium, hyperpolarisation-activated, and leak currents.  The original modules were configured for vectorisation and temperature modifications.] \end{lstlisting}
-#+include:  ../../soma/modfiles/rm_vect.mod src c
-\begin{lstlisting}[label=lbl:klt,caption=\mbox{\textsf{klt.mod}} contains the Rothman and Manis conductance models for low threshold potassium current.] \end{lstlisting}
-#+include:  ../../soma/modfiles/klt.mod src c
-\begin{lstlisting}[label=lbl:ka,caption=\mbox{\textsf{ka.mod}} contains the Rothman and Manis conductance models for A-type potassium current.] \end{lstlisting}
-#+include:  ../../soma/modfiles/ka.mod  src c
-
-*** Auditory nerve fibre NMODL interface
-
-\begin{lstlisting}[label=lbl:arlo,caption=\mbox{\textsf{an\_arlo.mod}} contains the NMODL interface to the ARLO auditory nerve model \citep{HeinzZhangEtAl:2001}.] \end{lstlisting}
-#+include:  ../../soma/modfiles/an_arlo.mod src c
-
-
-*** Hoc files
-
-\begin{lstlisting}[label=lbl:amd,caption=\mbox{\textsf{opt4/opt4amd.hoc}} is the main file called by the GA slave program to evaluate the cost function scores. This file creates CN network model and runs the notch noise stimulus through the model and calculates the cost function scores relative to the target network.] \end{lstlisting}
-#+include:  ../../soma/opt4/opt4amd.hoc src octave
-
-
-
-** \textsf{ganeuron}
-
-\begin{lstlisting}[label=lbl:genomeH,caption=\mbox{\textsf{genome.h}} contains global variables shared by master and slave programs.] \end{lstlisting}
-#+include:  ../../soma/ganeuron/opt4/genome.h src c++
-\begin{lstlisting}[label=lbl:genomeC,caption=\mbox{\textsf{genome.c}} contains global functions shared by master and slave programs.] \end{lstlisting}
-#+include:  ../../soma/ganeuron/opt4/genome.c src c++
-\begin{lstlisting}[label=lbl:masterC,caption=\mbox{\textsf{master.c}} main PVM file for controlling the GA procedure.] \end{lstlisting}
-#+include:  ../../soma/ganeuron/opt4/master.c src c++
-\begin{lstlisting}[label=lbl:slaveC,caption=\mbox{\textsf{slave.c}} worker program in GA procedure.] \end{lstlisting}
-#+include:  ../../soma/ganeuron/opt4/slave.c src c++
-\begin{lstlisting}[label=lbl:optrandC,caption=\mbox{\textsf{opt4rand.c}} code for generating random permutation and sensitivity analysis routines.] \end{lstlisting}
-#+include:  ../../soma/ganeuron/opt4/opt4rand.c src c++
-\begin{lstlisting}[label=lbl:MakefileAimk,caption=\mbox{\textsf{Makefile.aimk}}: PVM makefile.] \end{lstlisting}
-#+include:  ../../soma/ganeuron/opt4/Makefile.aimk src makefile
-\begin{lstlisting}[label=lbl:MakefileAimk,caption=\mbox{\textsf{packgenomes.sh}}: compress all hoc files created during GA or permutation into a *.tar.gz file and delete directory.] \end{lstlisting}
-#+include:  ../../soma/ganeuron/opt4/packgenomes.sh src sh
-
+\newpage\listoftodos
 
  
 ### Local Variables:
