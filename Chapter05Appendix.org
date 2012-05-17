@@ -1,0 +1,198 @@
+
+* Chapter 5 Appendix
+
+** Extra Data
+
+#+caption: {Comparison of best genomes using {GA} with identical inputs. $\dag$ Indicates the best cost function score from    each {GA}}
+#+label: tab:GA:4
+\toprule
+|                      |          ST |        IFR-25 |         IV-25 |
+|----------------------+-------------+---------------+---------------|
+| Target Genome        |           0 |             0 |             0 |
+| 1-step Population    | 7.32 (0.89) | 0.184 (0.011) | 0.134 (0.009) |
+| 5-step Population    |  10.0 (3.0) | 0.209 (0.012) | 0.165 (0.014) |
+| ST Best Genome       |  *8.45*\dag |         0.202 |         0.183 |
+| IFR 25 Best Genome   |        12.2 |   *0.195*\dag |         0.183 |
+| %IFR 250 Best Genome |        10.8 |         0.207 |         0.178 |
+| IV 25 Best Genome    |        9.58 |         0.202 |   *0.158*\dag |
+| %IV 250 Best Genome  |        9.52 |         0.207 |         0.159 |
+\bottomrule
+
+
+
+
+\begin{table}[tbh]
+  \centering
+  \caption{Cross comparison of best genomes from GA simulations using different ANF inputs.}
+  \label{tab:GA:XComp}
+%  \input{tex.src/best_genomes_25}
+\end{table}
+
+
+
+#+name:    best_genomes_summary_table
+#+caption: [Comparison of Best genomes trained with different inputs]{Comparison of Best genomes trained with different   inputs.  Target genome and each {GA} best genomes were run 100   times. One thousand genomes were run with different inputs in the step and 5 step parameter variation population.}
+#+label: tab:GA:5
+#+attr_latex: table tabular
+# \begin{tabular}{|p{1.1in}|p{0.3in}|p{0.3in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|}\hline
+|                        | \multicolumn{2}{c}{ST}  | \multicolumn{2}{c}{IFR-25} | \multicolumn{2}{c}{IFR-100} | \multicolumn{2}{c}{AIV-25} | \multicolumn{2}{c}{AIV-100} |
+|-----------------------------+----------------+--------+----------------+---------+----------------+---------+-----------------+---------+----------------+------------|
+| Target Genome               |           9.72 | (0.06) |          0.237 | (0.001) |          0.157 | (0.001) |           0.206 | (9e-4)  |          0.128 | (0.001)    |
+| 1-step Population           |           9.79 | (0.23) |          0.237 | (0.001) |          0.158 | (0.001) |           0.207 | (0.001) |          0.129 | (0.002)    |
+| 5-step Population           |           11.8 | (2.6)  |          0.246 | (0.006) |          0.171 | (0.009) |           0.219 | (0.008) |          0.149 | (0.01)     |
+| ST {\GA} Best Genome        | \textbf{9.63}* | (0.06) |          0.242 | (0.001) |          0.164 | (9e-4)  |           0.214 | (9e-4)  |          0.140 | (9e-4)     |
+| IFR 25 {\GA} Best    Genome |           15.0 | (0.2)  | \textbf{0.247} | (0.001) |          0.171 | (0.001) |           0.237 | (0.001) |          0.173 | (0.001)    |
+| IFR 250 {\GA} Best Genome   |           16.8 | (0.4)  |          0.243 | (9e-4)  | \textbf{0.165} | (0.001) |           0.244 | (9e-4)  |          0.183 | (0.001)    |
+| IV 25 {\GA} Best Genome     |           11.3 | (0.1)  |         0.238* | (0.001) |         0.159* | (9e-4)  | \textbf{0.211*} | (9e-4)  |         0.136* | (8e-4)     |
+| IV 250 {\GA} Best Genome    |           10.4 | (0.1)  |           0.24 | (0.001) |          0.161 | (0.001) |           0.213 | (9e-4)  | \textbf{0.138} | (0.001)    |
+#  \input{src/best_genomes_100.tex}
+ 
+
+** \textsf{ganeuron}: C++ parallel GA program using NEURON 
+
+The requirements for [[latex:progname][ganeuron]] are:
+ - gcc
+ - pvm 
+ - GAlib (version 2.4.7)
+ - NEURON
+
+The pvm compilation tool, [[latex:progname][aimk,]] must be included in your path =export
+PATH=$PATH:$PVM_HOME/bin=.
+
+Unpack the [[latex:progname][ganeuron]] package and compile the master and slave GA
+executable files.  The install routine copies them to the pvm path.
+
+#+BEGIN_SRC sh :export code
+ $ tar zxvf ganeuron.tar.gz
+ $ cd ganeuron/opt4
+ $ aimk && aimk install
+#+END_SRC
+
+
+The pvm daemon should be run in the background before running the
+[[latex:progname][ganeuron]] programs.
+
+To run the genetic algorithm simulation with 100 slaves, call:
+:   $ master <label>  nslaves 100
+\noindent where =<label>= is the cost function label. The master creates a cost function folder
+in the =genepath= directory, where all the genome hoc files  that need to be evaluated will be
+stored for evaluation by the slave processes. The label was set to either =stdyn=, =ivga25=, or =ifrga25= for 25
+repetition optimisation routines. One hundred repetition routines had
+labels with set to either =stdyn100=, =ivga100=, or =ifrga100=.
+The output path for the cost function genomes are compressed by [[latex:progname][packgenomes.sh]] at the end of the GA
+program for storage. 
+
+# The [[latex:progname][packgenomes.sh]] script accepts two arguments, the head
+# genome path and the folder name containing the genome hoc files.
+
+# # + BEGIN_SRC C :export code
+# 176:  cout << "Cleaning up ... " << endl;
+# 177:  syscmd = "./packgenomes.sh " + genepath + " " + costfnpath;
+# 178:  system(syscmd.c_str());
+# # + END_SRC
+
+
+
+The GA simulation parameters can override the internal variables on the
+command line (see GAlib documentation). The default internal variables
+: gaNpopulationSize,100
+: gaNpCrossover, 0.9
+: gaNpMutation, 0.005
+: gaNnReplacement, 95
+: gaNnGenerations, 200
+
+
+There are hard-coded variables in source files, e.g. =CNmodel=,
+=genepath= and =nrnapp=, that may need to be changed depending on the
+environment.  Note that the libnrnmech shared library was not generated
+in the same directory as the =opt4= NEURON files and is included as an
+argument to the NEURON executable =nrnoc= immediately after '-dll'.
+The =nrnapp= contains a command to =qsub=, the queue manager  In the slave 
+
+#+BEGIN_SRC C :export code
+ const string nrnpath("/home/meager/dmf/work/opt4");
+ const string nrnapp("qsub -q medium.q -b y 
+      -V -cwd -e /dev/null -o /dev/null \
+      /home/meager/nrn-6.1/nrnmpi/ia64/bin/nrnoc  \
+      -dll /home/meager/dmf/work/modfiles/ia64/.libs/libnrnmech.so "); 
+ const string returnfile("/home/meager/dmf/work/genes/opt4/tmp.dat");
+ //path where genes are stored locally
+ const string genepath("/home/meager/dmf/work/genes/opt4/"); 
+ //Main HOC file for Cochlear Nucleus Model execution
+ const string CNModel("/home/meager/dmf/work/opt4/opt4amd2.hoc");
+#+END_SRC
+
+
+*** Permutations and sensitivity analysis routines
+
+The permutation and sensitivity analysis routines were performed by the program =opt4rand=, generated by the main file =opt4rand.c=. The executable is compiled and installed into the PVM path using the same routines above for the GA master and slave programs.
+
+To run the random permutations routine with 50 slaves:
+: $ opt4rand userand  nslaves 50
+
+To run the sensitivity analysis routine, call:
+: $ opt4rand usesens nslaves 50
+
+To generate 100 random simulations of the target set:
+: $ opt4rand nslaves 50 target popsize 100
+
+
+
+
+
+* Chapter 5 Source Code
+
+** \textsf{cnstellate} NEURON model of HH-like neurons in the cochlear nucleus
+
+*** NMODL current module files
+
+\begin{lstlisting}[label=lbl:rmvect,caption=\mbox{\textsf{rm\_vect.mod}} contains the Rothman and Manis conductance models for sodium, high threshold potassium, hyperpolarisation-activated, and leak currents.  The original modules were configured for vectorisation and temperature modifications.] \end{lstlisting}
+#+include:  ../../soma/modfiles/rm_vect.mod
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:klt,caption=\mbox{\textsf{klt.mod}} contains the Rothman and Manis conductance models for low threshold potassium current.] \end{lstlisting}
+#+include:  ../../soma/modfiles/klt.mod
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:ka,caption=\mbox{\textsf{ka.mod}} contains the Rothman and Manis conductance models for A-type potassium current.] \end{lstlisting}
+#+include:  ../../soma/modfiles/ka.mod 
+\end{lstlisting}
+
+*** Auditory nerve fibre NMODL interface
+
+\begin{lstlisting}[label=lbl:arlo,caption=\mbox{\textsf{an\_arlo.mod}} contains the NMODL interface to the ARLO auditory nerve model \citep{HeinzZhangEtAl:2001}.] 
+#+include:  ../../soma/modfiles/an_arlo.mod
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:SGCfast,caption=\mbox{\textsf{SGCfast.mod}} contains the inhomogeneous Poisson point-process emulating the spiral ganglion cell (ANFs' cell body). Spike times were generated independently for each fiber from the instantaneous firing rate from the ARLO model using a pseudo-random spike-generator \citep{JacksonCarney:2005}, with refractory effects similar to those present in experimental ANF recordings.] 
+#+include:  ../../soma/modfiles/SGCfast.mod
+\end{lstlisting}
+
+
+*** Hoc files for evaluating network parameter fitness scores
+
+\begin{lstlisting}[label=lbl:amd,caption=\mbox{\textsf{opt4/opt4amd.hoc}} is the main file called by the GA slave program to evaluate the cost function scores. This file creates CN network model and runs the notch noise stimulus through the model and calculates the cost function scores relative to the target network.]
+#+include:  ../../soma/opt4/opt4amd.hoc 
+\end{lstlisting}
+
+
+** \textsf{ganeuron}: The parallel genetic algorithm program for NEURON
+
+\begin{lstlisting}[label=lbl:genomeH,caption=\mbox{\textsf{genome.h}} contains global variables shared by master and slave programs.] 
+#+include:  ../../soma/ganeuron/opt4/genome.h
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:genomeC,caption=\mbox{\textsf{genome.c}} contains global functions shared by master and slave programs.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/genome.c 
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:masterC,caption=\mbox{\textsf{master.c}} main PVM file for controlling the GA procedure.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/master.c 
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:slaveC,caption=\mbox{\textsf{slave.c}} worker program in GA procedure.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/slave.c 
+\end{lstlisting} 
+\begin{lstlisting}[label=lbl:optrandC,caption=\mbox{\textsf{opt4rand.c}} code for generating random permutation and sensitivity analysis routines.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/opt4rand.c 
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:MakefileAimk,caption=\mbox{\textsf{Makefile.aimk}}: PVM makefile.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/Makefile.aimk 
+\end{lstlisting}
+\begin{lstlisting}[label=lbl:MakefileAimk,caption=\mbox{\textsf{packgenomes.sh}}: compress all hoc files created during GA or permutation into a *.tar.gz file and delete directory.] \end{lstlisting}
+#+include:  ../../soma/ganeuron/opt4/packgenomes.sh 
+\end{lstlisting}
