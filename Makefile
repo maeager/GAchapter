@@ -24,22 +24,30 @@
 #    consider it impossible to ``link'' to this makefile in any way covered by
 #    the GPL.
 #
+#
 # TO OBTAIN INSTRUCTIONS FOR USING THIS FILE, RUN:
 #    make help
 #
 fileinfo	:= LaTeX Makefile
 author		:= Chris Monson
-version		:= 2.2.0-rc11
+version		:= 2.2.1-alpha8
 #
+.DEFAULT_GOAL	:= all
 # Note that the user-global version is imported *after* the source directory,
 # so that you can use stuff like ?= to get proper override behavior.
 .PHONY: Makefile GNUmakefile Makefile.ini $(HOME)/.latex-makefile/Makefile.ini
 -include Makefile.ini
 -include $(HOME)/.latex-makefile/Makefile.ini
+# Better names for these things
+.PHONY: Variables.ini $(HOME)/.latex-makefile/Variables.ini
+-include Variables.ini
+-include $(HOME)/.latex-makefile/Variables.ini
 #
 # This can be pdflatex or latex - you can change this by adding the following line to your Makefile.ini:
-BUILD_STRATEGY := latex
-# BUILD_STRATEGY		?= pdflatex -shell-escape
+#BUILD_STRATEGY := latex
+#BUILD_STRATEGY		?= pdflatex
+# This can be used to pass extra options to latex.
+LATEX_OPTS		?=
 #
 # Sets LC_ALL=C, by default, so that the locale-aware tools, like sort, be
 # # immune to changes to the locale in the user environment.
@@ -53,6 +61,7 @@ onlysources.tex	?= GAChapter.tex #IntroMethods.tex Results-DiffAN.tex ResultsSen
 #onlysources.tex.pl	?=
 #onlysources.tex.py	?=
 #onlysources.rst	?=
+#onlysources.mp		?=
 #onlysources.fig	?=
 #onlysources.gpi	?= 
 #onlysources.m		?=
@@ -68,6 +77,7 @@ onlysources.tex	?= GAChapter.tex #IntroMethods.tex Results-DiffAN.tex ResultsSen
 #includes.tex.pl	?=
 #includes.tex.py	?=
 #includes.rst		?=
+#includes.mp		?=
 #includes.fig		?=
 #includes.gpi		?= gfx/default.gpi
 #includes.m		?=
@@ -107,6 +117,78 @@ neverclean		?= *.pdf
 #
 #
 # CHANGES:
+# Chris Monson (2011-11-10):
+# * Issue 144: Help patch from girard.nicolas applied
+# Andrew McNabb (2011-09-30):
+# * Bumped version to 2.2.1-alpha8
+# * Issue 141: No font embedding for gnuplot when not doing pdf
+# * Syntax error fixed for gpi handling code
+# Chris Monson (2011-09-06):
+# * Issue 140: clean mlt*, mlf*, and mtc* files
+# * Issue 136: initial support for metapost files
+# Chris Monson (2011-08-09):
+# * Bumped version to 2.2.1-alpha7
+# * Issue 138: existing .eps files now included correctly
+# * Issue 139: added missing backslash to ps build rule
+# Chris Monson (2011-07-20):
+# * Added LATEX_OPTS
+# Chris Monson (2011-06-23):
+# * Bumped version to 2.2.1-alpha6
+# * Issue 133: Set jobname to fix .fls generation to always have the source name
+# * Removed unnecessary (?) double-invocation of cygpath
+# Chris Monson (2011-06-16):
+# * Added support for keeping .rst and .lhs tex intermediates around.
+# * Separated scripts from source generation files (rst and lhs)
+# * Fixed run-script problem for lhs2tex (was invoked incorrectly)
+# * Issue 133: Fixed typo from literate Haskell support
+# Chris Monson (2011-06-13):
+# * Bumped version to 2.2.1-alpha5
+# * Fixed problems with detecting graphics for very long source names.
+# Chris Monson (2011-06-13):
+# * Issue 134: name of self corrected for dependency graph
+# * Issue 133: Added literate Haskell support (lhs2tex)
+# Chris Monson (2011-05-31):
+# * Rewrote specials (%%COMMENTS) to be easier to extend and parse.
+# Chris Monson (2011-05-11):
+# * Bumped version to 2.2.1-alpha4
+# * Issue 129: nomenclature dependency fix
+# Chris Monson (2011-05-09):
+# * Bumped version to 2.2.1-alpha3
+# * Issue 112: Cygpath fixes
+# Chris Monson (2011-04-27):
+# * Bumped version to 2.2.1-alpha2
+# * Issue 126: Broken log parsing for latex pipeline
+# * Fixed month in recent changes (had May, should be April)
+# * Noticed problems with some existing parsing (colorizing errors, notably) and
+#     fixed them.
+# * New test case for specified graphic extensions.
+# * Added .bb generation for .eps files (when extensionless in latex pipeline)
+# Chris Monson (2011-04-22):
+# * Bumped version to 2.2.1-alpha1
+# * Issue 105: add support for format file detection and compilation
+# Chris Monson (2011-04-20):
+# * Bumped version to 2.2.0 (release!)
+# Chris Monson (2011-04-19):
+# * Bumped version to 2.2.0-rc15
+# * Issue 125: infinite recursion with nomenclature files
+# * Issue 125: removed .d as a target for .nls in get-log-index
+# * Cleaned up invocation of run-makeindex to take an optional .ist instead of flags.
+# Chris Monson (2011-04-06):
+# * Bumped version to 2.2.0-rc14
+# * Issue 121: Added Targets.ini and corresponding help text for it.
+# * Issue 121: Added Variables.ini (Makefile.ini still works, though).
+# * Issue 121: Added .DEFAULT_GOAL optional setting.
+# * Issue 120: xindy compatibility
+# Chris Monson (2011-03-16):
+# * Bumped version to 2.2.0-rc13
+# * Fixed a bug in kspewhich invocation - random characters and a missing pipe.
+# * Added font embedding to gnuplot output.
+# Chris Monson (2011-03-15):
+# * Bumped version to 2.2.0-rc12
+# * Issue 119: Annoying warning from which if Gnuplot not installed.
+# * Fixed catchall error output to show more info from the log.  Cutting off the
+#     first line is too jarring.
+# * Issue 118: Better glossary support
 # Chris Monson (2011-03-03):
 # * Bumped version to 2.2.0-rc11
 # * Issue 112: Fixed regression introduced by use of cygpath (ugly warnings)
@@ -658,10 +740,12 @@ SLEEP		?= sleep
 BIBTEX		?= bibtex
 DVIPS		?= dvips
 LATEX		?= latex
+CHECK		?= lacheck
 PDFLATEX	?= pdflatex
 XELATEX		?= xelatex
 EPSTOPDF	?= epstopdf
 MAKEINDEX	?= makeindex
+XINDY		?= xindy
 MAKEGLOSSARY    ?= makeglossaries
 KPSEWHICH	?= kpsewhich
 GS		?= gs
@@ -674,12 +758,14 @@ TPUT		?= tput
 PERL		?= perl
 PYTHON		?= python
 RST2LATEX	?= rst2latex.py
+LHS2TEX		?= lhs2tex
 # == EPS Generation ==
 DIA		?= dia --nosplash # Diagram Editor
 OCTAVE		?= GNUTERM=dumb octave -q	# Matlab/Octave quiet, disable x11 terminal
 CONVERT		?= convert	# ImageMagick
 DOT		?= dot		# GraphViz
 DOT2TEX		?= dot2tex	# dot2tex - add options (not -o) as needed
+MPOST		?= mpost	# MetaPost
 FIG2DEV		?= fig2dev	# XFig
 GNUPLOT		?= gnuplot	# GNUplot
 INKSCAPE	?= inkscape	# Inkscape (svg support)
@@ -692,20 +778,19 @@ GUNZIP		?= gunzip	# GZipped EPS
 PSNUP		?= psnup
 # == Viewing Stuff ==
 VIEW_POSTSCRIPT	?= gv
-VIEW_PDF	?= evince
+VIEW_PDF	?= xpdf
 VIEW_GRAPHICS	?= display
+
+# Xindy glossaries
+XINDYLANG	?= english
+XINDYENC	?= utf8
 
 # If cygpath is present, then we create a path-norm function that uses it,
 # otherwise the function is just a no-op.  Issue 112 has details.
-USE_CYGPATH := $(if $(shell $(WHICH) $(CYGPATH) >/dev/null 2>&1),yes,)
-
-# $(call get-cygpath,<path>)
-define get-cygpath
-$(shell $(CYGPATH) -u "$(shell $(CYGPATH) -s -w $1)")
-endef
+USE_CYGPATH := $(if $(shell $(WHICH) $(CYGPATH) 2>/dev/null),yes,)
 
 define path-norm
-$(if $(USE_CYGPATH),$(call get-cygpath,$1),$1)
+$(if $(USE_CYGPATH),$(shell $(CYGPATH) -u "$1"),$1)
 endef
 
 # Command options for embedding fonts and postscript->pdf conversion
@@ -728,7 +813,7 @@ FIXED_ECHO	:= $(if $(findstring -n,$(shell $(ECHO) -n)),$(shell which echo),$(EC
 ECHO		:= $(if $(FIXED_ECHO),$(FIXED_ECHO),$(ECHO))
 
 define determine-gnuplot-output-extension
-$(if $(shell $(WHICH) $(GNUPLOT)),
+$(if $(shell $(WHICH) $(GNUPLOT) 2>/dev/null),
      $(if $(findstring unknown or ambiguous, $(shell $(GNUPLOT) -e "set terminal pdfcairo" 2>&1)),
 	  eps, pdf),
      none)
@@ -838,6 +923,22 @@ GRAY	?= $(call get-default,$(GREY),)
 #
 # Utility Functions and Definitions
 #
+#
+# Transcript
+# For debug/testing purposes: writes a message to
+# filename.transcript.make for each command that was run, including
+# some human-readable justification for why it had to be run.
+# For example: "Running latex (log-file indicated that this is necessary)"
+# Set WRITE_TRANSCRIPT to something to activate
+WRITE_TRANSCRIPT ?=
+# Set reason for the next run call
+# $(call set-run-reason,message)
+set-run-reason = export run_reason="$1"
+# Log command to the transcript file
+# $(call set-run-reason,command,job_name)
+transcript = $(if $(WRITE_TRANSCRIPT), \
+						 $(ECHO) "Running $1 ($$run_reason)" >> $2.transcript.make; \
+						 export run_reason="",$(sh_true))
 
 # Don't call this directly - it is here to avoid calling wildcard more than
 # once in remove-files.
@@ -891,6 +992,8 @@ escape-fname-regex	= $(subst /,\\/,$(subst .,\\.,$1))
 # Test that a file exists
 # $(call test-exists,file)
 test-exists		= [ -e '$1' ]
+# $(call test-not-exists,file)
+test-not-exists   = [ ! -e '$1' ]
 
 # $(call move-files,source,destination)
 move-if-exists		= $(call test-exists,$1) && $(MV) '$1' '$2'
@@ -971,7 +1074,7 @@ endif
 # Get the name of this makefile (always right in 3.80, often right in 3.79)
 # This is only really used for documentation, so it isn't too serious.
 ifdef MAKEFILE_LIST
-this_file	:= $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
+this_file	:= $(firstword $(MAKEFILE_LIST))
 else
 this_file	:= $(wildcard GNUmakefile makefile Makefile)
 endif
@@ -1090,6 +1193,8 @@ all_files.tex.sh	?= $(wildcard *.tex.sh)
 all_files.tex.pl	?= $(wildcard *.tex.pl)
 all_files.tex.py	?= $(wildcard *.tex.py)
 all_files.rst		?= $(wildcard *.rst)
+all_files.lhs		?= $(wildcard *.lhs)
+all_files.mp		?= $(wildcard *.mp)
 all_files.fig		?= $(wildcard *.fig)
 all_files.gpi		?= $(wildcard *.gpi)
 all_files.m		?= $(wildcard *.m)
@@ -1138,9 +1243,11 @@ files.tex.sh	:= $(call filter-buildable,tex.sh)
 files.tex.pl	:= $(call filter-buildable,tex.pl)
 files.tex.py	:= $(call filter-buildable,tex.py)
 files.rst	:= $(call filter-buildable,rst)
+files.lhs	:= $(call filter-buildable,lhs)
 files.gpi	:= $(call filter-buildable,gpi)
 files.m		:= $(call filter-buildable,m)
 files.dot	:= $(call filter-buildable,dot)
+files.mp	:= $(call filter-buildable,mp)
 files.fig	:= $(call filter-buildable,fig)
 files.xvg	:= $(call filter-buildable,xvg)
 files.svg	:= $(call filter-buildable,svg)
@@ -1157,15 +1264,21 @@ files.eps	:= $(call filter-buildable,eps)
 # files in the end.
 .SECONDARY:	$(patsubst %.fig,%.pstex,$(files.fig))
 
+# Make all .tex targets secondary that result .rst and .lhs:
+.SECONDARY:	$(patsubst %.rst,%.tex,$(files.rst))
+.SECONDARY:	$(patsubst %.lhs,%.tex,$(files.lhs))
+
 # Top level sources that are built by default targets
 default_files.tex	:= $(call filter-default,tex)
 default_files.tex.sh	:= $(call filter-default,tex.sh)
 default_files.tex.pl	:= $(call filter-default,tex.pl)
 default_files.tex.py	:= $(call filter-default,tex.py)
 default_files.rst	:= $(call filter-default,rst)
+default_files.lhs	:= $(call filter-default,lhs)
 default_files.gpi	:= $(call filter-default,gpi)
 default_files.m		:= $(call filter-default,m)
 default_files.dot	:= $(call filter-default,dot)
+default_files.mp	:= $(call filter-default,mp)
 default_files.fig	:= $(call filter-default,fig)
 default_files.xvg	:= $(call filter-default,xvg)
 default_files.svg	:= $(call filter-default,svg)
@@ -1181,15 +1294,18 @@ concat-files	= $(foreach s,$1,$($(if $2,$2_,)files.$s))
 
 # Useful file groupings
 all_files_source	:= $(call concat-files,tex,all)
-all_files_scripts	:= $(call concat-files,tex.sh tex.pl tex.py rst,all)
+all_files_source_gen	:= $(call concat-files,rst rhs,all)
+all_files_scripts	:= $(call concat-files,tex.sh tex.pl tex.py,all)
 
 .PHONY: $(all_files_scripts)
 
-default_files_source	:= $(call concat-files,tex,default)
-default_files_scripts	:= $(call concat-files,tex.sh tex.pl tex.py rst,default)
+default_files_source		:= $(call concat-files,tex,default)
+default_files_source_gen	:= $(call concat-files,rhs lhs,default)
+default_files_scripts		:= $(call concat-files,tex.sh tex.pl tex.py,default)
 
-files_source	:= $(call concat-files,tex)
-files_scripts	:= $(call concat-files,tex.sh tex.pl tex.py rst)
+files_source		:= $(call concat-files,tex)
+files_source_gen	:= $(call concat-files,rst lhs)
+files_scripts		:= $(call concat-files,tex.sh tex.pl tex.py)
 
 # Utility function for obtaining stems
 # $(call get-stems,suffix,[prefix])
@@ -1201,6 +1317,8 @@ all_stems.tex.sh	:= $(call get-stems,tex.sh,all)
 all_stems.tex.pl	:= $(call get-stems,tex.pl,all)
 all_stems.tex.py	:= $(call get-stems,tex.py,all)
 all_stems.rst		:= $(call get-stems,rst,all)
+all_stems.lhs		:= $(call get-stems,lhs,all)
+all_stems.mp		:= $(call get-stems,mp,all)
 all_stems.fig		:= $(call get-stems,fig,all)
 all_stems.gpi		:= $(call get-stems,gpi,all)
 all_stems.m		:= $(call get-stems,m,all)
@@ -1219,6 +1337,8 @@ default_stems.tex.sh		:= $(call get-stems,tex.sh,default)
 default_stems.tex.pl		:= $(call get-stems,tex.pl,default)
 default_stems.tex.py		:= $(call get-stems,tex.py,default)
 default_stems.rst		:= $(call get-stems,rst,default)
+default_stems.lhs		:= $(call get-stems,lhs,default)
+default_stems.mp		:= $(call get-stems,mp,default)
 default_stems.fig		:= $(call get-stems,fig,default)
 default_stems.gpi		:= $(call get-stems,gpi,default)
 default_stems.m			:= $(call get-stems,m,default)
@@ -1237,6 +1357,8 @@ stems.tex.sh		:= $(call get-stems,tex.sh)
 stems.tex.pl		:= $(call get-stems,tex.pl)
 stems.tex.py		:= $(call get-stems,tex.py)
 stems.rst		:= $(call get-stems,rst)
+stems.lhs		:= $(call get-stems,lhs)
+stems.mp		:= $(call get-stems,mp)
 stems.fig		:= $(call get-stems,fig)
 stems.gpi		:= $(call get-stems,gpi)
 stems.m			:= $(call get-stems,m)
@@ -1254,8 +1376,9 @@ stems.eps		:= $(call get-stems,eps)
 concat-stems	= $(sort $(foreach s,$1,$($(if $2,$2_,)stems.$s)))
 
 # The most likely to be source but not finished product go first
-graphic_source_extensions	:= fig \
-				   m \
+graphic_source_extensions	:= m \
+				   mp \
+				   fig \
 				   gpi \
 				   xvg \
 				   svg \
@@ -1263,7 +1386,7 @@ graphic_source_extensions	:= fig \
 				   eps.gz
 
 ifeq "$(strip $(BUILD_STRATEGY))" "latex"
-graphic_source_extensions	+= png jpg jpeg
+graphic_source_extensions	+= png jpg jpeg eps
 graphic_target_extensions	:= eps ps
 endif
 
@@ -1278,24 +1401,27 @@ graphic_target_extensions	:= pdf png jpg jpeg mps tif
 endif
 
 all_stems_source	:= $(call concat-stems,tex,all)
-all_stems_script	:= $(call concat-stems,tex.sh tex.pl tex.py rst,all)
+all_stems_source_gen	:= $(call concat-stems,rst lhs,all)
+all_stems_script	:= $(call concat-stems,tex.sh tex.pl tex.py,all)
 all_stems_graphic	:= $(call concat-stems,$(graphic_source_extensions),all)
-all_stems_ss		:= $(sort $(all_stems_source) $(all_stems_script))
-all_stems_sg		:= $(sort $(all_stems_script))
+all_stems_ss		:= $(sort $(all_stems_source) $(all_stems_source_gen) $(all_stems_script))
+all_stems_sg		:= $(sort $(all_stems_script) $(all_stems_source_gen))
 all_stems_ssg		:= $(sort $(all_stems_ss))
 
-default_stems_source	:= $(call concat-stems,tex,default)
-default_stems_script	:= $(call concat-stems,tex.sh tex.pl tex.py rst,default)
-default_stems_ss	:= $(sort $(default_stems_source) $(default_stems_script))
-default_stems_sg	:= $(sort $(default_stems_script))
+default_stems_source		:= $(call concat-stems,tex,default)
+default_stems_source_gen	:= $(call concat-stems,rst lhs,default)
+default_stems_script		:= $(call concat-stems,tex.sh tex.pl tex.py,default)
+default_stems_ss	:= $(sort $(default_stems_source) $(default_stems_source_gen) $(default_stems_script))
+default_stems_sg	:= $(sort $(default_stems_script) $(default_stems_source_gen))
 default_stems_ssg	:= $(sort $(default_stems_ss))
 
 stems_source		:= $(call concat-stems,tex)
-stems_script		:= $(call concat-stems,tex.sh tex.pl tex.py rst)
+stems_source_gen	:= $(call concat-stems,rst lhs)
+stems_script		:= $(call concat-stems,tex.sh tex.pl tex.py)
 stems_graphic		:= $(call concat-stems,$(graphic_source_extensions))
 stems_gg		:= $(sort $(stems_graphic))
-stems_ss		:= $(sort $(stems_source) $(stems_script))
-stems_sg		:= $(sort $(stems_script))
+stems_ss		:= $(sort $(stems_source) $(stems_source_gen) $(stems_script))
+stems_sg		:= $(sort $(stems_script) $(stems_source_gen))
 stems_ssg		:= $(sort $(stems_ss))
 
 # Calculate names that can generate the need for an include file.  We can't
@@ -1428,7 +1554,7 @@ endif
 # Extensions generated by LaTeX invocation that can be removed when complete
 rm_ext		:= \
 	log *.log aux $(pre_pdf_extensions) pdf blg bbl out nav snm toc lof lot lol pfg \
-	fls vrb idx ind ilg acr acn alg glg glo gls lox nls nlo nlg brf mtc maf brf
+	fls vrb idx ind ilg acr acn alg glg glo gls lox nls nlo nlg brf mtc* mlf* mlt* maf brf ist fmt
 backup_patterns	:= *~ *.bak *.backup body.tmp head.tmp
 
 graph_stem	:= _graph
@@ -1488,6 +1614,23 @@ $(SED) \
 -e ':addtargets' \
 -e 's!.*!$2: $$(call path-norm,&)!' \
 '$1' | $(SORT) | $(UNIQ)
+endef
+
+# $(call get-format,<tex file>,<target files>)
+define get-format
+$(SED) \
+-e '1!d' \
+-e '/^%&\([[:alnum:]]\{1,\}\)\( .*\)*$$/{' \
+-e '  s!!\1!' \
+-e '  h' \
+-e '  s/.*/# MISSING format "&.fmt" (comment forces rebuild of target file)/' \
+-e '  p' \
+-e '  g' \
+-e '  s!.*!$2: $$(call path-norm,&.fmt)!' \
+-e '  p' \
+-e '}' \
+-e 'd' \
+'$1'
 endef
 
 # $(call get-missing-inputs,<log file>,<target files>)
@@ -1598,11 +1741,11 @@ endef
 # extensions (a sign that it's graphicx complaining).
 #
 # $(call get-graphics,<target file stem>)
-#.log,$(addprefix $*.,d $(build_target_extension) _graphics)
 define get-graphics
 $(SED) \
 -e '/^File: \(.*\) Graphic file (type [^)]*)/{' \
 -e '  s//\1/' \
+-e '  s/\.e\{0,1\}ps$$//' \
 -e '  b addtargets' \
 -e '}' \
 -e '$${' \
@@ -1646,7 +1789,7 @@ $(SED) \
 -e 'h' \
 -e 'd' \
 -e ':start' \
--e '/^[^[:cntrl:]:]*:[[:digit:]]\{1,\}: LaTeX Error: File `/{' \
+-e '/^[^[:cntrl:]:]*:[[:digit:]]\{1,\}:[[:space:][:cntrl:]]*LaTeX[[:space:][:cntrl:]]*Error:[[:space:][:cntrl:]]*File `/{' \
 -e '  s/\n//g' \
 -e '  b needonemore' \
 -e '}' \
@@ -1658,7 +1801,13 @@ $(SED) \
 -e '  s/\n\{1,\}/ /g' \
 -e '  s/[[:space:]]\{1,\}/ /g' \
 -e '  s/^.*File `//' \
--e '  s/'"'"' not found\..*extensions: \([^[:space:]]*\).*/::::\1/' \
+-e '  /extensions: /{' \
+-e '    s/'"'"' not found\..*extensions: \([^[:space:]]*\).*/::::\1/' \
+-e '    b fileparsed' \
+-e '  }' \
+-e '  s/'"'"' not found\..*/::::/' \
+-e '  :fileparsed' \
+-e '  s/\.e\{0,1\}ps::::$$/::::/' \
 -e '  h' \
 -e '  s/\(.*\)::::\(.*\)/# MISSING stem "\1" - allowed extensions are "\2" - leave comment here - it affects the build/' \
 -e '  p' \
@@ -1681,6 +1830,58 @@ $(SED) \
 -e 'p' \
 -e 'd' \
 $1.log
+endef
+
+# Get some special comments out of the source file (e.g., paper size, beamer
+# usage, etc.)
+#
+# $(call get-source-specials,<source file name>,<output file>)
+define get-source-specials
+$(SED) \
+-e '/^%%[[:space:]]*\([^%].*\)[[:space:]]*$$/{' \
+-e '  s//\1/' \
+-e '  s/[[:space:]]//g' \
+-e '  /BEAMER/{' \
+-e '    /BEAMERLARGE/!d' \
+-e '    s/.*/BEAMER/' \
+-e '  }' \
+-e '  p' \
+-e '  d' \
+-e '}' \
+-e '/\\documentclass[^{]*{.*}/b procclass' \
+-e '/\\documentclass/,/}/{' \
+-e '  s/%.*//' \
+-e '  H' \
+-e '  /}/{' \
+-e '    s/.*//' \
+-e '    x' \
+-e '    b procclass' \
+-e '  }' \
+-e '  d' \
+-e '}' \
+-e 'd' \
+-e ':procclass' \
+-e 's/\\documentclass//' \
+-e 's/[][]//g' \
+-e 's/{.*}//' \
+-e 's/[[:cntrl:][:space:]]*//g' \
+-e 's/,/ /g' \
+-e 's/^/ /' \
+-e 's/$$/ /' \
+-e '/.* \([[:alnum:]]\{1,\}\)paper .*/{' \
+-e '  h' \
+-e '  s//PAPERSIZE=\1/' \
+-e '  p' \
+-e '  g' \
+-e '}' \
+-e '/.* landscape .*/{' \
+-e '  h' \
+-e '  s//ORIENTATION=landscape/' \
+-e '  p' \
+-e '  g' \
+-e '}' \
+-e 'd' \
+$1 > '$2'
 endef
 
 # Checks for build failure due to pstex inclusion, and gives instructions.
@@ -1776,10 +1977,10 @@ $(SED) \
 -e 's/[[:space:]]/\\&/g' \
 -e 's/,/.bib /g' \
 -e 's/ \{1,\}$$//' \
-$1 | $(XARGS) $(KPSEWHICH) '#######' | \
+'$1' | $(XARGS) $(KPSEWHICH) '#######' | \
 $(SED) \
--e 's!^!$2: !' | \
-\$(SORT) | $(UNIQ)
+-e 's!.*!$2: $$(call path-norm,&)!' | \
+$(SORT) | $(UNIQ)
 endef
 
 # Makes a an aux file that only has stuff relevant to the target in it
@@ -1936,7 +2137,7 @@ $(SED) \
 -e '}' \
 -e 's/^[^[:cntrl:]:]*:[[:digit:]]\{1,\}:/!!! &/' \
 -e 's/^\(.*\n\)\([^[:cntrl:]:]*:[[:digit:]]\{1,\}: .*\)/\1!!! \2/' \
--e '/^!!! .* LaTeX Error: File /{' \
+-e '/^!!! .*[[:space:][:cntrl:]]LaTeX[[:space:][:cntrl:]]Error:[[:space:][:cntrl:]]*File /{' \
 -e '  s/\n//g' \
 -e '  b needonemore' \
 -e '}' \
@@ -1955,10 +2156,12 @@ $(SED) \
 -e '    b needonemore' \
 -e '  }' \
 -e '  s/::0::!!! //' \
+-e '  /File .*\.e\{0,1\}ps'"'"' not found/b skip' \
 -e '  /could not locate.*any of these extensions:/{' \
--e '    d' \
+-e '    b skip' \
 -e '  }' \
 -e '  s/\(not found\.\).*/\1/' \
+-e '  s/^/!!! /' \
 -e '  b error' \
 -e '}' \
 -e '/^\(.* LaTeX Error: Missing .begin.document.\.\).*/{' \
@@ -1973,10 +2176,14 @@ $(SED) \
 -e '/^\(!pdfTeX error:.*\)s*/{' \
 -e '  b error' \
 -e '}' \
--e '/.*\(!!! [^[:cntrl:]]*\).*/{' \
--e '  s//\1.  See log for more information./' \
+-e '/.*\(!!! .*\)/{' \
+-e '  s//\1/' \
+-e '  s/[[:cntrl:]]//' \
+-e '  s/[[:cntrl:]]$$//' \
+-e '  /Cannot determine size of graphic .*(no BoundingBox)/b skip' \
 -e '  b error' \
 -e '}' \
+-e ':skip' \
 -e 'd' \
 -e ':error' \
 -e 's/^!\(!! \)\{0,1\}\(.*\)/$(C_ERROR)\2$(C_RESET)/' \
@@ -1993,6 +2200,15 @@ $(SED) \
 -e '  s/^.*$$/$(C_ERROR)&$(C_RESET)/' \
 -e '  p' \
 -e '}' \
+-e 'd' \
+'$1'
+endef
+
+# Colorize xindy errors
+# $(call colorize-xindy-errors,<log file>)
+define colorize-xindy-errors
+$(SED) \
+-e 's/^xindy:.*/$(C_ERROR)&$(C_RESET)/p' \
 -e 'd' \
 '$1'
 endef
@@ -2059,6 +2275,10 @@ endef
 
 # Get all important .aux files from the top-level .aux file and merges them all
 # into a single file, which it outputs to stdout.
+# It does this by finding all \input commands and creating a new sed script
+# that reads those files inline when it encounters one.
+# It then runs that sed script, generating a flattened aux file, and
+# then it cleans up the flattened file by removing some crufty things.
 #
 # $(call flatten-aux,<toplevel aux>,<output file>)
 define flatten-aux
@@ -2131,9 +2351,10 @@ $(SED) \
 -e '    b end' \
 -e '  }' \
 -e '  / *LaTeX Error:.*/{' \
--e '    s/.*\( *LaTeX Error:.*\)/$(C_ERROR)\1$(C_RESET)/' \
--e '    b end' \
+-e '    s/.*\( *LaTeX Error:.*\)/\1/' \
+-e '    b error' \
 -e '  }' \
+-e '  /^[^[:cntrl:]:]*:[[:digit:]]\{1,\}:/b error' \
 -e '  /.*Warning:.*/{' \
 -e '    s//$(C_WARNING)&$(C_RESET)/' \
 -e '    b end' \
@@ -2147,6 +2368,9 @@ $(SED) \
 -e '    b end' \
 -e '  }' \
 -e '  d' \
+-e '  :error' \
+-e '  s/.*/$(C_ERROR)&$(C_RESET)/' \
+-e '  b end' \
 -e '  :end' \
 -e '  G' \
 -e '}'
@@ -2176,7 +2400,7 @@ $(SED) \
 enlarge_beamer	= $(PSNUP) -l -1 -W128mm -H96mm -pletter
 
 # $(call test-run-again,<source stem>)
-test-run-again	= $(EGREP) -q '^(.*Rerun .*|No file $1\.[^.]+\.)$$' $1.log
+test-run-again	= $(EGREP) '^(.*Rerun .*|No file $1\.[^.]+\.)$$' $1.log | $(EGREP) -q -v '^(Package: rerunfilecheck.*Rerun checks for auxiliary files.*)$$'
 
 # This tests whether the build target commands should be run at all, from
 # viewing the log file.
@@ -2185,24 +2409,49 @@ define test-log-for-need-to-run
 $(SED) \
 -e '/^No file $(call escape-fname-regex,$1)\.aux\./d' \
 $1.log \
-| $(EGREP) -q '^(.*Rerun .*|No file $1\.[^.]+\.|No file .+\.tex\.|LaTeX Warning: File.*)$$'
+| $(EGREP) '^(.*Rerun .*|No file $1\.[^.]+\.|No file .+\.tex\.|LaTeX Warning: File.*)$$' \
+| $(EGREP) -q -v '^(Package: rerunfilecheck.*Rerun checks for auxiliary files.*)$$'
 endef
 
 # LaTeX invocations
 #
-# $(call latex,<tex file>,[<extra LaTeX args>])
-run-latex	= $(latex_build_program) -interaction=batchmode -file-line-error $(if $2,$2,) $1 > /dev/null
+# Note that we use
+#
+#  -recorder: generates .fls files for things that are input and output
+#  -jobname: to make sure that .fls files are named after the source that created them
+#  -file-line-error: to make sure that we have good line information for error output
+#  -interaction=batchmode: so that we don't stop on errors (we'll parse logs for that)
+#
+# $(call latex,<tex file stem, e.g., $*>,[extra LaTeX args])
+define run-latex
+$(latex_build_program) -jobname='$1' -interaction=batchmode -file-line-error $(LATEX_OPTS) $(if $2,$2,) $1 > /dev/null; \
+$(call transcript,latex,$1)
+endef
 
 # $(call latex-color-log,<LaTeX stem>)
 latex-color-log	= $(color_tex) $1.log
 
-# $(call run-makeindex,<input>,<output>,<log>,<extra flags>)
+# $(call run-makeindex,<input>,<output>,<log>,[.ist style file])
 define run-makeindex
 success=1; \
-if ! $(MAKEINDEX) -q $1 -t $3 -o $2 $4 > /dev/null || $(EGREP) -q '^!!' $3; then \
+if ! $(MAKEINDEX) -q $1 -t $3 -o $2 $(if $4,-s $4,) > /dev/null || $(EGREP) -q '^!!' $3; \
+then \
 	$(call colorize-makeindex-errors,$3); \
 	$(RM) -f '$2'; \
 	success=0; \
+  $(call transcript,makeindex,$1) \
+fi; \
+[ "$$success" = "1" ] && $(sh_true) || $(sh_false);
+endef
+
+# $(call run-xindy,<input>,<output>,<module>,<log>)
+define run-xindy
+success=1; \
+if ! $(XINDY) -q -o $2 -L $(XINDYLANG) -C $(XINDYENC) -I xindy -M $3 -t $4 $1 > /dev/null || $(EGREP) -q '^xindy:' $4; then \
+	$(call colorize-xindy-errors,$4); \
+	$(RM) -f '$2'; \
+	success=0; \
+  $(call transcript,xindy,$1) \
 fi; \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
@@ -2210,9 +2459,7 @@ endef
 # $(call run-makeindex,<input>,<output>,<log>,<extra flags>)
 define run-makeglossary
 success=1; \
-if ! $(MAKEGLOSSARY) $(shell basename $1 .tex) > /dev/null || $(EGREP) -q '^!!' $3; then \
-	$(call colorize-makeindex-errors,$3); \
-	$(RM) -f '$2'; \
+if ! $(MAKEGLOSSARY) $1> /dev/null || $(EGREP) -q '^!!' $3; then \
 	success=0; \
 fi; \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
@@ -2225,7 +2472,7 @@ endef
 #
 # $(call run-script,<interpreter>,<input>,<output>)
 define run-script
-[ ! -e '$2.cookie' ] && $(ECHO) "restarts=$(RESTARTS)" > $2.cookie && $(ECHO) "level=$(MAKELEVEL)" >> $2.cookie; \
+$(call test-not-exists,$2.cookie) && $(ECHO) "restarts=$(RESTARTS)" > $2.cookie && $(ECHO) "level=$(MAKELEVEL)" >> $2.cookie; \
 restarts=`$(SED) -n -e 's/^restarts=//p' $2.cookie`; \
 level=`$(SED) -n -e 's/^level=//p' $2.cookie`; \
 if $(EXPR) $(MAKELEVEL) '<=' $$level '&' $(RESTARTS) '<=' $$restarts >/dev/null; then \
@@ -2239,8 +2486,7 @@ endef
 # BibTeX invocations
 #
 # $(call run-bibtex,<tex stem>)
-run-bibtex	= $(BIBTEX) $1 | $(color_bib)
-
+run-bibtex	= $(BIBTEX) $1 | $(color_bib); $(call transcript,bibtex,$1)
 
 # $(call convert-eps-to-pdf,<eps file>,<pdf file>,[gray])
 # Note that we don't use the --filter flag because it has trouble with bounding boxes that way.
@@ -2278,14 +2524,32 @@ endef
 # Get the font entry given the output file (type) and the font size.  For PDF
 # it uses fsize or font, for eps it just uses the bare number.
 gpi-font-entry = $(if $(filter %.pdf,$1),$(subst FONTSIZE,$2,$(GPI_FSIZE_SYNTAX)),$2)
+gpi-fontname = Helvetica
 
 # $(call gpi-terminal,<gpi file><output file>,[gray])
 #
 # Get the terminal settings for a given gpi and its intended output file
 define gpi-terminal
-$(if $(filter %.pdf,$2),pdf enhanced,postscript enhanced eps) \
-$(call gpi-font-entry,$2,$(call gpi-fontsize,$1,$2)) \
-$(call gpi-monochrome,$1,$3)
+$(if $(filter %.pdf,$2),pdfcairo enhanced,postscript enhanced eps) \
+$(call gpi-monochrome,$1,$3) solid \
+font "$(call gpi-fontname),$(call gpi-font-entry,$2,$(call gpi-fontsize,$1,$2))" 
+endef
+
+# $(call gpi-embed-pdf-fonts,<input file>,<output file>)
+#
+define gpi-embed-pdf-fonts
+$(GS) \
+	-q \
+	-dSAFER \
+	-dNOPAUSE \
+	-dBATCH \
+	-sDEVICE=$(if $(filter pdf,$(GPI_OUTPUT_EXTENSION)),pdfwrite,pswrite) \
+	-sOutputFile='$2' \
+	-sstdout=%stderr \
+	-dCompatibilityLevel=1.5 \
+	-dPDFSETTINGS=/prepress \
+	-c .setpdfwrite \
+	-f '$1'
 endef
 
 # $(call convert-gpi,<gpi file>,<output file>,[gray])
@@ -2303,9 +2567,14 @@ success=1; \
 if ! $(GNUPLOT) $$fnames 2> $1.log; then \
 	$(call colorize-gnuplot-errors,$1.log); \
 	success=0; \
+elif [ x"$(suffix $2)" = x".pdf" ]; then \
+	if ! $(call gpi-embed-pdf-fonts,$2,$2.embed.tmp.make); then \
+		success = 0; \
+	else \
+		$(call move-if-exists,$2.embed.tmp.make,$2); \
+	fi; \
 fi; \
-$(if $(gpi_sed),$(call remove-temporary-files,$1.temp.make);,) \
-$(call remove-temporary-files,$1head.make); \
+$(if $(gpi_sed),$(call remove-temporary-files,$1.temp.make);,) \  #$(call remove-temporary-files,$1head.make); 
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
 
@@ -2405,6 +2674,23 @@ convert-xvg	= $(XMGRACE) '$1' -printfile - -hardcopy -hdevice $(if $3,-mono,) EP
 #
 # $(call convert-epsgz,<eps.gz file>,<eps file>,[gray])
 convert-epsgz	= $(GUNZIP) -c '$1' $(if $3,| $(call kill-ps-color)) > '$2'
+
+# Generates a .bb file from a .eps file (sometimes latex really wants this)
+#
+# $(call eps-bb,<eps file>,<eps.bb file>)
+define eps-bb
+$(SED) \
+-e '/^%%Title:/p' \
+-e '/^%%Creator:/p' \
+-e '/^%%BoundingBox:/p' \
+-e '/^%%CreationDate:/p' \
+-e '/^%%EndComments/{' \
+-e '  d' \
+-e '  q' \
+-e '}' \
+-e 'd' \
+$1 > "$2"
+endef
 
 # Converts .eps files into .eps files (usually a no-op, but can make grayscale)
 #
@@ -2534,10 +2820,10 @@ $(call colorize-dot-errors,$3)
 endef
 
 # Convert DVI to Postscript
-# $(call make-ps,<dvi file>,<ps file>,<log file>,[<paper size>])
+# $(call make-ps,<dvi file>,<ps file>,<log file>,[<paper size>],[<beamer info>])
 make-ps		= \
-	$(DVIPS) -z -o '$2' $(if $(filter-out BEAMER,$4),-t$(firstword $4),) '$1' \
-		$(if $(filter BEAMER,$4),| $(enlarge_beamer)) > $3 2>&1
+	$(DVIPS) -z -o '$2' $(if $(strip $4),-t$(strip $4),) '$1' \
+		$(if $5,| $(enlarge_beamer)) > $3 2>&1
 
 # Convert Postscript to PDF
 # $(call make-pdf,<ps file>,<pdf file>,<log file>,<embed file>)
@@ -2641,10 +2927,11 @@ ifeq "$(strip $(BUILD_STRATEGY))" "latex"
 	$(RM) -f %.ps %.dvi
 
 .SECONDARY: $(all_ps_targets)
-%.ps: %.dvi %.paper.make
+%.ps: %.dvi %.paper.make %.beamer.make
 	$(QUIET)$(call echo-build,$<,$@)
 	$(QUIET)$(call make-ps,$<,$@.temp,$@.log,\
-			$(firstword $(shell $(CAT) $*.paper.make))); \
+			$(strip $(shell $(CAT) $*.paper.make)),\
+			$(strip $(shell $(CAT) $*.beamer.make))); \
 	if [ x"$$?" = x"0" ]; then \
 	    $(if $(VERBOSE),$(CAT) $@.log,:); \
 	    $(RM) -f '$@'; \
@@ -2713,24 +3000,29 @@ endif
 	run=0; \
 	for i in 1; do \
 		if $(call test-exists,$*.bbl.cookie); then \
+			$(call set-run-reason,$*.bbl.cookie is present); \
 			run=1; \
 			break; \
 		fi; \
 		if $(call test-exists,$*.run.cookie); then \
+			$(call set-run-reason,$*.run.cookie is present); \
 			run=1; \
 		    	break; \
 		fi; \
 		if $(call \
 		test-exists-and-different,$*.auxtarget.cookie,$*.auxtarget.make);\
 		then \
+			$(call set-run-reason,$*.auxtarget.cookie differs from $*.auxtarget.make); \
 			run=1; \
 			break; \
 		fi; \
 		if $(call test-log-for-need-to-run,$*); then \
+			$(call set-run-reason,$*.log indicated that this is necessary); \
 			run=1; \
 			break; \
 		fi; \
-		if [ ! -e $*.1st.*.make ]; then \
+		if $(call test-not-exists,$@.1st.make); then \
+			$(call set-run-reason,$@.1st.make does not exist); \
 			run=1; \
 			break; \
 		fi; \
@@ -2738,7 +3030,6 @@ endif
 	$(call remove-temporary-files,$*.bbl.cookie $*.run.cookie); \
 	$(MV) $*.auxtarget.cookie $*.auxtarget.make; \
 	if [ x"$$run" = x"1" ]; then \
-		$(call remove-files,$@.1st.make); \
 		for i in 2 3 4 5; do \
 			$(if $(findstring 3.79,$(MAKE_VERSION)),\
 				$(call echo-build,$*.tex,$@,$(RESTARTS)-$$$$i),\
@@ -2746,10 +3037,14 @@ endif
 			); \
 			$(call run-latex,$*); \
 			$(CP) '$*.log' '$*.'$(RESTARTS)-$$i'.log'; \
-			$(call test-run-again,$*) || break; \
+			if $(call test-run-again,$*); then \
+				$(call set-run-reason,rerun requested by $*.log); \
+			else \
+				break; \
+			fi; \
 		done; \
 	else \
-		$(MV) '$@.1st.make' '$@'; \
+		$(CP) '$@.1st.make' '$@'; \
 	fi; \
 	$(call copy-with-logging,$@,$(BINARY_TARGET_DIR)); \
 	$(call latex-color-log,$*)
@@ -2770,6 +3065,7 @@ endif
 	$(QUIET)\
 	$(if $(filter %.bib,$^),\
 		$(call echo-build,$(filter %.bib,$?) $*.aux,$@); \
+		$(call set-run-reason,dependencies of $@ changed); \
 		$(call run-bibtex,$*); \
 		$(TOUCH) $@.cookie; \
 	) \
@@ -2797,21 +3093,42 @@ endif
 	$(QUIET)$(call echo-build,$<,$@)
 	$(QUIET)$(call run-makeindex,$<,$@,$*.ilg)
 
-# Create the glossary file
-%.gls:	%.glo %.tex
+# Create a glossary file from a .ist file
+%.gls:	%.glo %.tex %.ist
 	$(QUIET)$(call echo-build,$<,$@)
-	$(QUIET)$(call run-makeindex,$<,$@,$*.glg) #,-s nomencl.ist)
+	$(QUIET)$(call run-makeindex,$<,$@,$*.glg,$*.ist)
+
+# Create a glossary file from a glossary input formatted for xindy
+%.gls:	%.glo %.tex %.xdy
+	$(QUIET)$(call echo-build,$<,$@)
+	$(QUIET)$(call run-xindy,$<,$@,$*,$*.glg)
+
+# Create the glossary file from a nomenclature file
+%.gls:	%.glo %.tex $(call path-norm,$(shell $(KPSEWHICH) nomencl.ist || $(ECHO) nomencl.ist))
+	$(QUIET)$(call echo-build,$<,$@)
+	$(QUIET)$(call run-makeindex,$<,$@,$*.glg,nomencl.ist)
 
 # Create the glossary and acronym files from makeglossaries
-%.acr:	%.tex
+%.acn:	%.acr %.tex
 	$(QUIET)$(call echo-build,$<,$@)
-	$(QUIET)$(call run-makeglossary,$<,$@,$*.alg) #,-s nomencl.ist)
+	$(QUIET)$(call run-makeglossary,$*) #,-s nomencl.ist)
 
 
 # Create the nomenclature file
-%.nls:	%.nlo %.tex
+%.nls:	%.nlo %.tex $(call path-norm,$(shell $(KPSEWHICH) nomencl.ist || $(ECHO) nomencl.ist))
 	$(QUIET)$(call echo-build,$<,$@)
-	$(QUIET)$(call run-makeindex,$<,$@,$*.nlg,-s nomencl.ist)
+	$(QUIET)$(call run-makeindex,$<,$@,$*.nlg,nomencl.ist)
+
+# Precompile the format file
+%.fmt:	%.tex
+	$(QUIET)$(call echo-build,$<,$@)
+	$(QUIET)\
+	$(call run-latex,$*,-ini "&$(latex_build_program) $*.tex\dump"); \
+	fatal=`$(call colorize-latex-errors,$*.log)`; \
+	if [ x"$$fatal" != x"" ]; then \
+		$(ECHO) "$$fatal"; \
+		exit 1; \
+	fi;
 
 # SCRIPTED LaTeX TARGETS
 #
@@ -2832,6 +3149,11 @@ endif
 	$(call run-script,$(RST2LATEX)\
 		--documentoptions=letterpaper\
 		$(if $(RST_STYLE_FILE),--stylesheet=$(RST_STYLE_FILE),),$<,$@)
+
+%.tex::	%.lhs
+	$(QUIET)\
+	function run_lhs2tex() { $(LHS2TEX) -o "$$2" "$$1"; }; \
+	$(call run-script,run_lhs2tex,$<,$@)
 
 #
 # GRAPHICS TARGETS
@@ -2856,15 +3178,16 @@ $(gray_eps_file):
 	$(QUIET)$(call create-gray-eps-file,$@)
 
 ifeq "$(strip $(BUILD_STRATEGY))" "pdflatex"
-%.pdf: %.eps $(if $(GRAY),$(gray_eps_file))
-	$(QUIET)$(call echo-graphic,$^,$@)
-	$(QUIET)$(call convert-eps-to-pdf,$<,$@,$(GRAY))
 
 ifeq "$(strip $(GPI_OUTPUT_EXTENSION))" "pdf"
 %.pdf:	%.gpi %.gpi.d $(gpi_sed) $(gpi_global)
 	$(QUIET)$(call echo-graphic,$^,$@)
 	$(QUIET)$(call convert-gpi,$<,$@,$(GRAY))
 endif
+
+%.pdf: %.eps $(if $(GRAY),$(gray_eps_file))
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call convert-eps-to-pdf,$<,$@,$(GRAY))
 
 %.pdf:	%.fig
 	$(QUIET)$(call echo-graphic,$^,$@)
@@ -2891,6 +3214,15 @@ endif
 	$(QUIET)$(call convert-fig,$<,$@,$(GRAY))
 
 endif
+
+# TODO: capture mpost output and display errors
+# TODO: figure out why pdf generation is erroring out (but working anyway)
+%.eps %.mps %.mpx %.log: %.mp
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(MPOST) $*
+	$(QUIET)$(call move-if-exists,$*.mps,$*.eps)
+	$(QUIET)$(call move-if-exists,$*.log,$*.log.make)
+	$(QUIET)$(call move-if-exists,$*.mpx,$*.mpx.make)
 
 %.eps:	%.m %.m.d $(octave_sed)
 	$(QUIET)$(call echo-graphic,$^,$@)
@@ -2937,6 +3269,10 @@ ifneq "$(default_graphic_extension)" "pdf"
 	$(QUIET)$(call echo-graphic,$^,$@)
 	$(QUIET)$(call convert-png,$<,$@,$(GRAY))
 endif
+
+%.eps.bb: %.eps
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call eps-bb,$<,$@)
 
 %.eps: %.eps.gz $(if $(GRAY),$(gray_eps_file))
 	$(QUIET)$(call echo-graphic,$^,$@)
@@ -2996,7 +3332,8 @@ endif
 %.$(build_target_extension).1st.make %.d %.aux %.aux.make %.fls: %.tex
 	$(QUIET)$(call echo-build,$<,$*.d $*.$(build_target_extension).1st.make,$(RESTARTS)-1)
 	$(QUIET)\
-	$(call run-latex,$<,-recorder) || $(sh_true); \
+	$(call set-run-reason,need to build .d and .$(build_target_extension).1st.make); \
+	$(call run-latex,$*,-recorder) || $(sh_true); \
 	$(CP) '$*.log' '$*.$(RESTARTS)-1.log'; \
 	$(call die-on-import-sty,$*.log); \
 	$(call die-on-dot2tex,$*.log); \
@@ -3005,12 +3342,14 @@ endif
 	$(ECHO) "# vim: ft=make" > $*.d; \
 	$(ECHO) ".PHONY: $*._graphics" >> $*.d; \
 	$(call get-inputs,$*.fls,$(addprefix $*.,aux aux.make d $(build_target_extension))) >> $*.d; \
+	$(call get-format,$<,$(addprefix $*.,fls aux aux.make d $(build_target_extension) $(build_target_extension).1st.make)) >> $*.d; \
 	$(call get-missing-inputs,$*.log,$(addprefix $*.,aux aux.make d $(build_target_extension))) >> $*.d; \
 	$(ECHO) ".SECONDEXPANSION:" >> $*.d; \
 	$(call get-graphics,$*) >> $*.d; \
-	$(call get-log-index,$*,$(addprefix $*.,d aux aux.make)) >> $*.d; \
+	$(call get-log-index,$*,$(addprefix $*.,aux aux.make)) >> $*.d; \
 	$(call get-bibs,$*.aux.make,$(addprefix $*.,bbl aux aux.make)) >> $*.d; \
-	$(EGREP) -q "# MISSING" $*.d && $(SLEEP) 1 && $(RM) $*.pdf; \
+	$(EGREP) -q "# MISSING stem" $*.d && $(SLEEP) 1 && $(RM) $*.pdf; \
+	$(EGREP) -q "# MISSING format" $*.d && $(RM) $*.pdf; \
 	$(call move-if-exists,$*.$(build_target_extension),$*.$(build_target_extension).1st.make); \
 	for s in toc out lot lof lol nav; do \
 		if [ -e "$*.$$s" ]; then \
@@ -3045,43 +3384,27 @@ endif
 	$(QUIET)$(call echo-build,$<,$@)
 	$(QUIET)$(call make-octave-d,$<,$@)
 
+# Get source specials, e.g., paper size and special %% comments.
+%.specials.make: %.tex
+	$(QUIET)$(call get-source-specials,$<,$@)
+
+# Get info about whether to enlarge beamer postscript files (for use with
+# dvips, and requires a special comment in the source file).
+.SECONDARY: $(addsuffix .specials.make,$(all_stems_ss))
+%.beamer.make: %.specials.make
+	$(QUIET)$(SED) -e 's/^BEAMER.*/BEAMER/p' -e 'd' '$<' > '$@'
 
 # Store the paper size for this document -- note that if beamer is used we set
 # it to the special BEAMER paper size.  We only do this, however, if the
 # special comment exists, in which case we enlarge the output with psnup.
 #
 #	The paper size is extracted from a documentclass attribute.
-%.paper.make: %.tex
-	$(QUIET)$(SED) \
-	-e '/\\documentclass/,/}/{' \
-	-e '  s/%.*//' \
-	-e '  H' \
-	-e '  /}/{' \
-	-e '    s/.*//' \
-	-e '    x' \
-	-e '    /\\documentclass/!d' \
-	-e '    s/[\n[:space:]]*//g' \
-	-e '    s/\([,{[]\)\([[:alnum:]]\{1,\}\)paper\([],}]\)/\1%-\2-%\3/g' \
-	-e '    s/\([,{[]\)\(landscape\)\([],}]\)/\1%-\2-%\3/g' \
-	-e '    s/^[^%]*%-//' \
-	-e '    s/-%[^%]*$$//' \
-	-e '    s/-%[^%]%-/ /g' \
-	-e '    p' \
-	-e '  }' \
-	-e '  d' \
-	-e '}' \
-	-e 'd' \
-	$< > $@; \
-	$(EGREP) -q '^[^%]*\\documentclass[^{]*{beamer}' $< && \
-	(\
-		$(EGREP) -q '^%%[[:space:]]*BEAMER[[:space:]]*LARGE$$' $< && \
-		$(ECHO) "BEAMER" > $@ || \
-		: > $@ \
-	) || $(sh_true)
+%.paper.make: %.specials.make
+	$(QUIET)$(SED) -e 's/^PAPERSIZE=//p' -e 'd' '$<' > '$@'
 
 # Store embedding instructions for this document using a special comment
-%.embed.make: %.tex
-	$(QUIET)$(EGREP) '^%%[[:space:]]*NO[[:space:]]*EMBED[[:space:]]*$$' $< \
+%.embed.make: %.specials.make
+	$(QUIET)$(EGREP) '^NOEMBED$$' $< \
 		&& $(ECHO) '' > $@ \
 		|| $(ECHO) '1' > $@;
 
@@ -3192,6 +3515,11 @@ _sources:
 	$(QUIET)$(ECHO) "== Sources =="
 	$(QUIET)$(call echo-list,$(sort $(files.tex)))
 
+.PHONY: _source_gens
+_source_gens:
+	$(QUIET)$(ECHO) "== Generated Sources =="
+	$(QUIET)$(call echo-list,$(sort $(files_source_gen)))
+
 .PHONY: _scripts
 _scripts:
 	$(QUIET)$(ECHO) "== Scripts =="
@@ -3263,6 +3591,9 @@ clean-all: clean-generated clean-tex clean-graphics clean-deps clean-backups cle
 #
 # HELP TARGETS
 #
+.PHONY: check-syntax
+check-syntax: 
+	$(CHECK) $(default_stems_ss)
 
 .PHONY: help
 help:
@@ -3319,7 +3650,7 @@ define help_text
 #
 # STANDARD AUXILIARY FILES:
 #
-#      Makefile.ini
+#      Variables.ini (formerly Makefile.ini, which still works)
 #
 #          This file can contain variable declarations that override various
 #          aspects of the makefile.  For example, one might specify
@@ -3337,26 +3668,25 @@ define help_text
 #          There are numerous variables in this file that can be overridden in
 #          this way.  Search for '?=' to find them all.
 #
-#          Also, you can put arbitrary targets into it if, for example, you
-#          want your source built from something else, e.g.:
-#
-#          generated.tex: generating_script.weird_lang depA depB
-#          	./generating_script.weird_lang > $$@
-#
-#          Note that if you are not careful, you can override the default
-#          target (what happens when you type "make" without arguments), so if
-#          you do use Makefile.ini, you probably want to start it with
-#          something like the following line:
-#
-#          default: all
-#
-#          Since the first target in any makefile is automatically the default,
-#          and the makefile already has a sensible "all" target, this will do
-#          what you want.
-#
-#          The Makefile.ini is imported before *anything else* is done, so go
+#          The Variables.ini is imported before *anything else* is done, so go
 #          wild with your ideas for changes to this makefile in there.  It
 #          makes it easy to test them before submitting patches.
+#
+#          If you're adding rules or targets, however, see Targets.ini below.
+#
+#      Targets.ini
+#
+#          This is included much later in the makefile, after all variables and
+#          targets are defined.  This is where you would put new make rules,
+#          e.g.,
+#
+#          generated.tex: generating_script.weird_lang depA depB
+#             ./generating_script.weird_lang > $$@
+#
+#          In this file, you have access to all of the variables that the
+#          makefile creates, like $$(onlysources.tex).  While accessing those can
+#          be somewhat brittle (they are implementation details and may change),
+#          it is a great way to test your ideas when submitting feature requests.
 #
 # STANDARD ENVIRONMENT VARIABLES:
 #
@@ -3703,6 +4033,10 @@ define help_text
 #           assumes that the top-level rst file will change if you want a
 #           rebuild.
 #
+#       literate Haskell: %.lhs
+#
+#           Runs the lhs2tex program to generate a .tex file.
+#
 #    Dependencies:
 #
 #        In general, dependencies are extracted directly from LaTeX output on
@@ -3765,7 +4099,7 @@ define help_text
 #        terminal definition in the .gpi file makes it harder for you, the one
 #        writing the document, to preview your graphics, e.g., with
 #
-#           gnuplot --persist myfile.gpi
+#           gnuplot -persist myfile.gpi
 #
 #        so don't do specify a terminal or an output file in your .gpi files.
 #
@@ -3960,4 +4294,9 @@ define output-dependency-graph
 		$(ECHO) "Cannot determine the name of this makefile."; \
 	fi
 endef
+#
+.PHONY: Targets.ini $(HOME)/.latex-makefile/Targets.ini
+-include Targets.ini
+-include $(HOME)/.latex-makefile/Targets.ini
+#
 # vim: noet sts=0 sw=8 ts=8
