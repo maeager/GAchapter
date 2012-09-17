@@ -3,7 +3,8 @@
 
 ** Extra Data
 
-#+caption: {Comparison of best genomes using {GA} with identical inputs. $\dag$ Indicates the best cost function score from    each {GA}}
+#+attr_latex: table tabular
+#+caption: [Comparison of best genomes using GA with identical inputs.]{Comparison of best genomes using GA with identical inputs. $\dag$ Indicates the best cost function score from each GA.}
 #+label: tab:GA:4
 \toprule
 |                      |          ST |        IFR-25 |         IV-25 |
@@ -31,9 +32,9 @@
 
 
 #+name:    best_genomes_summary_table
+#+attr_latex: table tabular
 #+caption: [Comparison of Best genomes trained with different inputs]{Comparison of Best genomes trained with different   inputs.  Target genome and each {GA} best genomes were run 100   times. One thousand genomes were run with different inputs in the step and 5 step parameter variation population.}
 #+label: tab:GA:5
-#+attr_latex: table tabular
 # \begin{tabular}{|p{1.1in}|p{0.3in}|p{0.3in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|p{0.3in}|p{0.4in}|}\hline
 |                        | \multicolumn{2}{c}{ST}  | \multicolumn{2}{c}{IFR-25} | \multicolumn{2}{c}{IFR-100} | \multicolumn{2}{c}{AIV-25} | \multicolumn{2}{c}{AIV-100} |
 |-----------------------------+----------------+--------+----------------+---------+----------------+---------+-----------------+---------+----------------+------------|
@@ -140,9 +141,10 @@ To generate 100 random simulations of the target set:
 
 
 
-* Chapter 5 Source Code
+* Chapter 5 Source Code        :noexport:
 
-** \textsf{cnstellate} NEURON model of HH-like neurons in the cochlear nucleus
+** \textsf{cnstellate} source files
+#NEURON model of HH-like neurons in the cochlear nucleus
 
 *** NMODL current module files
 
@@ -173,7 +175,7 @@ To generate 100 random simulations of the target set:
 \end{lstlisting}
 
 
-** \textsf{ganeuron}: The parallel genetic algorithm program for NEURON
+** \textsf{ganeuron}
 
 \begin{lstlisting}[label=lbl:genomeH,caption=\mbox{\textsf{genome.h}} contains global variables shared by master and slave programs.] 
 #+include:  ../../soma/ganeuron/opt4/genome.h
