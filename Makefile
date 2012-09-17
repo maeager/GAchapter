@@ -30,7 +30,7 @@
 #
 fileinfo	:= LaTeX Makefile
 author		:= Chris Monson
-version		:= 2.2.1-alpha8
+version		:= 2.2.1-alpha9
 #
 .DEFAULT_GOAL	:= all
 # Note that the user-global version is imported *after* the source directory,
@@ -56,7 +56,7 @@ export LC_ALL		?= C
 #
 # If you specify sources here, all other files with the same suffix
 # will be treated as if they were _include_ files.
-onlysources.tex	?= GAChapter.tex #IntroMethods.tex Results-DiffAN.tex ResultsSensAnalysis.tex Discussion.tex ChapterAppendix.tex Results-Ideal.tex
+#onlysources.tex	?= SimpleResponses.tex #AuditoryModel.tex AM_Responses.tex SimpleResponsesChapter.tex GolgiRateLevel.tex DS_ClickRecovery.tex TV_Notch.tex TStellate.tex 
 #onlysources.tex.sh	?=
 #onlysources.tex.pl	?=
 #onlysources.tex.py	?=
@@ -72,7 +72,7 @@ onlysources.tex	?= GAChapter.tex #IntroMethods.tex Results-DiffAN.tex ResultsSen
 #onlysources.eps	?=
 #
 # If you list files here, they will be treated as _include_ files
-#includes.tex		?=  IntroMethods.tex
+#includes.tex		?=  bu.tex template.tex _region_.tex GolgiPSTricks.tex
 #includes.tex.sh	?=
 #includes.tex.pl	?=
 #includes.tex.py	?=
@@ -117,6 +117,9 @@ neverclean		?= *.pdf
 #
 #
 # CHANGES:
+# Chris Monson (2012-06-25):
+# * Bumped version to 2.2.1-alpha9
+# * Built with Holger Dell's changes to fix multiple unnecessary compilations.
 # Chris Monson (2011-11-10):
 # * Issue 144: Help patch from girard.nicolas applied
 # Andrew McNabb (2011-09-30):
@@ -803,6 +806,9 @@ KEEP_TEMP	?=
 # Defaults for GPI
 DEFAULT_GPI_EPS_FONTSIZE	?= 22
 DEFAULT_GPI_PDF_FONTSIZE	?= 12
+DEFAULT_GPI_EPS_TERMSIZE	?= 7,5
+DEFAULT_GPI_PDF_TERMSIZE	?= 7,5
+
 
 # Style file for ReST
 RST_STYLE_FILE			?= $(wildcard _rststyle_._include_.tex)
@@ -936,9 +942,12 @@ WRITE_TRANSCRIPT ?=
 set-run-reason = export run_reason="$1"
 # Log command to the transcript file
 # $(call set-run-reason,command,job_name)
-transcript = $(if $(WRITE_TRANSCRIPT), \
+define transcript
+$(if $(WRITE_TRANSCRIPT), \
 						 $(ECHO) "Running $1 ($$run_reason)" >> $2.transcript.make; \
-						 export run_reason="",$(sh_true))
+	export run_reason="", \
+	$(sh_true))
+endef
 
 # Don't call this directly - it is here to avoid calling wildcard more than
 # once in remove-files.
@@ -1927,7 +1936,7 @@ endef
 #
 # $(call die-on-no-aux,<aux stem>)
 define die-on-no-aux
-if [ ! -e '$1.aux' ]; then \
+if $(call test-not-exists,$1.aux); then \
 	$(call colorize-latex-errors,$1.log); \
 	$(ECHO) "$(C_ERROR)Error: failed to create $1.aux$(C_RESET)"; \
 	exit 1; \
@@ -1973,6 +1982,7 @@ define get-bibs
 $(SED) \
 -e '/^\\bibdata/!d' \
 -e 's/\\bibdata{\([^}]*\)}/\1,/' \
+-e 's/[^,]\{1,\}-blx//' \
 -e 's/,\{2,\}/,/g' \
 -e 's/[[:space:]]/\\&/g' \
 -e 's/,/.bib /g' \
@@ -2072,7 +2082,6 @@ define get-octave-deps
 $(AWK) '/^load[[:space:]]/ {print $2}'  $1.m | \
        sed -e "s/'//g" -e 's/^\(.*\)/-include \1.d/'
 endef
-
 
 
 # Colorizes real, honest-to-goodness LaTeX errors that can't be overcome with
@@ -2400,7 +2409,10 @@ $(SED) \
 enlarge_beamer	= $(PSNUP) -l -1 -W128mm -H96mm -pletter
 
 # $(call test-run-again,<source stem>)
-test-run-again	= $(EGREP) '^(.*Rerun .*|No file $1\.[^.]+\.)$$' $1.log | $(EGREP) -q -v '^(Package: rerunfilecheck.*Rerun checks for auxiliary files.*)$$'
+define test-run-again
+$(EGREP) '^(.*Rerun .*|No file $1\.[^.]+\.)$$' $1.log \
+| $(EGREP) -q -v '^(Package: rerunfilecheck.*Rerun checks for auxiliary files.*)$$'
+endef
 
 # This tests whether the build target commands should be run at all, from
 # viewing the log file.
@@ -2439,7 +2451,7 @@ then \
 	$(call colorize-makeindex-errors,$3); \
 	$(RM) -f '$2'; \
 	success=0; \
-  $(call transcript,makeindex,$1) \
+	$(call transcript,makeindex,$1); \
 fi; \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
@@ -2451,7 +2463,7 @@ if ! $(XINDY) -q -o $2 -L $(XINDYLANG) -C $(XINDYENC) -I xindy -M $3 -t $4 $1 > 
 	$(call colorize-xindy-errors,$4); \
 	$(RM) -f '$2'; \
 	success=0; \
-  $(call transcript,xindy,$1) \
+  $(call transcript,xindy,$1); \
 fi; \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
@@ -2472,7 +2484,8 @@ endef
 #
 # $(call run-script,<interpreter>,<input>,<output>)
 define run-script
-$(call test-not-exists,$2.cookie) && $(ECHO) "restarts=$(RESTARTS)" > $2.cookie && $(ECHO) "level=$(MAKELEVEL)" >> $2.cookie; \
+$(call test-not-exists,$2.cookie) && $(ECHO) "restarts=$(RESTARTS)" \
+	> $2.cookie && $(ECHO) "level=$(MAKELEVEL)" >> $2.cookie; \
 restarts=`$(SED) -n -e 's/^restarts=//p' $2.cookie`; \
 level=`$(SED) -n -e 's/^level=//p' $2.cookie`; \
 if $(EXPR) $(MAKELEVEL) '<=' $$level '&' $(RESTARTS) '<=' $$restarts >/dev/null; then \
@@ -2501,6 +2514,7 @@ endef
 # Find the default fontsize given the *output* file (it is based on the output extension)
 #
 default-gpi-fontsize = $(if $(filter %.pdf,$1),$(DEFAULT_GPI_PDF_FONTSIZE),$(DEFAULT_GPI_EPS_FONTSIZE))
+default-gpi-termsize = $(if $(filter %.pdf,$1),$(DEFAULT_GPI_PDF_TERMSIZE),$(DEFAULT_GPI_EPS_TERMSIZE))
 
 # $(call gpi-fontsize,<gpi file>,<output file>)
 #
@@ -2512,6 +2526,18 @@ define gpi-fontsize
 $(strip $(firstword \
 	$(shell $(SED) -e 's/^\#\#FONTSIZE=\([[:digit:]]\{1,\}\)/\1/p' -e 'd' $1 $(strip $(gpi_global))) \
 	$(call default-gpi-fontsize,$2)))
+endef
+
+# $(call gpi-fontsize,<gpi file>,<output file>)
+#
+# Find out what the gnuplot fontsize should be.  Tries, in this order:
+# - ##SIZE comment in gpi file
+# - ##SIZE comment in global gpi file
+# - default fontsize based on output type
+define gpi-termsize
+$(strip $(firstword \
+	$(shell $(SED) -e 's/^\#\#SIZE=\([[:digit:]]\{1,\},[[:digit:]]\{1,\}\)/\1/p' -e 'd' $1 $(strip $(gpi_global))) \
+	$(call default-gpi-termsize,$2)))
 endef
 
 # $(call gpi-monochrome,<gpi file>,[gray])
@@ -2531,8 +2557,10 @@ gpi-fontname = Helvetica
 # Get the terminal settings for a given gpi and its intended output file
 define gpi-terminal
 $(if $(filter %.pdf,$2),pdfcairo enhanced,postscript enhanced eps) \
-$(call gpi-monochrome,$1,$3) solid \
-font "$(call gpi-fontname),$(call gpi-font-entry,$2,$(call gpi-fontsize,$1,$2))" 
+size 7,5 \
+$(call gpi-monochrome,$1,$3) solid font "$(call gpi-fontname), \
+$(if $(filter %.pdf,$2),$(call gpi-fontsize,$1,$2), \
+$(call gpi-font-entry,$2,$(call gpi-fontsize,$1,$2)))"
 endef
 
 # $(call gpi-embed-pdf-fonts,<input file>,<output file>)
@@ -2574,7 +2602,8 @@ elif [ x"$(suffix $2)" = x".pdf" ]; then \
 		$(call move-if-exists,$2.embed.tmp.make,$2); \
 	fi; \
 fi; \
-$(if $(gpi_sed),$(call remove-temporary-files,$1.temp.make);,) \  #$(call remove-temporary-files,$1head.make); 
+$(if $(gpi_sed),$(call remove-temporary-files,$1.temp.make);,) \
+$(call remove-temporary-files,$1head.make); \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
 
@@ -3030,6 +3059,7 @@ endif
 	$(call remove-temporary-files,$*.bbl.cookie $*.run.cookie); \
 	$(MV) $*.auxtarget.cookie $*.auxtarget.make; \
 	if [ x"$$run" = x"1" ]; then \
+		$(call remove-files,$@.1st.make); \
 		for i in 2 3 4 5; do \
 			$(if $(findstring 3.79,$(MAKE_VERSION)),\
 				$(call echo-build,$*.tex,$@,$(RESTARTS)-$$$$i),\
@@ -3044,7 +3074,7 @@ endif
 			fi; \
 		done; \
 	else \
-		$(CP) '$@.1st.make' '$@'; \
+		$(MV) '$@.1st.make' '$@'; \
 	fi; \
 	$(call copy-with-logging,$@,$(BINARY_TARGET_DIR)); \
 	$(call latex-color-log,$*)
@@ -3109,7 +3139,7 @@ endif
 	$(QUIET)$(call run-makeindex,$<,$@,$*.glg,nomencl.ist)
 
 # Create the glossary and acronym files from makeglossaries
-%.acn:	%.acr %.tex
+%.acr:	%.acn  %.ist %.tex
 	$(QUIET)$(call echo-build,$<,$@)
 	$(QUIET)$(call run-makeglossary,$*) #,-s nomencl.ist)
 
@@ -4300,3 +4330,4 @@ endef
 -include $(HOME)/.latex-makefile/Targets.ini
 #
 # vim: noet sts=0 sw=8 ts=8
+
