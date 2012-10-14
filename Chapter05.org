@@ -69,7 +69,7 @@
 
 * Introduction
   :PROPERTIES:
-  :LABEL:    sec:GA:intro
+  :CUSTOM_ID:    sec:GA:intro
   :END:
 
 Innovative methodologies, such as multi-unit recording
@@ -499,7 +499,7 @@ spike train.
 
 *** Instantaneous Firing Rate (IFR) Cost Function
  :PROPERTIES:
- :LABEL:    sec:GA:inst-firing-rate-cost-fn
+ :CUSTOM_ID:    sec:GA:inst-firing-rate-cost-fn
  :END:
 
 The \PSTH has been an effective tool for classifying the
@@ -784,7 +784,7 @@ non-V-shaped cost function gradients for different inputs.
 
 * Optimisation of BNNs using different inputs
   :PROPERTIES:
-  :LABEL:    sec:GA:ResultDiffAN
+  :CUSTOM_ID:    sec:GA:ResultDiffAN
   :END:
 #  * Parameter space sensitivity of cost functions
 #  \subsection{Performance of best genomes and cross-comparison of cost functions}
@@ -997,7 +997,7 @@ the lower half.  Weight parameters were spread over the whole range.
 \clearpage
 ** Parameter Sensitivity
    :PROPERTIES:
-   :LABEL: sec:GA:param-sens-results
+   :CUSTOM_ID: sec:GA:param-sens-results
    :END:
 
 #  Estimate of best performance possible given noisy input.
@@ -1129,7 +1129,7 @@ effect was much diminished or absent.
 \clearpage
 ** Effects of Noise
    :PROPERTIES:
-   :LABEL: sec:GA:effects-noise
+   :CUSTOM_ID: sec:GA:effects-noise
    :END:
 
 Noise from auditory nerve inputs could have a significant impact on the \GA
@@ -1302,7 +1302,7 @@ noise (and therefore cost function scores), this was not a factor limiting
 
 * Optimisation of BNNs using Ideal inputs    :noexport:
   :PROPERTIES:
-  :LABEL:    sec:GA:ResultsIdeal
+  :CUSTOM_ID:    sec:GA:ResultsIdeal
   :END:
 
 To understand the of optimising \BNNs it may appear that to use ideal
@@ -1667,7 +1667,7 @@ the 5-step scores.
 
 ** Cross comparison of best genomes
    :PROPERTIES:
-   :LABEL:    sec:GA:Ideal-Xcomp-best
+   :CUSTOM_ID:    sec:GA:Ideal-Xcomp-best
    :END:
 
 
@@ -1726,7 +1726,7 @@ functions, with the \ST and \AIV-250 best genomes not far behind.
 * Sensitivity Analysis of Individual Parameters near the Global Optimum :noexport:
   :PROPERTIES:
   :SHORTTITLE: Individual parameter sensitivity
-  :LABEL:    sec:GA:IndividualSens
+  :CUSTOM_ID:    sec:GA:IndividualSens
   :END:
 
 ** Individual Parameter Perturbation Analysis
@@ -2638,7 +2638,7 @@ realistic \BNN models.
 
 * Discussion (original)     :noexport:
   :PROPERTIES:
-  :LABEL:    sec:GA:discussion
+  :CUSTOM_ID:    sec:GA:discussion
   :END:
 
 ** General performance of GAs for optimising network parameters
@@ -2697,7 +2697,7 @@ intracellular recordings.
 
 ** Summary of Cost Functions
    :PROPERTIES:
-   :LABEL:    sec:GA:summ-cost-funct}
+   :CUSTOM_ID:    sec:GA:summ-cost-funct}
    :END:
 This section gives an overview of the cost functions' advantages,
 disadvantages, and relevance to optimising \BNNs. The following summary
