@@ -1,17 +1,16 @@
 #+title: Constraining networks of biophysically-based neuron models using genetic algorithms
 #+AUTHOR: Michael A Eager
 #+DATE:
-#+LANGUAGE:  en_GB
-#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t 
+#+LANGUAGE: en_GB-ise-wo_accents 
+#+OPTIONS:   H:5 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t >:t 
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
-
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+TODO: REFTEX
 #+LATEX_CLASS: UoM-draft-org-article
-#+BIBLIOGRAPHY: MyBib plainnat
+#+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
 
-#+LATEX_HEADER: \graphicspath{{../figures/}{/media/data/Work/thesis/GAChapter/gfx/}{/media/data/Work/thesis/GAChapter/archive/gfx/}}
+#+LATEX_HEADER: \graphicspath{{../GAChapter/gfx/}}
 # Any missing graphics will be here {/media/data/Work/thesis-gaarticle/newgfx/}{/media/data/Work/thesis-gaarticle/GApaper-submission-JCompNeuro/gfx/}}
 
 
@@ -190,7 +189,7 @@ network.
 #+Attr_LaTeX width=0.8\textwidth
 #+CAPTION: [Diagram of the mammalian cochlear nucleus]{Diagram of the mammalian cochlear nucleus. ANFs sensitive to particular frequencies project to the cochlear nucleus (CN) in a tono-topically organized fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, ventral and dorsal CN, plus an outer layer of small cells known as the granule cell domain (GCD). Type I ANFs are characterised into two groups based on their spontaneous rate: high(HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the GCD.  Golgi cells in the GCD are the only known source of GABA-ergic cells within the VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic D~stellate cells (DS) project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, tuberculoventral (TV) cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
 #+LABEL: fig:GA:CNdiagram
-[[../figures/CNConnections3.pdf]]
+[[../GAChapter/gfx/CNConnections3.pdf]]
 
  
 \glsreset{HSR}\glsreset{LSR} 
@@ -631,7 +630,7 @@ spike-generator \citep{JacksonCarney:2005}, with refractory effects
 similar to those present in \ANFs.
 
 ** Neural Models
-#Stellate Microcircuit Model of the Cochlear Nucleus
+# Stellate Microcircuit Model of the Cochlear Nucleus
 
 \HH single compartment conductance neural models
 \citep{RothmanManis:2003b} and current-based synapses were used to model
@@ -3045,8 +3044,3 @@ in the \CN stellate network.
 
 
  
-### Local Variables:
-### mode: org
-### mode: visual-line
-### fill-column: 72
-### End:
