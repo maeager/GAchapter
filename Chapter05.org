@@ -399,6 +399,7 @@ instantaneous firing rates, and intracellular voltages.
 
 #+BEGIN_LaTeX
   \begin{figure}[t!]
+   \centering
    \resizebox{3in}{!}{\input{../GAChapter/gfx/DynamicSpikeMetric_v2.TpX}}
    \caption[Dynamic spike-time algorithm]{Spike timing cost function
      measure computed using a dynamic programming algorithm. A minimum
