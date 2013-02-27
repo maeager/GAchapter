@@ -72,119 +72,109 @@
   :END:
 
 Innovative methodologies, such as multi-unit recording
-\citep{BrownKassEtAl:2004} and optical recording using voltage-sensitive
-dyes \citep{GrinvaldHildesheim:2004,YangDoiEtAl:2000}, are enabling
-neuroscientists to monitor the simultaneous activity of networks of
-neurons with a higher degree of spatial and temporal accuracy than has
-been achieved previously at the network level. At the same time,
-modelling \BNNs is becoming more accessible and faster to run with modern
-computing power. (By biophysically-based we mean models that include a
-description of currents flowing through membrane ion channels, such as
-the \HH model.)  To develop larger \BNNs, with complex network behavior
-a number of interrelated issues need to be considered: (a) what level of
-neuronal detail is required to achieve observed phenomena in the
-network, (b) how do extrinsic and intrinsic noise sources affect the
-model, and (c) how do we reliably constrain the many free parameters in
-a model given limited experimental data.
+\citep{BrownKassEtAl:2004} and optical recording using voltage-sensitive dyes
+\citep{GrinvaldHildesheim:2004,YangDoiEtAl:2000}, are enabling neuroscientists
+to monitor the simultaneous activity of networks of neurons with a higher degree
+of spatial and temporal accuracy than has been achieved previously at the
+network level. At the same time, modelling \BNNs is becoming more accessible and
+faster to run with modern computing power. (By biophysically-based we mean
+models that include a description of currents flowing through membrane ion
+channels, such as the \HH model.)  To develop larger \BNNs, with complex network
+behavior a number of interrelated issues need to be considered: (a) what level
+of neuronal detail is required to achieve observed phenomena in the network, (b)
+how do extrinsic and intrinsic noise sources affect the model, and (c) how do we
+reliably constrain the many free parameters in a model given limited
+experimental data.
 
  
-One set of approaches to constraining \BNNs, denoted as "bottom-up",
-is to construct them using detailed knowledge of specific neurons and
-their membrane current properties. These bottom-up approaches to neural
-modelling have been quite successful at representing single cell
-models. They are, however, insufficiently sophisticated when it comes to
-constraining the free parameters in small networks of neurons
-\citep{GrillnerMarkramEtAl:2005,KochSegev:1998}, generally relying on
-hand-tuning parameters. In contrast, the "top-down" approach to
-constraining neural network models uses the output of the network
-activity to infer the underlying model parameters. Such networks were
-originally developed to be abstract feature detectors
-\citep{Malsberg:1973} or simple nerve field projections
-\citep{Amari:1980} based on general principles of neural processing.
-Optimisation and training algorithms for top-down network constraint are
-highly efficient and generally involve a gradient-decent search with a
-training method called back-propagation, where the output error is
-calculated back through the network
-\citep{RumelhartHintonEtAl:1986a}. These algorithms are not applicable
-to \BNNs because the input\slash output relationships of \HH-type models
-are not analytical, making them unsuitable for error back-propagation.
+One set of approaches to constraining \BNNs, denoted as "bottom-up", is to
+construct them using detailed knowledge of specific neurons and their membrane
+current properties. These bottom-up approaches to neural modelling have been
+quite successful at representing single cell models. They are, however,
+insufficiently sophisticated when it comes to constraining the free parameters
+in small networks of neurons \citep{GrillnerMarkramEtAl:2005,KochSegev:1998},
+generally relying on hand-tuning parameters. In contrast, the "top-down"
+approach to constraining neural network models uses the output of the network
+activity to infer the underlying model parameters. Such networks were originally
+developed to be abstract feature detectors \citep{Malsberg:1973} or simple nerve
+field projections \citep{Amari:1980} based on general principles of neural
+processing.  Optimisation and training algorithms for top-down network
+constraint are highly efficient and generally involve a gradient-decent search
+with a training method called back-propagation, where the output error is
+calculated back through the network \citep{RumelhartHintonEtAl:1986a}. These
+algorithms are not applicable to \BNNs because the input\slash output
+relationships of \HH-type models are not analytical, making them unsuitable for
+error back-propagation.
 
  
 The particular challenges of constraining network parameters in \BNNs or
-ensembles of spiking neural networks, which have been discussed
-previously \citep{EggertHemmen:2001,Brette:2007} focus on the analytical
-methods characterising the spike output
-\citep{Victor:2005,KostalLanskyEtAl:2007,BrownKassEtAl:2004}. Inferring
-the connectivity within a network requires a cost analysis of the
-spiking output.  This has progressed from ensemble feature-based methods
+ensembles of spiking neural networks, which have been discussed previously
+\citep{EggertHemmen:2001,Brette:2007} focus on the analytical methods
+characterising the spike output
+\citep{Victor:2005,KostalLanskyEtAl:2007,BrownKassEtAl:2004}. Inferring the
+connectivity within a network requires a cost analysis of the spiking output.
+This has progressed from ensemble feature-based methods
 \citep{SameshimaBaccala:1999,DahlhausEichlerEtAl:1997,TheunissenSenEtAl:2000},
 information theoretical approaches using maximum likelihood
 \citep{YamadaMatsumotoEtAl:1996,Chichilnisky:2001,OkatanWilsonEtAl:2005,PaninskiPillowEtAl:2004},
-evolutionary algorithm methods \citep{TakahamaSakai:2005,Yao:1999}, and
-other non-linear approaches \citep{Eblen-ZajjurSalasEtAl:1999}.
-However, most of these efforts have been restricted to single neuron
-models or networks of integrate-and-fire neural models rather than
-\BNNs.
+evolutionary algorithm methods \citep{TakahamaSakai:2005,Yao:1999}, and other
+non-linear approaches \citep{Eblen-ZajjurSalasEtAl:1999}.  However, most of
+these efforts have been restricted to single neuron models or networks of
+integrate-and-fire neural models rather than \BNNs.
 
  
-\Glspl{GA} belong to a class of optimisation algorithms that mimic the
-process of evolution through natural selection. The primary strength of
-\GAs relative to other optimisation techniques, such as
-gradient-descent, is that \GAs can avoid getting caught in local minima
-\citep{Goldberg:1989,Whitley:1995}. Since \citet{Holland:1975} first
-used \GAs to evolve the connectivity and synaptic weights of artificial
-neural networks, some other hybrid methods have been proposed
-\citep{Yao:1999,Whitley:1995}. Existing examples of biophysically-based
-neural models that have been constrained using \GAs are limited to
-single and multi-compartmental single cell models
+\Glspl{GA} belong to a class of optimisation algorithms that mimic the process
+of evolution through natural selection. The primary strength of \GAs relative to
+other optimisation techniques, such as gradient-descent, is that \GAs can avoid
+getting caught in local minima \citep{Goldberg:1989,Whitley:1995}. Since
+\citet{Holland:1975} first used \GAs to evolve the connectivity and synaptic
+weights of artificial neural networks, some other hybrid methods have been
+proposed \citep{Yao:1999,Whitley:1995}. Existing examples of biophysically-based
+neural models that have been constrained using \GAs are limited to single and
+multi-compartmental single cell models
 \citep{KerenPeledEtAl:2005,VanierBower:1999,VanDeEtAl:2008} or small
-microcircuits \citep{TaylorEnoka:2004}.  They are generally regarded as
-an effective method in automated
-parameter-searches. \citet{KerenPeledEtAl:2005} used intracellular
-recordings from a cortical pyramidal cell to constrain the membrane
-conductances of a multi-compartmental model.  The synaptic input noise
+microcircuits \citep{TaylorEnoka:2004}.  They are generally regarded as an
+effective method in automated parameter-searches. \citet{KerenPeledEtAl:2005}
+used intracellular recordings from a cortical pyramidal cell to constrain the
+membrane conductances of a multi-compartmental model.  The synaptic input noise
 was filtered out, enabling the model data to be fit to experimental
-recordings. \citet{TaylorEnoka:2004} used a microcircuit of spinal motor
-units that was trained using feature-based analysis of the output to fit
-the membrane and synaptic parameters.  Ongoing work in \BNN modelling
-\citep{VanierBower:1999,VanDeEtAl:2008} is making headway in removing
-the hand-tuning of parameters, but the application to medium and
-large-scale networks may require more techniques from the top-down
-methods in cost analysis and optimisation algorithms.
+recordings. \citet{TaylorEnoka:2004} used a microcircuit of spinal motor units
+that was trained using feature-based analysis of the output to fit the membrane
+and synaptic parameters.  Ongoing work in \BNN modelling
+\citep{VanierBower:1999,VanDeEtAl:2008} is making headway in removing the
+hand-tuning of parameters, but the application to medium and large-scale
+networks may require more techniques from the top-down methods in cost analysis
+and optimisation algorithms.
 
  
-This section of the thesis investigates the application of \GAs in
-constraining synaptic parameters in a topographically-ordered \BNN,
-using the example of a network in the auditory brainstem. The design of
-the \GA, outlined in the Methods, includes the specification of a cost
-function that measures how well the model network reproduces the target
-data. We assess three alternate cost functions derived, in different
-ways, from the output of neural responses in the network. Each cost
-function is based on measures of (1) spike timing, (2) instantaneous
-firing rate, or (3) average intracellular voltage. Surrogate data from a
-randomly generated network model served as our target and the ability of
-the algorithms to find the known neural parameters was assessed. To
-analyze the robustness of the cost functions to synaptic noise and the
-effects of trial-to-trial variability we incorporated these effects into
-the model.
+This section of the thesis investigates the application of \GAs in constraining
+synaptic parameters in a topographically-ordered \BNN, using the example of a
+network in the auditory brainstem. The design of the \GA, outlined in the
+Methods, includes the specification of a cost function that measures how well
+the model network reproduces the target data. We assess three alternate cost
+functions derived, in different ways, from the output of neural responses in the
+network. Each cost function is based on measures of (1) spike timing, (2)
+instantaneous firing rate, or (3) average intracellular voltage. Surrogate data
+from a randomly generated network model served as our target and the ability of
+the algorithms to find the known neural parameters was assessed. To analyze the
+robustness of the cost functions to synaptic noise and the effects of
+trial-to-trial variability we incorporated these effects into the model.
 
 ** Stellate Microcircuit of the Cochlear Nucleus
 
-The network used as the basis for optimising \BNNs lies in the \CN
-(Figure \ref{fig:GA:CNdiagram}), which is the gateway between the
-peripheral auditory system and the central nervous system, with six
-distinct pathways to higher auditory nuclei \citep{CantBenson:2003}. The
-principle neurons in the circuit are the \TS cells, in the \VCN, (Figure
-\ref{fig:GA:CNdiagram}), which project to the inferior colliculus.  They
-provide a robust spectral representation of sound and are implicated in
-forming part of the main `what' pathway for auditory information
-\citep{YoungOertel:2004}. Experimental evidence indicates that synaptic
-inputs from inhibitory interneurons play a critical role in modulating
+The network used as the basis for optimising \BNNs lies in the \CN (Figure
+\ref{fig:GA:CNdiagram}), which is the gateway between the peripheral auditory
+system and the central nervous system, with six distinct pathways to higher
+auditory nuclei \citep{CantBenson:2003}. The principle neurons in the circuit
+are the \TS cells, in the \VCN, (Figure \ref{fig:GA:CNdiagram}), which project
+to the inferior colliculus.  They provide a robust spectral representation of
+sound and are implicated in forming part of the main `what' pathway for auditory
+information \citep{YoungOertel:2004}. Experimental evidence indicates that
+synaptic inputs from inhibitory interneurons play a critical role in modulating
 the input-output response properties of \TS neurons
 \citep{FerragamoGoldingEtAl:1998,NeedhamPaolini:2006,PaoliniClareyEtAl:2005}.
-The neurons \TS, together with their inhibitory interneurons and
-afferent inputs, form a microcircuit, which we have taken as our example
-network.
+The neurons \TS, together with their inhibitory interneurons and afferent
+inputs, form a microcircuit, which we have taken as our example network.
 
 #+Attr_LaTeX width=0.8\textwidth
 #+CAPTION: [Diagram of the mammalian cochlear nucleus]{Diagram of the mammalian cochlear nucleus. ANFs sensitive to particular frequencies project to the cochlear nucleus (CN) in a tono-topically organized fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, ventral and dorsal CN, plus an outer layer of small cells known as the granule cell domain (GCD). Type I ANFs are characterised into two groups based on their spontaneous rate: high(HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the GCD.  Golgi cells in the GCD are the only known source of GABA-ergic cells within the VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic D~stellate cells (DS) project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, tuberculoventral (TV) cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
@@ -193,17 +183,16 @@ network.
 
  
 \glsreset{HSR}\glsreset{LSR} 
-The tonotopic organisation of the auditory pathway (i.e.\ the continuous
-mapping of sound frequency to place of resonance in the cochlea) is
-transferred to the \CN through the population of \ANFs
-\citep{Lorente:1981}. Figure \ref{fig:GA:CNdiagram} shows that \ANFs
-enter the brainstem ventrally and bifurcate, so that each fiber sends
-axonal collaterals to the ventral and dorsal sections of the cochlear
-nucleus, to organised iso-frequency lamina. \ANFs are categorised into
-\HSR (Figure \ref{fig:GA:CNdiagram} solid line) and \LSR (Fiqure
-\ref{fig:GA:CNdiagram} dashed line) fibers. \LSR fibers have a higher
-threshold than \HSR fibers and do not saturate in response to loud
-sounds.
+The tonotopic organisation of the auditory pathway
+(i.e.\ the continuous mapping of sound frequency to place of resonance in the
+cochlea) is transferred to the \CN through the population of \ANFs
+\citep{Lorente:1981}. Figure \ref{fig:GA:CNdiagram} shows that \ANFs enter the
+brainstem ventrally and bifurcate, so that each fiber sends axonal collaterals
+to the ventral and dorsal sections of the cochlear nucleus, to organised
+iso-frequency lamina. \ANFs are categorised into \HSR (Figure
+\ref{fig:GA:CNdiagram} solid line) and \LSR (Fiqure \ref{fig:GA:CNdiagram}
+dashed line) fibers. \LSR fibers have a higher threshold than \HSR fibers and do
+not saturate in response to loud sounds.
 
 
 #+Attr_LaTeX: width=0.45\textwidth
@@ -217,113 +206,103 @@ sounds.
 [[../GAChapter/gfx/NetworkProjections3.pdf]]
 
  
-The connectivity of the cell types involved in the stellate microcircuit
-is shown in Figure \ref{fig:GA:MicroCN}. Fast, glycinergic inhibition
-from \TV and \DS cells (Figure \ref{fig:GA:CNdiagram}) is involved in
-modulating the firing rate and spike interval variability in \TS cells
-\citep{FerragamoGoldingEtAl:1998,WickesbergOertel:1993}. \TV cells in
-the deep layer of the \DCN, provide a delayed narrowband inhibition to
-\TS and \DS cells in the \VCN.  The dendrites of \DS cells cover 1/3 of
-the cross-frequency axis in the \CN, contributing to this cell's wide
-frequency response. In turn this cell is responsible for altering the
-frequency responses in \TS and \TV cells
-\citep{SpirouDavisEtAl:1999}. \DS cells are coincidence detectors and
-have a precisely timed onset response that affects the temporal
-properties of \TS cells
-\citep{PaoliniClareyEtAl:2005,RhodeGreenberg:1994a} and completely
-inhibit \TV cell responses to loud clicks
-\citep{SpirouDavisEtAl:1999}. GABAergic inhibition from Golgi cells
-(Figure \ref{fig:GA:CNdiagram}) modulates the level of excitation
-necessary to reach threshold for all \CN cells
-\citep{CasparyBackoffEtAl:1994,FerragamoGoldingEtAl:1998}. Feedback
-circuits from the olivary complex to the ventral \CN are also known to
-use \GABA as a neurotransmitter \citep{SaintMorestEtAl:1989}, however
-this is not included in the model.
+The connectivity of the cell types involved in the stellate microcircuit is
+shown in Figure \ref{fig:GA:MicroCN}. Fast, glycinergic inhibition from \TV and
+\DS cells (Figure \ref{fig:GA:CNdiagram}) is involved in modulating the firing
+rate and spike interval variability in \TS cells
+\citep{FerragamoGoldingEtAl:1998,WickesbergOertel:1993}. \TV cells in the deep
+layer of the \DCN, provide a delayed narrowband inhibition to \TS and \DS cells
+in the \VCN.  The dendrites of \DS cells cover 1/3 of the cross-frequency axis
+in the \CN, contributing to this cell's wide frequency response. In turn this
+cell is responsible for altering the frequency responses in \TS and \TV cells
+\citep{SpirouDavisEtAl:1999}. \DS cells are coincidence detectors and have a
+precisely timed onset response that affects the temporal properties of \TS cells
+\citep{PaoliniClareyEtAl:2005,RhodeGreenberg:1994a} and completely inhibit \TV
+cell responses to loud clicks \citep{SpirouDavisEtAl:1999}. GABAergic inhibition
+from Golgi cells (Figure \ref{fig:GA:CNdiagram}) modulates the level of
+excitation necessary to reach threshold for all \CN cells
+\citep{CasparyBackoffEtAl:1994,FerragamoGoldingEtAl:1998}. Feedback circuits
+from the olivary complex to the ventral \CN are also known to use \GABA as a
+neurotransmitter \citep{SaintMorestEtAl:1989}, however this is not included in
+the model.
 
 
 * Methods
 ** Genetic Algorithm Implementation 
 
-For a model constraining problem, genetic algorithms work by searching
-across successive generations of models for the model that is "fittest"
-in the sense that it best reproduces some user supplied data. Each
-generation of models is obtained from the previous one by using
-fitness-based selection criteria to create new models from existing
-members of the population. In this process a model is represented by a
-genome, which is the result of mapping the model parameters into binary
-strings and concatenating them together. Each population of genomes is
-evaluated for fitness using a carefully tailored cost function, better
-next population.  The basic principles of genetic reproduction, viz.\
-fitness increases the probability that a genome will contribute to the
-crossover operation and mutation, are used to generate new genomes from
-selected existing genomes. A crossover operation breaks two genomes at a
-random location and swaps their tail portions to create two new
-genomes. A mutation is a random bit reversal in a genome. Crossover
-operations ensure that there is adequate mixing of the best performing
-genomes in the population and mutations are introduced to ensure
-diversity. The best members of the population are usually copied
-(cloned) in the new population.
+For a model constraining problem, genetic algorithms work by searching across
+successive generations of models for the model that is "fittest" in the sense
+that it best reproduces some user supplied data. Each generation of models is
+obtained from the previous one by using fitness-based selection criteria to
+create new models from existing members of the population. In this process a
+model is represented by a genome, which is the result of mapping the model
+parameters into binary strings and concatenating them together. Each population
+of genomes is evaluated for fitness using a carefully tailored cost function,
+better next population.  The basic principles of genetic reproduction, viz.\
+fitness increases the probability that a genome will contribute to the crossover
+operation and mutation, are used to generate new genomes from selected existing
+genomes. A crossover operation breaks two genomes at a random location and swaps
+their tail portions to create two new genomes. A mutation is a random bit
+reversal in a genome. Crossover operations ensure that there is adequate mixing
+of the best performing genomes in the population and mutations are introduced to
+ensure diversity. The best members of the population are usually copied (cloned)
+in the new population.
 
-In this work, all \GA simulations ran with 100 genomes in each
-population and evolved for 200 generations. From each population, a new
-population was created by cloning the five best genomes and performing
-the following procedure for the remaining 95 genomes.  Candidate genomes
-for crossover were randomly selected based on their fitness, using the
-roulette-wheel selection probability function, where each score was
-linearly scaled so that the probability of selection, $P_i$, is:
+In this work, all \GA simulations ran with 100 genomes in each population and
+evolved for 200 generations. From each population, a new population was created
+by cloning the five best genomes and performing the following procedure for the
+remaining 95 genomes.  Candidate genomes for crossover were randomly selected
+based on their fitness, using the roulette-wheel selection probability function,
+where each score was linearly scaled so that the probability of selection, $P_i$,
+is:
 \begin{equation} \label{eq:GA:1} 
 P_{i} = 1 - \frac{c_{i}}{\mathbf{c}}
-\end{equation} \noindent where $c_{i}$ is the genome's cost function score,
-and $\mathbf{c}$ is the sum of all genome scores in the current
-population (note that the sign in front of $c_{i}$ is negative here,
-instead of the conventional positive, because we use cost-functions
-corresponding to an error term, so that smaller values of $c_{i}$ imply
-greater fitness). Following selection of a genome, crossover occurred
-with a strictly different selected genome, with probability 0.95.
-Alternatively the selected genome was cloned, with probability 0.05.
-For the group of 95 genomes, a random bit mutation was implemented with
-probability 0.01. The best performing genome string at the end of the
-200th generation was declared the winner.
+\end{equation} \noindent where $c_{i}$ is the genome's cost function score, and
+$\mathbf{c}$ is the sum of all genome scores in the current population (note
+that the sign in front of $c_{i}$ is negative here, instead of the conventional
+positive, because we use cost-functions corresponding to an error term, so that
+smaller values of $c_{i}$ imply greater fitness). Following selection of a genome,
+crossover occurred with a strictly different selected genome, with probability
+0.95.  Alternatively the selected genome was cloned, with probability 0.05.  For
+the group of 95 genomes, a random bit mutation was implemented with probability
+0.01. The best performing genome string at the end of the 200th generation was
+declared the winner.
 
  
-Parameters that were optimised were the synaptic weights, number of
-synaptic connections per neuron and a parameter describing the spatial
-variance of connections (details are given in the section
-\ref{sec:GA:connectivity} Connectivity). The genome encoding scheme,
-shown in Table \ref{tab:GA:Genome}, describes the number of bits used
-for each parameter and the range of values that each parameter could
-take.  For example, the first parameter in Table \ref{tab:GA:Genome},
-\wANFTS models the strength of synapses from \ANF to \TS cells. It was
-encoded over the range 0.0-0.0051 \uS using 8 bits by assigning
-0b00000000 to 0.0 and 0b11111111 to 0.0051, and linearly interpolating
-all values within the range. This procedure was used for all parameters
-where the unit step was either 0.0001 \uS for weight parameters or 1
-(synaptic connection or frequency channel) for all others. The number of
-bits representing each parameter was chosen so that the maximum value
-lay outside of known physiological values. Genomes were formed by
-concatenating all these parameter bit strings in the order given in
-Table \ref{tab:GA:Genome}.
+Parameters that were optimised were the synaptic weights, number of synaptic
+connections per neuron and a parameter describing the spatial variance of
+connections (details are given in Section \ref{sec:GA:Connectivity}). The genome
+encoding scheme, shown in Table \ref{tab:GA:Genome}, describes the number of
+bits used for each parameter and the range of values that each parameter could
+take.  For example, the first parameter in Table \ref{tab:GA:Genome}, \wANFTS
+models the strength of synapses from \ANF to \TS cells. It was encoded over the
+range 0.0-0.0051 \uS using 8 bits by assigning 0b00000000 to 0.0 and 0b11111111
+to 0.0051, and linearly interpolating all values within the range. This
+procedure was used for all parameters where the unit step was either 0.0001 \uS
+for weight parameters or 1 (synaptic connection or frequency channel) for all
+others. The number of bits representing each parameter was chosen so that the
+maximum value lay outside of known physiological values. Genomes were formed by
+concatenating all these parameter bit strings in the order given in Table
+\ref{tab:GA:Genome}.
 
 
-To test the application of \GAs for optimising parameters of a \BNN, a
-network with a known set of parameters was created, this is referred to
-as the target network.  This allowed us to assess the \GA by how well
-the algorithm was able to recover the target parameters. The target
-parameters were randomly selected from within the physiological range of
-values and given in Table \ref{tab:GA:Genome}.  Target data were
-generated from the target network and used as training data for the \GA
-by incorporating them in an error-based cost function.  A notch-noise
-stimulus (described under Section Stimulus Generation) was chosen to
-present to the network as it produced a spectrally rich response that
-was spread over the whole frequency range of the target network.  Figure
-\ref{fig:GA:Costfunctions}A shows a spike raster plot for all \TS cells
-to a presentation of the notch noise stimulus. The vertical axis is
-arranged according to the frequency to which the neuron is most
-sensitive (the center frequency). There is a clear reduction in the
-firing rate corresponding to the stop band in the notch-noise. Figure
-\ref{fig:GA:Costfunctions}B illustrates response to 250 repetitions for
-a single \TS cell in the center of the network, at the rising edge of
-the notch (arrow in Figure \ref{fig:GA:Costfunctions}A).
+To test the application of \GAs for optimising parameters of a \BNN, a network
+with a known set of parameters was created, this is referred to as the target
+network.  This allowed us to assess the \GA by how well the algorithm was able
+to recover the target parameters. The target parameters were randomly selected
+from within the physiological range of values and given in Table
+\ref{tab:GA:Genome}.  Target data were generated from the target network and
+used as training data for the \GA by incorporating them in an error-based cost
+function.  A notch-noise stimulus (described under Section Stimulus Generation)
+was chosen to present to the network as it produced a spectrally rich response
+that was spread over the whole frequency range of the target network.  Figure
+\ref{fig:GA:Costfunctions}A shows a spike raster plot for all \TS cells to a
+presentation of the notch noise stimulus. The vertical axis is arranged
+according to the frequency to which the neuron is most sensitive (the center
+frequency). There is a clear reduction in the firing rate corresponding to the
+stop band in the notch-noise. Figure \ref{fig:GA:Costfunctions}B illustrates
+response to 250 repetitions for a single \TS cell in the center of the network,
+at the rising edge of the notch (arrow in Figure \ref{fig:GA:Costfunctions}A).
 
 #+BEGIN_LaTeX
   \begin{table}[tp!]
@@ -363,9 +342,9 @@ the notch (arrow in Figure \ref{fig:GA:Costfunctions}A).
   28 &  \wGLGDS  &      8      & 0.0 &       0.0051        & 0.00246 \\
   29 &  \nGLGDS  &      5      &  0  &         31          & 7 \\
   30 &  \sGLGDS  &      5      &  0  &         31          & 5 \\[0.5ex] %\bottomrule
-  \end{tabularx}
+  \end{tabularx}\\
   \vspace{0.5ex} 
-  \footnotesize{Units of weights are \uS. /n/ and /s/
+  \footnotesize{Units of weights are \uS. $n$ and $s$
     parameters are unitless integers. The resolution of weight
     parameters were set to 0.0001 \uS and other parameters to 1.}
   \end{table}
@@ -373,13 +352,12 @@ the notch (arrow in Figure \ref{fig:GA:Costfunctions}A).
 
 ** Cost Functions
 
-At the core of a \GA optimisation is a cost function, which is given,
-here, by an error measure of some observable output of a trial network
-against the output of the target network. In this work, the total cost
-function score is calculated using the output of all cells in the
-network.  Three different cost functions were investigated that were
-based on experimental observables: spike times, instantaneous firing
-rates, and intracellular voltages.
+At the core of a \GA optimisation is a cost function, which is given, here, by
+an error measure of some observable output of a trial network against the output
+of the target network. In this work, the total cost function score is calculated
+using the output of all cells in the network.  Three different cost functions
+were investigated that were based on experimental observables: spike times,
+instantaneous firing rates, and intracellular voltages.
 
 #+BEGIN_LaTeX
   \begin{figure}[pt!]
@@ -392,34 +370,29 @@ rates, and intracellular voltages.
   % \end{picture}}%
   % \resizebox{2.5in}{!}{\includegraphics[bb=98 411 304 523,clip]{Figure3}}\\
   % \vspace{0.1in}\resizebox{5in}{!}{\includegraphics[bb=98 173 504 411,clip]{Figure3}}
-  \resizebox{0.8\textwidth}{!}{\includegraphics{Figure31.png}}
-      \caption[Cost functions]{Cost function measures derived from the
-        output of the \CN stellate network. (A) Dot raster of \TS cell
-        spikes only during a presentation of the notch noise stimulus. A
-        rough trace shows the relative location of the 30-dB notch in a
-        broadband spectrum from 0.2~to 30 kHz. Frequency scale is
-        determined by the Greenwood function for the cat
-        \citep{Greenwood:1990}. (B) The reference spikes for a \TS cell in
-        the middle of the `target' network (CF 3.45kHz) from 250
-        repetitions of the stimulus are shown. This cell is placed at the
-        edge of the spectral notch (arrow in A.). (C) PSTH response of the
-        same \TS cell used in B (bin width 0.25~ms, reps. 250). Note the
-        regularly-spaced peaks at the start of the stimulus due to the \TS
-        cells' chopper response characteristics. Irregular peaks
-        throughout the stimulus are due to temporal features of the notch
-        noise captured by the auditory filter at this frequency. (D) \PSTH
-        of the same cell as in C using only 25 repetitions. The \IFR cost
-        function normalises the reference PSTHs and calculates a mean
-        squared error between reference and test \PSTHs for every cell in
-        the network. (E) Average intracellular voltage, smoothed from 250
-        repetitions, for the same \TS cell. There is some similarity with
-        the \PSTH in C, particularly the location of the peaks but
-        contains subthreshold effects. (F) Average intracellular voltage
-        using 25 repetitions is more variable than E since single action
-        potentials can distort the trace.}
+  \resizebox{0.9\textwidth}{!}{\includegraphics{Figure31.png}}
+  \caption[Cost functions]{Cost function measures derived from the output of the
+    \CN stellate network. (A) Dot raster of \TS cell spikes only during a
+    presentation of the notch noise stimulus. A rough trace shows the relative
+    location of the 30-dB notch in a broadband spectrum from 0.2~to 30
+    kHz. Frequency scale is determined by the Greenwood function for the cat
+    \citep{Greenwood:1990}. (B) The reference spikes for a \TS cell in the middle
+    of the `target' network (CF 3.45kHz) from 250 repetitions of the stimulus are
+    shown. This cell is placed at the edge of the spectral notch (arrow in
+    A.). (C) PSTH response of the same \TS cell used in B (bin width 0.25~ms,
+    reps. 250). Note the regularly-spaced peaks at the start of the stimulus due
+    to the \TS cells' chopper response characteristics. Irregular peaks throughout
+    the stimulus are due to temporal features of the notch noise captured by the
+    auditory filter at this frequency. (D) \PSTH of the same cell as in C using
+    only 25 repetitions. The \IFR cost function normalises the reference PSTHs and
+    calculates a mean squared error between reference and test \PSTHs for every
+    cell in the network. (E) Average intracellular voltage, smoothed from 250
+    repetitions, for the same \TS cell. There is some similarity with the \PSTH in
+    C, particularly the location of the peaks but contains subthreshold
+    effects. (F) Average intracellular voltage using 25 repetitions is more
+    variable than E since single action potentials can distort the trace.}
   \label{fig:GA:Costfunctions}
   \end{figure}
-  \clearpage
 #+END_LaTeX
 
 *** Spike Timing Cost Function
@@ -443,124 +416,118 @@ rates, and intracellular voltages.
 
 
 Temporal information is critical in the mammalian auditory system for
-communication and segregation of sounds \citep{Bregman:1990}.
-Spike times give accurate temporal information but are limited by a
-focus on individual stimulus presentations, which may contain various
-sources of noise and trial-to-trial variability. The metric we used for
-comparing trial and target spike trains applied a cost based on relative
-timing of spikes, for a review see \citet{Victor:2005}.
+communication and segregation of sounds \citep{Bregman:1990}.  Spike times give
+accurate temporal information but are limited by a focus on individual stimulus
+presentations, which may contain various sources of noise and trial-to-trial
+variability. The metric we used for comparing trial and target spike trains
+applied a cost based on relative timing of spikes, for a review see
+\citet{Victor:2005}.
 
 The \ST cost function was defined as:
 \begin{equation} \label{eq:GA:2} 
 \PsiST = \frac{1}{N_{\textrm{ST}}} \sum _{i=1}^{M}\sum _{j=1}^{R}\mathop{\min}\limits_{k} \left(D\left(x_{ij} ,x_{ik}^{*} \right)\right)
-\end{equation} \noindent where $N_{\textrm{ST}} = R \times M$ is a normalisation
-factor, $M=240$ is the number of neurons in the network, $R=25$ is the
-total number of stimulus repetitions, $x_{ij}$ is the vector containing the
-spike times of the trial network for stimulus repetition $j$ produced by
-neuron /i/, and $x_{ik}^{*}$ is the vector containing the spike times of
-the target network for the stimulus repetition $k$ produced by neuron
-/i/.  The units for \PsiST are msec per cell per spike train for 60 ms
-duration spike trains but will be milliseconds for the remainder of the
-study. $D(x_{ij} ,x_{ik}^{*})$ is the difference measure between trial and
-target network spike trains as found by dynamic programming.  Dynamic
-programming is a method for analyzing sequential processes
-\citep{Denardo:1982} and was applied to find the minimum distance
-between two spike trains, as illustrated in Figure
-\ref{fig:GA:DynSpikeMetric}.  In this process, a trial spike train,
-$x_{ij}$, was mapped onto a target spike train, $x_{ik}^{*}$, by a process of
-realignment, without specifically considering insertion or deletion of
-spikes. Insertion and deletion of spikes require additional penalties
-and have been used in single spike trains
-\citep{VictorGoldbergEtAl:2007,Aronov:2003}.  The cost associated with a
-spike in the trial network and a spike in the target network was
-measured as the time difference between the spikes. The spikes to select
-for comparison were chosen such that the overall cost was minimised.
+\end{equation} \noindent where $N_{\textrm{ST}} = R \times M$ is a normalisation factor,
+$M=240$ is the number of neurons in the network, $R=25$ is the total number of
+stimulus repetitions, $x_{ij}$ is the vector containing the spike times of the
+trial network for stimulus repetition $j$ produced by neuron /i/, and $x_{ik}^{*}$
+is the vector containing the spike times of the target network for the stimulus
+repetition $k$ produced by neuron /i/.  The units for \PsiST are msec per cell
+per spike train for 60 ms duration spike trains but will be milliseconds for the
+remainder of the study. $D(x_{ij} ,x_{ik}^{*})$ is the difference measure between
+trial and target network spike trains as found by dynamic programming.  Dynamic
+programming is a method for analyzing sequential processes \citep{Denardo:1982}
+and was applied to find the minimum distance between two spike trains, as
+illustrated in Figure \ref{fig:GA:DynSpikeMetric}.  In this process, a trial
+spike train, $x_{ij}$, was mapped onto a target spike train, $x_{ik}^{*}$, by a
+process of realignment, without specifically considering insertion or deletion
+of spikes. Insertion and deletion of spikes require additional penalties and
+have been used in single spike trains
+\citep{VictorGoldbergEtAl:2007,Aronov:2003}.  The cost associated with a spike
+in the trial network and a spike in the target network was measured as the time
+difference between the spikes. The spikes to select for comparison were chosen
+such that the overall cost was minimised.
 
 
-We chose the minimum value of $D(x_{ij} ,x_{ik}^{\ast} )$ over 25 target
-network spike-time vectors, $x_{ik}^{\ast}$, $k=1,\dots,25$, to reduce
-the effect of output randomness, it was limited to 25 vectors to
-obtain a reasonable computational load.  In the case where a trial
-network produces no output spikes, $D(x_{ij} ,x_{ik}^{\ast})$ is the sum
-of the target spike times, no target neurons produced empty spike
-trains.
+We chose the minimum value of $D(x_{ij} ,x_{ik}^{\ast} )$ over 25 target network
+spike-time vectors, $x_{ik}^{\ast}$, $k=1,\dots,25$, to reduce the effect of output
+randomness, it was limited to 25 vectors to obtain a reasonable computational
+load.  In the case where a trial network produces no output spikes, $D(x_{ij}
+,x_{ik}^{\ast})$ is the sum of the target spike times, no target neurons produced
+empty spike trains.
 
-To illustrate the behavior of this cost function in the ideal case,
-where \ANF inputs to the trial network are the identical those used in
-the 25 repetitions of the target data and the target network
-parameters are used, the value of \PsiST is zero. The
-maximum value of \PsiST observed in this study was
-approximately 360 ms.  For an example trial network that produces the
-correct number of spikes for each neuron but with an average spike
-timing error of 1 ms, given that the average number of spikes per
-train is 9, the cost function would be \PsiST=9 ms per
-spike train.
+To illustrate the behavior of this cost function in the ideal case, where \ANF
+inputs to the trial network are the identical those used in the 25 repetitions
+of the target data and the target network parameters are used, the value of
+\PsiST is zero. The maximum value of \PsiST observed in this study was
+approximately 360 ms.  For an example trial network that produces the correct
+number of spikes for each neuron but with an average spike timing error of 1 ms,
+given that the average number of spikes per train is 9, the cost function would
+be \PsiST=9 ms per spike train.
 
 *** Instantaneous Firing Rate (IFR) Cost Function
  :PROPERTIES:
  :CUSTOM_ID:    sec:GA:inst-firing-rate-cost-fn
  :END:
 
-The \PSTH has been an effective tool for classifying the
-stimulus-induced time-varying firing rate in many neurons including
-auditory neurons \citep{BlackburnSachs:1989,SmithRhode:1989}.  When
-measured using very short time bins ( $<$ 1 ms), the estimated firing
-rate is called the \IFR.  The \IFR cost function was obtained from the
-mean squared error between each neuron's \PSTH, $r_{i}$, and the
-corresponding target neuron's \PSTH, $r_{i}^{\ast}$, it was normalised to obtain
-a firing rate (spikes per msec) error per stimulus.
+The \PSTH has been an effective tool for classifying the stimulus-induced
+time-varying firing rate in many neurons including auditory neurons
+\citep{BlackburnSachs:1989,SmithRhode:1989}.  When measured using very short
+time bins ( $<$ 1 ms), the estimated firing rate is called the \IFR.  The \IFR
+cost function was obtained from the mean squared error between each neuron's
+\PSTH, $r_{i}$, and the corresponding target neuron's \PSTH, $r_{i}^{\ast}$, it was
+normalised to obtain a firing rate (spikes per msec) error per stimulus.
 
 
 The  \IFR cost function is defined as:
 \begin{equation} \label{eq:GA:3} 
 \PsiIFR =\frac{1}{T_{\textrm{IFR}}} \sqrt{\frac{1}{M} \sum_{i=1}^{M}\frac{1}{B} \left(\sum_{n=1}^{B}(r_{i}(n)- r{_{i}}^{\ast}(n))^{2} \right)},
-\end{equation} \noindent where /B/ is the number of bins in the \PSTH,
-/M/ is the number of cells in the network, $T_{\textrm{IFR}}=R \times W$ is a
-normalisation factor, /R/ is the number of trial repetitions ($R=25$ was
-used in this study), and /W/ is the bin width of the \PSTH. The units
-for \PsiIFR are spikes per millisecond per stimulus per neuron, but we
-shall use spikes per millisecond for the remainder of this study.
+\end{equation} 
+\noindent where /B/ is the number of bins in the \PSTH, /M/ is
+the number of cells in the network, $T_{\textrm{IFR}}=R \times W$ is a normalisation
+factor, /R/ is the number of trial repetitions ($R=25$ was used in this study),
+and /W/ is the bin width of the \PSTH. The units for \PsiIFR are spikes per
+millisecond per stimulus per neuron, but we shall use spikes per millisecond for
+the remainder of this study.
 
-To increase robustness of the \IFR cost function to input and
-trial-to-trial variability, target data from 250 repetitions was used to
-generate a higher resolution set of target \PSTHs $r_{i}^{\ast}$ and scaled by
-0.1 to match the trial \PSTH repetition number. Figure
-\ref{fig:GA:Costfunctions}D shows an example of a \TS cell's \PSTH
-produced from 250 repetitions of a notch noise stimulus. Similarly,
-Figure \ref{fig:GA:Costfunctions}E shows the same cell but with 25
-repetitions. The smoother \PSTH of $r_{i}^{\ast}$ is evident in Figure
-\ref{fig:GA:Costfunctions}D when compared to the 25 repetitions in
-Figure \ref{fig:GA:Costfunctions}E. Each \PSTH is 60 ms in duration (50
-ms stimulus then 10 ms silence) and discretised using a bin width of
-$W=0.25$ ms (total number of bins $B=241$).
+To increase robustness of the \IFR cost function to input and trial-to-trial
+variability, target data from 250 repetitions was used to generate a higher
+resolution set of target \PSTHs $r_{i}^{\ast}$ and scaled by 0.1 to match the trial
+\PSTH repetition number. Figure \ref{fig:GA:Costfunctions}D shows an example of
+a \TS cell's \PSTH produced from 250 repetitions of a notch noise
+stimulus. Similarly, Figure \ref{fig:GA:Costfunctions}E shows the same cell but
+with 25 repetitions. The smoother \PSTH of $r_{i}^{\ast}$ is evident in Figure
+\ref{fig:GA:Costfunctions}D when compared to the 25 repetitions in Figure
+\ref{fig:GA:Costfunctions}E. Each \PSTH is 60 ms in duration (50 ms stimulus
+then 10 ms silence) and discretised using a bin width of $W=0.25$ ms (total
+number of bins $B=241$).
 
 
-While the minimum value that \PsiIFR can attain is zero, in practice it
-will be greater than zero even when the trial network exactly matches
-the target because the numbers of repetitions used to create $r_{i}^\ast$ and
-$r_{i}$ are different (250 and 25 respectively). The maximum \PsiIFR value
-observed in this study was approximately 0.5 spikes/ms per stimulus per
-neuron. For a trial network, if the average \PSTH error is 10 spikes
-over all bins, then \PsiIFR is approximately 0.2 spikes/ms.
+While the minimum value that \PsiIFR can attain is zero, in practice it will be
+greater than zero even when the trial network exactly matches the target because
+the numbers of repetitions used to create $r_{i}^\ast$ and $r_{i}$ are different (250
+and 25 respectively). The maximum \PsiIFR value observed in this study was
+approximately 0.5 spikes/ms per stimulus per neuron. For a trial network, if the
+average \PSTH error is 10 spikes over all bins, then \PsiIFR is approximately
+0.2 spikes/ms.
 
 *** Average Intracellular Voltage (AIV) Cost Function
 
 Intracellular voltage responses reflect the influence of excitatory and
-inhibitory inputs on a neuron. This may be a more reliable way of
-determining the strength of synaptic inputs, since spike times and
-\PSTHs do not convey any information about the subthreshold activity of
-a neuron. The intracellular voltage waveform has been used to constrain
-single neural models with deterministic current inputs and no synaptic
-noise \citep{KerenPeledEtAl:2005,VanierBower:1999}. In the cochlear
-nucleus, averaging intracellular voltages over many repetitions has been
-used to categorise physiological responses, especially different
-stellate cells \citep{PaoliniClareyEtAl:2004,PaoliniClareyEtAl:2005}.
+inhibitory inputs on a neuron. This may be a more reliable way of determining
+the strength of synaptic inputs, since spike times and \PSTHs do not convey any
+information about the subthreshold activity of a neuron. The intracellular
+voltage waveform has been used to constrain single neural models with
+deterministic current inputs and no synaptic noise
+\citep{KerenPeledEtAl:2005,VanierBower:1999}. In the cochlear nucleus, averaging
+intracellular voltages over many repetitions has been used to categorise
+physiological responses, especially different stellate cells
+\citep{PaoliniClareyEtAl:2004,PaoliniClareyEtAl:2005}.
 
 
-The \AIV cost function is defined using the mean-squared error between
-averaged voltage waveforms of each trial neuron, $\overline{v}_{i}$, and the
-corresponding target \AIV waveform, $\overline{v}_{i}^{\ast}$, it is
-normalised to obtain a voltage (mV) error per neuron per stimulus.
+The \AIV cost function is defined using the mean-squared error between averaged
+voltage waveforms of each trial neuron, $\overline{v}_{i}$, and the corresponding
+target \AIV waveform, $\overline{v}_{i}^{\ast}$, it is normalised to obtain a
+voltage (mV) error per neuron per stimulus.
 
 The \AIV cost function is defined as:
 \begin{equation} \label{eq:GA:4} 
@@ -572,97 +539,90 @@ the number of cells in the network, and /R/ is the number of
 repetitions.
 
 Figures \ref{fig:GA:Costfunctions}F and \ref{fig:GA:Costfunctions}G show
-examples of \AIV waveforms, $\bar{v}$, from a \TS cell averaged
-over 25 or 250 repetitions, respectively, illustrating the reduction in
-trial-to-trial variation with more repetitions. Action potentials were
-clipped at 0 mV so that irregular peak heights did not affect the
-average waveform.
+examples of \AIV waveforms, $\bar{v}$, from a \TS cell averaged over 25 or 250
+repetitions, respectively, illustrating the reduction in trial-to-trial
+variation with more repetitions. Action potentials were clipped at 0 mV so that
+irregular peak heights did not affect the average waveform.
 
-The minimum value of \PsiAIV is zero.  Similar to \PsiIFR, in practice
-the minimum value of \PsiAIV was greater than zero because of the
-different numbers of repetitions used to create $\bar{v}_{i}^{\ast}$ and
-$\bar{v}_{i}$ (250 and 25 respectively). The maximum \PsiAIV value observed
-in this study was approximately 0.5 mV per cell per stimulus, where no
-spikes were generated and each cell's \AIV was flat.
+The minimum value of \PsiAIV is zero.  Similar to \PsiIFR, in practice the
+minimum value of \PsiAIV was greater than zero because of the different numbers
+of repetitions used to create $\bar{v}_{i}^{\ast}$ and $\bar{v}_{i}$ (250 and 25
+respectively). The maximum \PsiAIV value observed in this study was
+approximately 0.5 mV per cell per stimulus, where no spikes were generated and
+each cell's \AIV was flat.
 
 ** Stimulus Generation
 
-For all simulations, frozen notch noise was used as the stimulus. Notch
-noise is white noise that has been filtered by a narrow band-stop
-filter. Gaussian white noise was generated in [[latex:progname][MATLAB/GNU Octave]] with a 50 kHz sampling
-frequency and filtered with a quarter octave, 30 dB band-stop,
-100-tap FIR filter centered at 5 kHz. A 50 ms stimulus was presented at
-60 dB \SPL with 5 ms onset/offset ramps, a 20 ms delay and 10 ms pause
-after the stimulus. Notch noise stimuli have been used in experimental
-studies of the \CN to measure the asymmetric, wide-band suppression of
-\TV cells by \DS cells \citep{ReissYoung:2005} and to estimate the
-frequency range of \ANFs converging on \DS cells
+For all simulations, frozen notch noise was used as the stimulus. Notch noise is
+white noise that has been filtered by a narrow band-stop filter. Gaussian white
+noise was generated in [[latex:progname][MATLAB/GNU Octave]] with a 50 kHz sampling frequency and
+filtered with a quarter octave, 30 dB band-stop, 100-tap FIR filter centered at
+5 kHz. A 50 ms stimulus was presented at 60 dB \SPL with 5 ms onset/offset
+ramps, a 20 ms delay and 10 ms pause after the stimulus. Notch noise stimuli
+have been used in experimental studies of the \CN to measure the asymmetric,
+wide-band suppression of \TV cells by \DS cells \citep{ReissYoung:2005} and to
+estimate the frequency range of \ANFs converging on \DS cells
 \citep{PalmerJiangEtAl:1996}.
 
 ** Auditory Nerve Model
 
-The input to the stellate microcircuit was provided by the
-phenomenological auditory nerve model of \citet{HeinzZhangEtAl:2001} and
-originally developed by Carney and colleagues
-\citep{Carney:1993,ZhangCarney:2001}. The model reproduces all
-significant auditory nerve phenomena including non-linear compression
-and two-tone suppression over a wide range of frequencies in the normal
-hearing cat model, for an extensive review of existing auditory models
-see \citet{Lopez-Poveda:2005}. The auditory filterbank used in this
-study consisted of sixty frequency channels with center frequencies
-between 0.2 and 30 kHz, with other simulation parameters as listed in
-Table \ref{tab:GA:GeneralParams}. Center frequencies of the channels
-were spaced logarithmically according to the basilar membrane
-frequency-place map of cats \citep[See Table ]{Greenwood:1990}.
+The input to the stellate microcircuit was provided by the phenomenological
+auditory nerve model of \citet{HeinzZhangEtAl:2001} and originally developed by
+Carney and colleagues \citep{Carney:1993,ZhangCarney:2001}. The model reproduces
+all significant auditory nerve phenomena including non-linear compression and
+two-tone suppression over a wide range of frequencies in the normal hearing cat
+model, for an extensive review of existing auditory models see
+\citet{Lopez-Poveda:2005}. The auditory filterbank used in this study consisted
+of sixty frequency channels with center frequencies between 0.2 and 30 kHz, with
+other simulation parameters as listed in Table
+\ref{tab:GA:GeneralParams}. Center frequencies of the channels were spaced
+logarithmically according to the basilar membrane frequency-place map of cats
+\citep[See Table ]{Greenwood:1990}.
 \begin{equation} \label{eq:GA:Greenwood} 
 f(x) = 456.0 \times 10^{\frac{x}{11.9} } - 0.8, \quad (Hz)
 \end{equation}
 \noindent where /x/ is the distance in centimeters from the apex.
 
-The level of spontaneous activity in \HSR and \LSR \AN fibers was set to
-50 and 0.5 Hz, respectively. The stimulus was passed through the
-auditory nerve model for each frequency channel for both \LSR and \HSR
-fibers, producing an instantaneous firing rate response that was down
-sampled to 10 kHz. Twenty \HSR and ten \LSR \AN fibers were simulated
-for each frequency-channel. Spike times were generated independently for
-each fiber from the instantaneous firing rate using a pseudo-random
-spike-generator \citep{JacksonCarney:2005}, with refractory effects
-similar to those present in \ANFs.
+The level of spontaneous activity in \HSR and \LSR \AN fibers was set to 50 and
+0.5 Hz, respectively. The stimulus was passed through the auditory nerve model
+for each frequency channel for both \LSR and \HSR fibers, producing an
+instantaneous firing rate response that was down sampled to 10 kHz. Twenty \HSR
+and ten \LSR \AN fibers were simulated for each frequency-channel. Spike times
+were generated independently for each fiber from the instantaneous firing rate
+using a pseudo-random spike-generator \citep{JacksonCarney:2005}, with
+refractory effects similar to those present in \ANFs.
 
 ** Neural Models
 # Stellate Microcircuit Model of the Cochlear Nucleus
 
-\HH single compartment conductance neural models
-\citep{RothmanManis:2003b} and current-based synapses were used to model
-the cochlear nucleus stellate microcircuit, as described in Chapter
-\ref{sec:MethodsChapter}\footnote{Golgi cell model in this Chapter is a type I-c single compartment Rothman and Manis model and not a filter based spiking Poisson neural model, as in Chapter \label{sec:Ch3:Simple}.}.
+\HH single compartment conductance neural models \citep{RothmanManis:2003b} and
+current-based synapses were used to model the cochlear nucleus stellate
+microcircuit, as described in Chapter \ref{sec:MethodsChapter}\footnote{Golgi
+cell model in this Chapter is a type I-c single compartment Rothman and Manis
+model and not a filter based spiking Poisson neural model, as in Chapter
+\label{sec:Ch3:Simple}.}.
 
-The response of type I neurons to current
-injection is regularly spaced \APs. \TV \citep{ZhangOertel:1993b} and
-Golgi cells \citep{FerragamoGoldingEtAl:1998a} are classic type I, and
-have \INa, \IKHT and \Ih currents. While \TS cells are regular-firing
-neurons typical of type I, they have additional A-type transient
-potassium channels, \IKA
-\citep{FerragamoGoldingEtAl:1998,RothmanManis:2003b}. Type II responses
-have only one phasic \AP at the start of the stimulus, characteristic of
-ventral \CN bushy cells, which enables them to rapidly follow \ANF input
-events \citep{OertelWuEtAl:1988,SmithRhode:1989}. \IKLT is present in
-type-II units and is active at resting membrane potential, which allow
-for rapid changes depending on the input. \DS cells respond with a
-single \AP for injected current levels near threshold, then discharge
-regularly for higher current levels
-\citep{OertelWuEtAl:1988,PaoliniClark:1999}, corresponding to an
-intermediate type I-II response. \DS cells have a small amount of \IKLT
-current to reduce the cells input resistance and enhance coincidence
-detection.
+The response of type I neurons to current injection is regularly spaced
+\APs. \TV \citep{ZhangOertel:1993b} and Golgi cells
+\citep{FerragamoGoldingEtAl:1998a} are classic type I, and have \INa, \IKHT and
+\Ih currents. While \TS cells are regular-firing neurons typical of type I, they
+have additional A-type transient potassium channels, \IKA
+\citep{FerragamoGoldingEtAl:1998,RothmanManis:2003b}. Type II responses have
+only one phasic \AP at the start of the stimulus, characteristic of ventral \CN
+bushy cells, which enables them to rapidly follow \ANF input events
+\citep{OertelWuEtAl:1988,SmithRhode:1989}. \IKLT is present in type-II units and
+is active at resting membrane potential, which allow for rapid changes depending
+on the input. \DS cells respond with a single \AP for injected current levels
+near threshold, then discharge regularly for higher current levels
+\citep{OertelWuEtAl:1988,PaoliniClark:1999}, corresponding to an intermediate
+type I-II response. \DS cells have a small amount of \IKLT current to reduce the
+cells input resistance and enhance coincidence detection.
 
-Table \ref{tab:GA:CellTypes} shows the maximum conductances, $\bar{g}$,
-for each cell type in the \CN network.  The membrane parameters were
-fixed after we established the /in vitro/ characteristics of each cell
-type from the literature
+Table \ref{tab:GA:CellTypes} shows the maximum conductances, $\bar{g}$, for each
+cell type in the \CN network.  The membrane parameters were fixed after we
+established the /in vitro/ characteristics of each cell type from the literature
 \citep{FerragamoGoldingEtAl:1998,FerragamoGoldingEtAl:1998a,OertelWuEtAl:1988,ZhangOertel:1993b}
-at 37\degC, and matched them to the model types in
-\citet{RothmanManis:2003b}.
+at 37\degC, and matched them to the model types in \citet{RothmanManis:2003b}.
 
 #+BEGIN_LaTeX
   \begin{table}[tp]
@@ -684,96 +644,93 @@ at 37\degC, and matched them to the model types in
   \end{table}
 #+END_LaTeX
 
-
+** Connectivity
+:PROPERTIES:
+:CUSTOM_ID: sec:GA:Connectivity 
+:END:
 Connectivity and network parameters are described in detail in Section
-\ref{sec:Methods:Connectivity}. The synapse models and their delay
-parameters are unchanged from Section \ref{sec:Methods:Delay}, in
-Chapter \ref{sec:MethodsChapter}.  Topographical connectivity in this
-model was based on position within the \CN (Figure
-\ref{fig:GA:MicroCN}B), but is easily interchangeable with
-frequency-specific connectivity.  Connection parameters that are fixed
-are shown in Table \ref{tab:GA:GeneralParams} and parameters used in the
-optimisation are shown in Table \ref{tab:GA:Genome}.
+\ref{sec:Methods:Connectivity}. The synapse models and their delay parameters
+are unchanged from Section \ref{sec:Methods:Delay}, in Chapter
+\ref{sec:MethodsChapter}.  Topographical connectivity in this model was based on
+position within the \CN (Figure \ref{fig:GA:MicroCN}B), but is easily
+interchangeable with frequency-specific connectivity.  Connection parameters
+that are fixed are shown in Table \ref{tab:GA:GeneralParams} and parameters used
+in the optimisation are shown in Table \ref{tab:GA:Genome}.
 
-\CN cells were spatially organised into 60 iso-frequency lamina or
-channels, as described by the \ANF organisation.  \TS and \TV cells'
-dendrites are located within isofrequency lamina, so \ANF inputs are
-chosen from fibres in the same channel (zero spread, $s=0$, see Table
-\ref{tab:GA:GeneralParams}). \DS cells have many dendritic arborisations
-extending perpendicular to \ANF axons and have a typical physiological
-responses to frequencies 2 octaves below and 1 octave above their \CF
-\citep{PalmerJiangEtAl:1996,PaoliniClark:1999} (see fixed parameters in
-Table \ref{tab:GA:GeneralParams}).  Physiological evidence in the
-analogous granule cell domain of the \VCN, the marginal shell in cats,
-show units with monotonic, non-saturating rate-level curves, similar to
-\LSR \ANFs \citep{GhoshalKim:1996a}. \ANF labeling evidence shows the
-absence of \HSR \ANFs in the Golgi cell domain of the \CN
-\citep{Liberman:1991,Ryugo:2008,RhodeOertelEtAl:1983}, so the strength
-of Golgi cells' excitation is given soley by \LSR \ANFs (\wLSRGLG and
-\nLSRGLG). Wide-band inhibition of \TV cells by \DS cells includes an
-additional channel offset, \oDSTV, to account for the asymmetry of
-wideband suppression found in \TV cells \citep{ReissYoung:2005}.  The
-offset was added to the Gaussian mean in the random allocation process.
+\CN cells were spatially organised into 60 iso-frequency lamina or channels, as
+described by the \ANF organisation.  \TS and \TV cells' dendrites are located
+within isofrequency lamina, so \ANF inputs are chosen from fibres in the same
+channel (zero spread, $s=0$, see Table \ref{tab:GA:GeneralParams}). \DS cells
+have many dendritic arborisations extending perpendicular to \ANF axons and have
+a typical physiological responses to frequencies 2 octaves below and 1 octave
+above their \CF \citep{PalmerJiangEtAl:1996,PaoliniClark:1999} (see fixed
+parameters in Table \ref{tab:GA:GeneralParams}).  Physiological evidence in the
+analogous granule cell domain of the \VCN, the marginal shell in cats, show
+units with monotonic, non-saturating rate-level curves, similar to \LSR \ANFs
+\citep{GhoshalKim:1996a}. \ANF labeling evidence shows the absence of \HSR \ANFs
+in the Golgi cell domain of the \CN
+\citep{Liberman:1991,Ryugo:2008,RhodeOertelEtAl:1983}, so the strength of Golgi
+cells' excitation is given soley by \LSR \ANFs (\wLSRGLG and
+\nLSRGLG). Wide-band inhibition of \TV cells by \DS cells includes an additional
+channel offset, \oDSTV, to account for the asymmetry of wideband suppression
+found in \TV cells \citep{ReissYoung:2005}.  The offset was added to the
+Gaussian mean in the random allocation process.
  
 ** Simulation Environment
 
-Membrane current models, neural models and network connections were
-generated using the neural simulation package [[latex:progname][NEURON]]
-\citep{CarnevaleHines:2006}, as described in Chapter
-\ref{sec:MethodsChapter}.  Numerical integration was performed using the
-Crank-Nicholson method with second order accuracy and fixed time step of
-0.1 ms. Genetic algorithms and sensitivity analysis were implemented in
-[[latex:progname][C++]] using [[http://lancet.mit.edu/ga][GAlib]] \citep{Wall:2006}. and [[http://www.pvm.com][PVM]] parallel virtual machine
-libraries \citep{GeistBeguelinEtAl:1994}. \GA simulations were
-distributed on a cluster of nine PCs (3GHz Pentium4) and a 64-CPU SGI
-Altix[fn:: Computer system named \textsf{soma} at the Department of
-Electrical and Electronic Engineering and Neuroimaging group, University
-of Melbourne] with a master-slave paradigm.
+Membrane current models, neural models and network connections were generated
+using the neural simulation package [[latex:progname][NEURON]] \citep{CarnevaleHines:2006}, as
+described in Chapter \ref{sec:MethodsChapter}.  Numerical integration was
+performed using the Crank-Nicholson method with second order accuracy and fixed
+time step of 0.1 ms. Genetic algorithms and sensitivity analysis were
+implemented in [[latex:progname][C++]] using [[http://lancet.mit.edu/ga][GAlib]] \citep{Wall:2006}. and [[http://www.pvm.com][PVM]] parallel virtual
+machine libraries \citep{GeistBeguelinEtAl:1994}. \GA simulations were
+distributed on a cluster of nine PCs (3GHz Pentium4) and a 64-CPU SGI Altix[fn::
+Computer system named \textsf{soma} at the Department of Electrical and
+Electronic Engineering and Neuroimaging group, University of Melbourne] with a
+master-slave paradigm.
 
 ** Analysis of GA and Cost Functions
 
-To test the performances of the cost functions in \GA optimisations,
-sets of target data were produced using a target \CN network with
-parameters shown in Table \ref{tab:GA:Genome}.  The \GA was run with
-each cost function using two conditions: 1) with identical \ANF spike
-times as used in creating the target data, and 2) with different \ANF
-spike times, derived from the same instantaneous rate function but
-where the spike times were recalculated for each evaluation.  The
-performance of the \GA was evaluated by examining the behavior of the
-best genomes in relation to the scores of other genomes with small
-parameter deviations, the relative parameter difference between the
-best genome, and target genome (parameters of the target network) and
-the robustness of the optimisation when using different \ANF inputs.
+To test the performances of the cost functions in \GA optimisations, sets of
+target data were produced using a target \CN network with parameters shown in
+Table \ref{tab:GA:Genome}.  The \GA was run with each cost function using two
+conditions: 1) with identical \ANF spike times as used in creating the target
+data, and 2) with different \ANF spike times, derived from the same
+instantaneous rate function but where the spike times were recalculated for each
+evaluation.  The performance of the \GA was evaluated by examining the behavior
+of the best genomes in relation to the scores of other genomes with small
+parameter deviations, the relative parameter difference between the best genome,
+and target genome (parameters of the target network) and the robustness of the
+optimisation when using different \ANF inputs.
 
 
-To test the sensitivity and robustness of the cost functions to
-parameter variation, two analysis techniques were used. Sensitivity is
-defined as the relative change in cost function when one or more
-parameters are varied.  Robustness is the relative change of a cost
-function to different instances of noise, in this case different
-instances of randomly generated spike inputs from the \AN model for
-each fiber.  The sensitivity measure for uniform parameter variation
-was given by the degree of variation of cost function scores near the
-global optimum when performing random deviations of all parameters
-about their target values. One thousand genomes were generated and
-each parameter was randomly varied by -1, 0 or +1 unit steps (0.001
-for weight parameters and 1 for other parameters) with equal
-probability. The same was also done for 1000 genomes with unit steps
-between -5 and 5.  Robustness was measured by re-evaluating the two
-genome sets above with different \ANF input spikes regenerated for
-every genome.
+To test the sensitivity and robustness of the cost functions to parameter
+variation, two analysis techniques were used. Sensitivity is defined as the
+relative change in cost function when one or more parameters are varied.
+Robustness is the relative change of a cost function to different instances of
+noise, in this case different instances of randomly generated spike inputs from
+the \AN model for each fiber.  The sensitivity measure for uniform parameter
+variation was given by the degree of variation of cost function scores near the
+global optimum when performing random deviations of all parameters about their
+target values. One thousand genomes were generated and each parameter was
+randomly varied by -1, 0 or +1 unit steps (0.001 for weight parameters and 1 for
+other parameters) with equal probability. The same was also done for 1000
+genomes with unit steps between -5 and 5.  Robustness was measured by
+re-evaluating the two genome sets above with different \ANF input spikes
+regenerated for every genome.
 
-Second, the sensitivity analysis of the cost functions to individual
-parameter variation at the global optimum is shown in section
+Second, the sensitivity analysis of the cost functions to individual parameter
+variation at the global optimum is shown in section
 \ref{sec:GA:IndividualSens}. Parameter values were stepped up and down
 independently (steps were determined from the gene resolution in Table
-\ref{tab:GA:Genome}) to determine the cost function learning gradient on
-either side of the target value. Gradients were calculated using a
-least-squares linear regression in [[latex:progname][MATLAB]] and two-sided t-tests were
-performed to determine whether each gradient was significantly different
-from zero.  This was done for the identical and the different \ANF
-inputs, robustness was evaluated by comparing the ratio of V-shaped to
-non-V-shaped cost function gradients for different inputs.
+\ref{tab:GA:Genome}) to determine the cost function learning gradient on either
+side of the target value. Gradients were calculated using a least-squares linear
+regression in [[latex:progname][MATLAB]] and two-sided t-tests were performed to determine whether
+each gradient was significantly different from zero.  This was done for the
+identical and the different \ANF inputs, robustness was evaluated by comparing
+the ratio of V-shaped to non-V-shaped cost function gradients for different
+inputs.
 
 #+LaTeX: {\small\LTXtable{\textwidth}{../GAChapter/ModelTable.tex}}
 
@@ -796,16 +753,15 @@ non-V-shaped cost function gradients for different inputs.
 
 *** Evolution of Cost Functions
 
-The performance of the \GA optimisation is illustrated by the evolution
-of the best score in each generation for three independent \GA runs
-(Figure \ref{fig:GA:R1}). The best genome score in each generation
-(solid line) shows the progress of the optimisation by the \GA, from
-large steps initially to more incremental improvements as the score
-tends towards an asymptote.  During the later generations, the best
-genome score showed relatively little variability between different \GA
-runs, suggesting that \GA performance was consistent across runs. The
-relative improvement between initial and final scores was greater for
-the \ST and \AIV cost functions than for the \IFR cost function.
+The performance of the \GA optimisation is illustrated by the evolution of the
+best score in each generation for three independent \GA runs (Figure
+\ref{fig:GA:R1}). The best genome score in each generation (solid line) shows
+the progress of the optimisation by the \GA, from large steps initially to more
+incremental improvements as the score tends towards an asymptote.  During the
+later generations, the best genome score showed relatively little variability
+between different \GA runs, suggesting that \GA performance was consistent
+across runs. The relative improvement between initial and final scores was
+greater for the \ST and \AIV cost functions than for the \IFR cost function.
 #  \GA runs using both the \ST and \IFR cost functions attained final scores
 #  that were essentially identical to the target score (mark on right), but
 #  \GA runs using the  \AIV cost function attained final scores that did not
@@ -824,43 +780,38 @@ the \ST and \AIV cost functions than for the \IFR cost function.
 #+END_LaTeX
 
 
-
-
-For all three cost functions the best score obtained by the \GA was
-considerably above an error of zero. This does not imply poor
-performance by the \GA, because a perfect score of zero would require
-not only an exact match to the target parameters, but also a precise
-match to the auditory nerve input spike trains used in the target
-data. Experimentally the spike times of the auditory nerve vary
-stochastically based on an instantaneous rate function for any given
-stimulus. This stochasticity was incorporated into our model and led to
-non-zero scores, even for the target network. The mean target score is
-shown by the error bars on the right of each plot in Figure
-\ref{fig:GA:R1}.
+For all three cost functions the best score obtained by the \GA was considerably
+above an error of zero. This does not imply poor performance by the \GA, because
+a perfect score of zero would require not only an exact match to the target
+parameters, but also a precise match to the auditory nerve input spike trains
+used in the target data. Experimentally the spike times of the auditory nerve
+vary stochastically based on an instantaneous rate function for any given
+stimulus. This stochasticity was incorporated into our model and led to non-zero
+scores, even for the target network. The mean target score is shown by the error
+bars on the right of each plot in Figure \ref{fig:GA:R1}.
 
 
 
-For the \ST and \IFR cost functions the best genome score was within the
-range of scores found for the target network, indicating that the \GA was
-able to find a network that gave the same behaviour as the target network,
-as measured by the cost function. For the  \AIV cost function, the best
-genome had a score that was greater that the range of scores found for the
-target network, indicating a discrepancy between the behaviour of the best
-network and that of the target, as measured by the cost function.
+For the \ST and \IFR cost functions the best genome score was within the range
+of scores found for the target network, indicating that the \GA was able to find
+a network that gave the same behaviour as the target network, as measured by the
+cost function. For the \AIV cost function, the best genome had a score that was
+greater that the range of scores found for the target network, indicating a
+discrepancy between the behaviour of the best network and that of the target, as
+measured by the cost function.
 
 *** Cost Function Cross Comparison
 
-To facilitate the comparison of cost function performance, we used the
-best genome from \GA runs trained with one of the cost functions to
-evaluate the remaining cost functions. This also allowed us to gauge how
-well that genome was able to generalise to reproduce network behaviour
-as measured by the other cost functions.
-The results are shown in Figure \ref{fig:GA:R2A}, which compares the
-mean score evaluated using the \ST, \IFR and \AIV cost functions (top to
-bottom, respectively) for each of the three best genomes obtained from
-\GA runs trained with the different cost functions. In general, the
-lowest scores were obtained when using the same cost function for
-evaluation as was used for training of the best genome.
+To facilitate the comparison of cost function performance, we used the best
+genome from \GA runs trained with one of the cost functions to evaluate the
+remaining cost functions. This also allowed us to gauge how well that genome was
+able to generalise to reproduce network behaviour as measured by the other cost
+functions.  The results are shown in Figure \ref{fig:GA:R2A}, which compares the
+mean score evaluated using the \ST, \IFR and \AIV cost functions (top to bottom,
+respectively) for each of the three best genomes obtained from \GA runs trained
+with the different cost functions. In general, the lowest scores were obtained
+when using the same cost function for evaluation as was used for training of the
+best genome.
 
 #+BEGIN_LaTeX
   \begin{figure}[th!]
@@ -881,13 +832,13 @@ evaluation as was used for training of the best genome.
 #+END_LaTeX
 
 One \AIV trained best genome generated \ST scores around the target
-distribution, however, the top graph shows that overall the \IFR and
-\AIV best genomes performed relatively poorly when evaluated against the
-\ST cost function.  The opposite pattern was observed when the best
-genomes were evaluated with the \IFR cost function (middle plot), in
-which the \ST best genomes performed poorly relative to the \IFR and
-\AIV best genomes. All the best genomes gave similar scores for the \AIV
-cost function (bottom plot), but did not reach the target genome scores.
+distribution, however, the top graph shows that overall the \IFR and \AIV best
+genomes performed relatively poorly when evaluated against the \ST cost
+function.  The opposite pattern was observed when the best genomes were
+evaluated with the \IFR cost function (middle plot), in which the \ST best
+genomes performed poorly relative to the \IFR and \AIV best genomes. All the
+best genomes gave similar scores for the \AIV cost function (bottom plot), but
+did not reach the target genome scores.
 
 #  the the \ST trained genomes generalised well, in that the scores they
 #  obtained evaluating with the \IFR and  \AIV cost function were close to the
@@ -936,13 +887,12 @@ cost function (bottom plot), but did not reach the target genome scores.
 
 *** Match to Target Parameters
 
-A further way to evaluate \GA performance is to compare the parameter
-values between the best and target genomes by evaluating the relative
-error between parameters (i.e. (target value - best value)/target
-value). Individual relative parameter errors are shown in Figure
-\ref{fig:GA:R2} for each of the best genomes trained on a particular
-cost function. Parameters were ordered by increasing mean relative error
-across all best genomes and all cost functions.
+A further way to evaluate \GA performance is to compare the parameter values
+between the best and target genomes by evaluating the relative error between
+parameters (i.e. (target value - best value)/target value). Individual relative
+parameter errors are shown in Figure \ref{fig:GA:R2} for each of the best
+genomes trained on a particular cost function. Parameters were ordered by
+increasing mean relative error across all best genomes and all cost functions.
 
 
 #+ATTR_LaTeX: width=\textwidth
@@ -950,14 +900,13 @@ across all best genomes and all cost functions.
 #+label: fig:GA:R2
 [[../GAChapter/gfx/BestGenomesReRaw_CombinedLog.pdf]]
 
-The plot shows a similar level and pattern of performance across genomes
-trained with the three different cost functions. Parameters were either
-reasonably or poorly constrained independent of the cost function being
-used in training.
+The plot shows a similar level and pattern of performance across genomes trained
+with the three different cost functions. Parameters were either reasonably or
+poorly constrained independent of the cost function being used in training.
 
-In terms of parameter type, all bandwidth parameters were in the upper half
-of genome errors whereas synapse number parameters were predominantly in
-the lower half.  Weight parameters were spread over the whole range.
+In terms of parameter type, all bandwidth parameters were in the upper half of
+genome errors whereas synapse number parameters were predominantly in the lower
+half.  Weight parameters were spread over the whole range.
 
 
 #  {\it Still concerned that units are wrong. Percent error? Also v.hard
@@ -1030,17 +979,16 @@ the lower half.  Weight parameters were spread over the whole range.
 
 *** Simultaneous Parameter Perturbation Analysis
 
-To better understand the relationship between cost function scores and
-the match to target parameter values a parameter sensitivity analysis
-was performed. This involved measuring the change in the cost function
-due to simultaneous perturbations in all parameters.  Figure
-\ref{fig:GA:R3} shows the distribution of cost function scores for
-different degrees of random simultaneous parameter perturbation. Two
-populations of 1000 genomes were generated, one with parameter values
-allowed to vary uniformly by 1 unit step either side of the target
-(i.e. -1, 0 or 1 steps), and the second population was varied uniformly
-up to 5 unit steps.  In the 5 units step experiment, one parameter
-covers 11 combinations, including the target value.
+To better understand the relationship between cost function scores and the match
+to target parameter values a parameter sensitivity analysis was performed. This
+involved measuring the change in the cost function due to simultaneous
+perturbations in all parameters.  Figure \ref{fig:GA:R3} shows the distribution
+of cost function scores for different degrees of random simultaneous parameter
+perturbation. Two populations of 1000 genomes were generated, one with parameter
+values allowed to vary uniformly by 1 unit step either side of the target
+(i.e. -1, 0 or 1 steps), and the second population was varied uniformly up to 5
+unit steps.  In the 5 units step experiment, one parameter covers 11
+combinations, including the target value.
 
 #+ATTR_LaTeX: width=\textwidth
 #+Caption: [Histograms of parameter perturbations]{Histograms of simultaneous parameter perturbation of each cost function. The distribution of genomes in gray are all genomes evaluated by the GA that obtained the lowest score. The best scores of 3 GA simulations are pointed to by the arrows. The histograms show the distributions of 100 target genome scores (thick line), 1000 genomes deviated by 1 unit step away from the target value (dashed line), and 1000 genomes deviated by 5 steps (thin line) from the target. The input spike generation and network connections for each parameter set (genome) were randomly generated for each evaluation.  All graphs are normalised to the peak value in each histogram.}
@@ -1056,14 +1004,14 @@ covers 11 combinations, including the target value.
 
 In general, 1 unit step perturbations produced cost function scores both
 slightly above and slightly below the range produced by the target network
-(compare histograms in dashed versus bold lines, respectively). Five unit
-step perturbations produced cost functions scores that were largely above
-the target network range (compare histograms in thin solid versus bold
-lines, respectively). This pattern was consistent across the three cost
-function types. The shift of cost function scores to progressively higher
-values with progressively larger perturbations is expected and
-desirable. It forms the basis by which the \GA performs optimisation by
-comparing candidate genomes to the target.
+(compare histograms in dashed versus bold lines, respectively). Five unit step
+perturbations produced cost functions scores that were largely above the target
+network range (compare histograms in thin solid versus bold lines,
+respectively). This pattern was consistent across the three cost function
+types. The shift of cost function scores to progressively higher values with
+progressively larger perturbations is expected and desirable. It forms the basis
+by which the \GA performs optimisation by comparing candidate genomes to the
+target.
 
 #  The distribution of cost functions scores for the 5 unit step perturbation is
 #  less highly sensitive cost function in the vicinity of the target parameter
@@ -1084,21 +1032,21 @@ function types. This suggests that the  \AIV cost function is equally well behav
 in the vicinity of the target compared to the other two cost functions. In this
 case, the reason the best genomes trained with any cost function were unable to
 attain a score in the target range (bottom plot of Figure \ref{fig:GA:R2}) was
-not due to a poorly behaved cost function. \yellownote{but further explanation
-  is unknown.}
+not due to a poorly behaved cost function. 
+# \yellownote{but further explanation   is unknown.}
 
 
 It is, perhaps, surprising that the 1 unit step perturbations could produced a
 network with lower cost function scores than the target network, albeit
 marginally. This effect is the result of noise in the cost function, introduced
 by the stochastic auditory nerve input: because the 1 unit step perturbations
-involved 1000 separate instances of \ANF input, compared to only 100 instances for
-the target, it was likely that a better match to the precise target \ANF input was
-found amongst the former than the latter.  This effect is only expected to
-become apparent for values of the cost function around the target score, where
-systematic reduction of the cost function becomes increasingly marginal. This is
-consistent with the observation that for larger, 5 unit step perturbations this
-effect was much diminished or absent.
+involved 1000 separate instances of \ANF input, compared to only 100 instances
+for the target, it was likely that a better match to the precise target \ANF
+input was found amongst the former than the latter.  This effect is only
+expected to become apparent for values of the cost function around the target
+score, where systematic reduction of the cost function becomes increasingly
+marginal. This is consistent with the observation that for larger, 5 unit step
+perturbations this effect was much diminished or absent.
 
 
 #  When the target parameters were evaluated 100 times with different \ANF
@@ -1136,11 +1084,11 @@ optimisation, with noise potentially preventing the \GA from attaining a good
 match to target. A simple way to reduce noise is to use a larger sample of
 stochastic realisations of the \AN input when evaluating target and candidate
 genomes. This can reduce noise through an averaging process, in the case of \IFR
-and  \AIV cost functions or through allowing more choice in matching spike trains
-in the \ST cost function. This would require using more stimulus repetitions when
-collecting target data experimentally, and when simulating candidate networks in
-the \GA computationally. In this section, we examine the utility of this
-approach by comparing \GA performance for 100 instead of 25 stochastically
+and \AIV cost functions or through allowing more choice in matching spike trains
+in the \ST cost function. This would require using more stimulus repetitions
+when collecting target data experimentally, and when simulating candidate
+networks in the \GA computationally. In this section, we examine the utility of
+this approach by comparing \GA performance for 100 instead of 25 stochastically
 distinct repetitions of the \ANF input for both target and candidate genomes.
 
 ***  Effects of Increasing Stimulus Repetitions 
@@ -1155,18 +1103,18 @@ Figure \ref{fig:GA:R5} shows the evolution of best genome scores when 100
 repetitions were used for the target and candidate genomes instead of 25 (as
 used in the results presented thus far). Overall the use of increased
 repetitions of the stimulus resulted in reduced cost function scores but did not
-result in better \GA performance. This is shown by the analysis given in
-Figure \ref{fig:GA:R6}.
+result in better \GA performance. This is shown by the analysis given in Figure
+\ref{fig:GA:R6}.
 
-Similar to Figure \ref{fig:GA:R2}A, the figure compares scores across best genomes
-trained with different cost function types (\ST, \IFR or  \AIV) and different
-numbers of repetition (25 or 100) giving a total of six different best genomes
-types: \ST-25, \ST-100, \IFR-25, \IFR-100,  \AIV-25 and  \AIV-100. The three different graphs
-(Figure \ref{fig:GA:R2}A-C) correspond to evaluation of these best genomes using
-the three different cost function types. The top of the lighter bars give the
-mean score when 100 repetitions were used for evaluation, while the top of the
-(appended) dark bars gives the mean score when only 25 repetitions were used for
-evaluation.
+Similar to Figure \ref{fig:GA:R2}A, the figure compares scores across best
+genomes trained with different cost function types (\ST, \IFR or \AIV) and
+different numbers of repetition (25 or 100) giving a total of six different best
+genomes types: \ST-25, \ST-100, \IFR-25, \IFR-100, \AIV-25 and \AIV-100. The
+three different graphs (Figure \ref{fig:GA:R2}A-C) correspond to evaluation of
+these best genomes using the three different cost function types. The top of the
+lighter bars give the mean score when 100 repetitions were used for evaluation,
+while the top of the (appended) dark bars gives the mean score when only 25
+repetitions were used for evaluation.
 
 #+BEGIN_LaTeX
   \begin{figure}[ht]
@@ -1186,24 +1134,21 @@ evaluation.
   \end{figure}  
 #+END_LATEX
 
-In all cases the use of 100 repetitions to evaluate the cost function
-resulted in lower scores than when 25 repetitions were used (i.e.\ the top
-of the dark bar lies above the top of the light bar). This did not imply
-that genomes trained with 100 repetitions attained lower scores than those
-trained with 25 repetitions, once the comparison was made using the same
-cost function (i.e.\ same type, same number of repetitions). In nearly all
-cases, scores for genomes trained using different numbers of repetition (25
-or 100), but the same type of cost function (\ST, \IFR or  \AIV), obtained
-similar scores, regardless of the details of the cost function used to
-evaluate them (i.e. \ST-25, \ST-100, \IFR-25, \IFR-100,  \AIV-25 and  \AIV-100 cost
-functions). The exception was the  \AIV-100 trained genome when evaluated by
-the \ST cost function. 
+In all cases the use of 100 repetitions to evaluate the cost function resulted
+in lower scores than when 25 repetitions were used (i.e.\ the top of the dark
+bar lies above the top of the light bar). This did not imply that genomes
+trained with 100 repetitions attained lower scores than those trained with 25
+repetitions, once the comparison was made using the same cost function (i.e.\
+same type, same number of repetitions). In nearly all cases, scores for genomes
+trained using different numbers of repetition (25 or 100), but the same type of
+cost function (\ST, \IFR or \AIV), obtained similar scores, regardless of the
+details of the cost function used to evaluate them (i.e. \ST-25, \ST-100,
+\IFR-25, \IFR-100, \AIV-25 and \AIV-100 cost functions). The exception was the
+\AIV-100 trained genome when evaluated by the \ST cost function.
 # check statistical difference of  \AIV in \ST
-
-
-This implies that, although the increased number of repetitions reduced
-noise (and therefore cost function scores), this was not a factor limiting
-\GA performance.
+This implies that, although the increased number of repetitions reduced noise
+(and therefore cost function scores), this was not a factor limiting \GA
+performance.
 
 \clearpage
 #+ATTR_LATEX: width=\textwidth
@@ -1304,10 +1249,9 @@ noise (and therefore cost function scores), this was not a factor limiting
   :CUSTOM_ID:    sec:GA:ResultsIdeal
   :END:
 
-To understand the of optimising \BNNs it may appear that to use ideal
-inputs is not intuitive; however, the methods and techniques of \GA
-optimisation in this chapter were initially refined using an ideal
-environment.
+To understand the of optimising \BNNs it may appear that to use ideal inputs is
+not intuitive; however, the methods and techniques of \GA optimisation in this
+chapter were initially refined using an ideal environment.
 
 # \yellownote{This is an attempt to include excess material into the  thesis that was chucked out after the failure of the JNeuroPhysiol  submissions. Anything with 250 repetitions has been removed}
 
@@ -1316,18 +1260,16 @@ environment.
 
 # \yellownote{Summary of Ideal Input {GA} performance}
 
-The performance of the \GA optimisation is illustrated by the evolution
-of the population of genome scores (Figures \ref{fig:GA:5}
-to \ref{fig:GA:7}) and by the best score in each generation. The
-evolutions of the population scores are represented in
-Figure \ref{fig:GA:5} by the 25--75 percentile range of scores in each
-generation (shaded area). The best genome score in each generation
-(solid line) shows the different learning phases of the \GA, from large
-steps initially to more incremental improvements as the \GA tends
-towards an asymptote. The parameter error between the best genome's
-parameters and the target parameters are shown in Figure \ref{fig:GA:8},
-a combined parameter error is calculated by normalising each parameter
-by its range and finding the mean absolute error.
+The performance of the \GA optimisation is illustrated by the evolution of the
+population of genome scores (Figures \ref{fig:GA:5} to \ref{fig:GA:7}) and by
+the best score in each generation. The evolutions of the population scores are
+represented in Figure \ref{fig:GA:5} by the 25--75 percentile range of scores in
+each generation (shaded area). The best genome score in each generation (solid
+line) shows the different learning phases of the \GA, from large steps initially
+to more incremental improvements as the \GA tends towards an asymptote. The
+parameter error between the best genome's parameters and the target parameters
+are shown in Figure \ref{fig:GA:8}, a combined parameter error is calculated by
+normalising each parameter by its range and finding the mean absolute error.
 
 
 #+BEGIN_LaTeX
@@ -1455,76 +1397,69 @@ by its range and finding the mean absolute error.
     \end{figure}
 #+END_LaTeX
 
-For the \ST cost function with identical \ANF inputs
-(Figure \ref{fig:GA:5}A) the population scores were initially spread over
-a wide range of values. As the \GA progressed there was rapid
-improvement in the first 50 generations. The results then asymptote to
-a mean score around 30 msec per spike train, although there was
-fluctuation throughout the remaining generations.  The best score
-after 200 generations was 8.45 msec with the best genome steadily
-improving until the final generation.  The \GA run using the \ST cost
-function and different \ANF inputs (Figure \ref{fig:GA:5}B) had a similar
-learning profile, but there was less variability in the 25--75
-percentile range in the later generations and the best genome score
-was 9.72 ms (Figure \ref{fig:GA:5}B).  The best genome for the identical
-inputs was also closer to the target parameter values shown in
-Figure \ref{fig:GA:8}A, with a normalised mean parameter error of 0.221,
-while the different inputs \GAs best genome was 0.252 (Figure
-8B). Some parameters were well constrained by the \GA and were robust
-to changes in the input, such as the excitatory input corresponding to
-the \ANF input to the \CN cells (parameters 1 to 11 or \wANFTS to
-\wLSRGLG) and some inhibitory parameters (12, 18, and 20 corresponding
-to \wDSTS, \wGLGTS, and \sGLGTS respectively).
+For the \ST cost function with identical \ANF inputs (Figure \ref{fig:GA:5}A)
+the population scores were initially spread over a wide range of values. As the
+\GA progressed there was rapid improvement in the first 50 generations. The
+results then asymptote to a mean score around 30 msec per spike train, although
+there was fluctuation throughout the remaining generations.  The best score
+after 200 generations was 8.45 msec with the best genome steadily improving
+until the final generation.  The \GA run using the \ST cost function and
+different \ANF inputs (Figure \ref{fig:GA:5}B) had a similar learning profile,
+but there was less variability in the 25--75 percentile range in the later
+generations and the best genome score was 9.72 ms (Figure \ref{fig:GA:5}B).  The
+best genome for the identical inputs was also closer to the target parameter
+values shown in Figure \ref{fig:GA:8}A, with a normalised mean parameter error
+of 0.221, while the different inputs \GAs best genome was 0.252 (Figure
+8B). Some parameters were well constrained by the \GA and were robust to changes
+in the input, such as the excitatory input corresponding to the \ANF input to
+the \CN cells (parameters 1 to 11 or \wANFTS to \wLSRGLG) and some inhibitory
+parameters (12, 18, and 20 corresponding to \wDSTS, \wGLGTS, and \sGLGTS
+respectively).
 
  
 
-The \GA was run with different combinations of the \IFR cost function,
-first using 25 repetitions in the training data (\IFR-25) with
-identical \ANF inputs in the \GA evaluation, secondly using \IFR-25 with
-different \ANF inputs, and lastly using 100 repetitions in the training
-data (\IFR-100) with different \ANF inputs. Figure \ref{fig:GA:6}A, shows
-the \GA performance of the \IFR-25 cost function with identical
-inputs. The range of the 25--75 percentile population evolved quite
-rapidly before settling between 0.3 and 0.25 sp/ms.  The histogram of
-evaluated scores peaks around 0.25 sp/ms with a tail toward 0.2 sp/ms.
-The best genome's score of 0.195 sp/ms is equivalent to an average
-\PSTH error of 11.8 spikes per cell. In terms of the parameter error
-from the target, the \IFR-25 cost function with identical inputs
-returned the closest genome to the target of 0.201
-(Figure \ref{fig:GA:8}C) for all \GA simulations. When the inputs were
-randomised and the training data (25 reps) remained the same, the \GA
-populations' learning was considerably slower and the search space was
-more compact, Figure 6B. 
+The \GA was run with different combinations of the \IFR cost function, first
+using 25 repetitions in the training data (\IFR-25) with identical \ANF inputs
+in the \GA evaluation, secondly using \IFR-25 with different \ANF inputs, and
+lastly using 100 repetitions in the training data (\IFR-100) with different \ANF
+inputs. Figure \ref{fig:GA:6}A, shows the \GA performance of the \IFR-25 cost
+function with identical inputs. The range of the 25--75 percentile population
+evolved quite rapidly before settling between 0.3 and 0.25 sp/ms.  The histogram
+of evaluated scores peaks around 0.25 sp/ms with a tail toward 0.2 sp/ms.  The
+best genome's score of 0.195 sp/ms is equivalent to an average \PSTH error of
+11.8 spikes per cell. In terms of the parameter error from the target, the
+\IFR-25 cost function with identical inputs returned the closest genome to the
+target of 0.201 (Figure \ref{fig:GA:8}C) for all \GA simulations. When the
+inputs were randomised and the training data (25 reps) remained the same, the
+\GA populations' learning was considerably slower and the search space was more
+compact, Figure 6B.
 #\yellownote{linkback to previous  section}. 
-This meant that there was less difference between a good
-genome and a bad genome.  The best genome obtained by the \IFR-25 cost
-function with different inputs had a score of 0.263 sp/ms and a mean
-parameter error of 0.273 (Figure \ref{fig:GA:8}D). The \GA run using the
-\IFR-100 cost function with different inputs shifted the general
-population of \GA scores lower than the \IFR-25 cost function, with
-population scores between 0.25 and 0.15 sp/ms. The learning was rapid
-in the first 50 generations but reached a steady state and the best
-genome score was not improved beyond the 150th generation
-(Figure \ref{fig:GA:6}C).  
+This meant that there was less difference between a good genome and a bad
+genome.  The best genome obtained by the \IFR-25 cost function with different
+inputs had a score of 0.263 sp/ms and a mean parameter error of 0.273 (Figure
+\ref{fig:GA:8}D). The \GA run using the \IFR-100 cost function with different
+inputs shifted the general population of \GA scores lower than the \IFR-25 cost
+function, with population scores between 0.25 and 0.15 sp/ms. The learning was
+rapid in the first 50 generations but reached a steady state and the best genome
+score was not improved beyond the 150th generation (Figure \ref{fig:GA:6}C).
 # The best genome's obtained the worst mean
 # parameter error of 0.297 for all \GA simulations (Figure \ref{fig:GA:8}E).
 
-The \GA performance was similar for each of the  \AIV cost functions
-conditions in Figure \ref{fig:GA:7}. The initial population of each  \AIV
-cost function method ranged from 0.5 to 0.4 in the 25-75\% population
-score, with a rapid learning phase in the first 50 generations and a
-gradual learning phase and a smooth distribution of scores.  The
- \AIV-25 cost function with identical \ANF inputs produced the lowest  \AIV
-cost function score, 0.151 mV (Figure \ref{fig:GA:7}A).  The  \AIV-25 and
- \AIV-250 cost functions with different inputs scored, 0.208 and 0.188
-mV, respectively.  The mean parameter errors of the best genome for
-the  \AIV-25 cost function with identical inputs, the  \AIV-25 cost
-function with different inputs and the  \AIV-250 cost function with
-different inputs were, 0.258, 0.207 and 0.275, respectively (Figure
-8F-H).  The performance of the best genome generated by the  \AIV-25
-cost function with different inputs was very accurate for inhibitory
-parameters (Figure \ref{fig:GA:8}G) presumably due to subthreshold
-information within the intracellular voltages. 
+The \GA performance was similar for each of the \AIV cost functions conditions
+in Figure \ref{fig:GA:7}. The initial population of each \AIV cost function
+method ranged from 0.5 to 0.4 in the 25-75\% population score, with a rapid
+learning phase in the first 50 generations and a gradual learning phase and a
+smooth distribution of scores.  The \AIV-25 cost function with identical \ANF
+inputs produced the lowest \AIV cost function score, 0.151 mV (Figure
+\ref{fig:GA:7}A).  The \AIV-25 and \AIV-250 cost functions with different inputs
+scored, 0.208 and 0.188 mV, respectively.  The mean parameter errors of the best
+genome for the \AIV-25 cost function with identical inputs, the \AIV-25 cost
+function with different inputs and the \AIV-250 cost function with different
+inputs were, 0.258, 0.207 and 0.275, respectively (Figure 8F-H).  The
+performance of the best genome generated by the \AIV-25 cost function with
+different inputs was very accurate for inhibitory parameters (Figure
+\ref{fig:GA:8}G) presumably due to subthreshold information within the
+intracellular voltages.
 
 # \yellownote{remove or replace 250 with 100}
 
@@ -1589,81 +1524,73 @@ information within the intracellular voltages.
 
 
 Figures \ref{fig:GA:9}--\ref{fig:GA:11} show the distribution of cost function
-scores for different types of random parameter variations. Two
-populations of 1000 genomes were generated, one with parameter values
-allowed to vary uniformly by 1 unit steps either side of the target
-(eg. -1, 0 or 1 steps), and the second population was varied up to 5
-units steps.  In the 5 units step experiment, one weight parameter
-covers 11 combinations, including the target value, or 4\% of the
-parameter space. In total the 5 units step experiment covers 9.72\% of
-the total parameter space and the 1 unit step experiment covers
-2.65\%.
+scores for different types of random parameter variations. Two populations of
+1000 genomes were generated, one with parameter values allowed to vary uniformly
+by 1 unit steps either side of the target (eg. -1, 0 or 1 steps), and the second
+population was varied up to 5 units steps.  In the 5 units step experiment, one
+weight parameter covers 11 combinations, including the target value, or 4\% of
+the parameter space. In total the 5 units step experiment covers 9.72\% of the
+total parameter space and the 1 unit step experiment covers 2.65\%.
 
 
 
-Figure \ref{fig:GA:9} shows the effects of small parameter deviations
-on the \ST cost function, with identical and different \ANF inputs, on
-the search space close to the target. The \ST cost function with
-identical \ANF inputs (Figure \ref{fig:GA:9}A) has an optimum score at zero where
-the target data was reproduced. When the target parameters were
-evaluated 100 times with different \ANF input spikes the distribution
-of the \ST cost function scores moved to 9.72 msec ($\pm$ 0.06 ms)
-(Figure \ref{fig:GA:9}B). For a small perturbation of parameter values, 1 unit
-steps, and no input noise most scores fell within a small range of
-scores around 7.5 msec, with a small percentage (10.6\%) falling below
-this. The 1-step distribution compressed around 9.79 msec for different
-inputs, as indicators of the \GAs final performance, the best genomes
-produced by the \GA of 8.45 msec (identical inputs) and 9.72 ms
-(different inputs) were very reasonable estimates.  The shape of the
-\ST cost function distributions of 5 step populations scores were very
-similar except for a positive shift with different inputs with means
-10 msec and 11.8 msec, respectively.
+Figure \ref{fig:GA:9} shows the effects of small parameter deviations on the \ST
+cost function, with identical and different \ANF inputs, on the search space
+close to the target. The \ST cost function with identical \ANF inputs (Figure
+\ref{fig:GA:9}A) has an optimum score at zero where the target data was
+reproduced. When the target parameters were evaluated 100 times with different
+\ANF input spikes the distribution of the \ST cost function scores moved to 9.72
+msec ($\pm$ 0.06 ms) (Figure \ref{fig:GA:9}B). For a small perturbation of
+parameter values, 1 unit steps, and no input noise most scores fell within a
+small range of scores around 7.5 msec, with a small percentage (10.6\%) falling
+below this. The 1-step distribution compressed around 9.79 msec for different
+inputs, as indicators of the \GAs final performance, the best genomes produced
+by the \GA of 8.45 msec (identical inputs) and 9.72 ms (different inputs) were
+very reasonable estimates.  The shape of the \ST cost function distributions of
+5 step populations scores were very similar except for a positive shift with
+different inputs with means 10 msec and 11.8 msec, respectively.
 
 
 
-The parameter sensitivity of the \IFR cost functions produced expected
-results for different \ANF inputs or smoothing of the \PSTHs.  The
-\IFR-25 cost function with identical inputs (Figure \ref{fig:GA:10}A) behaves similarly to the \ST
-cost function, with an ideal target at zero, 1 step scores spread over
-two peaks (around 0.15 and below 0.2 spikes per ms), and a majority of
-5-step scores above the distribution of 1-step scores.  Different \ANF
-inputs had an adverse effect on the learning performance of the \IFR-25
-cost function, with the \GA unable to find reasonable estimates near
-the global optimum (Figure \ref{fig:GA:10}B). The 1 step and 5 step scores were
-distributed around or close to the target scores showing a compression
-of the global optimum around 0.25 sp/ms (Figure \ref{fig:GA:10}B).  For the \IFR
-cost function with 250 repetitions, the results are improved with the
-target shifted lower and the \GA searching closer to the optimal
-genome (Figure \ref{fig:GA:10}C). The target and 1 step distribution lie around
-0.16 sp/ms and the 5-step scores are spread up to 0.2 sp/ms.
+The parameter sensitivity of the \IFR cost functions produced expected results
+for different \ANF inputs or smoothing of the \PSTHs.  The \IFR-25 cost function
+with identical inputs (Figure \ref{fig:GA:10}A) behaves similarly to the \ST
+cost function, with an ideal target at zero, 1 step scores spread over two peaks
+(around 0.15 and below 0.2 spikes per ms), and a majority of 5-step scores above
+the distribution of 1-step scores.  Different \ANF inputs had an adverse effect
+on the learning performance of the \IFR-25 cost function, with the \GA unable to
+find reasonable estimates near the global optimum (Figure \ref{fig:GA:10}B). The
+1 step and 5 step scores were distributed around or close to the target scores
+showing a compression of the global optimum around 0.25 sp/ms (Figure
+\ref{fig:GA:10}B).  For the \IFR cost function with 250 repetitions, the results
+are improved with the target shifted lower and the \GA searching closer to the
+optimal genome (Figure \ref{fig:GA:10}C). The target and 1 step distribution lie
+around 0.16 sp/ms and the 5-step scores are spread up to 0.2 sp/ms.
 
 
 
-The  \AIV-25 cost function in Figure \ref{fig:GA:11}A with identical \ANF
-inputs resembles the distribution seen in the \ST cost function
-(Figure \ref{fig:GA:9}A).  The target network configuration's  \AIV
-waveforms overlap precisely with the target training data producing
-zero error in the  \AIV cost function. The introduction of uniform
-parameter variation shows an incremental pattern as genomes with the 1
-step distribution closer to the target value than most genomes varied
-by 5 steps.  Good genomes were difficult to find as the \GA struggled
-to locate genomes with scores within the range of the 1-step
-distribution. Using different inputs, the target value of the  \AIV-25
-cost function is shifted to just above 0.2 mV, with the 1- and 5-step
-not far above. The best performing genomes in the \GA were very close
-to the range of the 1-step and target genome scores (inset
-Figure \ref{fig:GA:11}B). Smoothing the training data with the 250
-repetitions of \AIV waveforms shifts the mean target score up to 0.128
-mV (Figure \ref{fig:GA:11}C).  The 1 and 5 step distributions are
-slightly overlapping but the greater distribution of 5 step scores
-indicate that the cost function could strongly differentiate the
-genomes that were closer to the target.  The  \AIV-250 cost function
-with different \ANF inputs (Figure \ref{fig:GA:11}C) still provided
-enough information to distinguish between poorer genomes (5 step) and
-good genomes (1 step) despite some ambiguity in the target.  The \GA
-was unable to find many reasonable genomes within and below the range
-of 1- and 5- step scores, but the eventual winner finished just inside
-the 5-step scores.
+The \AIV-25 cost function in Figure \ref{fig:GA:11}A with identical \ANF inputs
+resembles the distribution seen in the \ST cost function (Figure
+\ref{fig:GA:9}A).  The target network configuration's \AIV waveforms overlap
+precisely with the target training data producing zero error in the \AIV cost
+function. The introduction of uniform parameter variation shows an incremental
+pattern as genomes with the 1 step distribution closer to the target value than
+most genomes varied by 5 steps.  Good genomes were difficult to find as the \GA
+struggled to locate genomes with scores within the range of the 1-step
+distribution. Using different inputs, the target value of the \AIV-25 cost
+function is shifted to just above 0.2 mV, with the 1- and 5-step not far
+above. The best performing genomes in the \GA were very close to the range of
+the 1-step and target genome scores (inset Figure \ref{fig:GA:11}B). Smoothing
+the training data with the 250 repetitions of \AIV waveforms shifts the mean
+target score up to 0.128 mV (Figure \ref{fig:GA:11}C).  The 1 and 5 step
+distributions are slightly overlapping but the greater distribution of 5 step
+scores indicate that the cost function could strongly differentiate the genomes
+that were closer to the target.  The \AIV-250 cost function with different \ANF
+inputs (Figure \ref{fig:GA:11}C) still provided enough information to
+distinguish between poorer genomes (5 step) and good genomes (1 step) despite
+some ambiguity in the target.  The \GA was unable to find many reasonable
+genomes within and below the range of 1- and 5- step scores, but the eventual
+winner finished just inside the 5-step scores.
 
 ** Cross comparison of best genomes
    :PROPERTIES:
@@ -1671,49 +1598,45 @@ the 5-step scores.
    :END:
 
 
-One way to compare the results across the cost functions is to use the
-best genomes found by the \GA trained by each cost function. Table
-\ref{fig:GA:IdealXComp} shows the comparison of the best genomes
-obtained using the \GA with identical inputs.  The target, 1-step and
-5-step scores are given as a reference for the expected ranges of
-optimal genomes in each cost function.  The \ST cost function was shown
-to have a well defined global optimum at zero and good differentiation
-between very good genomes (1-step) and good genomes (5-step) in
-Figure 9.  The \ST, \AIV-25 and \AIV-250 best genomes fell within the
-1-step and 5-step means, but the \IFR cost functions performed poorer as
-their best genomes falling toward the tail region of the \ST cost
-function 5-step distribution (see Figure 9A).  All the best genomes were
-between the 1-step and 5-step means for the \IFR-25 cost function with
-very small differences between them (0.195-0.207).  There is good
-distinction between the 1-step and 5-step scores for the \AIV-25 cost
-function with identical inputs (Figure 11A).  This domain was preferable
-to the \AIV best genomes, but not so for the spike-based \ST and \IFR
-cost function trained best genomes, which were above the mean of the
-5-step distribution.
+One way to compare the results across the cost functions is to use the best
+genomes found by the \GA trained by each cost function. Table
+\ref{fig:GA:IdealXComp} shows the comparison of the best genomes obtained using
+the \GA with identical inputs.  The target, 1-step and 5-step scores are given
+as a reference for the expected ranges of optimal genomes in each cost function.
+The \ST cost function was shown to have a well defined global optimum at zero
+and good differentiation between very good genomes (1-step) and good genomes
+(5-step) in Figure 9.  The \ST, \AIV-25 and \AIV-250 best genomes fell within
+the 1-step and 5-step means, but the \IFR cost functions performed poorer as
+their best genomes falling toward the tail region of the \ST cost function
+5-step distribution (see Figure 9A).  All the best genomes were between the
+1-step and 5-step means for the \IFR-25 cost function with very small
+differences between them (0.195-0.207).  There is good distinction between the
+1-step and 5-step scores for the \AIV-25 cost function with identical inputs
+(Figure 11A).  This domain was preferable to the \AIV best genomes, but not so
+for the spike-based \ST and \IFR cost function trained best genomes, which were
+above the mean of the 5-step distribution.
 
-Table \ref{fig:GA:IdealXComp250} shows the mean and standard deviation
-of cost function scores (evaluated 100 times with different inputs) for
-the best genomes trained with different inputs. The \ST best genome
-performed better than the average target genome score for different
-inputs (9.63 compared with 9.72, respectively) but this was not
-significant. When using identical inputs, this best genome performed
-better (8.02 ms) than the best genome trained with identical inputs
-(8.45 msec) despite a larger mean parameter error (Figure 8A and Figure
-8B).  \AIV-25 and \AIV-250 best genomes fell within the 1-step and
-5-step means of the \ST cost function, but the \IFR best genomes
-performed more poorly relative to the 5-step population.  The
-performance of the \IFR-25's best genome was the worst in its own
-category and the compression of scores around the target in Figure 10B
-are highlighted by the narrow range of scores in the other best
-genomes. The \IFR-250 best genome performed slightly better, beating the
-\IFR-25 best genome, in its own cost function. The \AIV-25 best genome
-fell within the 1-step distribution while the \AIV-250 and \ST best
-genomes were closer to the 5-step mean for both \IFR cost functions. For
-the \AIV-25 and \AIV-250 cost functions, the \IFR-25 and \IFR-250 best
-genomes were outside the range for a reasonable genome (5-step).  The
-\AIV-25 best genome (with the lowest mean parameter error when using
-different inputs Figure 8G) scored the best values in both \AIV cost
-functions, with the \ST and \AIV-250 best genomes not far behind.
+Table \ref{fig:GA:IdealXComp250} shows the mean and standard deviation of cost
+function scores (evaluated 100 times with different inputs) for the best genomes
+trained with different inputs. The \ST best genome performed better than the
+average target genome score for different inputs (9.63 compared with 9.72,
+respectively) but this was not significant. When using identical inputs, this
+best genome performed better (8.02 ms) than the best genome trained with
+identical inputs (8.45 msec) despite a larger mean parameter error (Figure 8A
+and Figure 8B).  \AIV-25 and \AIV-250 best genomes fell within the 1-step and
+5-step means of the \ST cost function, but the \IFR best genomes performed more
+poorly relative to the 5-step population.  The performance of the \IFR-25's best
+genome was the worst in its own category and the compression of scores around
+the target in Figure 10B are highlighted by the narrow range of scores in the
+other best genomes. The \IFR-250 best genome performed slightly better, beating
+the \IFR-25 best genome, in its own cost function. The \AIV-25 best genome fell
+within the 1-step distribution while the \AIV-250 and \ST best genomes were
+closer to the 5-step mean for both \IFR cost functions. For the \AIV-25 and
+\AIV-250 cost functions, the \IFR-25 and \IFR-250 best genomes were outside the
+range for a reasonable genome (5-step).  The \AIV-25 best genome (with the
+lowest mean parameter error when using different inputs Figure 8G) scored the
+best values in both \AIV cost functions, with the \ST and \AIV-250 best genomes
+not far behind.
 
 
 # \begin{table}[tbh]
@@ -1732,42 +1655,38 @@ functions, with the \ST and \AIV-250 best genomes not far behind.
 ** Individual Parameter Perturbation Analysis
 
 To further understand how useful each cost function was in constraining
-parameters, a sensitivity analysis on each individual parameter is is
-crucial to understand the behaviour of individual parameters close to
-the global optimum.  The sensitivity analysis of the cost function is
-defined as calculating the learning gradients of each parameter on
-either side of the target value. Parameter values were stepped up and
-down independently, with the steps determined from the gene resolution
-of the parameter in Table \ref{tab:GA:Genome}. Gradients were calculated
-using a least-squares linear regression in [[latex:progname][MATLAB]] \slash [[latex:progname][GNU Octave]] and
-two-sided t-tests were performed to determine whether each gradient was
-significantly different from zero.  This was done for the identical and
-the different \ANF inputs, robustness was evaluated by comparing the
-ratio of V-shaped to non-V-shaped cost function gradients for different
-inputs.
+parameters, a sensitivity analysis on each individual parameter is is crucial to
+understand the behaviour of individual parameters close to the global optimum.
+The sensitivity analysis of the cost function is defined as calculating the
+learning gradients of each parameter on either side of the target
+value. Parameter values were stepped up and down independently, with the steps
+determined from the gene resolution of the parameter in Table
+\ref{tab:GA:Genome}. Gradients were calculated using a least-squares linear
+regression in [[latex:progname][MATLAB]] \slash [[latex:progname][GNU Octave]] and two-sided t-tests were performed to
+determine whether each gradient was significantly different from zero.  This was
+done for the identical and the different \ANF inputs, robustness was evaluated
+by comparing the ratio of V-shaped to non-V-shaped cost function gradients for
+different inputs.
 
 
-Representative examples are given in Figure \ref{fig:GA:R4}, which show
-the dependence of the cost function on perturbation size when a
-parameter was perturbed from its target value (and all other parameters
-had their target value). A range of different behaviors is evident
-depending on the particular combination of parameter and cost
-function. The ideal behaviour is shown in Figure \ref{fig:GA:R4}A, which
-shows the target at a well defined local minimum in the cost function,
-with significantly non-zero gradients bilaterally. Figure
-\ref{fig:GA:R4}B is a sub-ideal case, with a significantly non-zero
-gradient appearing only unilaterally, a zero gradient on the opposing
-side.  The behaviour shown in Figure \ref{fig:GA:R4}C, in which the cost
-function is locally flat, implies that the cost function is insensitive
-to this parameter in the vicinity of the target and represents non-ideal
-behaviour. Finally, Figure \ref{fig:GA:R4}D gives an example of a
-problematic cost function behaviour, in which the minimum occurs at a
-value other than the target.
+Representative examples are given in Figure \ref{fig:GA:R4}, which show the
+dependence of the cost function on perturbation size when a parameter was
+perturbed from its target value (and all other parameters had their target
+value). A range of different behaviors is evident depending on the particular
+combination of parameter and cost function. The ideal behaviour is shown in
+Figure \ref{fig:GA:R4}A, which shows the target at a well defined local minimum
+in the cost function, with significantly non-zero gradients bilaterally. Figure
+\ref{fig:GA:R4}B is a sub-ideal case, with a significantly non-zero gradient
+appearing only unilaterally, a zero gradient on the opposing side.  The
+behaviour shown in Figure \ref{fig:GA:R4}C, in which the cost function is
+locally flat, implies that the cost function is insensitive to this parameter in
+the vicinity of the target and represents non-ideal behaviour. Finally, Figure
+\ref{fig:GA:R4}D gives an example of a problematic cost function behaviour, in
+which the minimum occurs at a value other than the target.
 #\yellownote{Hamish: I am still not happy we understand this well: Pruning of candidates with reduced spikes in low rate regions of \DS units}. 
-These cases were classified variously as
-bilaterally sensitive (Figure \ref{fig:GA:R4}A), unilaterally sensitive
-(Figure \ref{fig:GA:R4}B), insensitive (Figure \ref{fig:GA:R4}C) or
-irregular(Figure \ref{fig:GA:R4}D), respectively.
+These cases were classified variously as bilaterally sensitive (Figure
+\ref{fig:GA:R4}A), unilaterally sensitive (Figure \ref{fig:GA:R4}B), insensitive
+(Figure \ref{fig:GA:R4}C) or irregular(Figure \ref{fig:GA:R4}D), respectively.
 #  Figure \ref{fig:GA:12} shows four different examples of the individual
 #  parameter sensitivity for the \ST cost function.  With the identical AN
 #  input, the \ST cost function sensitivity to parameters 1 and 23
@@ -1787,11 +1706,11 @@ irregular(Figure \ref{fig:GA:R4}D), respectively.
 
 Gradients that oppose the direction toward the target would reduce the
 effectiveness of optimisation, especially gradient-decent methods.  For
-parameters with a target value close to the minimum range (parameters
-17, 20, 26, and 27), the gradient below the target were not considered
-in the sensitivity analysis.  Even with identical \ANF inputs and the
-same random seed, a change in the number of connections or spread
-parameters will alter the allocation of synapses within the network.
+parameters with a target value close to the minimum range (parameters 17, 20,
+26, and 27), the gradient below the target were not considered in the
+sensitivity analysis.  Even with identical \ANF inputs and the same random seed,
+a change in the number of connections or spread parameters will alter the
+allocation of synapses within the network.
 
 
 
@@ -1831,35 +1750,33 @@ parameters will alter the allocation of synapses within the network.
 
 *** Spike Timing
 
-The \ST cost function showed sensitivity to 27 of the 30 parameters on
-both sides of the target values with the identical \ANF input (Figure
-13A), 2 parameters on one side and only one parameter 25 (\nTVDS) was
-completely insensitive. For different \ANF inputs (Figure
-\ref{fig:GA:13}B), 11 parameters were bilaterally sensitive and 8 were
-unilaterally sensitive, while the \ST cost function was completely
-insensitive to 6 parameters. Three parameters controlling the excitatory
-synaptic input to \DS cells, 4, 5 and 6 (\wANFDS, \nHSRDS, \nLSRDS) had
-significant opposing gradients below the target, and the inhibitory
-input parameter 25 (\nTVDS) above the target suggesting a shifted
-optimum value.  \DS cells have very precise onset spikes and few spikes
-in the remainder of the stimulus.  If the weight and number of
-excitatory inputs were reduced, the spike timing difference would not be
-influence by (or inhibitory input increased), the onset spikes would
-still occur but the larger difference in the random positions the number
-of spikes in the sustained period of the stimulus would be reduced and
-the there would be some benefit to this change in the training data.
+The \ST cost function showed sensitivity to 27 of the 30 parameters on both
+sides of the target values with the identical \ANF input (Figure 13A), 2
+parameters on one side and only one parameter 25 (\nTVDS) was completely
+insensitive. For different \ANF inputs (Figure \ref{fig:GA:13}B), 11 parameters
+were bilaterally sensitive and 8 were unilaterally sensitive, while the \ST cost
+function was completely insensitive to 6 parameters. Three parameters
+controlling the excitatory synaptic input to \DS cells, 4, 5 and 6 (\wANFDS,
+\nHSRDS, \nLSRDS) had significant opposing gradients below the target, and the
+inhibitory input parameter 25 (\nTVDS) above the target suggesting a shifted
+optimum value.  \DS cells have very precise onset spikes and few spikes in the
+remainder of the stimulus.  If the weight and number of excitatory inputs were
+reduced, the spike timing difference would not be influence by (or inhibitory
+input increased), the onset spikes would still occur but the larger difference
+in the random positions the number of spikes in the sustained period of the
+stimulus would be reduced and the there would be some benefit to this change in
+the training data.
 
 
 
-The synaptic parameters have a strong influence on the timing of spikes
-in post-synaptic neurons, contributing to changes in the cost function
-score when the parameters are moved further away from the target, and
-provide a well-defined global optimum. Even though the number of
-individual parameters with significant learning gradients was reduced
-for the \ST cost function with different inputs and there were four
-parameters with significant opposing gradients (Figure 13B), the cost
-function still produced a distinctive optimum (Figure 9B) and the \GA
-was able to find genomes close to the global optimum.
+The synaptic parameters have a strong influence on the timing of spikes in
+post-synaptic neurons, contributing to changes in the cost function score when
+the parameters are moved further away from the target, and provide a
+well-defined global optimum. Even though the number of individual parameters
+with significant learning gradients was reduced for the \ST cost function with
+different inputs and there were four parameters with significant opposing
+gradients (Figure 13B), the cost function still produced a distinctive optimum
+(Figure 9B) and the \GA was able to find genomes close to the global optimum.
 
 
 
@@ -1917,18 +1834,17 @@ was able to find genomes close to the global optimum.
 
 *** Instantaneous Firing Rate
 
-Figure \ref{fig:GA:14} shows the individual parameter sensitivity of the
-\IFR cost functions.  The sensitivity of the \IFR-25 cost function with
-the identical inputs was significant for 54 of the possible 55 parameter
-gradients (Figure \ref{fig:GA:14}A).  This matches the well-defined
-global optimum of uniform parameter variation in \IFR-25 cost function
-was not robust to changes in the \ANF input (Figure \ref{fig:GA:14}B)
-since most gradients were flattened (not Figure \ref{fig:GA:10}A.  The
-sensitivity to inhibitory parameters of the significant from zero
-gradient) or were unilaterally sensitive.  Seven inhibitory parameters
-had opposing gradients below the target, but only one was significant,
-14 (\sDSTS). Parameter 10 had a significant reduction from identical
-inputs to different inputs, where it became completely insensitive.
+Figure \ref{fig:GA:14} shows the individual parameter sensitivity of the \IFR
+cost functions.  The sensitivity of the \IFR-25 cost function with the identical
+inputs was significant for 54 of the possible 55 parameter gradients (Figure
+\ref{fig:GA:14}A).  This matches the well-defined global optimum of uniform
+parameter variation in \IFR-25 cost function was not robust to changes in the
+\ANF input (Figure \ref{fig:GA:14}B) since most gradients were flattened (not
+Figure \ref{fig:GA:10}A.  The sensitivity to inhibitory parameters of the
+significant from zero gradient) or were unilaterally sensitive.  Seven
+inhibitory parameters had opposing gradients below the target, but only one was
+significant, 14 (\sDSTS). Parameter 10 had a significant reduction from
+identical inputs to different inputs, where it became completely insensitive.
 #  The individual parameter sensitivity of the \IFR-250 cost function
 #  with different inputs (Figure \ref{fig:GA:14}C) is slightly changed
 #  from the \IFR-25 cost function (14 opposing to insensitive, 8 and 10
@@ -1966,14 +1882,14 @@ inputs to different inputs, where it became completely insensitive.
 
 *** Average Intracellular Voltage
 
-Figure \ref{fig:GA:15}A shows the individual parameter sensitivity of
-the \AIV-25 cost function with identical inputs was similar to the
-\IFR-25 cost functions with 54 of the possible 55 parameters having
-significant gradients.  The parameter sensitivity of the \AIV-25 cost
-function was reasonably robust to changes in the \ANF input despite a
-flattening of the gradients (Figure \ref{fig:GA:15}B), especially for
-excitatory parameters (1-11). Thirteen parameters remained bilaterally
-sensitive parameters and 6 were unilaterally sensitive.
+Figure \ref{fig:GA:15}A shows the individual parameter sensitivity of the
+\AIV-25 cost function with identical inputs was similar to the \IFR-25 cost
+functions with 54 of the possible 55 parameters having significant gradients.
+The parameter sensitivity of the \AIV-25 cost function was reasonably robust to
+changes in the \ANF input despite a flattening of the gradients (Figure
+\ref{fig:GA:15}B), especially for excitatory parameters (1-11). Thirteen
+parameters remained bilaterally sensitive parameters and 6 were unilaterally
+sensitive.
 #  The  \AIV-250 cost function also had flattened
 #  gradients with parameters 6, 10, 13 and 21 losing their significance to one
 #  side, while parameters 1 and 19 gained sensitivity to one side of the
@@ -2026,24 +1942,22 @@ sensitive parameters and 6 were unilaterally sensitive.
 #+END_LaTeX
 
 
-Regression of best genomes against the parameter gradients used the
-function \textsf{regress} from [[latex:progname][GNU Octave]]'s statistics toolbox, which is
-a linear regression tool using least squares fit of Y and X
-\citep{Eaton:2002}. The significant level (alpha) used to calculate the
-confidence interval was set to 0.05. The Y variable was dependant on
-which side of the target the best genome's parameter lay to determine
-the gradient; if there was no gradient (for targets too close to the
-range termination), the other gradient was used. X was the relative
-parameter error of the best genomes as used previously
+Regression of best genomes against the parameter gradients used the function
+\textsf{regress} from [[latex:progname][GNU Octave]]'s statistics toolbox, which is a linear
+regression tool using least squares fit of Y and X \citep{Eaton:2002}. The
+significant level (alpha) used to calculate the confidence interval was set to
+0.05. The Y variable was dependant on which side of the target the best genome's
+parameter lay to determine the gradient; if there was no gradient (for targets
+too close to the range termination), the other gradient was used. X was the
+relative parameter error of the best genomes as used previously
 ($\frac{\left|p^\ast_i - {p}_i \right|}{p^\ast_i}$).
 
 
-The regression analysis was performed for both linear and log-log
-models. An additional test was done on data points restricted to those
-whose cost function gradient passed the t-test in section
-\ref{sec:GA:indiv-param-pert}. For log-log regression, the parameters
-with a perfect match (i.e.\ error of 0) were ignored due to NaN
-elimination in the regression function.
+The regression analysis was performed for both linear and log-log models. An
+additional test was done on data points restricted to those whose cost function
+gradient passed the t-test in section \ref{sec:GA:indiv-param-pert}. For log-log
+regression, the parameters with a perfect match (i.e.\ error of 0) were ignored
+due to NaN elimination in the regression function.
 
 #+BEGIN_LaTeX
   \begin{table}[th]
@@ -2087,19 +2001,17 @@ elimination in the regression function.
 
 # \yellownote{This paragraph has not been vetted.}
 
-In summary, a log-log correlation has been observed between the each of
-their cost function gradients near the target and the best genomes
-trained with their cost function. Table \ref{tab:GA:BGvGrad-ST} shows a
-poor linear fit of the \ST best genomes in Figure
-\ref{fig:GA:BestGenomeVGradient}, but a log-log model provides a better
-fit, independent of the gradients' significance. This behaviour was
-repeated for analysis of \IFR (Table \ref{tab:GA:BGvGrad-IFR}) and \AIV
-(Table \ref{tab:GA:BGvGrad-AIV}) best genomes; with the exception of
-linear fit p-value of all \AIV best genomes less than 0.05.  The few
-perfect scores that were eliminated in the log-log regression analysis,
-should not take away from the conclusion that the \GAs eventual best
-genome relative error was directly log-correlated with the cost function
-gradients around the target.
+In summary, a log-log correlation has been observed between the each of their
+cost function gradients near the target and the best genomes trained with their
+cost function. Table \ref{tab:GA:BGvGrad-ST} shows a poor linear fit of the \ST
+best genomes in Figure \ref{fig:GA:BestGenomeVGradient}, but a log-log model
+provides a better fit, independent of the gradients' significance. This
+behaviour was repeated for analysis of \IFR (Table \ref{tab:GA:BGvGrad-IFR}) and
+\AIV (Table \ref{tab:GA:BGvGrad-AIV}) best genomes; with the exception of linear
+fit p-value of all \AIV best genomes less than 0.05.  The few perfect scores
+that were eliminated in the log-log regression analysis, should not take away
+from the conclusion that the \GAs eventual best genome relative error was
+directly log-correlated with the cost function gradients around the target.
 
 
 # % * Discussion
@@ -2122,58 +2034,53 @@ gradients around the target.
 ** Matching a microcircuit to a known target network: Performance of GA and cost functions
 
 We tested the ability of genetic algorithms to constrain models of
-biophysically-based neural networks based on surrogate data from a known
-target network under simulation. Three cost functions were investigated,
-based on spike timing, instantaneous firing rate or average
-intracellular voltage. Performance of the \GA with the three different
-cost functions was evaluated in two main ways. First, in terms of a
-cross comparison of cost function scores, whereby best genomes obtained
-from the \GA using one cost function were evaluated using each of the
-three cost function. Second, in terms of relative parameter errors
+biophysically-based neural networks based on surrogate data from a known target
+network under simulation. Three cost functions were investigated, based on spike
+timing, instantaneous firing rate or average intracellular voltage. Performance
+of the \GA with the three different cost functions was evaluated in two main
+ways. First, in terms of a cross comparison of cost function scores, whereby
+best genomes obtained from the \GA using one cost function were evaluated using
+each of the three cost function. Second, in terms of relative parameter errors
 between the best genomes and the target genomes.
 
-Generally this analysis showed that all three cost function gave a
-similar overall level of performance in matching to the target network,
-although there were some important qualifications, which will be
-discussed below. The two different methods of evaluation, by cost
-function and by relative parameter error, gave different pictures of \GA
-performance.
+Generally this analysis showed that all three cost function gave a similar
+overall level of performance in matching to the target network, although there
+were some important qualifications, which will be discussed below. The two
+different methods of evaluation, by cost function and by relative parameter
+error, gave different pictures of \GA performance.
 
-Best genomes were able to attain scores close to those obtained for the
-target network. This is best summarised in Figure 9, which shows the cross
-comparison of cost function scores for all types of best genomes
-examined in this study. \GAs run with the \ST cost function were able to
-consistently achieve convergence of best genome scores to very near the
-target score.  The deviation was less than that due to a 1 unit step
-perturbation of the target genome, when the evaluated with their own
-cost function.  When a different cost function was used for evaluation,
-performance was generally marginally worse, with the scores falling in
-the upper tail of the distribution obtained with 5 unit step parameter
-perturbations relative to target score. For \GAs run with the \IFR or
+Best genomes were able to attain scores close to those obtained for the target
+network. This is best summarised in Figure 9, which shows the cross comparison
+of cost function scores for all types of best genomes examined in this
+study. \GAs run with the \ST cost function were able to consistently achieve
+convergence of best genome scores to very near the target score.  The deviation
+was less than that due to a 1 unit step cost function.  When a different cost
+function was used for evaluation, perturbation of the target genome, when the
+evaluated with their own performance was generally marginally worse, with the
+scores falling in the upper tail of the distribution obtained with 5 unit step
+parameter perturbations relative to target score. For \GAs run with the \IFR or
 \AIV cost function, convergence to target scores was good, but not as
-consistently so as the \ST cost function. For both types of best genome,
-scores were best relative to target when evaluated using the \IFR cost
-function. When evaluated with 25 stimulus repetitions the scores were
-equivalent to a 1-unit step perturbation, but when evaluated with 100
-stimulus repetition the scores were equivalent to a 5-unit step
-perturbation. Both IFR- and \AIV-trained best genomes scored
-significantly worse when evaluated with the \ST cost function, with
-scores falling in the upper tail of the distribution obtained with 5
-unit step perturbations of the target genome. The performance of \IFR-
-and \AIV-trained best genomes, when evaluate with the \AIV cost function
-was similar to that of the \ST-trained best genome, namely that \AIV
-scores were limited to the upper half of the distribution obtained with
-5 unit step parameter perturbations of the target genome.
+consistently so as the \ST cost function. For both types of best genome, scores
+were best relative to target when evaluated using the \IFR cost function. When
+evaluated with 25 stimulus repetitions the scores were equivalent to a 1-unit
+step perturbation, but when evaluated with 100 stimulus repetition the scores
+were equivalent to a 5-unit step perturbation. Both IFR- and \AIV-trained best
+genomes scored significantly worse when evaluated with the \ST cost function,
+with scores falling in the upper tail of the distribution obtained with 5 unit
+step perturbations of the target genome. The performance of \IFR- and
+\AIV-trained best genomes, when evaluate with the \AIV cost function was similar
+to that of the \ST-trained best genome, namely that \AIV scores were limited to
+the upper half of the distribution obtained with 5 unit step parameter
+perturbations of the target genome.
 
-In summary the cross comparison analysis of cost functions showed
-generally good match between best genome and target genome scores.
-\ST-trained best genomes were best as mimicking the spike timing
-behavior of the target network, while \IFR and \AIV-trained genomes were
-best at mimicking the mean firing rate behavior of the target
-network. However, the \ST-trained genome showed the best ability to
-generalise in order to mimic network behavior as characterised by all
-three cost function types. Experimentally, spike timing information is
-easier to record in vivo than intracellular voltage.
+In summary the cross comparison analysis of cost functions showed generally good
+match between best genome and target genome scores.  \ST-trained best genomes
+were best as mimicking the spike timing behavior of the target network, while
+\IFR and \AIV-trained genomes were best at mimicking the mean firing rate
+behavior of the target network. However, the \ST-trained genome showed the best
+ability to generalise in order to mimic network behavior as characterised by all
+three cost function types. Experimentally, spike timing information is easier to
+record in vivo than intracellular voltage.
 
 #  None the less, these best genomes showed degrees of generalised
 #  performance similar to the \ST- or IFR-trained best genomes, in that
@@ -2201,59 +2108,53 @@ scale. This was true for best genomes obtain using all three cost
 functions. Thus while some parameters were well constrained, many had
 large relative errors and were poorly constrained.
 
-These two pictures of \GA performance can be reconciled by recognising
-that one \BNN can mimic the behavior of another by using a close match
-between only a fraction of the parameter values in the model. Many
-parameters may only affect network behavior weakly and may thus have
-minor effects on cost function scores. Given the relatively good
-performance of the \GA in terms of cost function scores, it appears that
-many of the parameters undergoing optimisation fall into this category.
+These two pictures of \GA performance can be reconciled by recognising that one
+\BNN can mimic the behavior of another by using a close match between only a
+fraction of the parameter values in the model. Many parameters may only affect
+network behavior weakly and may thus have minor effects on cost function
+scores. Given the relatively good performance of the \GA in terms of cost
+function scores, it appears that many of the parameters undergoing optimisation
+fall into this category.
 
-Does the poor constraint of some parameters indicate a deficiency in the
-choice of cost functions? The strength with which parameters effect cost
-function scores may depend on the choice of cost function, however it
-can also depend on the choice of stimulus or it may be quite general
-showing a consistent effect considered here there was no obvious
-dependence of parameter error on the cost for any sensible choice of
-cost function or stimulus. In the situation function type used in the
-\GA: all three cost functions gave a similar magnitude of relative
-parameter error for any given parameter. Thus the large relative errors
-observed for some parameters are more likely to be due to either the
-choice of stimulus, or the fact that the network model behavior is
-generally insensitive to these parameters within the ranges
-investigated.
+Does the poor constraint of some parameters indicate a deficiency in the choice
+of cost functions? The strength with which parameters effect cost function
+scores may depend on the choice of cost function, however it can also depend on
+the choice of stimulus or it may be quite general showing a consistent effect
+considered here there was no obvious dependence of parameter error on the cost
+for any sensible choice of cost function or stimulus. In the situation function
+type used in the \GA: all three cost functions gave a similar magnitude of
+relative parameter error for any given parameter. Thus the large relative errors
+observed for some parameters are more likely to be due to either the choice of
+stimulus, or the fact that the network model behavior is generally insensitive
+to these parameters within the ranges investigated.
 
 ** Benefits of reducing noise
 
-Noise enters the \GA optimisation process by stochastic AN inputs, both
-in the data to be fitted and in the model simulations. We considered
-whether this noise reduces the ability of the \GA to find a network
-model that fits the data well. Noise was reduced by increasing the
-functions, from 25 to 100 (for both target and candidate networks). As
-expected, this reduced noise, as demonstrated by reduced scored for all
-number of repetitions used to obtain data for evaluating the cost three
-cost functions. However, this did not lead to improved ability of the
-best genome network to fit the data as demonstrated by the cross
-comparison of cost function scores. This showed that best genomes
-trained with either 25 of 100 AN repetitions performed equally well when
-evaluated with the same cost function and the same number of
-repetitions.
+Noise enters the \GA optimisation process by stochastic AN inputs, both in the
+data to be fitted and in the model simulations. We considered whether this noise
+reduces the ability of the \GA to find a network model that fits the data
+well. Noise was reduced by increasing the functions, from 25 to 100 (for both
+target and candidate networks). As expected, this reduced noise, as demonstrated
+by reduced scored for all number of repetitions used to obtain data for
+evaluating the cost three cost functions. However, this did not lead to improved
+ability of the best genome network to fit the data as demonstrated by the cross
+comparison of cost function scores. This showed that best genomes trained with
+either 25 of 100 AN repetitions performed equally well when evaluated with the
+same cost function and the same number of repetitions.
 
-Thus noise does not appear to have been a significant impediment to
-obtaining good model fits to data in this study.  25 repetitions
-appeared to be sufficient to rendered unimportant the negative effects
-of noise in this study. This eases the burden on both experimental data
-collection and computation simulation time in constraining these type of
-models. One needs to be cautious in applying these numbers (of
-repetitions) in absolute terms in any particular situation. For any
-given data set with $N$ repetitions it may be helpful to apply the
+Thus noise does not appear to have been a significant impediment to obtaining
+good model fits to data in this study.  25 repetitions appeared to be sufficient
+to rendered unimportant the negative effects of noise in this study. This eases
+the burden on both experimental data models. One needs to be cautious in
+applying these numbers (of repetitions) in absolute terms in any particular
+situation. For any collection and computation simulation time in constraining
+these type of given data set with $N$ repetitions it may be helpful to apply the
 methodology used here to evaluate whether more repetitions would lead to
-improved model fits. That is, one should apply the \GA using two values
-for repetition number (e.g.  $N/4$ and $N$) and perform a
-cross-comparison of the kind performed here to judge whether any
-improvement in fit occurs in increasing the number of repetitions. If an
-improvement does occurs, this indicates that there may be a benefit in
-increasing the number of repetitions beyond $N$.
+improved model fits. That is, one should apply the \GA using two values for
+repetition number (e.g.  $N/4$ and $N$) and perform a cross-comparison of the
+kind performed here to judge whether any improvement in fit occurs in increasing
+the number of repetitions. If an improvement does occurs, this indicates that
+there may be a benefit in increasing the number of repetitions beyond $N$.
 
 #  ** General performance of \GAs for optimising network parameters
 # 
@@ -2487,33 +2388,30 @@ increasing the number of repetitions beyond $N$.
 
 ** Comparison with other studies
 
-Using genetic algorithms or evolutionary methods to constrain parameters
-in artificial neural networks is not novel {REFERENCES}; however,
-genetic algorithms on realistic microcircuits is slowly taking the
-interest of neuroscientists \citep{KerenPeledEtAl:2005}. The parameter
-search space for \BNNs is infinitely large and non-differentiable and
-makes \GA approaches a good chance for success. Substitution of the
-genetic algorithm with another optimisation method could easily be
-performed.  Gradient-decent methods are easily trapped in local minima
-and has difficulty noisy models due to sensitivity to initial conditions
-{REFERENCES}.  Other evolutionary or stochastic optimisation methods
-have been shown to be effective in large parameter spaces within a noisy
-fitness environment {REFERENCES}. Evolution of the connection of weights
-can use \GAs then back propagation for local refining.
+Using genetic algorithms or evolutionary methods to constrain parameters in
+artificial neural networks is not novel {REFERENCES}; however, genetic
+algorithms on realistic microcircuits is slowly taking the interest of
+neuroscientists \citep{KerenPeledEtAl:2005}. The parameter search space for
+\BNNs is infinitely large and non-differentiable and makes \GA approaches a good
+chance for success. Substitution of the genetic algorithm with another
+optimisation method could easily be performed.  Gradient-decent methods are
+easily trapped in local minima and has difficulty noisy models due to
+sensitivity to initial conditions {REFERENCES}.  Other evolutionary or
+stochastic optimisation methods have been shown to be effective in large
+parameter spaces within a noisy fitness environment {REFERENCES}. Evolution of
+the connection of weights can use \GAs then back propagation for local refining.
 
-Using experimental data from populations of neurons adds more complexity
-to the problem of constraining \BNNs.  Alternative methods to infer
-connectivity and weights on a generic spiking model using extracellular
-spiking data has proven to be successful
-\citep{MakarovPanetsosEtAl:2005}, but the underlying properties of
-neuron types and the size of populations are restrictive. Small \BNNs
-enable manipulating cell-based as well as network based parameters
+Using experimental data from populations of neurons adds more complexity to the
+problem of constraining \BNNs.  Alternative methods to infer connectivity and
+weights on a generic spiking model using extracellular spiking data has proven
+to be successful \citep{MakarovPanetsosEtAl:2005}, but the underlying properties
+of neuron types and the size of populations are restrictive. Small \BNNs enable
+manipulating cell-based as well as network based parameters
 \citep{TaylorEnoka:2004}.
 
-Reduction of parameters to cell types or cell-type to cell-type
-connection, rather than individual cell or individual synapse, is a
-necessity with larger \BNN models. A further dilemma of data reduction
-is in the cost function.
+Reduction of parameters to cell types or cell-type to cell-type connection,
+rather than individual cell or individual synapse, is a necessity with larger
+\BNN models. A further dilemma of data reduction is in the cost function.
 # \citet{TaylorEnoka:2004} manipulated cell-based as well as network based
 # parameters in a small spinal cord \BNN using cost functions that
 #  The particular challenges of constraining network parameters in \BNNs or
@@ -2530,28 +2428,25 @@ is in the cost function.
 #  other non-linear approaches \citep{Eblen-ZajjurSalasEtAl:1999}.  However,
 #  most of these efforts have been restricted to single neuron models or
 #  networks of integrate-and-fire neural models rather than \BNNs.
-The jury is still out on whether spike-timing information or
-intracellular voltages are the best form reducing \BNN output for
-optimisation.  Spike-based methods are preferred \citep{Victor:2005} and
-many post-hoc methods can be used in the fitness function
+The jury is still out on whether spike-timing information or intracellular
+voltages are the best form reducing \BNN output for optimisation.  Spike-based
+methods are preferred \citep{Victor:2005} and many post-hoc methods can be used
+in the fitness function
 \citep{VictorGoldbergEtAl:2007,SchafferSichtigEtAl:2009}. A combination of
-timing and voltage information, perhaps, has an advantage over
-individual methods
-\citep{VanierBower:1999,KerenBar-YehudaEtAl:2009,KerenPeledEtAl:2005}.
+timing and voltage information, perhaps, has an advantage over individual
+methods \citep{VanierBower:1999,KerenBar-YehudaEtAl:2009,KerenPeledEtAl:2005}.
 
 Intracellular voltage data has been used in constraining the membrane
 conductances of multi-compartmental single-neuron models
 \citep{LeMasson:2000,KerenPeledEtAl:2005}.  These methods are not always
-effective in single simulations unless combined with other cost
-functions, such intracellular voltage data was very effective in
-optimising membrane parameters
-\citep{VanDeEtAl:2008,KerenPeledEtAl:2005} but would not be suitable for
-a \BNN as inter-spike intervals \citep{KerenPeledEtAl:2005}. Phase-plane
-analysis of due to variation in the synaptic input and the loss of
-temporal information.  It is not currently possible to obtain
-simultaneous IV recordings from more than two neurons let alone a whole
-nucleus, but limited \AIV data could be used in conjunction with other
-cost functions to constrain \BNN models.
+effective in single simulations unless combined with other cost functions, such
+intracellular voltage data was very effective in optimising membrane parameters
+\citep{VanDeEtAl:2008,KerenPeledEtAl:2005} but would not be suitable for a \BNN
+as inter-spike intervals \citep{KerenPeledEtAl:2005}. Phase-plane analysis of
+due to variation in the synaptic input and the loss of temporal information.  It
+is not currently possible to obtain simultaneous IV recordings from more than
+two neurons let alone a whole nucleus, but limited \AIV data could be used in
+conjunction with other cost functions to constrain \BNN models.
 
 
 
@@ -2585,53 +2480,49 @@ cost functions to constrain \BNN models.
 #  Reduction of parameters to cell types or cell-type to cell-type
 #  connection, rather than individual cell or individual synapse, is a
 #  necessity with larger \BNN models.
-In this paper, limiting the number of parameters used to define the
-connectivity of a \BNN was critical for a practical method of
-optimisation. Simplifying the synaptic strength between two cell types
-to uniform weight and number significantly reduced the number of
-parameters required for optimisation, but uniformity is unlikely for the
-real  network weights.  A Gaussian weight distribution is
-common among network models and would only add one parameter per
-connection (i.e.\ standard deviation with the existing uniform mean
-parameter).  Optimising conduction and synaptic delay is not covered in
-this paper, but could add to further realism in \BNN optimisation.
+In this paper, limiting the number of parameters used to define the connectivity
+of a \BNN was critical for a practical method of optimisation. Simplifying the
+synaptic strength between two cell types to uniform weight and number
+significantly reduced the number of parameters required for optimisation, but
+uniformity is unlikely for the real network weights.  A Gaussian weight
+distribution is common among network models and would only add one parameter per
+connection (i.e.\ standard deviation with the existing uniform mean parameter).
+Optimising conduction and synaptic delay is not covered in this paper, but could
+add to further realism in \BNN optimisation.
 
-A further dilemma with increasing size of the model or experimental data
-is the information loss in data reduction.  Data reduction is the
-decomposition of high dimensional data down to a single value within the
-cost function.  Whether this reduction is performed before or after the
-difference or error comparison function between the reference and the
-test data set is an important issue. Data reduction preceding the
-comparison function generally includes a feature-based function across
-populations of neurons; for example, \citet{TaylorEnoka:2004} calculated
-the synchronisation index of cell types. This method is fast and reduces
-noise, but the information carried by individual cells is lost.  The
-cost functions in this paper perform data reduction after the error
-comparisons at the individual neuron level.
+A further dilemma with increasing size of the model or experimental data is the
+information loss in data reduction.  Data reduction is the decomposition of high
+dimensional data down to a single value within the cost function.  Whether this
+reduction is performed before or after the difference or error comparison
+function between the reference and the test data set is an important issue. Data
+reduction preceding the comparison function generally includes a feature-based
+function across populations of neurons; for example, \citet{TaylorEnoka:2004}
+calculated the synchronisation index of cell types. This method is fast and
+reduces noise, but the information carried by individual cells is lost.  The
+cost functions in this paper perform data reduction after the error comparisons
+at the individual neuron level.
 
 # \yellownote{stochastic versus stereotypical principles of synaptic  organisation and cell types}
 
 #  {experimental considerations}
-A final issue that should be considered for modelling and optimising \BNN
-models is computational efficiency. In this paper, the \CN stellate
-network consisted of 240 HH-like cells simulated in [[latex:progname][NEURON]] and took
-approximately 90 seconds to run a 80 ms stimulus on a 1.8 GHz CPU
-(32-bit Itanium, SGI Altix)[fn:: Note that the ANF instantaneous rate
-for each frequency channel was already calculated and retrieved from
-file at the beginning of each simulation.].  Evaluations of the \AIV and
-\IFR cost functions were a minor fraction of the total computational
-time, being less than 3 seconds per network. The \ST cost function was
-at a considerable disadvantage because its evaluation took approximately
-90 seconds. Further investigation on improving the method for
-calculating the dynamic programming spike time distance is needed.
+A final issue that should be considered for modelling and optimising \BNN models
+is computational efficiency. In this paper, the \CN stellate network consisted
+of 240 HH-like cells simulated in [[latex:progname][NEURON]] and took approximately 90 seconds to
+run a 80 ms stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI Altix)[fn:: Note that
+the ANF instantaneous rate for each frequency channel was already calculated and
+retrieved from file at the beginning of each simulation.].  Evaluations of the
+\AIV and \IFR cost functions were a minor fraction of the total computational
+time, being less than 3 seconds per network. The \ST cost function was at a
+considerable disadvantage because its evaluation took approximately 90
+seconds. Further investigation on improving the method for calculating the
+dynamic programming spike time distance is needed.
 
 
-A small cluster of 9 PCs simulated a \GA routine in approximately three
-days.  On the 64-CPU SGI Altix, the amount of time required to run the
-\GA for 201 generations of 100 genomes took approximately 8 hours (a
-maximum of 40 CPUs were used at any point.  These computational loads
-are feasible in modern systems and will enhance the development of more
-realistic \BNN models.
+A small cluster of 9 PCs simulated a \GA routine in approximately three days.
+On the 64-CPU SGI Altix, the amount of time required to run the \GA for 201
+generations of 100 genomes took approximately 8 hours (a maximum of 40 CPUs were
+used at any point.  These computational loads are feasible in modern systems and
+will enhance the development of more realistic \BNN models.
 
 
 
@@ -2645,26 +2536,24 @@ realistic \BNN models.
   :SHORTTITLE: General performance of GAs
   :END:
    
-This chapter tested the ability of \GAs to learn the network parameters
-of a \BNN of the \CN using three cost functions. Figure \ref{fig:GA:R1}
-showed the typical behaviour of \GA populations, with a convergence of
-the best genome toward the minimum value and the noisy variation in the
-population of genome scores. \GAs run with the \ST and \IFR cost
-functions were able to consistently achieve convergence of the best
-genome to very near the target score; the deviation was less than that
-due to a 1 unit step perturbation of the target genome. For \GAs run
-with the \AIV cost function, however, convergence of best genomes was
-inconsistent and did not reach the target. Instead the \AIV scores were
-limited to the upper tail of the distribution obtained with 5 unit step
+This chapter tested the ability of \GAs to learn the network parameters of a
+\BNN of the \CN using three cost functions. Figure \ref{fig:GA:R1} showed the
+typical behaviour of \GA populations, with a convergence of the best genome
+toward the minimum value and the noisy variation in the population of genome
+scores. \GAs run with the \ST and \IFR cost functions were able to consistently
+achieve convergence of the best genome to very near the target score; the
+deviation was less than that due to a 1 unit step perturbation of the target
+genome. For \GAs run with the \AIV cost function, however, convergence of best
+genomes was inconsistent and did not reach the target. Instead the \AIV scores
+were limited to the upper tail of the distribution obtained with 5 unit step
 parameter perturbations of the target genome.
 
 By increasing the number of repetitions in the \GA evaluation, in Figure
-\ref{fig:GA:R5}, the cost function scores were reduced by the reduction
-in noise. The \GA performance did not lead to significantly improved
-match to the target genome, with the exception of the \AIV cost
-function.  The cost function scores were significantly reduced for \IFR
-and \AIV cost functions but \GA performance did not lead to
-significantly improved match to the target genome.
+\ref{fig:GA:R5}, the cost function scores were reduced by the reduction in
+noise. The \GA performance did not lead to significantly improved match to the
+target genome, with the exception of the \AIV cost function.  The cost function
+scores were significantly reduced for \IFR and \AIV cost functions but \GA
+performance did not lead to significantly improved match to the target genome.
 
 # \yellownote{keypoints:\\
 #   * no basis for one \CF better than another, \\ 
@@ -2675,37 +2564,34 @@ significantly improved match to the target genome.
 #   * \IFR consistently off in \ST and  \AIV  \AIV \CF also limited  \ST and \IFR best genomes to same limit as \AIV best genome \\
 # }
 
-Noteworthy results of the cross comparison analysis in Figures
-\ref{fig:R2} and \ref{fig:R7}, show that the best genomes performed as
-expected by beating other best genomes in it's own cost function. The
-\ST cost function trained best genomes performed as expected;
-constrained well for its own cost function but less well for the other
-two. Secondly, \IFR best genomes were consistently off target in the \ST
-cost function, and were caught in the same region as other best genomes
-in the \AIV cost function. One \AIV trained best genome performed well
-in both \ST and \IFR cost functions, but this was not consistent for all
+Noteworthy results of the cross comparison analysis in Figures \ref{fig:R2} and
+\ref{fig:R7}, show that the best genomes performed as expected by beating other
+best genomes in it's own cost function. The \ST cost function trained best
+genomes performed as expected; constrained well for its own cost function but
+less well for the other two. Secondly, \IFR best genomes were consistently off
+target in the \ST cost function, and were caught in the same region as other
+best genomes in the \AIV cost function. One \AIV trained best genome performed
+well in both \ST and \IFR cost functions, but this was not consistent for all
 three best genomes.
 
 
-Given different characteristics of the cost functions, i.e.\ spike timing
-does not provide information about sub-threshold membrane potential, a
-relevant factor in the  \AIV cost function.  The advantage of using real \ST
-data is that it can be obtained in extra cellular recordings more easily
-/in vivo/, and can obtain a larger number of simultaneous units than
-intracellular recordings.
+Given different characteristics of the cost functions, i.e.\ spike timing does
+not provide information about sub-threshold membrane potential, a relevant
+factor in the \AIV cost function.  The advantage of using real \ST data is that
+it can be obtained in extra cellular recordings more easily /in vivo/, and can
+obtain a larger number of simultaneous units than intracellular recordings.
 
 ** Summary of Cost Functions
    :PROPERTIES:
    :CUSTOM_ID:    sec:GA:summ-cost-funct}
    :END:
-This section gives an overview of the cost functions' advantages,
-disadvantages, and relevance to optimising \BNNs. The following summary
-of the cost functions will highlight and compare the results by focusing on
-three main performance measures.  Measure 1 indicates whether the best
-genome obtained a /poor/, /good/, or /very good/
-score. Very good scores are below the mean of the 1-step deviation
-population, poor scores are above the mean of the 5-step deviation
-population, and good scores are in between.  
+This section gives an overview of the cost functions' advantages, disadvantages,
+and relevance to optimising \BNNs. The following summary of the cost functions
+will highlight and compare the results by focusing on three main performance
+measures.  Measure 1 indicates whether the best genome obtained a /poor/,
+/good/, or /very good/ score. Very good scores are below the mean of the 1-step
+deviation population, poor scores are above the mean of the 5-step deviation
+population, and good scores are in between.
 # Measure
 #  2 indicates the robust sensitivity of the cost function and is the
 #  ratio of significant V-shaped sensitivity gradients with different AN
@@ -2719,39 +2605,37 @@ parameter set and the target genome's parameters.
 
 *** Spike timing
 
-The results of the \ST cost function show that it can be successfully used
-for optimising \BNNs.  For Measure 1, the results were very-good for the
-best genome with different inputs as it scored below the mean of target
-genome scores. It also achieved a good score when evaluated with the other
-cost functions.  For Measure 2, the mean geometric distance between the \ST
-best genome and the target was 0.252, the second best next to the  \AIV-25
-cost function for \GA simulations run with different \AN inputs.
+The results of the \ST cost function show that it can be successfully used for
+optimising \BNNs.  For Measure 1, the results were very-good for the best genome
+with different inputs as it scored below the mean of target genome scores. It
+also achieved a good score when evaluated with the other cost functions.  For
+Measure 2, the mean geometric distance between the \ST best genome and the
+target was 0.252, the second best next to the \AIV-25 cost function for \GA
+simulations run with different \AN inputs.
 
 
-A major benefit in using spike times in optimisation of real networks is
-their ease of collection /in vivo/. Data from populations of neurons
-can be obtained by extracellular single- or multi-unit recordings.  By
-sampling over all cells multiple times, this method provides a good
-estimate of the temporal information contained in the neural responses,
-enabling reasonable parameter optimisation and good robustness to noise.
-The key disadvantage associated with spike train comparisons is the
-increased computational time associated with the evaluation of the cost
-function score.  For $R=25$ repetitions, the \ST cost function took just as
-long to run as the \CN network simulation time (approximately 90 seconds
-in a single 2GHz CPU) depending on the level of activity. Increasing the
-number of repetitions scaled the computation time by $R^2$ due to the cross
-comparison of available spike trains in the training data to find the
-minimum error.
+A major benefit in using spike times in optimisation of real networks is their
+ease of collection /in vivo/. Data from populations of neurons can be obtained
+by extracellular single- or multi-unit recordings.  By sampling over all cells
+multiple times, this method provides a good estimate of the temporal information
+contained in the neural responses, enabling reasonable parameter optimisation
+and good robustness to noise.  The key disadvantage associated with spike train
+comparisons is the increased computational time associated with the evaluation
+of the cost function score.  For $R=25$ repetitions, the \ST cost function took
+just as long to run as the \CN network simulation time (approximately 90 seconds
+in a single 2GHz CPU) depending on the level of activity. Increasing the number
+of repetitions scaled the computation time by $R^2$ due to the cross comparison
+of available spike trains in the training data to find the minimum error.
 
 
-Noise was minimised by the comparison procedure that found the minimum
-score among 25 spike trains in the training data. Any additional data from
-more repetitions or more neurons may be beneficial for the robustness to
-noise, but a combination with another source of data, for example  \AIV
-waveforms, would be more suitable. The dynamic programming algorithm in the
-\ST cost function is similar to the temporal difference method of
-\citet{VictorGoldbergEtAl:2007}, except that specific penalties were not
-applied to insertions and deletions of spikes.
+Noise was minimised by the comparison procedure that found the minimum score
+among 25 spike trains in the training data. Any additional data from more
+repetitions or more neurons may be beneficial for the robustness to noise, but a
+combination with another source of data, for example \AIV waveforms, would be
+more suitable. The dynamic programming algorithm in the \ST cost function is
+similar to the temporal difference method of \citet{VictorGoldbergEtAl:2007},
+except that specific penalties were not applied to insertions and deletions of
+spikes.
 
 # % The synaptic parameters have a strong influence on the timing of spikes
 # % in post-synaptic neurons, contributing to changes in the cost function
@@ -2768,16 +2652,14 @@ applied to insertions and deletions of spikes.
 # \yellownote{Hamish noted that this para was not applicable} 
 When considering the 25 repetition \IFR cost function's performance, Measure 1
 for the best genome obtained with different inputs was poor for all cost
-functions. When the number of repetitions in the training data was
-increased by a factor of 4 (the \IFR-100 cost function), there was a
-reduction in the value of all cost function scores
-(Figure \ref{fig:GA:R6}B) and the performance of the best genomes was good
-(Figure \ref{fig:GA:R7}). However, the performance of both the \IFR-25 and
-\IFR-100 best genomes when measured using the other cost functions was poor,
-this suggests that the networks constrained by the \IFR cost functions were
-unable to accurately reproduce the behaviour of networks in terms of
-spike-times or intracellular
-voltage. 
+functions. When the number of repetitions in the training data was increased by
+a factor of 4 (the \IFR-100 cost function), there was a reduction in the value
+of all cost function scores (Figure \ref{fig:GA:R6}B) and the performance of the
+best genomes was good (Figure \ref{fig:GA:R7}). However, the performance of both
+the \IFR-25 and \IFR-100 best genomes when measured using the other cost
+functions was poor, this suggests that the networks constrained by the \IFR cost
+functions were unable to accurately reproduce the behaviour of networks in terms
+of spike-times or intracellular voltage.
 # % The individual parameter sensitivity measure,
 # % Measure 2, gave a ratio of 7:23 and 9:21 for the \IFR-25 and \IFR-250
 # % cost functions, respectively (Figure \ref{fig:GA:14}B,C), demonstrating a
@@ -2791,77 +2673,69 @@ different inputs show large mean parameter errors of 0.273 and 0.297,
 respectively (Figure \ref{fig:GA:8}D-E).
 
 
-Grouping spike trains into time bins is a very fast procedure aimed at
-reducing the trial-to-trial variability in single spike trains by
-generating an estimate of the average instantaneous firing rate of
-neurons. The temporal resolution of the \IFR cost function is dependent
-on the width of the \PSTH bins but it looses information about the timing
-between spikes.  The representation of precise onset spikes in \DS and \TS
-cells would benefit from a narrow bin width, but for the majority of
-spikes in the network, the fine timing is not as important during a
-noisy stimulus.  For the frozen notch noise, spatio-temporal peaks in
-neural activity occur across the network and require enhanced temporal
-precision in the \IFR cost function, as shown in
-Figure \ref{fig:GA:Costfunctions}.
+Grouping spike trains into time bins is a very fast procedure aimed at reducing
+the trial-to-trial variability in single spike trains by generating an estimate
+of the average instantaneous firing rate of neurons. The temporal resolution of
+the \IFR cost function is dependent on the width of the \PSTH bins but it looses
+information about the timing between spikes.  The representation of precise
+onset spikes in \DS and \TS cells would benefit from a narrow bin width, but for
+the majority of spikes in the network, the fine timing is not as important
+during a noisy stimulus.  For the frozen notch noise, spatio-temporal peaks in
+neural activity occur across the network and require enhanced temporal precision
+in the \IFR cost function, as shown in Figure \ref{fig:GA:Costfunctions}.
 
 
-To improve the representation of firing-rate information, we must take
-into consideration the width of the bins in a \PSTH and their
-relationship to the stochastic output of neurons.  It is desirable to
-have fine temporal resolution, but the results of the \IFR cost function
-show that the small bins are dominated by noise, especially in
-low-firing units and in onset units apart from the first spikes. A
-solution to this problem in future experiments would be to use
-equi-probable bins in linear or log form
-\citep{BhumbraInyushkinEtAl:2004}.  This would improve the performance
-of the \IFR cost function by improving the sensitivity to changes in
-parameters of the network.
+To improve the representation of firing-rate information, we must take into
+consideration the width of the bins in a \PSTH and their relationship to the
+stochastic output of neurons.  It is desirable to have fine temporal resolution,
+but the results of the \IFR cost function show that the small bins are dominated
+by noise, especially in low-firing units and in onset units apart from the first
+spikes. A solution to this problem in future experiments would be to use
+equi-probable bins in linear or log form \citep{BhumbraInyushkinEtAl:2004}.
+This would improve the performance of the \IFR cost function by improving the
+sensitivity to changes in parameters of the network.
 
 *** Average Intracellular Voltage
 
-For Measure 1, the best genome constrained by the  \AIV-25 cost function
-was very good when evaluated using all cost functions
-(Table \ref{tab:GA:5}) except for the \ST cost function for which it was
-good. The best genome trained using the  \AIV-100 cost function was also
-very good for the \ST, \IFR-100, and  \AIV-25 cost functions, and good for
-the \IFR-25 and  \AIV-100 cost functions.  
+For Measure 1, the best genome constrained by the \AIV-25 cost function was very
+good when evaluated using all cost functions (Table \ref{tab:GA:5}) except for
+the \ST cost function for which it was good. The best genome trained using the
+\AIV-100 cost function was also very good for the \ST, \IFR-100, and \AIV-25
+cost functions, and good for the \IFR-25 and \AIV-100 cost functions.
 # For Measure 2, the sensitivity
 #  ratios of individual parameters using different inputs were 13:17 and
 # 9:21 for the  \AIV-25 and  \AIV-250 cost functions, respectively 
 # (Figure \ref{fig:GA:15}B,C).  This demonstrates that the  \AIV-25 cost 
 # function has greater robustness to noise than the  \AIV-250 and the \IFR 
 # cost functions, and similar performance to the \ST cost function.  For
-Measure 2, the parameter error of 0.207 for the  \AIV-25 best genome was
-the best for all \GA simulations that were run with different inputs in
-this study, while the  \AIV-100 best genome was further from the target
-genome with an error of 0.275 (Figure \ref{fig:GA:8}G,H).
+Measure 2, the parameter error of 0.207 for the \AIV-25 best genome was the best
+for all \GA simulations that were run with different inputs in this study, while
+the \AIV-100 best genome was further from the target genome with an error of
+0.275 (Figure \ref{fig:GA:8}G,H).
 
 
-The \AIV waveform over several repetitions aimed to reduce the
-effect of trial-to-trial error and filter out APs.  Similar to the
-point-to-point method comparison in the \IFR cost function, increasing
-the number of repetitions smoothed out the training data in the  \AIV-100
-cost function scores and reduced the scores for parameters close to the
-target (1-step and 5-step) reduced to the level of the ideal scores
-(Figure \ref{fig:GA:11}).
+The \AIV waveform over several repetitions aimed to reduce the effect of
+trial-to-trial error and filter out APs.  Similar to the point-to-point method
+comparison in the \IFR cost function, increasing the number of repetitions
+smoothed out the training data in the \AIV-100 cost function scores and reduced
+the scores for parameters close to the target (1-step and 5-step) reduced to the
+level of the ideal scores (Figure \ref{fig:GA:11}).
 
 
-It was thought that for a \BNN model the \AIV waveform will
-provide additional information about the sub-threshold behavior of
-neurons in the network, which is not available in the \ST and \IFR cost
-functions.  Intracellular voltage data has been used in constraining the
-membrane conductances of multi-compartmental single-neuron models
-\citep{LeMasson:2000,KerenPeledEtAl:2005}.  These methods are not always
-analysis of \AIV data was very effective in optimising membrane parameters
-effective in single simulations unless combined with other cost
+It was thought that for a \BNN model the \AIV waveform will provide additional
+information about the sub-threshold behavior of neurons in the network, which is
+not available in the \ST and \IFR cost functions.  Intracellular voltage data
+has been used in constraining the membrane conductances of multi-compartmental
+single-neuron models \citep{LeMasson:2000,KerenPeledEtAl:2005}.  These methods
+are not always analysis of \AIV data was very effective in optimising membrane
+parameters effective in single simulations unless combined with other cost
 functions, such as inter-spike intervals
 \citep{KerenPeledEtAl:2005}. Phase-plane
-\citep{VanDeEtAl:2008,KerenPeledEtAl:2005} but would not be suitable to
-a \BNN due to variation in the synaptic input and the loss of temporal
-information.  It is not currently possible to obtain simultaneous IV
-recordings from more than two neurons let alone a whole nucleus, but
-limited \AIV data could be used in conjunction with other cost functions
-to constrain \BNN models.
+\citep{VanDeEtAl:2008,KerenPeledEtAl:2005} but would not be suitable to a \BNN
+due to variation in the synaptic input and the loss of temporal information.  It
+is not currently possible to obtain simultaneous IV recordings from more than
+two neurons let alone a whole nucleus, but limited \AIV data could be used in
+conjunction with other cost functions to constrain \BNN models.
 
 ** Benefits of reducing noise
 
@@ -2874,81 +2748,75 @@ to constrain \BNN models.
 #  }
 #    
 
-One of the big problems in optimising \BNNs is noise.  The various
-sources of noise arise in the stochastic nature in neural transmission
-and connectivity and in the algorithm chosen by the cost
-functions. Afferent input connections and intrinsic connections within
-the microcircuit are defined by organised but random connectivity.
-Small perturbations in the parameters controlling the number of inputs
-will change the selection of pre- and post-synaptic cells in the
-construction of the network.  The main effect of noise in optimisation
-is over-fitting to the noise, smoothing of \PSTH and \AIV also produces
-inherent errors in the training data for parameters near the target
-parameters, some of which perform better.
+One of the big problems in optimising \BNNs is noise.  The various sources of
+noise arise in the stochastic nature in neural transmission and connectivity and
+in the algorithm chosen by the cost functions. Afferent input connections and
+intrinsic connections within the microcircuit are defined by organised but
+random connectivity.  Small perturbations in the parameters controlling the
+number of inputs will change the selection of pre- and post-synaptic cells in
+the construction of the network.  The main effect of noise in optimisation is
+over-fitting to the noise, smoothing of \PSTH and \AIV also produces inherent
+errors in the training data for parameters near the target parameters, some of
+which perform better.
 #  resulting in a best genome scores that are better than the target genome's distribution scores.
-The \GA run with \ST cost function and different inputs produced a score
-better than the mean target with only one sample, when sampled multiple
-times the mean score was also below the mean target scores but not
-statistically significantly.  In all cost functions, the flattening of
-the cost function search spaces around the target parameters contributed
-to an overlap between the 1-step population and the distribution of the
-target genome.
+The \GA run with \ST cost function and different inputs produced a score better
+than the mean target with only one sample, when sampled multiple times the mean
+score was also below the mean target scores but not statistically significantly.
+In all cost functions, the flattening of the cost function search spaces around
+the target parameters contributed to an overlap between the 1-step population
+and the distribution of the target genome.
 
 
 
-Despite lower scores for all cost functions, there was no real differences
-in eventual performance.  There is no clear advantage of best genomes
-obtained using 100 or 25 repetitions, as shown the cross comparison
-boxplot/barplot in Figure \ref{fig:R7}. The only clear exception being  \AIV
-best genome trained with 100 repetitions performing significantly better in
-the \ST cost function.
+Despite lower scores for all cost functions, there was no real differences in
+eventual performance.  There is no clear advantage of best genomes obtained
+using 100 or 25 repetitions, as shown the cross comparison boxplot/barplot in
+Figure \ref{fig:R7}. The only clear exception being \AIV best genome trained
+with 100 repetitions performing significantly better in the \ST cost function.
 
 ** Sensitivity analysis of individual parameters
 
-This section gives an overview of the cost functions' advantages,
-disadvantages, and relevance to optimising \BNNs with regard to parameter
-sensitivity.  A measure to indicate the robust sensitivity of the cost
-function is the ratio of significant V-shaped sensitivity gradients with
-different \ANF inputs against other less sensitive parameters (i.e any shape
-that is significantly non-V-shaped or other V-shapes that are not
-significant). The gradients below the target value of parameters 17, 20,
-26, and 27 were ignored, as explained in
+This section gives an overview of the cost functions' advantages, disadvantages,
+and relevance to optimising \BNNs with regard to parameter sensitivity.  A
+measure to indicate the robust sensitivity of the cost function is the ratio of
+significant V-shaped sensitivity gradients with different \ANF inputs against
+other less sensitive parameters (i.e any shape that is significantly
+non-V-shaped or other V-shapes that are not significant). The gradients below
+the target value of parameters 17, 20, 26, and 27 were ignored, as explained in
 section \ref{sec:GA:IndividualSensA}.
 
 
 
-The sensitivity measure is mixed for the \ST cost function with a ratio of
-13:17 for V-shaped and non-V-shaped parameter gradients and 7 other
-parameters were significant on only one side. Also, there were four
-significant gradients that were in the direction away from the target
-(Figure \ref{fig:GA:13}B).
+The sensitivity measure is mixed for the \ST cost function with a ratio of 13:17
+for V-shaped and non-V-shaped parameter gradients and 7 other parameters were
+significant on only one side. Also, there were four significant gradients that
+were in the direction away from the target (Figure \ref{fig:GA:13}B).
 
 
 
-The \IFR-25 cost function sensitivity measure gave a ratio of 7:23
-(Figure \ref{fig:GA:14}), demonstrating a high susceptibility to input
-noise. Constraint of inhibitory connections (parameters 12-30) in the
-\IFR best genomes (Figure \ref{fig:GA:8}) was very poor, resulting from
-the flat and insignificant cost function gradients near the global
-optimum (Figure \ref{fig:GA:14}).
+The \IFR-25 cost function sensitivity measure gave a ratio of 7:23 (Figure
+\ref{fig:GA:14}), demonstrating a high susceptibility to input noise. Constraint
+of inhibitory connections (parameters 12-30) in the \IFR best genomes (Figure
+\ref{fig:GA:8}) was very poor, resulting from the flat and insignificant cost
+function gradients near the global optimum (Figure \ref{fig:GA:14}).
 
 
 
-The sensitivity ratios for the  \AIV-25 cost function were 13:17
-(Figure \ref{fig:GA:15}B).  This demonstrates that the  \AIV-25 cost
-function has greater robustness to noise than the \IFR cost function, and
-similar performance to the \ST cost function.
+The sensitivity ratios for the \AIV-25 cost function were 13:17 (Figure
+\ref{fig:GA:15}B).  This demonstrates that the \AIV-25 cost function has greater
+robustness to noise than the \IFR cost function, and similar performance to the
+\ST cost function.
 
 
 
 In general, parameters 3, 9, 11, and 29 (corresponding to \nHSRTS,
-\nHSRTV,\nLSRGLG, and \nGLGDS, respectively) were more robust to the
-variability of input spike times in each of the cost functions.  The
-number of connections between a cell type and one post-synaptic cell
-provides a greater influence on the synaptic strength between cells than
-the synaptic weight (despite being uniform across all synapses in this
-connection type). This can have a compounding effect on any connected
-cell group that receive input from the pre-synaptic cell group.
+\nHSRTV,\nLSRGLG, and \nGLGDS, respectively) were more robust to the variability
+of input spike times in each of the cost functions.  The number of connections
+between a cell type and one post-synaptic cell provides a greater influence on
+the synaptic strength between cells than the synaptic weight (despite being
+uniform across all synapses in this connection type). This can have a
+compounding effect on any connected cell group that receive input from the
+pre-synaptic cell group.
 
 ** Comparison with other studies
 
@@ -2962,14 +2830,13 @@ cell group that receive input from the pre-synaptic cell group.
 # any comparisons?}
 
 The primary motivation for using evolutionary techniques to establish the
-weighting values rather than traditional gradient decent techniques such as
-back propagation, lies in the inherent problems associated with gradient
-decent techniques. Back-propogation is easily trapped in local maxima, has
-poor performance with multimodal or un-differentiable functions, and
-sensitive to initial conditions. Evolution of the connection of weights can
-use \GAs then back propagation for local refining. Search space for \BNNs
-is infinitely large and non-differentiable makes \GA approaches a good
-chance for success.
+weighting values rather than traditional gradient decent techniques such as back
+propagation, lies in the inherent problems associated with gradient decent
+techniques. Back-propogation is easily trapped in local maxima, has poor
+performance with multimodal or un-differentiable functions, and sensitive to
+initial conditions. Evolution of the connection of weights can use \GAs then
+back propagation for local refining. Search space for \BNNs is infinitely large
+and non-differentiable makes \GA approaches a good chance for success.
 
 \yellownote{Combination techniques:
   \citep{AngelineSaundersEtAl:1994} argues that {GAs} are
@@ -2997,41 +2864,39 @@ realism in \BNN optimisation.
 
 
 
-A final issue that should be considered for modelling and optimising \BNN
-models is computational efficiency. In this paper, the \CN stellate network
-consisted of 240 \HH-like cells, simulated in [[latex:progname][NEURON]] and took approximately
-90 seconds to run a 80 ms stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI
-Altix).  Evaluations the  \AIV and \IFR cost functions were a minor fraction
-of the total computational time, being less than 3 seconds per network. The
-\ST cost function was at a considerable disadvantage because its evaluation
-took approximately 90 seconds, which is similar to the simulation
-time. This could be improved because the method for calculating the dynamic
-programming spike time distance was sub-optimal.  On the 64-CPU SGI Altix,
-the amount of time required to run the \GA for 201 generations of 100
-genomes took approximately 8 hours (a maximum of 40 CPUs were used at any
-point.  These computational loads are feasible in modern systems and will
-enhance the development of more realistic \BNN models.
+A final issue that should be considered for modelling and optimising \BNN models
+is computational efficiency. In this paper, the \CN stellate network consisted
+of 240 \HH-like cells, simulated in [[latex:progname][NEURON]] and took approximately 90 seconds to
+run a 80 ms stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI Altix).  Evaluations
+the \AIV and \IFR cost functions were a minor fraction of the total
+computational time, being less than 3 seconds per network. The \ST cost function
+was at a considerable disadvantage because its evaluation took approximately 90
+seconds, which is similar to the simulation time. This could be improved because
+the method for calculating the dynamic programming spike time distance was
+sub-optimal.  On the 64-CPU SGI Altix, the amount of time required to run the
+\GA for 201 generations of 100 genomes took approximately 8 hours (a maximum of
+40 CPUs were used at any point.  These computational loads are feasible in
+modern systems and will enhance the development of more realistic \BNN models.
 
 
 * Conclusion
 
-The methods for generating experimentally relevant data are an important
-factor when constraining a \BNN model. In an ideal network model, where we
-can reproduce the exact inputs to the network, as used in generating the
-training data, it brings into question the validity of the training data to
-reproduce real experiments.  Training data from an existing model, with
-target parameters chosen randomly as performed in this paper, does not give
-us a representation of a real network, but the development of methods for
-constraining new models is an important step for generating microcircuits
-and larger networks.
+The methods for generating experimentally relevant data are an important factor
+when constraining a \BNN model. In an ideal network model, where we can
+reproduce the exact inputs to the network, as used in generating the training
+data, it brings into question the validity of the training data to reproduce
+real experiments.  Training data from an existing model, with target parameters
+chosen randomly as performed in this paper, does not give us a representation of
+a real network, but the development of methods for constraining new models is an
+important step for generating microcircuits and larger networks.
 
 
-In this chapter, we have shown that the \GA is an adequate method for
-parameter optimisation and that the \ST and  \AIV cost functions are
-comparably good methods for constraining \BNNs. Further development is
-needed to enhance the robustness of the cost function methods to input
-noise, especially for sensitivity and robustness of inhibitory connections
-in the \CN stellate network.  
+In this chapter, we have shown that the \GA is an adequate method for parameter
+optimisation and that the \ST and \AIV cost functions are comparably good
+methods for constraining \BNNs. Further development is needed to enhance the
+robustness of the cost function methods to input noise, especially for
+sensitivity and robustness of inhibitory connections in the \CN stellate
+network.
 
 \yellownote{Last section you need to improve  when you are done}
 
