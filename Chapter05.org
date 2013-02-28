@@ -64,8 +64,6 @@
           "{\n\\singlespacing\n\\tableofcontents\n}\n") 
 #+end_src
 
-
-
 * Introduction
   :PROPERTIES:
   :CUSTOM_ID:    sec:GA:intro
@@ -370,7 +368,7 @@ instantaneous firing rates, and intracellular voltages.
   % \end{picture}}%
   % \resizebox{2.5in}{!}{\includegraphics[bb=98 411 304 523,clip]{Figure3}}\\
   % \vspace{0.1in}\resizebox{5in}{!}{\includegraphics[bb=98 173 504 411,clip]{Figure3}}
-  \resizebox{0.9\textwidth}{!}{\includegraphics{Figure31.png}}
+  \resizebox{0.9\textwidth}{!}{\includegraphics{../GAChapter/gfx/Figure31.png}}
   \caption[Cost functions]{Cost function measures derived from the output of the
     \CN stellate network. (A) Dot raster of \TS cell spikes only during a
     presentation of the notch noise stimulus. A rough trace shows the relative
@@ -1646,6 +1644,7 @@ not far behind.
 #   \caption{Cross comparison of best genomes from Ideal \GA simulations.}
 #   \label{tab:GA:IdealXComp}
 # \end{table}
+
 
 * Sensitivity Analysis of Individual Parameters near the Global Optimum :noexport:
   :PROPERTIES:
