@@ -720,8 +720,9 @@ re-evaluating the two genome sets above with different \ANF input spikes
 regenerated for every genome.
 
 Second, the sensitivity analysis of the cost functions to individual parameter
-variation at the global optimum is shown in section
-\ref{sec:GA:IndividualSens}. Parameter values were stepped up and down
+variation at the global optimum is shown in Section \ref{sec:GA:param-sens-results}.
+# \ref{sec:GA:IndividualSens}. 
+Parameter values were stepped up and down
 independently (steps were determined from the gene resolution in Table
 \ref{tab:GA:Genome}) to determine the cost function learning gradient on either
 side of the target value. Gradients were calculated using a least-squares linear
@@ -1121,7 +1122,7 @@ repetitions were used for evaluation.
   \includegraphics[width=\textwidth,keepaspectratio]{../GAChapter/gfx/Histograms100-MaxNorm}
     \caption[Histograms of parameter perturbations using 100
     repetitions]{Histograms of simultaneous parameter perturbation using 100
-      repetitions. Similar to Figure~\ref{fig:GA:R4}, the distribution of genomes
+      repetitions. The distribution of genomes
       evaluated during the GA are shown in gray and the eventual best score is
       pointed to by the arrow. The histograms show the distributions of 100 target
       genome scores (thick line), 1000 genomes deviated by 1 unit step away from
@@ -1668,6 +1669,28 @@ done for the identical and the different \ANF inputs, robustness was evaluated
 by comparing the ratio of V-shaped to non-V-shaped cost function gradients for
 different inputs.
 
+#+BEGIN_LaTeX
+  \begin{figure}[tp!]  
+    \centering
+    \includegraphics[width=\textwidth]{../GAChapter/gfx/Example_SensAnalysis}
+    \caption{Examples of ST cost function sensitivity analysis performed on
+      individual parameters, with 10 unit step increments around the parameter's
+      target value and all other target parameters retained. Multiple samples were
+      taken at each point when different inputs were used. The linear regression
+      line (solid) and bootstrapped 95\% confidence interval (dotted line) are
+      shown. The slope was tested for significant difference to a zero gradient
+      either side of the target value. (A) Parameter 3, $n_{\HSRTS} $, was
+      V-shaped for identical and different inputs. (B) Parameter 4, $w_{\ANFDS} $,
+      was V-shaped for identical inputs, but for different inputs the gradient
+      below the target was significantly opposed to the correct direction. (C)
+      Sensitivity around parameter 23, $s_{\DSTV} $, was V-shaped for identical
+      inputs but only one gradient was significant for different inputs. (D) The
+      sensitivity of the \ST cost function around parameter 29, $n_{\GLGDS} $,
+      produced the largest V-shaped gradients for identical and different
+      inputs.}\label{fig:GA:R4}
+  \end{figure}
+#+END_LaTeX
+
 
 Representative examples are given in Figure \ref{fig:GA:R4}, which show the
 dependence of the cost function on perturbation size when a parameter was
@@ -1726,27 +1749,6 @@ allocation of synapses within the network.
 #  I would be better to present these results in table comparing
 
 
-#+BEGIN_LaTeX
-  \begin{figure}[tp!]  
-    \centering
-    \includegraphics[width=\textwidth]{../GAChapter/gfx/Example_SensAnalysis}
-    \caption{Examples of ST cost function sensitivity analysis performed on
-      individual parameters, with 10 unit step increments around the parameter's
-      target value and all other target parameters retained. Multiple samples were
-      taken at each point when different inputs were used. The linear regression
-      line (solid) and bootstrapped 95\% confidence interval (dotted line) are
-      shown. The slope was tested for significant difference to a zero gradient
-      either side of the target value. (A) Parameter 3, $n_{\HSRTS} $, was
-      V-shaped for identical and different inputs. (B) Parameter 4, $w_{\ANFDS} $,
-      was V-shaped for identical inputs, but for different inputs the gradient
-      below the target was significantly opposed to the correct direction. (C)
-      Sensitivity around parameter 23, $s_{\DSTV} $, was V-shaped for identical
-      inputs but only one gradient was significant for different inputs. (D) The
-      sensitivity of the \ST cost function around parameter 29, $n_{\GLGDS} $,
-      produced the largest V-shaped gradients for identical and different
-      inputs.}  \label{fig:GA:R4}
-  \end{figure}
-#+END_LaTeX
 
 *** Spike Timing
 
