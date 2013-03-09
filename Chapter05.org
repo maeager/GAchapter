@@ -535,7 +535,7 @@ physiological responses, especially different stellate cells
 
 The \AIV cost function was defined using the mean-squared error between averaged
 voltage waveforms of each trial neuron, $\overline{v}_{i}$, and the corresponding
-target \AIV waveform, $\overline{v}_{i}^{\ast}. It was normalised to obtain a
+target \AIV waveform, $\overline{v}_{i}^{\ast}$. It was normalised to obtain a
 voltage (mV) error per neuron per stimulus. The \AIV cost function is defined as:
 \begin{equation} \label{eq:GA:4} 
 \PsiAIV =\frac{1}{R}
@@ -553,7 +553,7 @@ irregular peak heights did not affect the average waveform.
 
 The minimum value of \PsiAIV is zero.  Similar to \PsiIFR, in practice the
 minimum value of \PsiAIV was greater than zero because of the different numbers
-of repetitions used to create $\bar{v}_{i}$ and $\bar{v}_{i}^{\ast}$(25 and 250
+of repetitions used to create $\bar{v}_{i}$ and $\bar{v}_{i}^{\ast}$ (25 and 250
 respectively). The maximum \PsiAIV value observed in this study was
 approximately 0.5 mV per cell per stimulus, where no spikes were generated and
 each cell's \AIV was flat.
