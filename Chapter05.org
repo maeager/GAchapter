@@ -260,12 +260,14 @@ for the remaining 95 genomes.  Candidate genomes for crossover were randomly
 selected based on their fitness, using the roulette-wheel selection probability
 function, where each score was linearly scaled so that the probability of
 selection, $P_i$, is:
+#+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:1} 
 P_{i} = 1 - \frac{c_{i}}{\mathbf{c}} 
-\end{equation} \noindent where $c_{i}$ is
-the genome's cost function score, and $\mathbf{c}$ is the sum of all genome
-scores in the current population (note that the sign in front of $c_{i}$ is
-negative here, instead of the conventional positive, because we use
+\end{equation} \noindent 
+#+END_LaTeX
+where $c_{i}$ is the genome's cost function score, and $\mathbf{c}$ is the sum of
+all genome scores in the current population (note that the sign in front of $c_{i}$
+is negative here, instead of the conventional positive, because we use
 cost-functions corresponding to an error term, so that smaller values of $c_{i}$
 imply greater fitness). Following selection of a genome, crossover occurred with
 a strictly different selected genome, with probability 0.95.  Alternatively the
@@ -433,10 +435,13 @@ applied a cost based on relative timing of spikes (for a review see
 \citet{Victor:2005}).
 
 The \ST cost function was defined as:
+#+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:2} 
 \PsiST = \frac{1}{N_{\textrm{ST}}} \sum _{i=1}^{M}\sum _{j=1}^{R}\mathop{\min}\limits_{k} \left(D\left(x_{ij} ,x_{ik}^{*} \right)\right)
 \end{equation} 
-\noindent where $N_{\textrm{ST}} = R \times M$ is a normalisation factor,
+\noindent 
+#+END_LaTeX
+where $N_{\textrm{ST}} = R \times M$ is a normalisation factor,
 $M=240$ is the number of neurons in the network, $R=25$ is the total number of
 stimulus repetitions, $x_{ij}$ is the vector containing the spike times of the
 trial network for stimulus repetition $j$ produced by neuron /i/, and $x_{ik}^{*}$
@@ -489,10 +494,13 @@ was normalised to obtain a firing rate (spikes per msec) error per stimulus.
 
 
 The  \IFR cost function was defined as:
+#+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:3} 
 \PsiIFR =\frac{1}{T_{\textrm{IFR}}} \sqrt{\frac{1}{M} \sum_{i=1}^{M}\frac{1}{B} \left(\sum_{n=1}^{B}(r_{i}(n)- r{_{i}}^{\ast}(n))^{2} \right)},
 \end{equation} 
-\noindent where /B/ is the number of bins in the \PSTH, /M/ is
+\noindent 
+#+END_LaTeX
+where /B/ is the number of bins in the \PSTH, /M/ is
 the number of cells in the network, $T_{\textrm{IFR}}=R \times W$ is a normalisation
 factor, /R/ is the number of trial repetitions ($R=25$ was used in this study),
 and /W/ is the bin width of the \PSTH. The units for \PsiIFR are spikes per
@@ -538,11 +546,14 @@ The \AIV cost function was defined using the mean-squared error between averaged
 voltage waveforms of each trial neuron, $\overline{v}_{i}$, and the corresponding
 target \AIV waveform, $\overline{v}_{i}^{\ast}$. It was normalised to obtain a
 voltage (mV) error per neuron per stimulus. The \AIV cost function is defined as:
+#+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:4} 
 \PsiAIV =\frac{1}{R}
   \sqrt{\frac{1}{M} \sum_{i=1}^{M}\frac{1}{N}  \sum_{n=1}^{N}(\overline{v}_{i} (n)-\overline{v}_{i}^{\ast} (n))^{2} }
 \end{equation}
-\noindent where /N/ is the number of points in the \AIV waveform, /M/ is
+\noindent 
+#+END_LaTeX
+where /N/ is the number of points in the \AIV waveform, /M/ is
 the number of cells in the network, and /R/ is the number of
 repetitions.
 
@@ -592,10 +603,13 @@ other simulation parameters as listed in Table
 \ref{tab:GA:GeneralParams}. Centre frequencies of the channels were spaced
 logarithmically according to the basilar membrane frequency-place map of cats
 \citep{Greenwood:1990}:
+#+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:Greenwood} 
 f(x) = 456.0 \times 10^{\frac{x}{11.9} } - 0.8, \quad (Hz)
 \end{equation}
-\noindent where /x/ is the distance in centimetres from the apex.
+\noindent 
+#+END_LaTeX
+where /x/ is the distance in centimetres from the apex.
 
 The level of spontaneous activity in \HSR and \LSR \AN fibres was set to 50 and
 0.5 Hz, respectively. The stimulus was passed through the \AN model for each
@@ -2446,7 +2460,7 @@ methods \citep{VanierBower:1999,KerenBar-YehudaEtAl:2009,KerenPeledEtAl:2005}.
 
 Intracellular voltage data has been used in constraining the membrane
 conductances of multi-compartmental single-neuron models
-\citep{LePrellMasson:2000,KerenPeledEtAl:2005}.  These methods are not always
+\citep{LeMasson:2000,KerenPeledEtAl:2005}.  These methods are not always
 effective in single simulations unless combined with other cost
 functions. Intracellular voltage data has very effective in optimising membrane
 parameters \citep{VanDeEtAl:2008,KerenPeledEtAl:2005} but would not be suitable
