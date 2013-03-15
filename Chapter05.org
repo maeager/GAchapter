@@ -570,6 +570,8 @@ respectively). The maximum \PsiAIV value observed in this study was
 approximately 0.5 mV per cell per stimulus, where no spikes were generated and
 each cell's \AIV was flat.
 
+#+LaTeX: {\small\LTXtable{\textwidth}{../GAChapter/ModelTable.tex}}
+
 ** Stimulus Generation
 :PROPERTIES:
 :CUSTOM_ID: sec:GA:StimulusGeneration
@@ -586,7 +588,6 @@ suppression of \TV cells by \DS cells \citep{ReissYoung:2005} and to estimate
 the frequency range of \ANFs converging on \DS cells
 \citep{PalmerJiangEtAl:1996}.
 
-#+LaTeX: {\small\LTXtable{\textwidth}{../GAChapter/ModelTable.tex}}
 
 
 ** Auditory Nerve Model
