@@ -604,13 +604,10 @@ other simulation parameters as listed in Table
 \ref{tab:GA:GeneralParams}. Centre frequencies of the channels were spaced
 logarithmically according to the basilar membrane frequency-place map of cats
 \citep{Greenwood:1990}:
-#+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:Greenwood} 
 f(x) = 456.0 \times 10^{\frac{x}{11.9} } - 0.8, \quad (Hz)
 \end{equation}
-\noindent 
-#+END_LaTeX
-where /x/ is the distance in centimetres from the apex.
+\noindent where /x/ is the distance in centimetres from the apex.
 
 The level of spontaneous activity in \HSR and \LSR \AN fibres was set to 50 and
 0.5 Hz, respectively. The stimulus was passed through the \AN model for each
