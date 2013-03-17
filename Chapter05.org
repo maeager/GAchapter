@@ -179,7 +179,7 @@ We used the microcircuit formed by the \TS neurons, together with their
 inhibitory interneurons and afferent inputs, as our exemplar network.
 
 #+Attr_LaTeX width=0.8\textwidth
-#+CAPTION: [Diagram of the mammalian cochlear nucleus]{Diagram of the mammalian cochlear nucleus. ANFs sensitive to particular frequencies project to the cochlear nucleus (CN) in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, ventral and dorsal CN, plus an outer layer of small cells known as the granule cell domain (GCD). Type I ANFs are characterised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the GCD.  Golgi cells in the GCD are the only known source of GABA-ergic cells within the VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic D stellate cells (DS) project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, tuberculoventral (TV) cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
+#+CAPTION: [Connections of the mammalian cochlear nucleus]{Connections of the mammalian cochlear nucleus. ANFs sensitive to particular frequencies project to the cochlear nucleus (CN) in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, ventral and dorsal CN, plus an outer layer of small cells known as the granule cell domain (GCD). Type I ANFs are characterised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the GCD.  Golgi cells in the GCD are the only known source of GABA-ergic cells within the VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic D stellate cells (DS) project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, tuberculoventral (TV) cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
 #+LABEL: fig:GA:CNdiagram
 [[../GAChapter/gfx/CNConnections3.pdf]]
 
@@ -760,7 +760,7 @@ non-V-shaped cost function gradients for different inputs.
 \newpage
 
 
-* Optimisation of BNNs using different inputs
+* Optimisation of BNNs Using Different Inputs
   :PROPERTIES:
   :CUSTOM_ID:    sec:GA:ResultDiffAN
   :END:
@@ -841,7 +841,7 @@ best genome.
     % \includegraphics[width=\textwidth]{boxplot25-sep-st}\\
     % \includegraphics[width=\textwidth]{boxplot25-sep-ifr}\\
     % \includegraphics[width=\textwidth]{boxplot25-sep-iv}\\
-    \includegraphics[width=\textwidth]{../GAChapter/gfx/boxplot25-sep}\\
+    \includegraphics[width=\textwidth]{../GAChapter/gfx/boxplot25-sep}
     \caption[Cross comparison of best genomes]{Cross comparison of best
       genomes generated using \GA with 25 repetitions, measured against
       the target, 1-step and 5-step parameter perturbation distributions.
@@ -2051,7 +2051,7 @@ directly log-correlated with the cost function gradients around the target.
 
 * Discussion
 
-** Matching a microcircuit to a known target network: Performance of GA and cost functions
+** Matching a BNN to a Known Target Network: Performance of GA and Cost Functions
 
 We tested the ability of \GAs to constrain models of \BNNs using surrogate data
 from a known target network under simulation. Three cost functions were
@@ -2147,7 +2147,7 @@ some parameters are therefore more likely to be due to either the choice of
 stimulus, or the fact that the network model behaviour is generally insensitive
 to these parameters within the ranges investigated.
 
-** Benefits of reducing noise
+** Benefits of Reducing Noise
 
 Noise enters the \GA optimisation process by stochastic AN inputs, both in the
 data to be fitted and in the model simulations. We considered whether this noise
@@ -2406,7 +2406,7 @@ increasing the number of repetitions beyond $N$.
 #  with 100 repetitions performing significantly better using the \ST cost
 #  function.
 
-** Comparison with other studies
+** Comparison with Other Studies
 
 Using \GAs or evolutionary methods to constrain parameters in artificial neural
 networks is not novel \yellownote{REFERENCES}; however, the application of\GAs
@@ -2495,7 +2495,7 @@ could be used in conjunction with other cost functions to constrain \BNN models.
 #  [8-10], and to determine initial weights and proper parameters of the
 #  networks [11-12].}
 
-** Other considerations for constraining BNNs
+** Other Considerations for Constraining BNNs
 
 #  Reduction of parameters to cell types or cell-type to cell-type
 #  connection, rather than individual cell or individual synapse, is a
