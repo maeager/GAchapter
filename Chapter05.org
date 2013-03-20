@@ -1725,7 +1725,6 @@ locally flat, implies that the cost function is insensitive to this parameter in
 the vicinity of the target and represents non-ideal behaviour. Finally, Figure
 \ref{fig:GA:R4}D gives an example of a problematic cost function behaviour, in
 which the minimum occurs at a value other than the target.
-#\yellownote{Hamish: I am still not happy we understand this well: Pruning of candidates with reduced spikes in low rate regions of \DS units}. 
 These cases were classified variously as bilaterally sensitive (Figure
 \ref{fig:GA:R4}A), unilaterally sensitive (Figure \ref{fig:GA:R4}B), insensitive
 (Figure \ref{fig:GA:R4}C) or irregular(Figure \ref{fig:GA:R4}D), respectively.
@@ -2409,16 +2408,15 @@ increasing the number of repetitions beyond $N$.
 ** Comparison with Other Studies
 
 Using \GAs or evolutionary methods to constrain parameters in artificial neural
-networks is not novel \yellownote{REFERENCES}; however, the application of\GAs
-on realistic microcircuits is taking the interest of neuroscientists
+networks is not novel; however, the application of\GAs on realistic
+microcircuits is taking the interest of neuroscientists
 \citep{KerenPeledEtAl:2005}. The parameter search space for \BNNs is infinitely
 large and non-differentiable and makes \GAs a promising method. Substitution of
 the \GA with another optimisation method could easily be performed.
 Gradient-decent methods are easily trapped in local minima and have difficulty
-with noisy models due to sensitivity to initial conditions
-\yellownote{REFERENCES}.  Other evolutionary or stochastic optimisation methods
-have been shown to be effective in large parameter spaces within a noisy fitness
-environment \yellownote{REFERENCES}.
+with noisy models due to sensitivity to initial conditions.  Other evolutionary
+or stochastic optimisation methods have been shown to be effective in large
+parameter spaces within a noisy fitness environment. \yellownote{References required in this paragraph}
 # Evolution of the connection of weights can use \GAs then back propagation for local refining.
 
 Using experimental data from populations of neurons adds more complexity to the
