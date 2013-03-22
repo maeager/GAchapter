@@ -358,6 +358,9 @@ Figure \ref{fig:GA:Costfunctions}A).
 #+END_LaTeX
 
 ** Cost Functions
+:PROPERTIES:
+:CUSTOM_ID: sec:GA:CostFunc
+:END:
 
 At the core of a \GA optimisation is a cost function, which is given here by an
 error measure of an observable output of a trial network against the output of
@@ -587,8 +590,6 @@ used in experimental studies of the \CN to measure the asymmetric, wide-band
 suppression of \TV cells by \DS cells \citep{ReissYoung:2005} and to estimate
 the frequency range of \ANFs converging on \DS cells
 \citep{PalmerJiangEtAl:1996}.
-
-
 
 ** Auditory Nerve Model
 
@@ -2543,7 +2544,7 @@ development of more realistic \BNN models.
 
 
 
-* Discussion (original)     :noexport:
+* Discussion (version 1) 					   :noexport:
   :PROPERTIES:
   :CUSTOM_ID:    sec:GA:discussion
   :END:
