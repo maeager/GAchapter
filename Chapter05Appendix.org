@@ -160,7 +160,7 @@ To generate 100 random simulations of the target set:
 
 *** Auditory nerve fibre NMODL interface
 
-\begin{lstlisting}[label=lbl:arlo,caption=\mbox{\textsf{an\_arlo.mod}} contains the NMODL interface to the ARLO auditory nerve model \citep{HeinzZhangEtAl:2001}.] 
+\begin{lstlisting}[label=lbl:arlo,caption=\mbox{\textsf{an\_arlo.mod}} contains the NMODL interface to the ARLO \AN model \citep{HeinzZhangEtAl:2001}.] 
 #+include:  ../../soma/modfiles/an_arlo.mod
 \end{lstlisting}
 \begin{lstlisting}[label=lbl:SGCfast,caption=\mbox{\textsf{SGCfast.mod}} contains the inhomogeneous Poisson point-process emulating the spiral ganglion cell (ANFs' cell body). Spike times were generated independently for each fiber from the instantaneous firing rate from the ARLO model using a pseudo-random spike-generator \citep{JacksonCarney:2005}, with refractory effects similar to those present in experimental ANF recordings.] 
