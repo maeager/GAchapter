@@ -71,21 +71,19 @@
 
 Innovative methodologies, such as multi-unit recording
 \citep{BrownKassEtAl:2004} and optical recording using voltage-sensitive dyes
-\citep{GrinvaldHildesheim:2004,YangDoiEtAl:2000}, are enabling neuroscientists
+\citep{GrinvaldHildesheim:2004,YangDoiEtAl:2000},  enable neuroscientists
 to monitor the simultaneous activity of networks of neurons with a higher degree
-of spatial and temporal accuracy than has been achieved previously at the
+of spatial and temporal accuracy than has previously been achieved at the
 network level. Concurrently, modern computing power is increasing the speed of
 modelling \BNNs.
 # faster to run with modern computing power. (By biophysically-based we mean
 # models that include a description of currents flowing through membrane ion
 # channels, such as the \HH model.)  To develop larger \BNNs, with complex network
 # behaviour a number of interrelated issues need to be considered: (a) 
-Despite these considerable advances, persistent questions remain:
-# What level of neuronal detail is required to achieve observed phenomena in the network? 
-How do extrinsic and intrinsic noise sources affect the model? How do we
-reliably constrain the many free parameters in a model given limited
-experimental data?  This chapter seeks to address these issues in the \CNSM
-model.
+Despite these considerable advances, uncertainty remains
+about the best means to reliably constrain the many free parameters in a model where experimental data are
+limited.  This chapter seeks to address this issue using the \CNSM
+model as an exemplar.
 
  
 One set of approaches to constraining \BNNs, denoted as "bottom-up", use
@@ -103,14 +101,14 @@ processing.  Optimisation and training algorithms for top-down network
 constraint are highly efficient and generally involve a gradient-decent search
 with a training method called back-propagation, where the output error is
 calculated back through the network \citep{RumelhartHintonEtAl:1986a}. These
-algorithms are not applicable to \BNNs because the input\slash{}output
+algorithms are not applicable to \BNNs, however, because the input\slash{}output
 relationships of \HH-type models are not analytical, making them unsuitable for
 error back-propagation.
 
  
 The particular challenges of constraining network parameters in \BNNs or
 ensembles of spiking neural networks, which have been discussed previously
-\citep{EggertHemmen:2001,Brette:2007} focus on the analytical methods
+\citep{EggertHemmen:2001,Brette:2007}, focus on the analytical methods
 characterising the spike output
 \citep{Victor:2005,KostalLanskyEtAl:2007,BrownKassEtAl:2004}. Inferring the
 connectivity within a network requires a cost analysis of the spiking output.
@@ -149,22 +147,22 @@ and optimisation algorithms.
 
  
 This section of the thesis reports on our investigation of the application of
-\GAs in constraining synaptic parameters in a topographically-ordered \BNNs,
-using the example of a network in the auditory brainstem. The design of the \GA,
-described below in Section \ref{sec:GA:Methods}, includes the specification of a
-cost function that measures how well the model network reproduces the target
-data. We assessed three alternate cost functions derived, in different ways,
-from the output of neural responses in the network. Each cost function is based
-on measures of (1) spike timing, (2) instantaneous firing rate, or (3) average
-intracellular voltage. Surrogate data from a randomly generated network model
-served as our target and the ability of the algorithms to find the known neural
-parameters was assessed. To analyse the robustness of the cost functions to
-synaptic noise and the effects of trial-to-trial variability we incorporated
-these effects into the model.
+\GAs in constraining synaptic parameters in a topographically-ordered \BNN,
+using the \CNSM model as an example of a network in the auditory brainstem. The
+design of the \GA, described below in Section \ref{sec:GA:Methods}, includes the
+specification of a cost function that measures how well the model network
+reproduces the target data. We assessed three alternate cost functions derived,
+in different ways, from the output of neural responses in the network. Each cost
+function was based on measures of (1) spike timing, (2) instantaneous firing
+rate, or (3) average intracellular voltage. Surrogate data from a randomly
+generated network model served as our target and the ability of the algorithms
+to find the known neural parameters was assessed. To analyse the robustness of
+the cost functions to synaptic noise and the effects of trial-to-trial
+variability we incorporated these effects into the model.
 
 ** Stellate Microcircuit of the Cochlear Nucleus
 
-We used the \CNSM model to investigate optimisation in \BNNs.  The \CN is the
+As described in Chapter \ref{sec:Chapter1} The \CN is the
 gateway between the peripheral auditory system and the central nervous system,
 with six distinct pathways to higher auditory nuclei
 \citep{CantBenson:2003}. The principal neurons in the circuit are the \TS cells
@@ -179,7 +177,7 @@ We used the microcircuit formed by the \TS neurons, together with their
 inhibitory interneurons and afferent inputs, as our exemplar network.
 
 #+Attr_LaTeX width=0.8\textwidth
-#+CAPTION: [Connections of the mammalian cochlear nucleus]{Connections of the mammalian cochlear nucleus. ANFs sensitive to particular frequencies project to the cochlear nucleus (CN) in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, ventral and dorsal CN, plus an outer layer of small cells known as the granule cell domain (GCD). Type I ANFs are characterised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the GCD.  Golgi cells in the GCD are the only known source of GABA-ergic cells within the VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic D stellate cells (DS) project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, tuberculoventral (TV) cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
+#+CAPTION: [Connections of the mammalian CN]{Connections of the mammalian CN. ANFs sensitive to particular frequencies project to the CN in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, ventral and dorsal CN, plus the GCD. Type I ANFs are categorised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the GCD.  Golgi cells in the GCD are the only known source of GABAergic cells within the VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic DS cells project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, TV cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
 #+LABEL: fig:GA:CNdiagram
 [[../GAChapter/gfx/CNConnections3.pdf]]
 
@@ -191,19 +189,19 @@ mapping of sound frequency to place of resonance in the cochlea) is transferred
 to the \CN through the population of \ANFs \citep{Lorente:1981}. As Figure
 \ref{fig:GA:CNdiagram} shows, \ANFs enter the brainstem ventrally and bifurcate,
 so that each fibre sends axonal collaterals to the ventral and dorsal sections
-of the cochlear nucleus, to organised iso-frequency lamina. \ANFs are
+of the cochlear nucleus, to organised isofrequency lamina. \ANFs are
 categorised into \HSR (Figure \ref{fig:GA:CNdiagram} solid line) and \LSR fibres
 (Figure \ref{fig:GA:CNdiagram} dashed line). \LSR fibres have a higher threshold
 than \HSR fibres and do not saturate in response to loud sounds.
 
 
 #+Attr_LaTeX: width=0.45\textwidth
-#+CAPTION: [CN stellate microcircuit]{Stellate microcircuit showing synaptic interaction within one iso-frequency lamina of the ventral CN (dotted lines) and TV cells of the DCN. Excitatory synapses from ANFs (arrows) are modulated within the network by glycinergic (triangle) and GABAergic (bar) inputs.}
+#+CAPTION: [CN stellate microcircuit]{Stellate microcircuit showing synaptic interaction within one isofrequency lamina of the ventral CN (dotted lines) and TV cells of the DCN. Excitatory synapses from ANFs (arrows) are modulated within the network by glycinergic (triangle) and GABAergic (bar) inputs.}
 #+LABEL: fig:GA:MicroCN
 [[../GAChapter/gfx/SimpleCircuit3.pdf]]
 
 #+Attr_LaTeX: width=0.45\textwidth
-#+CAPTION: [Network projections]{ANFs are ordered into a wide range of frequency channels that are mapped to the VCN and DCN in an tono-topic fashion. Topographic organisation of lateral connections in the CN stellate network shows the range of inputs to TS cells from Golgi, DS and TV cells. Dendritic cell morphologies characterise the range of ANF inputs and hence determine their frequency response. ANF input to TS and TV cells are restricted to one iso-frequency lamina, whereas DS dendrites span 1/3 of the VCN\@. DS cells' axonal plexus typically covers 1/3 of the CN and one half of the DCN, giving them a strong influence throughout the CN \citep{ArnottWallaceEtAl:2004}.}
+#+CAPTION: [Network projections]{ANFs are ordered into a wide range of frequency channels that are mapped to the VCN and DCN in a tonotopic fashion. Topographic organisation of lateral connections in the CN stellate network shows the range of inputs to TS cells from Golgi, DS and TV cells. Dendritic cell morphologies characterise the range of ANF inputs and hence determine their frequency response. ANF inputs to TS and TV cells are restricted to one isofrequency lamina, whereas DS dendrites span one third of the VCN\@. DS cells' axonal plexus typically covers one third of the CN and one half of the DCN, giving them a strong influence throughout the CN \citep{ArnottWallaceEtAl:2004}.}
 #+LABEL: fig:GA:Projections
 [[../GAChapter/gfx/NetworkProjections3.pdf]]
 
@@ -214,7 +212,7 @@ Figure \ref{fig:GA:MicroCN}. Fast, glycinergic inhibition from \TV and \DS cells
 spike interval variability in \TS cells
 \citep{FerragamoGoldingEtAl:1998,WickesbergOertel:1993}. \TV cells in the deep
 layer of the \DCN provide a delayed narrowband inhibition to \TS and \DS cells
-in the \VCN.  The dendrites of \DS cells cover 1/3 of the cross-frequency axis
+in the \VCN.  The dendrites of \DS cells cover one third of the cross-frequency axis
 in the \CN, contributing to this cell's wide frequency response. In turn this
 cell is responsible for altering the frequency responses in \TS and \TV cells
 \citep{SpirouDavisEtAl:1999}. \DS cells are coincidence detectors and have a
@@ -259,7 +257,7 @@ created by cloning the five best genomes and performing the following procedure
 for the remaining 95 genomes.  Candidate genomes for crossover were randomly
 selected based on their fitness, using the roulette-wheel selection probability
 function, where each score was linearly scaled so that the probability of
-selection, $P_i$, is:
+selection, $P_i$, was:
 #+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:1} 
 P_{i} = 1 - \frac{c_{i}}{\mathbf{c}} 
@@ -267,8 +265,8 @@ P_{i} = 1 - \frac{c_{i}}{\mathbf{c}}
 #+END_LaTeX
 where $c_{i}$ is the genome's cost function score, and $\mathbf{c}$ is the sum of
 all genome scores in the current population (note that the sign in front of $c_{i}$
-is negative here, instead of the conventional positive, because we use
-cost-functions corresponding to an error term, so that smaller values of $c_{i}$
+is negative here, instead of the conventional positive, because we used
+cost functions corresponding to an error term, so that smaller values of $c_{i}$
 imply greater fitness). Following selection of a genome, crossover occurred with
 a strictly different selected genome, with probability 0.95.  Alternatively the
 selected genome was cloned, with probability 0.05.  For the group of 95 genomes,
@@ -278,7 +276,7 @@ genome string at the end of the 200th generation was declared the winner.
  
 The optimised parameters were the synaptic weights, number of synaptic
 connections per neuron and a parameter describing the spatial variance of
-connections (details are given in Section \ref{sec:GA:Connectivity}). The genome
+connections (see details in Section \ref{sec:GA:Connectivity} below). The genome
 encoding scheme, shown in Table \ref{tab:GA:Genome}, describes the number of
 bits used for each parameter and the range of values that each parameter could
 take.  For example, the first parameter in Table \ref{tab:GA:Genome}, \wANFTS,
@@ -292,24 +290,6 @@ maximum value lay outside of known physiological values. Genomes were formed by
 concatenating all these parameter bit strings in the order given in Table
 \ref{tab:GA:Genome}.
 
-
-To test the application of \GAs for optimising parameters of a \BNN, a network
-with a known set of parameters was created (the target network).  This approach
-allowed us to assess the \GA by the algorithm's ability to recover the target
-parameters. The target parameters were randomly selected from within the
-physiological range of values given in Table \ref{tab:GA:Genome}.  Target data
-were generated from the target network and used as training data for the \GA by
-incorporating them in an error-based cost function.  A notch noise stimulus
-(described in Section \ref{sec:GA:StimulusGeneration}) was chosen to present to
-the network as it produced a spectrally rich response that was spread over the
-whole frequency range of the target network.  Figure \ref{fig:GA:Costfunctions}A
-shows a spike raster plot for all \TS cells to a presentation of the notch noise
-stimulus. The vertical axis is arranged according to the frequency to which the
-neuron is most sensitive (the centre frequency). There is a clear reduction in
-the firing rate corresponding to the stop band in the notch noise. Figure
-\ref{fig:GA:Costfunctions}B illustrates response to 250 repetitions for a single
-\TS cell in the centre of the network, at the rising edge of the notch (arrow in
-Figure \ref{fig:GA:Costfunctions}A).
 
 #+BEGIN_LaTeX
   \begin{table}[tp!]
@@ -357,6 +337,25 @@ Figure \ref{fig:GA:Costfunctions}A).
   \end{table}
 #+END_LaTeX
 
+To test the application of \GAs for optimising parameters of a \BNN, a network
+with a known set of parameters was created (the target network).  This approach
+allowed us to assess the \GA by the algorithm's ability to recover the target
+parameters. The target parameters were randomly selected from within the
+physiological range of values given in Table \ref{tab:GA:Genome}.  Target data
+were generated from the target network and used as training data for the \GA by
+incorporating them in an error-based cost function.  A notch noise stimulus
+(described in Section \ref{sec:GA:StimulusGeneration}) was chosen to present to
+the network as it produced a spectrally rich response that was spread over the
+whole frequency range of the target network.  Figure \ref{fig:GA:Costfunctions}A
+shows a spike raster plot for the response of all \TS cells to a presentation of the notch noise
+stimulus. The vertical axis is arranged according to the frequency to which the
+neuron is most sensitive (the centre frequency). There was a clear reduction in
+the firing rate corresponding to the stop band in the notch noise. Figure
+\ref{fig:GA:Costfunctions}B shows the responses to 250 repetitions for a single
+\TS cell in the centre of the network, at the rising edge of the notch (arrow in
+Figure \ref{fig:GA:Costfunctions}A).
+
+
 ** Cost Functions
 :PROPERTIES:
 :CUSTOM_ID: sec:GA:CostFunc
@@ -391,7 +390,7 @@ instantaneous firing rates, and intracellular voltages.
     network (CF 3.45kHz) from 250 repetitions of the stimulus are
     shown. This cell was placed at the edge of the spectral notch (arrow
     in (A)). (C) PSTH response of the same \TS cell used in (B) (bin
-    width 0.25~ms, reps. 250). Note the regularly-spaced peaks at the
+    width 0.25~ms, 250 repetitions). Note the regularly-spaced peaks at the
     start of the stimulus due to the \TS cells' chopper response
     characteristics. Irregular peaks throughout the stimulus are due to
     temporal features of the notch noise captured by the auditory filter
@@ -401,7 +400,7 @@ instantaneous firing rates, and intracellular voltages.
     \PSTHs for every cell in the network. (E) Average intracellular
     voltage, smoothed from 250 repetitions, for the same \TS cell. There
     was some similarity with the \PSTH in (C), particularly the location
-    of the peaks but (E) contains subthreshold effects. (F) Average
+    of the peaks, but (E) demonstrates subthreshold effects. (F) Average
     intracellular voltage using 25 repetitions was more variable than
     (E) since single action potentials can distort the trace.}
   \label{fig:GA:Costfunctions}
@@ -434,8 +433,7 @@ the mammalian auditory system \citep{Bregman:1990}.  Spike times give accurate
 temporal information but are limited by their focus on individual stimulus
 presentations, which may contain various sources of noise and trial-to-trial
 variability. The metric we used for comparing trial and target spike trains
-applied a cost based on relative timing of spikes (for a review see
-\citet{Victor:2005}).
+applied a cost based on relative timing of spikes (see \citet{Victor:2005}).
 
 The \ST cost function was defined as:
 #+BEGIN_LaTeX
@@ -450,7 +448,7 @@ stimulus repetitions, $x_{ij}$ is the vector containing the spike times of the
 trial network for stimulus repetition $j$ produced by neuron /i/, and $x_{ik}^{*}$
 is the vector containing the spike times of the target network for the stimulus
 repetition $k$ produced by neuron /i/.  The units for \PsiST are msec per cell
-per spike train for 60 ms duration spike trains but are milliseconds in the
+per spike train for 60 ms duration spike trains, but are milliseconds in the
 remainder of the study. $D(x_{ij} ,x_{ik}^{*})$ is the difference measure between
 trial and target network spike trains as found by dynamic programming.  Dynamic
 programming is a method for analysing sequential processes \citep{Denardo:1982}
@@ -610,7 +608,7 @@ f(x) = 456.0 \times 10^{\frac{x}{11.9} } - 0.8, \quad (Hz)
 \end{equation}
 \noindent where /x/ is the distance in centimetres from the apex.
 
-The level of spontaneous activity in \HSR and \LSR \AN fibres was set to 50 and
+The level of spontaneous activity in \HSR and \LSR\space \AN fibres was set to 50 and
 0.5 Hz, respectively. The stimulus was passed through the \AN model for each
 frequency channel for both \LSR and \HSR fibres, producing an instantaneous
 firing rate response that was down-sampled to 10 kHz. Twenty \HSR and ten \LSR
@@ -633,7 +631,7 @@ potassium channels, \IKA
 \citep{FerragamoGoldingEtAl:1998,RothmanManis:2003b}. Type II responses have
 only one phasic \AP at the start of the stimulus, characteristic of ventral \CN
 bushy cells, which enables them to rapidly follow \ANF input events
-\citep{OertelWuEtAl:1988,SmithRhode:1989}. \IKLT is present in type-II units and
+\citep{OertelWuEtAl:1988,SmithRhode:1989}. \IKLT is present in type II units and
 is active at resting membrane potential, which allows for rapid changes
 depending on the input. \DS cells respond with a single \AP for injected current
 levels near threshold, then discharge regularly for higher current levels
@@ -653,7 +651,7 @@ at 37\degC, and matched them to the model types in \citet{RothmanManis:2003b}.
 #+BEGIN_LaTeX
   \begin{table}[tp]
     \centering
-    \caption{Cell-type Membrane Current Parameters}\label{tab:GA:CellTypes}
+    \caption{Cell-type membrane current parameters}\label{tab:GA:CellTypes}
     \begin{tabularx}{0.8\linewidth}{lcccc}\toprule
              Cells            &  \TS   &  \DS   &   \TV   & Golgi \\ %\hline
       Current Clamp Model     &  I-t   &  I-II  &   I-c   & I-c \\[0.5ex] \midrule
@@ -693,11 +691,11 @@ a typical physiological responses to frequencies 2 octaves below and 1 octave
 above their \CF \citep{PalmerJiangEtAl:1996,PaoliniClark:1999} (see fixed
 parameters in Table \ref{tab:GA:GeneralParams}).  Physiological evidence in the
 analogous granule cell domain of the \VCN, the marginal shell in cats, shows
-units with monotonic, non-saturating rate-level curves, similar to \LSR \ANFs
-\citep{GhoshalKim:1996a}. \ANF labeling evidence shows the absence of \HSR \ANFs
+units with monotonic, non-saturating rate-level curves, similar to \LSR\space \ANFs
+\citep{GhoshalKim:1996a}. \ANF labeling evidence shows the absence of \HSR\space \ANFs
 in the Golgi cell domain of the \CN
 \citep{Liberman:1991,Ryugo:2008,RhodeOertelEtAl:1983}, so the strength of Golgi
-cells' excitation is given solely by \LSR \ANFs (\wLSRGLG and
+cells' excitation is given solely by \LSR\space \ANFs (\wLSRGLG and
 \nLSRGLG). Wide-band inhibition of \TV cells by \DS cells includes an additional
 channel offset, \oDSTV, to account for the asymmetry of wideband suppression
 found in \TV cells \citep{ReissYoung:2005}.  In this model, the offset was added
@@ -761,7 +759,7 @@ non-V-shaped cost function gradients for different inputs.
 \newpage
 
 
-* Optimisation of BNNs Using Different Inputs
+* Optimisation of Biophysically-Realistic Neural Networks Using Different Inputs
   :PROPERTIES:
   :CUSTOM_ID:    sec:GA:ResultDiffAN
   :END:
@@ -843,7 +841,7 @@ best genome.
     % \includegraphics[width=\textwidth]{boxplot25-sep-ifr}\\
     % \includegraphics[width=\textwidth]{boxplot25-sep-iv}\\
     \includegraphics[width=\textwidth]{../GAChapter/gfx/boxplot25-sep}
-    \caption[Cross comparison of best genomes]{Cross comparison of best
+    \caption[Cross comparison of best genomes (25 repetitions)]{Cross comparison of best
       genomes generated using \GA with 25 repetitions, measured against
       the target, 1-step and 5-step parameter perturbation distributions.
       The boxplots show the three best genomes evaluated ten times for
@@ -1185,13 +1183,13 @@ performance.
   IFR (spikes/ms)& 2.169  &    0.154698    & 0.1557 (8.6E-4) \\
    AIV (mV/ms)   & 2.325  &   0.0292369    & 0.0292 (9.8E-5)\\ \hline
   \end{tabularx}
-  \caption{Best genomes obtained from GAs run with 100 repetitions. $\ast$ PE = mean relative parameter error. }
+  \caption[Best genome parameter errors (100 repetitions)]{Best genomes obtained from GAs run with 100 repetitions. $\ast$ PE = mean relative parameter error. }
     \label{tab:BestGenome100}
   \end{table}
 #+END_LaTeX
 
 #+ATTR_LATEX: width=\textwidth
-#+Caption: {Cross comparison of best genomes generated using GAs with 100 repetitions, measured against the target, 1-step and 5-step parameter perturbation distributions.  The boxplots show the best genomes evaluated ten times for each cost function.}
+#+Caption: [Cross comparison of best genomes (100 repetitions)]{Cross comparison of best genomes generated using GAs with 100 repetitions, measured against the target, 1-step and 5-step parameter perturbation distributions.  The boxplots show the best genomes evaluated ten times for each cost function.}
 #+LABEL: fig:GA:BestGenomemixed
 [[../GAChapter/gfx/boxplot-100+25.pdf]]
 
@@ -1690,7 +1688,7 @@ by comparing the ratio of V-shaped to non-V-shaped cost function gradients for
 different inputs.
 
 #+BEGIN_LaTeX
-  \begin{figure}[tp!]  
+  \begin{figure}[tp]  
     \centering
     \includegraphics[width=\textwidth]{../GAChapter/gfx/Example_SensAnalysis}
     \caption{Examples of ST cost function sensitivity analysis performed on
@@ -1966,7 +1964,7 @@ Regression of best genomes against the parameter gradients used the function
 \textsf{regress} from [[latex:progname][GNU Octave]]'s statistics toolbox, which is a linear
 regression tool using least squares fit of Y and X \citep{Eaton:2002}. The
 significant level (alpha) used to calculate the confidence interval was set to
-0.05. The Y variable was dependant on which side of the target the best genome's
+0.05. The Y variable was dependent on which side of the target the best genome's
 parameter lay to determine the gradient; if there was no gradient (for targets
 too close to the range termination), the other gradient was used. X was the
 relative parameter error of the best genomes as used previously
@@ -2428,7 +2426,7 @@ neuron types and the size of populations are restrictive. Small \BNNs enable
 manipulating cell-based as well as network based parameters
 \citep{TaylorEnoka:2004}.
 
-Reduction of parameters to cell types or cell-type to cell-type connection,
+Reduction of parameters to cell types or connections between cell types,
 rather than individual cell or individual synapse, is a necessity with larger
 \BNN models. A further dilemma of data reduction is in the cost function.
 # \citet{TaylorEnoka:2004} manipulated cell-based as well as network based
