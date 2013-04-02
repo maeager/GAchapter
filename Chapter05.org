@@ -162,7 +162,7 @@ variability we incorporated these effects into the model.
 
 ** Stellate Microcircuit of the Cochlear Nucleus
 
-As described in Chapter \ref{sec:Chapter1} The \CN is the
+As described in Chapter \ref{sec:IntroChapter} The \CN is the
 gateway between the peripheral auditory system and the central nervous system,
 with six distinct pathways to higher auditory nuclei
 \citep{CantBenson:2003}. The principal neurons in the circuit are the \TS cells
