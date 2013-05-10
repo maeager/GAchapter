@@ -597,7 +597,7 @@ the frequency range of \ANFs converging on \DS cells
 #+BEGIN_LaTeX
   \begin{figure}[th]
     \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{../VowelProcessingChapter/gfx/notchstim.pdf}
+    \includegraphics[width=\textwidth,keepaspectratio]{../GAChapter/gfx/notchstim.pdf}
     \caption{Notch stimulus and HSR ANF filterbank output.}
     \label{fig:NotchStim}
   \end{figure}
