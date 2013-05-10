@@ -1,6 +1,6 @@
 reset
 set term postscript eps size 7,3.25 enhanced defaultplex leveldefault mono dashed dashlength 1.0 linewidth 2.0 butt noclip  palfuncparam 2000,0.003  "Helvetica" 18
-set output "../VowelProcessingChapter/gfx/notchstim.eps"
+set output "../GAChapter/gfx/notchstim.eps"
 set multiplot layout 4,1
 unset key
 unset xlabel
@@ -16,11 +16,11 @@ set ytics nomirror  autofreq
 set pm3d map
 unset colorbox
 set rmargin at screen 1
-set lmargin ar screen 0
+set lmargin at screen 0
 set bmargin at screen 0.1
 set ylabel "Frequency Channels" font "Helvetica,24"
 set xlabel " Time (ms) " font "Helvetica,24"
 splot '<  sed -ne "9~6p" gfx/FilteredFile_Notch-sb6-1oct_L60_Del10_Dur48.dat' matrix u ($1/50000):2:3 w pm3d
 unset multiplot
-! fixbb '../VowelProcessingChapter/gfx/notchstim.eps'
-! epstopdf --res=300  '../VowelProcessingChapterx/gfx/notchstim.eps'
+! fixbb '../GAChapter/gfx/notchstim.eps'
+! epstopdf --res=300  '../GAChapter/gfx/notchstim.eps'
