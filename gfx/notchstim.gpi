@@ -19,9 +19,12 @@ set colorbox vertical
 set rmargin at screen 1
 set lmargin at screen 0
 set bmargin at screen 0.1
+set zrange [0:*]
+set cbrange [0:800]
 set ylabel "Frequency Channels" font "Helvetica,24"
 set xlabel " Time (ms) " font "Helvetica,24"
-splot '<  sed -ne "9~6p" ../GAChapter/gfx/FilteredFile_Notch-sb6-1oct_L60_Del10_Dur48.dat' matrix u ($1/50000):2:3 w pm3d
+# LSR use "9~6p", for HSR use "11~6p"
+splot '<  sed -ne "11~6p" ../GAChapter/gfx/FilteredFile_Notch-sb6-1oct_L60_Del10_Dur48.dat' matrix u ($1/50000):2:($3) w pm3d
 unset multiplot
 ! fixbb '../GAChapter/gfx/notchstim.eps'
 # ! epstopdf --res=300  '../GAChapter/gfx/notchstim.eps'
