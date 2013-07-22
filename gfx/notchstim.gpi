@@ -21,6 +21,7 @@ set lmargin at screen 0
 set bmargin at screen 0.1
 set zrange [0:*]
 set cbrange [0:800]
+set cblabel " Firing Rate (sp/s) " font "Helvetica,22"
 set ylabel "Frequency Channels" font "Helvetica,24"
 set xlabel " Time (ms) " font "Helvetica,24"
 # LSR use "9~6p", for HSR use "11~6p"
