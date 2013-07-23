@@ -23,7 +23,6 @@
 # {GA optimsation of the \CN stellate network}
 # \end{synopsis}
 
-
 * Prelude                                                          :noexport:
 
 #+begin_src emacs-lisp
@@ -81,10 +80,11 @@ modelling \BNNs.
 # models that include a description of currents flowing through membrane ion
 # channels, such as the \HH model.)  To develop larger \BNNs, with complex network
 # behaviour a number of interrelated issues need to be considered: (a)
-Despite these considerable advances, uncertainty remains
-about the best means to reliably constrain the many free parameters in a model where experimental data are
-limited.  This chapter seeks to address this issue using the \CNSM
-model as an exemplar.
+Despite these considerable advances, uncertainty remains about the best means to
+reliably constrain the many free parameters in a model where experimental data
+are limited.  This chapter seeks to address this issue using the \CNSM model as
+an example of simultaneous \BNN parameter optimisation and surrogate data in
+place of experimental data.
 
 
 One set of approaches to constraining \BNNs, denoted as "bottom-up", use
@@ -99,11 +99,11 @@ activity to infer the underlying model parameters. Such networks were originally
 developed to be abstract feature detectors \citep{Malsberg:1973} or simple nerve
 field projections \citep{Amari:1980} based on general principles of neural
 processing.  Optimisation and training algorithms for top-down network
-constraint are highly efficient and generally involve a gradient-decent search
+constraint are highly efficient and generally involve a gradient-descent search
 with a training method called back-propagation, where the output error is
 calculated back through the network \citep{RumelhartHintonEtAl:1986a}. These
 algorithms are not applicable to \BNNs, however, because the input\slash{}output
-relationships of \HH-type models are not analytical, making them unsuitable for
+relationships of \HH-type models are not mathematically suitable for
 error back-propagation.
 
 
@@ -147,23 +147,23 @@ networks may require more techniques from the top-down methods in cost analysis
 and optimisation algorithms.
 
 
-This section of the thesis reports on an investigation of the application of
+This chapter of the thesis reports on an investigation of the application of
 \GAs in constraining synaptic parameters in a topographically-ordered \BNN,
 using the \CNSM model as an example of a network in the auditory brainstem. The
 design of the \GA, described below in Section \ref{sec:GA:Methods}, includes the
 specification of a cost function that measures how well the model network
-reproduces the target data. It assesses three alternate cost functions derived,
-in different ways, from the output of neural responses in the network. Each cost
-function was based on measures of (1) spike timing, (2) instantaneous firing
-rate, or (3) average intracellular voltage. Surrogate data from a randomly
-generated network model served as our target and the ability of the algorithms
-to find the known neural parameters was assessed. To analyse the robustness of
-the cost functions to synaptic noise and the effects of trial-to-trial
-variability we incorporated these effects into the model.
+reproduces the target data. It assesses three alternate cost functions derived
+from the outputs of neural responses in the network. Each cost function was
+based on measures of (1) spike timing, (2) instantaneous firing rate, or (3)
+average intracellular voltage. Surrogate data from a randomly generated network
+model served as our target and the ability of the algorithms to find the known
+neural parameters was assessed. To analyse the robustness of the cost functions
+to synaptic noise and the effects of trial-to-trial variability, we incorporated
+these effects into the model.
 
 ** Stellate Microcircuit of the Cochlear Nucleus
 
-As described in Chapter \ref{sec:IntroChapter} the \CN is the
+As described in Chapter \ref{sec:IntroChapter}, the \CN is the
 gateway between the peripheral auditory system and the central nervous system,
 with six distinct pathways to higher auditory nuclei
 \citep{CantBenson:2003}.
@@ -175,12 +175,12 @@ with six distinct pathways to higher auditory nuclei
 # from inhibitory interneurons play a critical role in modulating the input-output
 # response properties of \TS neurons
 # \citep{FerragamoGoldingEtAl:1998,NeedhamPaolini:2006,PaoliniClareyEtAl:2005}.
-The exemplar network used in this Chapter is a simplified version of the \CNSM model.
+The exemplar network used in this chapter is a simplified version of the \CNSM model.
 # the microcircuit formed by the \TS neurons, together with their
 # inhibitory interneurons and afferent inputs, as our exemplar network.
 
 #+Attr_LaTeX width=0.8\textwidth
-#+CAPTION: [Connections of the mammalian CN]{Connections of the mammalian CN. ANFs sensitive to particular frequencies project to the CN in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, ventral and dorsal CN, plus the GCD. Type I ANFs are categorised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the GCD.  Golgi cells in the GCD are the only known source of GABAergic cells within the VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic DS cells project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, TV cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
+#+CAPTION: [Connections of the mammalian CN]{Connections of the mammalian CN. ANFs sensitive to particular frequencies project to the CN in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, \VCN and \DCN, plus the \GCD. Type I \ANFs are categorised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the \GCD.  Golgi cells in the \GCD are the only known source of GABAergic cells within the \VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic DS cells project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, TV cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
 #+LABEL: fig:GA:CNdiagram
 [[../GAChapter/gfx/CNConnections3.pdf]]
 
@@ -216,7 +216,7 @@ spike interval variability in \TS cells
 \citep{FerragamoGoldingEtAl:1998,WickesbergOertel:1993}. \TV cells in the deep
 layer of the \DCN provide a delayed narrowband inhibition to \TS and \DS cells
 in the \VCN.  The dendrites of \DS cells cover one third of the cross-frequency axis
-in the \CN, contributing to this cell's wide frequency response. In turn this
+in the \CN, contributing to this cell's wide frequency response. In turn, this
 cell is responsible for altering the frequency responses in \TS and \TV cells
 \citep{SpirouDavisEtAl:1999}. \DS cells are coincidence detectors and have a
 precisely timed onset response that affects the temporal properties of \TS cells
@@ -226,9 +226,8 @@ from Golgi cells (Figure \ref{fig:GA:CNdiagram}) modulates the level of
 excitation necessary to reach threshold for all \CN cells
 \citep{CasparyBackoffEtAl:1994,FerragamoGoldingEtAl:1998}. Feedback circuits
 from the olivary complex to the \VCN are also known to use \GABA as a
-neurotransmitter \citep{SaintMorestEtAl:1989}, however this was not included in
+neurotransmitter \citep{SaintMorestEtAl:1989}; however, this was not included in
 our model.
-
 
 * Methods
 :PROPERTIES:
@@ -241,7 +240,7 @@ our model.
 model that is "fittest" in the sense that it best reproduces the supplied
 data. Each generation of models is obtained from the previous one by using
 fitness-based selection criteria to create new models from existing members of
-the population. In this process a model is represented by a genome, which is the
+the population. In this process, a model is represented by a genome, which is the
 result of mapping the model parameters into binary strings and concatenating
 them together. Each population of genomes is evaluated for fitness using a
 carefully tailored cost function.  The basic principle of genetic reproduction,
@@ -357,7 +356,6 @@ the firing rate corresponding to the stop band in the notch noise. Figure
 \ref{fig:GA:Costfunctions}B shows the responses to 250 repetitions for a single
 \TS cell in the centre of the network, at the rising edge of the notch (arrow in
 Figure \ref{fig:GA:Costfunctions}A).
-
 
 ** Cost Functions
 :PROPERTIES:
@@ -549,7 +547,8 @@ physiological responses, especially different stellate cells
 The \AIV cost function was defined using the mean-squared error between averaged
 voltage waveforms of each trial neuron, $\overline{v}_{i}$, and the corresponding
 target \AIV waveform, $\overline{v}_{i}^{\ast}$. It was normalised to obtain a
-voltage (mV) error per neuron per stimulus. The \AIV cost function is defined as:
+voltage (mV) error per neuron per stimulus (mV is used as an abbreviation). The
+\AIV cost function is defined as:
 #+BEGIN_LaTeX
 \begin{equation} \label{eq:GA:4}
 \PsiAIV =\frac{1}{R}
@@ -593,7 +592,6 @@ suppression of \TV cells by \DS cells \citep{ReissYoung:2005} and to estimate
 the frequency range of \ANFs converging on \DS cells
 \citep{PalmerJiangEtAl:1996}.
 
-
 #+BEGIN_LaTeX
   \begin{figure}[th]
     \centering
@@ -603,12 +601,10 @@ the frequency range of \ANFs converging on \DS cells
   \end{figure}
 #+END_LaTeX
 
-
-
 ** Auditory Nerve Model
 
 Figure \ref{fig:NotchStim} shows the notch stimulus and the output responses of
-the filterbank of HSR ANF frequency channels.  The input to the stellate
+the filterbank of \HSR\space \ANF frequency channels.  The input to the stellate
 microcircuit was provided by the phenomenological \AN model of
 \citet{HeinzZhangEtAl:2001} and originally developed by Carney and colleagues
 \citep{Carney:1993,ZhangCarney:2001}. The model reproduces all significant \ANF
@@ -628,8 +624,8 @@ f(x) = 456.0 \times 10^{\frac{x}{11.9} } - 0.8, \quad (Hz)
 The level of spontaneous activity in \HSR and \LSR\space \AN fibres was set to 50 and
 0.5 Hz, respectively. The stimulus was passed through the \AN model for each
 frequency channel for both \LSR and \HSR fibres, producing an instantaneous
-firing rate response that was down-sampled to 10 kHz. Twenty \HSR and ten \LSR
-\AN fibres were simulated for each frequency-channel. Spike times were generated
+firing rate response that was down-sampled to 10 kHz. Twenty \HSR and ten 
+\LSR\space \AN fibres were simulated for each frequency-channel. Spike times were generated
 independently for each fibre from the instantaneous firing rate using a
 pseudo-random spike-generator \citep{JacksonCarney:2005}, with refractory
 effects similar to those present in \ANFs.
@@ -655,7 +651,7 @@ levels near threshold, then discharge regularly for higher current levels
 \citep{OertelWuEtAl:1988,PaoliniClark:1999}, corresponding to an intermediate
 type I-II response. \DS cells have a small amount of \IKLT current to reduce the
 cells' input resistance and enhance coincidence detection. The Golgi cell model
-used in this Chapter was a type I-c single compartment \RM model as distinct
+used in this chapter was a type I-c single compartment \RM model as distinct
 from the filter based spiking Poisson neural model, used in Chapter
 \ref{sec:Ch3:GolgiModel}.
 
@@ -772,8 +768,6 @@ different from zero.  This was done for the identical and the different \ANF
 inputs, and robustness was evaluated by comparing the ratio of V-shaped to
 non-V-shaped cost function gradients for different inputs.
 
-
-
 * Optimisation of Biophysically-Realistic Neural Networks Using Different Inputs
   :PROPERTIES:
   :CUSTOM_ID:    sec:GA:ResultDiffAN
@@ -835,7 +829,6 @@ cost function. For the \AIV cost function, the best genome had a score that was
 greater that the range of scores found for the target network, indicating a
 discrepancy between the behaviour of the best network and that of the target, as
 measured by the cost function.
-
 
 *** Cost Function Cross Comparison
 
@@ -936,7 +929,7 @@ increasing mean relative error across all best genomes and all cost functions.
 
 
 #+ATTR_LaTeX: width=\textwidth
-#+CAPTION: [Best genome parameter errors]{Parameter errors of the best genomes in 3 GA simulations for each cost function: ST (grey diamond), IFR (block diamond), and  AIV (unfilled circle). Errors were normalised in terms of the target parameter values.}
+#+CAPTION: [Best genome parameter errors]{Parameter errors of the best genomes in 3 GA simulations for each cost function: ST (grey diamond), IFR (block diamond), and  AIV (unfilled circle). Errors were normalised in terms of the target parameter values. Points below the line were fit perfectly to the target value.}
 #+label: fig:GA:R2
 [[../GAChapter/gfx/BestGenomesReRaw_CombinedLog.pdf]]
 
@@ -981,7 +974,6 @@ half.  Weight parameters were spread over the whole range.
 #  (Figure \ref{fig:GA:8}G) presumably due to subthreshold information
 #  within the intracellular voltages.
 # \clearpage
-
 
 ** Parameter Sensitivity
    :PROPERTIES:
@@ -1036,12 +1028,11 @@ covers 11 combinations, including the target value.
 [[../GAChapter/gfx/Histograms-Normalised.pdf]]
 
 
-
 #  In total the 5 units step experiment covers 9.72\% of
 #  the total parameter space and the 1 unit step experiment covers
 #  2.65\%. {\bf What does this mean?? 11\% relative error = 1 step on average}
 
-In general, 1 unit step perturbations produced cost function scores both
+In general, 1 unit step perturbations produced cost function scores that were
 slightly above and slightly below the range produced by the target network
 (compare dashed and bold lines in Figure \ref{fig:GA:R3}A). Five unit step
 perturbations produced cost functions scores that were largely above the target
@@ -1057,7 +1048,6 @@ the target.
 #  values. Separated from target distribution for the \IFR cost function than for
 #  either of the other cost functions. This is consistent with generally poorer
 #  performance of the \IFR cost function.
-
 
 Best genomes scores from \GA runs trained with either the \ST or the \IFR cost
 function lay inside the range produced by the 1 unit step perturbation, whereas
@@ -1087,7 +1077,6 @@ function becomes increasingly marginal. This finding is consistent with the
 observation that for larger, 5 unit step perturbations the effect was much
 diminished or absent.
 
-
 #  When the target parameters were evaluated 100 times with different \ANF
 #  input spikes the distribution of the \ST cost function scores moved to
 #  9.72 msec ($\pm$ 0.06 msec) (Figure \ref{fig:GA:9}B).  The 1-step
@@ -1112,7 +1101,6 @@ diminished or absent.
 #  best performing genomes in the \GA were very close to the range of the
 #  1-step and target genome scores (inset Figure \ref{fig:GA:11}B).
 
-# \clearpage
 ** Effects of Noise
    :PROPERTIES:
    :CUSTOM_ID: sec:GA:effects-noise
@@ -1217,8 +1205,6 @@ performance.
 
 
 
-
-
 #  For comparison, also shown on these graphs are the best genome scores
 #  when only 25 repetitions were used, as well the accompanying histograms
 #  for the 1 unit step perturbation analysis.
@@ -1282,7 +1268,6 @@ performance.
 #  and so better reveal the underlying effect. It is also a practical approach to
 #  overcoming the problem of input noise, since it can often be achieved
 #  experimentally.}
-
 
 * Optimisation of BNNs using Ideal inputs    :noexport:
   :PROPERTIES:
@@ -1686,7 +1671,6 @@ not far behind.
 #   \label{tab:GA:IdealXComp}
 # \end{table}
 
-
 * Sensitivity Analysis of Individual Parameters near the Global Optimum :noexport:
   :PROPERTIES:
   :SHORTTITLE: Individual parameter sensitivity
@@ -1786,7 +1770,6 @@ allocation of synapses within the network.
 #  bilateral, unilateral or absent, or contained opposing gradients.
 
 #  I would be better to present these results in table comparing
-
 
 *** Spike Timing
 
@@ -2067,7 +2050,6 @@ directly log-correlated with the cost function gradients around the target.
 # % ** Comparison with other studies
 # % ** Other considerations for constraining \BNNs
 # % * Conclusion
-
 
 * Discussion
 
@@ -2528,7 +2510,7 @@ required for optimisation, but uniformity is unlikely for the real network
 weights.  A Gaussian weight distribution is common among network models and
 would only add one parameter per connection (i.e.\space standard deviation with
 the existing uniform mean parameter).  Optimising conduction and synaptic delay
-was not included in this Chapter, but could add to further realism in \BNN
+was not included in this chapter, but could add to further realism in \BNN
 optimisation.
 
 A further dilemma with increasing size of the model or experimental data is the
@@ -2540,14 +2522,13 @@ reduction preceding the comparison function generally includes a feature-based
 function across populations of neurons; for example, \citet{TaylorEnoka:2004}
 calculated the synchronisation index of cell types. This method is fast and
 reduces noise, but the information carried by individual cells is lost.  The
-cost functions in this Chapter performed data reduction after the error
+cost functions in this chapter performed data reduction after the error
 comparisons at the individual neuron level.
 
 # \yellownote{stochastic versus stereotypical principles of synaptic  organisation and cell types}
 
-#  {experimental considerations}
 A final issue that should be considered for modelling and optimising \BNN models
-is computational efficiency. In this Chapter, the \CN stellate network consisted
+is computational efficiency. In this chapter, the \CN stellate network consisted
 of 240 HH-like cells simulated in [[latex:progname][NEURON]] and took approximately 90 seconds to
 run a 80 msec stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI Altix)[fn:: Note that
 the ANF instantaneous rate for each frequency channel was already calculated and
@@ -2562,8 +2543,6 @@ of time required to run the \GA for 201 generations of 100 genomes took
 approximately 8 hours (a maximum of 40 CPUs were used at any point.  These
 computational loads are feasible in modern systems and will enhance the
 development of more realistic \BNN models.
-
-
 
 * Discussion (version 1) 					   :noexport:
   :PROPERTIES:
@@ -2916,7 +2895,6 @@ sub-optimal.  On the 64-CPU SGI Altix, the amount of time required to run the
 \GA for 201 generations of 100 genomes took approximately 8 hours (a maximum of
 40 CPUs were used at any point.  These computational loads are feasible in
 modern systems and will enhance the development of more realistic \BNN models.
-
 
 * Conclusion
 
