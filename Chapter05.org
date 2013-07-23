@@ -766,7 +766,7 @@ different from zero.  This was done for the identical and the different \ANF
 inputs, and robustness was evaluated by comparing the ratio of V-shaped to
 non-V-shaped cost function gradients for different inputs.
 
-* Optimisation of Biophysically-Realistic Neural Networks Using Different Inputs
+* Results: Optimisation of Biophysically-Realistic Neural Networks Using Different Inputs
   :PROPERTIES:
   :CUSTOM_ID:    sec:GA:ResultDiffAN
   :END:
@@ -841,14 +841,14 @@ with the different cost functions. In general, the lowest scores were obtained
 when using the same cost function for evaluation as was used for training of the
 best genome.
 
-\yellownote{DG Figure \ref{fig:NotchStim} very dense and boxes look like they are floating.  Box the subfigures.  Why is the 1-step and 5-step here?  Label subfigures A,B,C}
+
 #+BEGIN_LaTeX
   \begin{figure}[th!]
     \centering
     % \includegraphics[width=\textwidth]{boxplot25-sep-st}\\
     % \includegraphics[width=\textwidth]{boxplot25-sep-ifr}\\
     % \includegraphics[width=\textwidth]{boxplot25-sep-iv}\\
-    \includegraphics[width=\textwidth]{../GAChapter/gfx/boxplot25-sep}
+    \includegraphics[width=\textwidth]{../GAChapter/src/boxplot25-sep.pdf}
     \caption[Cross comparison of best genomes (25 repetitions)]{Cross comparison of best
       genomes generated using \GA with 25 repetitions, measured against
       the target, 1-step and 5-step parameter perturbation distributions.
@@ -1174,11 +1174,11 @@ This suggests that, although the increased number of repetitions reduced noise
 (and, therefore, cost function scores), this was not a factor limiting \GA
 performance.
 
-# \clearpage
-#+ATTR_LATEX: width=\textwidth
-#+CAPTION: [Comparison of best genomes]{Comparison of best genomes trained with different inputs using 100 or 25 repetitions.  Target genome was run 100 times and each GA's best genomes were run 10 times. For reference, horizontal lines show the the median of the distribution of parameter perturbation for 1-step (dark line) and 5-steps (light line).}
-#+label: fig:GA:R7
-[[../GAChapter/gfx/best25+100.pdf]]
+# # \clearpage
+# #+ATTR_LATEX: width=\textwidth
+# #+CAPTION: [Comparison of best genomes]{Comparison of best genomes trained with different inputs using 100 or 25 repetitions.  Target genome was run 100 times and each GA's best genomes were run 10 times. For reference, horizontal lines show the the median of the distribution of parameter perturbation for 1-step (dark line) and 5-steps (light line).}
+# #+label: fig:GA:R7
+#   [[../GAChapter/gfx/best25+100.pdf]]
 
 #+BEGIN_LaTeX
   \begin{table}[th]
@@ -1195,11 +1195,11 @@ performance.
 #+END_LaTeX
 
 
-\yellownote{Boxplot difficult to read}
+# \yellownote{Boxplot difficult to read}
 #+ATTR_LATEX: width=\textwidth
 #+Caption: [Cross comparison of best genomes (100 repetitions)]{Cross comparison of best genomes generated using GAs with 100 repetitions, measured against the target, 1-step and 5-step parameter perturbation distributions.  The boxplots show the best genomes evaluated ten times for each cost function.}
-#+LABEL: fig:GA:BestGenomemixed
-[[../GAChapter/gfx/boxplot-100+25.pdf]]
+#+LABEL: fig:GA:R7
+[[../GAChapter/src/boxplot-100+25.pdf]]
 
 
 
@@ -2420,17 +2420,20 @@ or stochastic optimisation methods have been shown to be effective in large
 parameter spaces within a noisy fitness environment.
 # \yellownote{References required in this paragraph}
 # Evolution of the connection of weights can use \GAs then back propagation for local refining.
+Hybrid techniques may be advantageous considering network structure and synaptic
+weights may not be well suited to the same optimisation method
+\citep{AngelineSaundersEtAl:1994,SohnDagli:2004}.
 
 Using experimental data from populations of neurons adds more complexity to the
-problem of constraining \BNNs.  Alternative methods to infer connectivity and
+problem of constraining \BNNs.   Optimising spiking neural networks to an exact solution  
+relies on analytically differentiable neural models and synapses 
+\citep{BretteGuigon:2003,Brette:2006}, and other analytical methods have been reviewed \citep{Brette:2007,EggertHemmen:2001}.
+ Alternative methods to infer connectivity and
 weights on a generic spiking model using extracellular spiking data have had
 some success \citep{MakarovPanetsosEtAl:2005}, but the underlying properties of
 neuron types and the size of populations are restrictive. Small \BNNs enable
 manipulating cell-based as well as network-based parameters
-\citep{TaylorEnoka:2004}. Optimising spiking neural networks to an exact solution  
-relies on analytically differentiable neural models 
-\cite{BretteGuigon:2003,Brette:2006,Brette:2007}.
-
+\citep{TaylorEnoka:2004}.
 # \cite{RossantGoodmanEtAl:2010}
 
 Reduction of parameters to cell types or connections between cell types,
@@ -2818,12 +2821,10 @@ of inhibitory connections (parameters 12-30) in the \IFR best genomes (Figure
 function gradients near the global optimum (Figure \ref{fig:GA:14}).
 
 
-
 The sensitivity ratios for the \AIV-25 cost function were 13:17 (Figure
 \ref{fig:GA:15}B).  This demonstrates that the \AIV-25 cost function has greater
 robustness to noise than the \IFR cost function, and similar performance to the
 \ST cost function.
-
 
 
 In general, parameters 3, 9, 11, and 29 (corresponding to \nHSRTS,
