@@ -13,11 +13,9 @@
 #+LATEX_HEADER: \graphicspath{{../GAChapter/gfx/}}
 # Any missing graphics will be here {/media/data/Work/thesis-gaarticle/newgfx/}{/media/data/Work/thesis-gaarticle/GApaper-submission-JCompNeuro/gfx/}}
 
-
 #+LaTeX:\glsresetall[main,acronym]
 #+LaTeX:\setcounter{chapter}{4}
 #+LaTeX: \chapter[GA Optimisation]{Simultaneous Optimisation of Microcircuits Using Genetic Algorithms}\label{sec:GAChapter}
-
 
 # \begin{synopsis}
 # {GA optimsation of the \CN stellate network}
@@ -2420,7 +2418,7 @@ Gradient-decent methods are easily trapped in local minima and have difficulty
 with noisy models due to sensitivity to initial conditions.  Other evolutionary
 or stochastic optimisation methods have been shown to be effective in large
 parameter spaces within a noisy fitness environment.
-\yellownote{References required in this paragraph}
+# \yellownote{References required in this paragraph}
 # Evolution of the connection of weights can use \GAs then back propagation for local refining.
 
 Using experimental data from populations of neurons adds more complexity to the
@@ -2884,7 +2882,6 @@ synaptic-delay is not covered in this paper, but could add to further
 realism in \BNN optimisation.
 
 
-
 A final issue that should be considered for modelling and optimising \BNN models
 is computational efficiency. In this paper, the \CN stellate network consisted
 of 240 \HH-like cells, simulated in [[latex:progname][NEURON]] and took approximately 90 seconds to
@@ -2914,10 +2911,9 @@ chapter has shown that the \GA is an adequate method for parameter optimisation
 and that the \ST and \AIV cost functions are comparably good methods for
 constraining \BNNs. Further development is needed to enhance the robustness of
 the cost function methods to input noise, especially for sensitivity and
-robustness of inhibitory connections in the \CN stellate network.
+robustness of inhibitory connections in the \CN stellate microcircuit.
 
 # \yellownote{Last section you need to improve  when you are done}
-
 
 #+BEGIN_LaTeX
   \ifthenelse{\isundefined{\manuscript}}{\newpage\singlespacing\bibliographystyle{plainnat} \bibliography{../org-manuscript/bib/MyBib}\newpage \printglossaries\newpage\listoftodos}{}
