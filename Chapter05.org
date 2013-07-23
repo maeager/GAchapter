@@ -393,7 +393,7 @@ instantaneous firing rates, and intracellular voltages.
     network (CF 3.45kHz) from 250 repetitions of the stimulus are
     shown. This cell was placed at the edge of the spectral notch (arrow
     in (A)). (C) PSTH response of the same \TS cell used in (B) (bin
-    width 0.25~ms, 250 repetitions). Note the regularly-spaced peaks at the
+    width 0.25~msec, 250 repetitions). Note the regularly-spaced peaks at the
     start of the stimulus due to the \TS cells' chopper response
     characteristics. Irregular peaks throughout the stimulus are due to
     temporal features of the notch noise captured by the auditory filter
@@ -451,7 +451,7 @@ stimulus repetitions, $x_{ij}$ is the vector containing the spike times of the
 trial network for stimulus repetition $j$ produced by neuron /i/, and $x_{ik}^{*}$
 is the vector containing the spike times of the target network for the stimulus
 repetition $k$ produced by neuron /i/.  The units for \PsiST are msec per cell
-per spike train for 60 ms duration spike trains, but are milliseconds in the
+per spike train for 60 msec duration spike trains, but are milliseconds in the
 remainder of the study. $D(x_{ij} ,x_{ik}^{*})$ is the difference measure between
 trial and target network spike trains as found by dynamic programming.  Dynamic
 programming is a method for analysing sequential processes \citep{Denardo:1982}
@@ -478,10 +478,10 @@ To illustrate the behaviour of this cost function in the ideal case, where \ANF
 inputs to the trial network are the identical those used in the 25 repetitions
 of the target data and the target network parameters are used, the value of
 \PsiST is zero. The maximum value of \PsiST observed in this study was
-approximately 360 ms.  For an example trial network that produces the correct
-number of spikes for each neuron but with an average spike timing error of 1 ms,
+approximately 360 msec.  For an example trial network that produces the correct
+number of spikes for each neuron but with an average spike timing error of 1 msec,
 given that the average number of spikes per train is 9, the cost function would
-be \PsiST=9 ms per spike train.
+be \PsiST=9 msec per spike train.
 
 *** Instantaneous Firing Rate (IFR) Cost Function
  :PROPERTIES:
@@ -491,7 +491,7 @@ be \PsiST=9 ms per spike train.
 The \PSTH has been an effective tool for classifying the stimulus-induced
 time-varying firing rate in many neurons including auditory neurons
 \citep{BlackburnSachs:1989,SmithRhode:1989}.  When measured using very short
-time bins ($<$ 1 ms), the estimated firing rate is called the \IFR.  The \IFR
+time bins ($<$ 1 msec), the estimated firing rate is called the \IFR.  The \IFR
 cost function was obtained from the mean squared error between each neuron's
 \PSTH, $r_{i}$, and the corresponding target neuron's \PSTH, $r_{i}^{\ast}$, and
 was normalised to obtain a firing rate (spikes per msec) error per stimulus.
@@ -519,8 +519,8 @@ example of a \TS cell's \PSTH produced from 250 repetitions of a notch noise
 stimulus. Similarly, Figure \ref{fig:GA:Costfunctions}E shows the same cell but
 with 25 repetitions. The smoother \PSTH of $r_{i}^{\ast}$ is evident in Figure
 \ref{fig:GA:Costfunctions}D when compared to the 25 repetitions in Figure
-\ref{fig:GA:Costfunctions}E. Each \PSTH is 60 ms in duration (50 ms stimulus
-then 10 ms silence) and discretised using a bin width of $W=0.25$ ms (total
+\ref{fig:GA:Costfunctions}E. Each \PSTH is 60 msec in duration (50 msec stimulus
+then 10 msec silence) and discretised using a bin width of $W=0.25$ msec (total
 number of bins $B=241$).
 
 
@@ -528,9 +528,9 @@ While the minimum value that \PsiIFR can attain is zero, in practice it will be
 greater than zero even when the trial network exactly matches the target because
 the numbers of repetitions used to create $r_{i}^\ast$ and $r_{i}$ are different
 (250 and 25 respectively). The maximum \PsiIFR value observed in this study was
-approximately 0.5 spikes/ms per stimulus per neuron. For a trial network, if the
+approximately 0.5 spikes/msec per stimulus per neuron. For a trial network, if the
 average \PSTH error is 10 spikes over all bins, then \PsiIFR is approximately
-0.2 spikes/ms.
+0.2 spikes/msec.
 
 *** Average Intracellular Voltage (AIV) Cost Function
 
@@ -586,8 +586,8 @@ Frozen notch noise was used as the stimulus for all simulations. Notch noise is
 white noise that has been filtered by a narrow band-stop filter. Gaussian white
 noise was generated in [[latex:progname][MATLAB/GNU Octave]] with a 50 kHz sampling frequency and
 filtered with a quarter octave, 30 dB band-stop, 100-tap FIR filter centred at 5
-kHz. A 50 ms stimulus was presented at 60 dB \SPL with 5 ms onset/offset ramps,
-a 20 ms delay and 10 ms pause after the stimulus. Notch noise stimuli have been
+kHz. A 50 msec stimulus was presented at 60 dB \SPL with 5 msec onset/offset ramps,
+a 20 msec delay and 10 msec pause after the stimulus. Notch noise stimuli have been
 used in experimental studies of the \CN to measure the asymmetric, wide-band
 suppression of \TV cells by \DS cells \citep{ReissYoung:2005} and to estimate
 the frequency range of \ANFs converging on \DS cells
@@ -724,7 +724,7 @@ Membrane current models, neural models and network connections were generated
 using the neural simulation package [[latex:progname][NEURON]] \citep{CarnevaleHines:2006}, as
 described in Chapter \ref{sec:MethodsChapter}.  Numerical integration was
 performed using the Crank-Nicholson method with second order accuracy and fixed
-time step of 0.1 ms. \GAs and sensitivity analyses were implemented in [[latex:progname][C++]] using
+time step of 0.1 msec. \GAs and sensitivity analyses were implemented in [[latex:progname][C++]] using
 [[http://lancet.mit.edu/ga][GAlib]] \citep{Wall:2006} and [[http://www.pvm.com][PVM]] libraries \citep{GeistBeguelinEtAl:1994}. \GA
 simulations were distributed on a cluster of nine PCs (3 GHz Pentium4) and a
 64-CPU SGI Altix[fn:: Computer system named \textsf{soma} at the Department of
@@ -974,7 +974,7 @@ half.  Weight parameters were spread over the whole range.
 #  search space was more compact, Figure 6B. This meant that there was less
 #  difference between a good genome and a bad genome.  The best genome
 #  obtained by the \IFR-25 cost function with different inputs had a score of
-#  0.263 sp/ms and a mean parameter error of 0.273 (Figure \ref{fig:GA:8}D).
+#  0.263 sp/msec and a mean parameter error of 0.273 (Figure \ref{fig:GA:8}D).
 #
 #  The performance of the best genome generated by the  \AIV-25 cost function
 #  with different inputs was very accurate for inhibitory parameters
@@ -999,7 +999,7 @@ half.  Weight parameters were spread over the whole range.
 #  The \GA run using the \ST cost function and different \ANF inputs
 #  (Figure \ref{fig:GA:5}B) had a similar learning profile, but there was
 #  less variability in the 25--75 percentile range in the later generations
-#  and the best genome score was 9.72 ms (Figure \ref{fig:GA:5}B).
+#  and the best genome score was 9.72 msec (Figure \ref{fig:GA:5}B).
 #
 #
 #
@@ -1008,7 +1008,7 @@ half.  Weight parameters were spread over the whole range.
 #  search space was more compact, Figure 6B. This meant that there was less
 #  difference between a good genome and a bad genome.  The best genome
 #  obtained by the \IFR-25 cost function with different inputs had a score of
-#  0.263 sp/ms and a mean parameter error of 0.273 (Figure \ref{fig:GA:8}D).
+#  0.263 sp/msec and a mean parameter error of 0.273 (Figure \ref{fig:GA:8}D).
 #
 #  The  \AIV-25 and  \AIV-250 cost functions with different inputs scored,
 #  0.208 and 0.188 mV, respectively.  The mean parameter errors of the best
@@ -1090,20 +1090,20 @@ diminished or absent.
 
 #  When the target parameters were evaluated 100 times with different \ANF
 #  input spikes the distribution of the \ST cost function scores moved to
-#  9.72 ms ($\pm$ 0.06 ms) (Figure \ref{fig:GA:9}B).  The 1-step
-#  distribution compressed around 9.79 ms for different inputs, As
+#  9.72 msec ($\pm$ 0.06 msec) (Figure \ref{fig:GA:9}B).  The 1-step
+#  distribution compressed around 9.79 msec for different inputs, As
 #  indicators of the \GAs final performance, the best genomes produced by
-#  the \GA of 8.45 ms (identical inputs) and 9.72 ms (different inputs)
+#  the \GA of 8.45 msec (identical inputs) and 9.72 msec (different inputs)
 #  were very reasonable estimates.  The shape of the \ST cost function
 #  distributions of 5 stp populations scores were very similar except for a
-#  positive shift with different inputs with means 10 ms and 11.8 ms,
+#  positive shift with different inputs with means 10 msec and 11.8 msec,
 #  respectively.
 #
 #  Different \ANF inputs had an adverse effect on the learning performance
 #  of the \IFR-25 cost function, with the \GA unable to find reasonable
 #  estimates near the global optimum (Figure \ref{fig:GA:10}B). The 1 step
 #  and 5 step scores were distributed around or close to the target scores
-#  showing a compression of the global optimum around 0.25 sp/ms
+#  showing a compression of the global optimum around 0.25 sp/msec
 #  (Figure \ref{fig:GA:10}B).
 #
 #
@@ -1199,9 +1199,9 @@ performance.
     \centering
     \begin{tabularx}{0.95\textwidth}{Xccc}
   Cost function  & PE$^\ast$ & Final \GA Score & Mean (S.D)\\[0.5ex]\hline
-     ST (ms)     & 1.977  &    7.86038     & 7.89 (0.04) \\
-  IFR (spikes/ms)& 2.169  &    0.154698    & 0.1557 (8.6E-4) \\
-   AIV (mV/ms)   & 2.325  &   0.0292369    & 0.0292 (9.8E-5)\\ \hline
+     ST (msec)     & 1.977  &    7.86038     & 7.89 (0.04) \\
+  IFR (spikes/msec)& 2.169  &    0.154698    & 0.1557 (8.6E-4) \\
+   AIV (mV/msec)   & 2.325  &   0.0292369    & 0.0292 (9.8E-5)\\ \hline
   \end{tabularx}
   \caption[Best genome parameter errors (100 repetitions)]{Best genomes obtained from GAs run with 100 repetitions. $\ast$ PE = mean relative parameter error. }
     \label{tab:BestGenome100}
@@ -1388,7 +1388,7 @@ normalising each parameter by its range and finding the mean absolute error.
         deviation population, and genomes evaluated by the \GA trained
         with the \ST cost function.  Histograms of the \ST cost function
         evaluated \GA scores are truncated at 50 rather than the maximum
-        score of 330 ms.  Arrow indicates the location of the \GAs best
+        score of 330 msec.  Arrow indicates the location of the \GAs best
         genome score.}
       \label{fig:GA:9}
     \end{figure}
@@ -1446,7 +1446,7 @@ after 200 generations was 8.45 msec with the best genome steadily improving
 until the final generation.  The \GA run using the \ST cost function and
 different \ANF inputs (Figure \ref{fig:GA:5}B) had a similar learning profile,
 but there was less variability in the 25--75 percentile range in the later
-generations and the best genome score was 9.72 ms (Figure \ref{fig:GA:5}B).  The
+generations and the best genome score was 9.72 msec (Figure \ref{fig:GA:5}B).  The
 best genome for the identical inputs was also closer to the target parameter
 values shown in Figure \ref{fig:GA:8}A, with a normalised mean parameter error
 of 0.221, while the different inputs \GAs best genome was 0.252 (Figure
@@ -1464,9 +1464,9 @@ in the \GA evaluation, secondly using \IFR-25 with different \ANF inputs, and
 lastly using 100 repetitions in the training data (\IFR-100) with different \ANF
 inputs. Figure \ref{fig:GA:6}A, shows the \GA performance of the \IFR-25 cost
 function with identical inputs. The range of the 25--75 percentile population
-evolved quite rapidly before settling between 0.3 and 0.25 sp/ms.  The histogram
-of evaluated scores peaks around 0.25 sp/ms with a tail toward 0.2 sp/ms.  The
-best genome's score of 0.195 sp/ms is equivalent to an average \PSTH error of
+evolved quite rapidly before settling between 0.3 and 0.25 sp/msec.  The histogram
+of evaluated scores peaks around 0.25 sp/msec with a tail toward 0.2 sp/msec.  The
+best genome's score of 0.195 sp/msec is equivalent to an average \PSTH error of
 11.8 spikes per cell. In terms of the parameter error from the target, the
 \IFR-25 cost function with identical inputs returned the closest genome to the
 target of 0.201 (Figure \ref{fig:GA:8}C) for all \GA simulations. When the
@@ -1476,10 +1476,10 @@ compact, Figure 6B.
 #\yellownote{linkback to previous  section}.
 This meant that there was less difference between a good genome and a bad
 genome.  The best genome obtained by the \IFR-25 cost function with different
-inputs had a score of 0.263 sp/ms and a mean parameter error of 0.273 (Figure
+inputs had a score of 0.263 sp/msec and a mean parameter error of 0.273 (Figure
 \ref{fig:GA:8}D). The \GA run using the \IFR-100 cost function with different
 inputs shifted the general population of \GA scores lower than the \IFR-25 cost
-function, with population scores between 0.25 and 0.15 sp/ms. The learning was
+function, with population scores between 0.25 and 0.15 sp/msec. The learning was
 rapid in the first 50 generations but reached a steady state and the best genome
 score was not improved beyond the 150th generation (Figure \ref{fig:GA:6}C).
 # The best genome's obtained the worst mean
@@ -1580,12 +1580,12 @@ close to the target. The \ST cost function with identical \ANF inputs (Figure
 \ref{fig:GA:9}A) has an optimum score at zero where the target data was
 reproduced. When the target parameters were evaluated 100 times with different
 \ANF input spikes the distribution of the \ST cost function scores moved to 9.72
-msec ($\pm$ 0.06 ms) (Figure \ref{fig:GA:9}B). For a small perturbation of
+msec ($\pm$ 0.06 msec) (Figure \ref{fig:GA:9}B). For a small perturbation of
 parameter values, 1 unit steps, and no input noise most scores fell within a
 small range of scores around 7.5 msec, with a small percentage (10.6\%) falling
 below this. The 1-step distribution compressed around 9.79 msec for different
 inputs, as indicators of the \GAs final performance, the best genomes produced
-by the \GA of 8.45 msec (identical inputs) and 9.72 ms (different inputs) were
+by the \GA of 8.45 msec (identical inputs) and 9.72 msec (different inputs) were
 very reasonable estimates.  The shape of the \ST cost function distributions of
 5 step populations scores were very similar except for a positive shift with
 different inputs with means 10 msec and 11.8 msec, respectively.
@@ -1596,16 +1596,16 @@ The parameter sensitivity of the \IFR cost functions produced expected results
 for different \ANF inputs or smoothing of the \PSTHs.  The \IFR-25 cost function
 with identical inputs (Figure \ref{fig:GA:10}A) behaves similarly to the \ST
 cost function, with an ideal target at zero, 1 step scores spread over two peaks
-(around 0.15 and below 0.2 spikes per ms), and a majority of 5-step scores above
+(around 0.15 and below 0.2 spikes per msec), and a majority of 5-step scores above
 the distribution of 1-step scores.  Different \ANF inputs had an adverse effect
 on the learning performance of the \IFR-25 cost function, with the \GA unable to
 find reasonable estimates near the global optimum (Figure \ref{fig:GA:10}B). The
 1 step and 5 step scores were distributed around or close to the target scores
-showing a compression of the global optimum around 0.25 sp/ms (Figure
+showing a compression of the global optimum around 0.25 sp/msec (Figure
 \ref{fig:GA:10}B).  For the \IFR cost function with 250 repetitions, the results
 are improved with the target shifted lower and the \GA searching closer to the
 optimal genome (Figure \ref{fig:GA:10}C). The target and 1 step distribution lie
-around 0.16 sp/ms and the 5-step scores are spread up to 0.2 sp/ms.
+around 0.16 sp/msec and the 5-step scores are spread up to 0.2 sp/msec.
 
 
 
@@ -1661,7 +1661,7 @@ function scores (evaluated 100 times with different inputs) for the best genomes
 trained with different inputs. The \ST best genome performed better than the
 average target genome score for different inputs (9.63 compared with 9.72,
 respectively) but this was not significant. When using identical inputs, this
-best genome performed better (8.02 ms) than the best genome trained with
+best genome performed better (8.02 msec) than the best genome trained with
 identical inputs (8.45 msec) despite a larger mean parameter error (Figure 8A
 and Figure 8B).  \AIV-25 and \AIV-250 best genomes fell within the 1-step and
 5-step means of the \ST cost function, but the \IFR best genomes performed more
@@ -1934,7 +1934,7 @@ sensitive.
 #  gradients with parameters 6, 10, 13 and 21 losing their significance to one
 #  side, while parameters 1 and 19 gained sensitivity to one side of the
 #  target (Figure \ref{fig:GA:15}C).  Despite having the same range of cost
-#  function scores as the \IFR cost function (between 0.15 and 0.5 sp/ms or
+#  function scores as the \IFR cost function (between 0.15 and 0.5 sp/msec or
 #  mV), the mean of the  \AIV cost function's sensitivity gradients increased by
 #  a factor of 10.
 
@@ -2549,7 +2549,7 @@ comparisons at the individual neuron level.
 A final issue that should be considered for modelling and optimising \BNN models
 is computational efficiency. In this Chapter, the \CN stellate network consisted
 of 240 HH-like cells simulated in [[latex:progname][NEURON]] and took approximately 90 seconds to
-run a 80 ms stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI Altix)[fn:: Note that
+run a 80 msec stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI Altix)[fn:: Note that
 the ANF instantaneous rate for each frequency channel was already calculated and
 retrieved from file at the beginning of each simulation.].  Evaluations of the
 \AIV and \IFR cost functions were a minor fraction of the total computational
@@ -2906,7 +2906,7 @@ realism in \BNN optimisation.
 A final issue that should be considered for modelling and optimising \BNN models
 is computational efficiency. In this paper, the \CN stellate network consisted
 of 240 \HH-like cells, simulated in [[latex:progname][NEURON]] and took approximately 90 seconds to
-run a 80 ms stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI Altix).  Evaluations
+run a 80 msec stimulus on a 1.8 GHz CPU (32-bit Itanium, SGI Altix).  Evaluations
 the \AIV and \IFR cost functions were a minor fraction of the total
 computational time, being less than 3 seconds per network. The \ST cost function
 was at a considerable disadvantage because its evaluation took approximately 90
