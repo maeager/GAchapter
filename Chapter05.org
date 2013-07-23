@@ -2429,7 +2429,11 @@ weights on a generic spiking model using extracellular spiking data have had
 some success \citep{MakarovPanetsosEtAl:2005}, but the underlying properties of
 neuron types and the size of populations are restrictive. Small \BNNs enable
 manipulating cell-based as well as network-based parameters
-\citep{TaylorEnoka:2004}.
+\citep{TaylorEnoka:2004}. Optimising spiking neural networks to an exact solution  
+relies on analytically differentiable neural models 
+\cite{BretteGuigon:2003,Brette:2006,Brette:2007}.
+
+# \cite{RossantGoodmanEtAl:2010}
 
 Reduction of parameters to cell types or connections between cell types,
 rather than individual cell or individual synapse, is a necessity with larger
@@ -2455,8 +2459,8 @@ reducing \BNN output for optimisation has not yet been resolved.  Spike-based
 methods are preferred \citep{Victor:2005} and many post-hoc methods can be used
 in the fitness function
 \citep{VictorGoldbergEtAl:2007,SchafferSichtigEtAl:2009}. It is likely that a
-combination of timing and voltage information has advantages over individual
-methods \citep{VanierBower:1999,KerenBar-YehudaEtAl:2009,KerenPeledEtAl:2005}.
+combination of spike timing, \AIV or  internal state information has advantages over individual
+methods \citep{VanierBower:1999,KerenBar-YehudaEtAl:2009,KerenPeledEtAl:2005,RossantGoodmanEtAl:2010}.
 
 Intracellular voltage data has been used in constraining the membrane
 conductances of multi-compartmental single-neuron models
@@ -2469,9 +2473,6 @@ analysis due to variation in the synaptic input and the loss of temporal
 information.  It is not currently possible to obtain simultaneous IV recordings
 from more than two neurons let alone a whole nucleus, but limited \AIV data
 could be used in conjunction with other cost functions to constrain \BNN models.
-
-
-
 
 #  \GA could not have done an better than any other optimisation techniques.
 #  Evolutionary vs Grad decent studies?  Consistency, efficiency for \BNNs.
@@ -2866,6 +2867,8 @@ and non-differentiable makes \GA approaches a good chance for success.
   the weights of neural networks [5-7], to find the architecture of
   neural networks [8-10], and to determine initial weights and proper
   parameters of the networks [11-12].}
+\yellownote{Include 
+\citep{RossantGoodmanEtAl:2010}}
 
 ** Other considerations for constraining BNNs
 
