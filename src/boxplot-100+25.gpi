@@ -22,11 +22,11 @@ reset
 #
 # Boxplot demo
 #
-#set terminal postscript eps enhanced defaultplex leveldefault color solid dashlength 1.0 linewidth 2.0 butt noclip "Helvetica" 18 
-#set output '../gfx/boxplot-100+25.eps'
+set terminal postscript eps enhanced size 7,5.5 defaultplex leveldefault mono solid dashlength 1.0 linewidth 2.0 butt noclip "Helvetica" 18 
+set output 'boxplot-100+25.eps'
 
 # color definitions
-set border linewidth 1.5
+set border 15 linewidth 1.5
 set style line 1 lc rgb 'gray30' lt 1 lw 2
 set style line 2 lc rgb 'gray40' lt 1 lw 2
 set style line 3 lc rgb 'gray70' lt 1 lw 2
@@ -34,34 +34,28 @@ set style line 4 lc rgb 'gray90' lt 1 lw 2
 set style line 5 lc rgb 'black' lt 1 lw 2
 set style line 6 lc rgb 'white' lt 1 lw 2
 
-set style fill solid 1.0 border rgb 'grey30'
+set style fill solid 0.5 border rgb 'grey30'
 
 set key left top
-set border 3
+
 set bars 2.0
 set tics scale 0.75
-set ytics nomirror #out 0.5 
-
+set ytics mirror #out 0.5 
 #set style fill solid 0.25 border -1
 set style boxplot outliers pointtype 7
 set style data boxplot
 set boxwidth  0.5
 set pointsize 0.5
-
 unset key
 
-
-set border 2
 set xtics nomirror
-set ytics nomirror
-
 
 set key left top
-set border 3
+
 set bars 2.0
 set tics scale 0.75
 set xtics nomirror out ('Target' 0,'ST' 1,'IFR' 2, 'AIV' 3)
-set ytics nomirror #out 0.5 
+set ytics mirror #out 0.5 
 
 #set style fill solid 0.25 border -1
 set style boxplot outliers pointtype 7
@@ -72,10 +66,9 @@ set pointsize 0.5
 unset key
 set multiplot layout 3,1
 
-set border 2
+
 set xtics ("Target" 0, "1-step" 0.7, "5-step" 1.3, "ST" 3, "IFR" 4.25, "AIV" 5.5) scale 0.0
 set xtics nomirror
-set ytics nomirror
 set yrange [8:20]
 set ylabel "ST" font "Helvetica,20"
 plot 'target_diffAN.dat' using (0):1, \

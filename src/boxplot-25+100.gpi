@@ -3,7 +3,7 @@
 #
 #set terminal postscript eps enhanced defaultplex leveldefault color solid dashlength 1.0 linewidth 2.0 butt noclip "Helvetica" 18 
 
-#set output '../gfx/boxplot-25+100.eps'
+#set output 'boxplot-25+100.eps'
 
 # color definitions
 set border linewidth 1.5
@@ -14,7 +14,7 @@ set style line 4 lc rgb 'gray90' lt 1 lw 2
 set style line 5 lc rgb 'black' lt 1 lw 2
 set style line 6 lc rgb 'white' lt 1 lw 2
 
-set style fill solid 1.0 border rgb 'grey30'
+set style fill solid 0.5 border rgb 'grey30'
 
 set key left top
 set border 3
