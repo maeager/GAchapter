@@ -651,7 +651,7 @@ type I-II response. \DS cells have a small amount of \IKLT current to reduce the
 cells' input resistance and enhance coincidence detection. The Golgi cell model
 used in this chapter was a type I-c single compartment \RM model as distinct
 from the filter based spiking Poisson neural model, used in Chapter
-\ref{sec:Ch3:GolgiModel}.
+\ref{sec:ModelChapter}.
 
 Table \ref{tab:GA:CellTypes} shows the maximum conductances, $\bar{g}$, for each
 cell type in the \CN network.  The membrane parameters were fixed after we
