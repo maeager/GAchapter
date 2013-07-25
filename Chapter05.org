@@ -351,7 +351,7 @@ shows a spike raster plot for the response of all \TS cells to a presentation of
 stimulus. The vertical axis is arranged according to the frequency to which the
 neuron is most sensitive (the centre frequency). There was a clear reduction in
 the firing rate corresponding to the stop band in the notch noise. Figure
-\ref{fig:GA:Costfunctions}B shows the responses to 250 repetitions for a single
+\ref{fig:GA:Costfunctions}B shows the responses to 100 repetitions for a single
 \TS cell in the centre of the network, at the rising edge of the notch (arrow in
 Figure \ref{fig:GA:Costfunctions}A).
 
@@ -386,10 +386,10 @@ instantaneous firing rates, and intracellular voltages.
     spectrum from 0.2~to 30 kHz. Frequency scale was determined by the
     Greenwood function for the cat \citep{Greenwood:1990}. (B) The
     reference spikes for a \TS cell in the middle of the `target'
-    network (CF 3.45kHz) from 250 repetitions of the stimulus are
+    network (CF 3.45kHz) from 100 repetitions of the stimulus are
     shown. This cell was placed at the edge of the spectral notch (arrow
     in (A)). (C) PSTH response of the same \TS cell used in (B) (bin
-    width 0.25~msec, 250 repetitions). Note the regularly-spaced peaks at the
+    width 0.25~msec, 100 repetitions). Note the regularly-spaced peaks at the
     start of the stimulus due to the \TS cells' chopper response
     characteristics. Irregular peaks throughout the stimulus are due to
     temporal features of the notch noise captured by the auditory filter
@@ -397,7 +397,7 @@ instantaneous firing rates, and intracellular voltages.
     25 repetitions. The \IFR cost function normalises the reference
     PSTHs and calculates a mean squared error between reference and test
     \PSTHs for every cell in the network. (E) Average intracellular
-    voltage, smoothed from 250 repetitions, for the same \TS cell. There
+    voltage, smoothed from 100 repetitions, for the same \TS cell. There
     was some similarity with the \PSTH in (C), particularly the location
     of the peaks, but (E) demonstrates subthreshold effects. (F) Average
     intracellular voltage using 25 repetitions was more variable than
@@ -508,10 +508,10 @@ millisecond per stimulus per neuron, spikes per millisecond were used for
 the remainder of this study.
 
 To increase the robustness of the \IFR cost function to input and trial-to-trial
-variability, target data from 250 repetitions was used to generate a higher
+variability, target data from 100 repetitions was used to generate a higher
 resolution set of target \PSTHs, $r_{i}^{\ast}$, and was scaled by 0.1 to match
 the trial \PSTH repetition number. Figure \ref{fig:GA:Costfunctions}D shows an
-example of a \TS cell's \PSTH produced from 250 repetitions of a notch noise
+example of a \TS cell's \PSTH produced from 100 repetitions of a notch noise
 stimulus. Similarly, Figure \ref{fig:GA:Costfunctions}E shows the same cell but
 with 25 repetitions. The smoother \PSTH of $r_{i}^{\ast}$ is evident in Figure
 \ref{fig:GA:Costfunctions}D when compared to the 25 repetitions in Figure
@@ -523,7 +523,7 @@ number of bins $B=241$).
 While the minimum value that \PsiIFR can attain is zero, in practice it will be
 greater than zero even when the trial network exactly matches the target because
 the numbers of repetitions used to create $r_{i}^\ast$ and $r_{i}$ are different
-(250 and 25 respectively). The maximum \PsiIFR value observed in this study was
+(100 and 25 respectively). The maximum \PsiIFR value observed in this study was
 approximately 0.5 spikes/msec per stimulus per neuron. For a trial network, if the
 average \PSTH error is 10 spikes over all bins, then \PsiIFR is approximately
 0.2 spikes/msec.
@@ -559,14 +559,14 @@ the number of cells in the network, and /R/ is the number of
 repetitions.
 
 Figures \ref{fig:GA:Costfunctions}F and \ref{fig:GA:Costfunctions}G show
-examples of \AIV waveforms, $\bar{v}$, from a \TS cell averaged over 25 and 250
+examples of \AIV waveforms, $\bar{v}$, from a \TS cell averaged over 25 and 100
 repetitions, respectively, illustrating the reduction in trial-to-trial
 variation with more repetitions. Action potentials were clipped at 0 mV so that
 irregular peak heights did not affect the average waveform.
 
 The minimum value of \PsiAIV is zero.  Similar to \PsiIFR, in practice the
 minimum value of \PsiAIV was greater than zero because of the different numbers
-of repetitions used to create $\bar{v}_{i}$ and $\bar{v}_{i}^{\ast}$ (25 and 250,
+of repetitions used to create $\bar{v}_{i}$ and $\bar{v}_{i}^{\ast}$ (25 and 100,
 respectively). The maximum \PsiAIV value observed in this study was
 approximately 0.5 mV per cell per stimulus, where no spikes were generated and
 each cell's \AIV was flat.
@@ -1060,7 +1060,7 @@ behaved in the vicinity of the target compared to the other two cost
 functions. In this case, the reason that the best genomes trained with any cost
 function were unable to attain a score in the target range (bottom plot of
 Figure \ref{fig:GA:R2}) was not due to a poorly behaved cost function.
-# \yellownote{but further explanation   is unknown.}
+# \note{but further explanation   is unknown.}
 
 
 It was surprising that the 1 unit step perturbations produced a network with
@@ -1195,7 +1195,7 @@ performance.
 #+END_LaTeX
 
 
-# \yellownote{Boxplot difficult to read}
+# \note{Boxplot difficult to read}
 #+ATTR_LATEX: width=\textwidth
 #+Caption: [Cross comparison of best genomes (100 repetitions)]{Cross comparison of best genomes generated using GAs with 100 repetitions, measured against the target, 1-step and 5-step parameter perturbation distributions.  The boxplots show the best genomes evaluated ten times for each cost function.}
 #+LABEL: fig:GA:R7
@@ -1276,12 +1276,12 @@ To understand the of optimising \BNNs it may appear that to use ideal inputs is
 not intuitive; however, the methods and techniques of \GA optimisation in this
 chapter were initially refined using an ideal environment.
 
-# \yellownote{This is an attempt to include excess material into the  thesis that was chucked out after the failure of the JNeuroPhysiol  submissions. Anything with 250 repetitions has been removed}
+# \note{This is an attempt to include excess material into the  thesis that was chucked out after the failure of the JNeuroPhysiol  submissions. Anything with 250 repetitions has been removed}
 
 ** Genetic Algorithm Performance
 
 
-# \yellownote{Summary of Ideal Input {GA} performance}
+# \note{Summary of Ideal Input {GA} performance}
 
 The performance of the \GA optimisation is illustrated by the evolution of the
 population of genome scores (Figures \ref{fig:GA:5} to \ref{fig:GA:7}) and by
@@ -1456,7 +1456,7 @@ target of 0.201 (Figure \ref{fig:GA:8}C) for all \GA simulations. When the
 inputs were randomised and the training data (25 reps) remained the same, the
 \GA populations' learning was considerably slower and the search space was more
 compact, Figure 6B.
-#\yellownote{linkback to previous  section}.
+# \note{linkback to previous  section}.
 This meant that there was less difference between a good genome and a bad
 genome.  The best genome obtained by the \IFR-25 cost function with different
 inputs had a score of 0.263 sp/msec and a mean parameter error of 0.273 (Figure
@@ -1484,7 +1484,7 @@ different inputs was very accurate for inhibitory parameters (Figure
 \ref{fig:GA:8}G) presumably due to subthreshold information within the
 intracellular voltages.
 
-# \yellownote{remove or replace 250 with 100}
+# \note{remove or replace 250 with 100}
 
 
 #
@@ -1541,7 +1541,7 @@ intracellular voltages.
 
 # \subsection{Performance of best genomes and comparison of cost functions }
 
-# \yellownote{refine J Neurophysiol section to go here}
+# \note{refine J Neurophysiol section to go here}
 
 # \subsection{ Parameter space sensitivity of cost functions}
 
@@ -1669,7 +1669,7 @@ not far behind.
 #   \label{tab:GA:IdealXComp}
 # \end{table}
 
-* Sensitivity Analysis of Individual Parameters near the Global Optimum :noexport:
+* Sensitivity Analysis of Individual Parameters near the Global Optimum  :noexport:
   :PROPERTIES:
   :SHORTTITLE: Individual parameter sensitivity
   :CUSTOM_ID:    sec:GA:IndividualSens
@@ -1941,7 +1941,7 @@ sensitive.
    :SHORTTITLE: Correlation between sensitivity and best genome error
    :END:
 
-# \yellownote{Correlation between relative param error and gradient in Figure \ref{fig:GA:BestGenomeVGradient} to be discussedfurther.  The LogLog results indicate a confirmation of our suspicion that the gradient would directly effect the eventual outcome of the best genomes. }
+# \note{Correlation between relative param error and gradient in Figure \ref{fig:GA:BestGenomeVGradient} to be discussedfurther.  The LogLog results indicate a confirmation of our suspicion that the gradient would directly effect the eventual outcome of the best genomes. }
 
 # \subsection{Best Genome Match to Individual Parameter Sensitivity}
 
@@ -2020,7 +2020,7 @@ due to NaN elimination in the regression function.
   \end{table}
 #+END_LaTeX
 
-# \yellownote{This paragraph has not been vetted.}
+# \note{This paragraph has not been vetted.}
 
 In summary, a log-log correlation has been observed between the each of their
 cost function gradients near the target and the best genomes trained with their
@@ -2216,7 +2216,7 @@ increasing the number of repetitions beyond $N$.
 #  \AIV cost function. One \AIV-trained best genome performed well in both \ST and
 #  \IFR cost functions, but this was not consistent for all three best genomes.
 #
-#  \yellownote{David: para unclear} Given different characteristics of the cost
+#  \note{David: para unclear} Given different characteristics of the cost
 #  functions, i.e. spike timing does not provide information about sub-threshold
 #  membrane potential, a relevant factor in the \AIV cost function.  The advantage
 #  of using real \ST data is that it can be obtained in extra cellular recordings
@@ -2317,7 +2317,7 @@ increasing the number of repetitions beyond $N$.
 #  Grouping spike trains into time bins is a very fast procedure aimed at
 #  reducing the trial-to-trial variability in single spike trains by generating
 #  an estimate of the average instantaneous firing rate of
-#  neurons.\yellownote{?} The temporal resolution of the \IFR cost function is
+#  neurons.\note{?} The temporal resolution of the \IFR cost function is
 #  dependent on the width of the \PSTH bins but it loses information about the
 #  timing between spikes.  The representation of precise onset spikes in \DS and
 #  \TS cells would benefit from a narrow bin width, but for the majority of spikes
@@ -2360,7 +2360,7 @@ increasing the number of repetitions beyond $N$.
 #  comparison in the \IFR cost function, increasing the number of repetitions
 #  smoothed out the training data in the AIV-100 cost function scores and reduced
 #  the scores for parameters close to the target (1-step and 5-step) reduced to
-#  the level of the ideal scores (Figure\space\ref{fig:11}A,C).\yellownote{unclear}
+#  the level of the ideal scores (Figure\space\ref{fig:11}A,C).\note{unclear}
 #
 #  It was thought that for a \BNN model the average IV waveform will provide
 #  additional information about the sub-threshold behaviour of neurons in the
@@ -2394,9 +2394,9 @@ increasing the number of repetitions beyond $N$.
 #  \ST cost function and different inputs produced a score better than the mean
 #  target with only one sample, when sampled multiple times the mean score was
 #  also below the mean target scores but not statistically
-#  significantly\yellownote{needs numbers to show this}.  In all cost
+#  significantly\note{needs numbers to show this}.  In all cost
 #  functions, the flattening of the cost function search spaces
-#  \yellownote{explain?} around the target parameters contributed to an overlap
+#  \note{explain?} around the target parameters contributed to an overlap
 #  between the 1-step population and the distribution of the target genome.
 #
 #  Despite lower scores for all cost functions, there were no real differences in
@@ -2418,7 +2418,7 @@ Gradient-decent methods are easily trapped in local minima and have difficulty
 with noisy models due to sensitivity to initial conditions.  Other evolutionary
 or stochastic optimisation methods have been shown to be effective in large
 parameter spaces within a noisy fitness environment.
-# \yellownote{References required in this paragraph}
+# \note{References required in this paragraph}
 # Evolution of the connection of weights can use \GAs then back propagation for local refining.
 Hybrid techniques may be advantageous considering network structure and synaptic
 weights may not be well suited to the same optimisation method
@@ -2527,7 +2527,7 @@ reduces noise, but the information carried by individual cells is lost.  The
 cost functions in this chapter performed data reduction after the error
 comparisons at the individual neuron level.
 
-# \yellownote{stochastic versus stereotypical principles of synaptic  organisation and cell types}
+# \note{stochastic versus stereotypical principles of synaptic  organisation and cell types}
 
 A final issue that should be considered for modelling and optimising \BNN models
 is computational efficiency. In this chapter, the \CN stellate network consisted
@@ -2575,7 +2575,7 @@ target genome, with the exception of the \AIV cost function.  The cost function
 scores were significantly reduced for \IFR and \AIV cost functions but \GA
 performance did not lead to significantly improved match to the target genome.
 
-# \yellownote{keypoints:\\
+# \note{keypoints:\\
 #   * no basis for one \CF better than another, \\
 #   * All performed similarly in most measures of comparison, X-comp and PE analysis \\
 #   * X-comp: all best genomes performed similarly in \IFR and  \AIV, but \ST was better in it's won \CF \\
@@ -2669,7 +2669,7 @@ spikes.
 
 *** Instantaneous Firing Rate
 
-# \yellownote{Hamish noted that this para was not applicable}
+# \note{Hamish noted that this para was not applicable}
 When considering the 25 repetition \IFR cost function's performance, Measure 1
 for the best genome obtained with different inputs was poor for all cost
 functions. When the number of repetitions in the training data was increased by
@@ -2760,7 +2760,7 @@ conjunction with other cost functions to constrain \BNN models.
 ** Benefits of reducing noise
 
 #
-#  \yellownote{*No real differences in eventual performance despite reduction in score \\
+#  \note{*No real differences in eventual performance despite reduction in score \\
 #  ** Lower cost function scores for all CFs \\
 #  ** Figure R7 Xcomp shows \GA best genomes run with 25    performed approx the same as \GA's run with 100 \\
 #  ** only clear exception being  \AIV 100 significantly better in \ST \CF \\
@@ -2834,11 +2834,11 @@ pre-synaptic cell group.
 ** Comparison with other studies
 
 
-# \yellownote{{GA} could not have done an better than any other
+# \note{{GA} could not have done an better than any other
 # optimisation techniques. Evolutionary vs Grad decent studies?
 # Consistency, efficiency for \BNNs.}
 
-# \yellownote{*Studies with other cost functions - do they get close to
+# \note{*Studies with other cost functions - do they get close to
 # target? ISI CF studies? Are there any studies showing \ST and \IFR/ \AIV?
 # any comparisons?}
 
@@ -2849,20 +2849,25 @@ techniques. Back-propogation is easily trapped in local maxima, has poor
 performance with multimodal or un-differentiable functions, and sensitive to
 initial conditions. Evolution of the connection of weights can use \GAs then
 back propagation for local refining. Search space for \BNNs is infinitely large
-and non-differentiable makes \GA approaches a good chance for success.
+and non-differentiable makes \GA approaches a good chance for success.  Using
+hybrid techniques overcomes limitations of \GAs in simultaneously finding
+network structure and weights for recurrent neural networks
+\citep{AngelineSaundersEtAl:1994,SohnDagli:2004}.  Using analytical neural
+models has seen the best attempt at optimising ensemble of neurons to
+experimental data \citep{RossantGoodmanEtAl:2010}.
 
-\yellownote{Combination techniques:
-  \citep{AngelineSaundersEtAl:1994} argues that {GAs} are
-  inappropriate for network acquisition and describes his own GNARL
-  that simultaneously finds structure and weights for recurrent NNs.}
+# \note{Combination techniques:
+#   \citep{AngelineSaundersEtAl:1994} argues that {GAs} are
+#   inappropriate for network acquisition and describes his own GNARL
+#   that simultaneously finds structure and weights for recurrent NNs.}
 
-\yellownote{Sohn and Dagli 2004: {GAs} have been used to select the
-  proper feature sets in pattern recognition problems [2-4], to train
-  the weights of neural networks [5-7], to find the architecture of
-  neural networks [8-10], and to determine initial weights and proper
-  parameters of the networks [11-12].}
-\yellownote{Include
-\citep{RossantGoodmanEtAl:2010}}
+# \note{Sohn and Dagli 2004: {GAs} have been used to select the
+#   proper feature sets in pattern recognition problems [2-4], to train
+#   the weights of neural networks [5-7], to find the architecture of
+#   neural networks [8-10], and to determine initial weights and proper
+#   parameters of the networks [11-12].}
+# \note{Include
+# \citep{RossantGoodmanEtAl:2010}}
 
 ** Other considerations for constraining BNNs
 
@@ -2909,7 +2914,7 @@ constraining \BNNs. Further development is needed to enhance the robustness of
 the cost function methods to input noise, especially for sensitivity and
 robustness of inhibitory connections in the \CN stellate microcircuit.
 
-# \yellownote{Last section you need to improve  when you are done}
+# \note{Last section you need to improve  when you are done}
 
 #+BEGIN_LaTeX
   \ifthenelse{\isundefined{\manuscript}}{\newpage\singlespacing\bibliographystyle{plainnat} \bibliography{../org-manuscript/bib/MyBib}\newpage \printglossaries\newpage\listoftodos}{}
