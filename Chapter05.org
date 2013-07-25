@@ -622,7 +622,7 @@ f(x) = 456.0 \times 10^{\frac{x}{11.9} } - 0.8, \quad (Hz)
 The level of spontaneous activity in \HSR and \LSR\space \AN fibres was set to 50 and
 0.5 Hz, respectively. The stimulus was passed through the \AN model for each
 frequency channel for both \LSR and \HSR fibres, producing an instantaneous
-firing rate response that was down-sampled to 10 kHz. Twenty \HSR and ten 
+firing rate response that was down-sampled to 10 kHz. Twenty \HSR and ten
 \LSR\space \AN fibres were simulated for each frequency-channel. Spike times were generated
 independently for each fibre from the instantaneous firing rate using a
 pseudo-random spike-generator \citep{JacksonCarney:2005}, with refractory
@@ -2425,8 +2425,8 @@ weights may not be well suited to the same optimisation method
 \citep{AngelineSaundersEtAl:1994,SohnDagli:2004}.
 
 Using experimental data from populations of neurons adds more complexity to the
-problem of constraining \BNNs.   Optimising spiking neural networks to an exact solution  
-relies on analytically differentiable neural models and synapses 
+problem of constraining \BNNs.   Optimising spiking neural networks to an exact solution
+relies on analytically differentiable neural models and synapses
 \citep{BretteGuigon:2003,Brette:2006}, and other analytical methods have been reviewed \citep{Brette:2007,EggertHemmen:2001}.
  Alternative methods to infer connectivity and
 weights on a generic spiking model using extracellular spiking data have had
@@ -2806,13 +2806,10 @@ the target value of parameters 17, 20, 26, and 27 were ignored, as explained in
 section \ref{sec:GA:IndividualSensA}.
 
 
-
 The sensitivity measure is mixed for the \ST cost function with a ratio of 13:17
 for V-shaped and non-V-shaped parameter gradients and 7 other parameters were
 significant on only one side. Also, there were four significant gradients that
 were in the direction away from the target (Figure \ref{fig:GA:13}B).
-
-
 
 The \IFR-25 cost function sensitivity measure gave a ratio of 7:23 (Figure
 \ref{fig:GA:14}), demonstrating a high susceptibility to input noise. Constraint
@@ -2820,12 +2817,10 @@ of inhibitory connections (parameters 12-30) in the \IFR best genomes (Figure
 \ref{fig:GA:8}) was very poor, resulting from the flat and insignificant cost
 function gradients near the global optimum (Figure \ref{fig:GA:14}).
 
-
 The sensitivity ratios for the \AIV-25 cost function were 13:17 (Figure
 \ref{fig:GA:15}B).  This demonstrates that the \AIV-25 cost function has greater
 robustness to noise than the \IFR cost function, and similar performance to the
 \ST cost function.
-
 
 In general, parameters 3, 9, 11, and 29 (corresponding to \nHSRTS,
 \nHSRTV,\nLSRGLG, and \nGLGDS, respectively) were more robust to the variability
@@ -2866,7 +2861,7 @@ and non-differentiable makes \GA approaches a good chance for success.
   the weights of neural networks [5-7], to find the architecture of
   neural networks [8-10], and to determine initial weights and proper
   parameters of the networks [11-12].}
-\yellownote{Include 
+\yellownote{Include
 \citep{RossantGoodmanEtAl:2010}}
 
 ** Other considerations for constraining BNNs
