@@ -594,7 +594,7 @@ the frequency range of \ANFs converging on \DS cells
   \begin{figure}[th]
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{../GAChapter/gfx/notchstim.png}
-    \caption{Notch stimulus and HSR ANF filterbank output. The stimulus is in Pascals (dB SPL is defined as 20 $\mu$Pa).}
+    \caption[Notch stimulus and HSR ANF filterbank output]{Notch stimulus and HSR ANF filterbank output. The stimulus is in Pascals (dB SPL is defined as 20 $\mu$Pa).}
     \label{fig:NotchStim}
   \end{figure}
 #+END_LaTeX
@@ -801,7 +801,7 @@ greater for the \ST and \AIV cost functions than for the \IFR cost function.
     \centering
     % \figfont{A}\hspace{3.2in}\figfont{B}\\
     \includegraphics[width=\textwidth]{All25GAPerf-Stretch}
-    \caption[Performance of the GA]{Performance of the GA's best
+    \caption[Performance of the GA (25 repetitions)]{Performance of the GA's best
       performing genome in each generation is shown for each simulation. The
       error bar to the right of each graph is the mean score and 95 percentile
       range of the target genome.}\label{fig:GA:R1}
@@ -1144,8 +1144,8 @@ repetitions were used for evaluation.
   \begin{figure}[ht]
     \centering
   \includegraphics[width=\textwidth,keepaspectratio]{../GAChapter/gfx/Histograms100-MaxNorm}
-    \caption[Histograms of parameter perturbations using 100
-      repetitions]{Histograms of simultaneous parameter perturbation using 100
+    \caption[Cost function histograms of parameter perturbations (100
+      repetitions)]{Cost function histograms of simultaneous parameter perturbation using 100
       repetitions. The distribution of genomes evaluated during the GA is shown in
       grey and the eventual best score is pointed to by the arrow. The histograms
       show the distributions of 100 target genome scores (thick line), 1000
