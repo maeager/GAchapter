@@ -1119,7 +1119,7 @@ distinct repetitions of the \ANF input for both target and candidate genomes.
 ***  Effects of Increasing Stimulus Repetitions
 
 #+ATTR_LaTeX: width=\textwidth
-#+caption: [Performance of the GA (100 reps)]{Performance of the GAs best performing genome run with 100 repetitions in the fitness function. GA simulations run with 25 repetitions are shown in grey. The mark to the right of each graph is the mean score and error bars showing the range of 2 times standard deviation away from the mean target genome score.}
+#+caption: [Performance of the GA (100 repetitions)]{Performance of the GAs best performing genome run with 100 repetitions in the fitness function. GA simulations run with 25 repetitions are shown in grey. The mark to the right of each graph is the mean score and error bars showing the range of 2 times standard deviation away from the mean target genome score.}
 #+LABEL: fig:GA:R5
 [[../GAChapter/gfx/All100GAPerf-Stretch.pdf]]
 
@@ -1453,7 +1453,7 @@ best genome's score of 0.195 sp/msec is equivalent to an average \PSTH error of
 11.8 spikes per cell. In terms of the parameter error from the target, the
 \IFR-25 cost function with identical inputs returned the closest genome to the
 target of 0.201 (Figure \ref{fig:GA:8}C) for all \GA simulations. When the
-inputs were randomised and the training data (25 reps) remained the same, the
+inputs were randomised and the training data (25 repetitions) remained the same, the
 \GA populations' learning was considerably slower and the search space was more
 compact, Figure 6B.
 # \note{linkback to previous  section}.
@@ -2764,7 +2764,7 @@ conjunction with other cost functions to constrain \BNN models.
 #  ** Lower cost function scores for all CFs \\
 #  ** Figure R7 Xcomp shows \GA best genomes run with 25    performed approx the same as \GA's run with 100 \\
 #  ** only clear exception being  \AIV 100 significantly better in \ST \CF \\
-#  ** noteworthy  \AIV limitations from 25 reps were removed  in 100 reps, with the best genome's score were closer to the target  (less than mean of 5 unit step perturbation).\\
+#  ** noteworthy  \AIV limitations from 25 repetitions were removed  in 100 repetitions, with the best genome's score were closer to the target  (less than mean of 5 unit step perturbation).\\
 #  }
 #
 
