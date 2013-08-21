@@ -1,5 +1,8 @@
 
-* Chapter 5 Appendix
+\chapter{Appendix C} \label{sec:Ch5:Appendix}
+
+
+* Chapter 5 Appendix  :noexport:
 
 ** Extra Data
 
@@ -49,8 +52,9 @@
 #  \input{src/best_genomes_100.tex}
  
 
-** \textsf{ganeuron}: C++ parallel GA program using NEURON 
+* \textsf{ganeuron}: C++ parallel GA program using NEURON 
 
+The \GA optimisation program used in Chapter \ref{sec:GAChapter} was developed as part of the thesis.
 The requirements for [[latex:progname][ganeuron]] are:
  - gcc
  - pvm 
@@ -141,7 +145,7 @@ To generate 100 random simulations of the target set:
 
 
 
-* Chapter 5 Source Code        :noexport:
+* Chapter 5 Source Code    					   :noexport:
 
 ** \textsf{cnstellate} source files
 #NEURON model of HH-like neurons in the cochlear nucleus
