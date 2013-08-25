@@ -6,7 +6,7 @@
 %  \centering
 %\begin{center}
 %\renewcommand{\tabularxcolumn}[1]{>\arraybackslash}b{#1}}
-\begin{longtable}{p{1.2in}cX}%{p{0.25in}p{2.5in}}%{{\hsize=0.5\hsize}XcX}%{lcp{3.5in}}%
+\begin{longtable}{p{1.8in}cX}%{p{0.25in}p{2.5in}}%{{\hsize=0.5\hsize}XcX}%{lcp{3.5in}}%
 %{p{1.2in}c\p{3.5in}}
 %{>{\hsize=\hsize/2}X>{\hsize=2\hsize}X}
 %{p{1in}cp{2.7in}}%
@@ -38,22 +38,22 @@ $s_{{\rm ANF}\to {\rm TS}}$,%\\
 $s_{{\rm ANF}\to {\rm TV}}$ % 
 %\end{minipage} 
 \protect{(channels)} &  0     & All {\ANF} inputs to TS and TV cells come  from their own CF channel \\ %\hline
- $s_{{\rm ANF}\to {\rm DS}} $ \protect{(channels)}& \begin{minipage}[c]{0.9in}\begin{center} %
+ $s_{{\rm ANF}\to {\rm DS}} $ \protect{(channels)}& {\vspace{11pt}\begin{minipage}[c]{0.9in}\begin{center} %
 Above CF: 3 \\[-0.5ex]
 Below CF: 6 %    
-\end{center}\end{minipage}  & Approx. 1 octave above, 2 octaves below CF \citep{PalmerJiangEtAl:1996} \\ % \hline
+\end{center}\end{minipage}}  & Approx. 1 octave above, 2 octaves below CF \citep{PalmerJiangEtAl:1996} \\ % \hline
    $s_{{\rm ANF}\to {\rm GLG}}$ \protect{(channels)} & 3  & \\ \midrule           
    \multicolumn{2}{l}{\bf ANF latency function}                &  \\ %\hline
       $A_{0}$ (ms) & 8.3& Eq.~\ref{eq:Methods:delay},  Cat model \citep{CarneyYin:1988} \\ %\hline 
  $A_1$ (cm)&6.49  &  \\ \midrule
 \multicolumn{2}{l}{\bf Synaptic Delay adjustment} & {Conduction delay adjustment calculated from mean \FSL in \CN units } \\
-\dANFTS ~(ms) &1.6& mean \FSL 3.6~ms \citep{RhodeSmith:1986}  \\
-\dANFDS ~(ms) & 1.2& mean \FSL 3.2~ms \citep{RhodeSmith:1986}\\        
-\dANFTV ~(ms) & 2.0& mean \FSL 4.0~ms \citep{OertelWickesberg:1993} \\
+\dANFTS ~(ms) &1.6& Mean \FSL 3.6~ms \citep{RhodeSmith:1986}  \\
+\dANFDS ~(ms) & 1.2& Mean \FSL 3.2~ms \citep{RhodeSmith:1986}\\        
+\dANFTV ~(ms) & 2.0& Mean \FSL 4.0~ms \citep{OertelWickesberg:1993} \\
 \dANFGLG ~(ms) & 2.3& 0.7~ms more than VCN core units \citep{FerragamoGoldingEtAl:1998}  \\ \midrule
 \multicolumn{2}{l}{\bf Membrane Current Model Parameters}   &  \\ %\hline
              $C_m$ ($\mu$F/cm$^{2}$)         & 0.9 & Specific membrane capacitance   \\ %\hline
-          Temperature     ($^\circ$C)      &       37       & \citet{RothmanManis:2003b} used 22$^\circ$C for their slice preparation. \\ %\hline
+          Temperature     ($^\circ$C)      &       37       & \citet{RothmanManis:2003b} used 22$^\circ$C for \textit{in vitro} slice experiments. \\ %\hline
            Q$_{10}$             &            3            & Membrane current model temperature quality factor affects the activation and deactivation functions' time   constants. $Q=Q_{10}^{((37^\circ -22^\circ )/10)}$ \\ %\hline   
           $E_{\rm K}$    ~(mV)       &         -72         & Potassium reversal potential \\ %\hline
          $E_{\rm Na}$    ~(mV)       &          0          & Sodium reversal potential \\ %\hline
@@ -77,7 +77,7 @@ $\tau _{{\rm GABA2}}$ (ms)\end{minipage}     &    \begin{minipage}[c]{1in}\begin
 9.0 \end{center}\end{minipage} & {\GABAa time-constants, MNTB neurons, mature guinea pig \citep{AwatramaniTurecekEtAl:2005}}\\
 %     $\tau _{{\rm GABA1}}$ ~(ms)     &         0.7          & {\GABAa time-constants, MNTB neurons mature guinea pig \citep{AwatramaniTurecekEtAl:2005}}\\
 %     $\tau _{{\rm GABA2}}$   ~(ms)   &          9           & \\ %\hline
-        $E_{{\rm Inh}}$     ~(mV)     &         -75          & Chlorine reversal potential in Glycine and \GABAa receptors \\ %\hline
+        $E_{{\rm Inh}}$     ~(mV)     &         -75          & Chlorine reversal potential in GlyR and \GABAa receptors \\ %\hline
 %           $\eta $           & \begin{minipage}[c]{1in}\begin{center}
 % $\eta = \frac{1}{-\exp(t'/\tau_{Inh1})+\exp(t'/\tau_{inh2})}$ \\
 % $t'=\frac{\tau_{Inh1}\tau_{Inh2}}{\tau_{Inh2}-\tau_{Inh1}} \ln(\tau_{Inh2}/\tau_{Inh1})$
