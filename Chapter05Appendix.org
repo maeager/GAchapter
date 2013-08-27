@@ -148,7 +148,7 @@ To generate 100 random simulations of the target set:
 * Chapter 5 Source Code    					   :noexport:
 
 ** \textsf{cnstellate} source files
-#NEURON model of HH-like neurons in the cochlear nucleus
+# NEURON model of HH-like neurons in the cochlear nucleus
 
 *** NMODL current module files
 
