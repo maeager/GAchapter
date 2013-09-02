@@ -177,7 +177,7 @@ The exemplar network used in this chapter is a simplified version of the \CNSM m
 # inhibitory interneurons and afferent inputs, as our exemplar network.
 
 #+Attr_LaTeX width=0.8\textwidth
-#+CAPTION: [Connections of the mammalian CN]{Connections of the mammalian CN. ANFs sensitive to particular frequencies project to the CN in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, \VCN and \DCN, plus the \GCD. Type I \ANFs are categorised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the \GCD.  Golgi cells in the \GCD are the only known source of GABAergic cells within the \VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic DS cells project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, TV cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
+#+CAPTION: [Synaptic connections in the mammalian CNSM]{Synaptic connections in the mammalian stellate microcircuit of the CN. ANFs sensitive to particular frequencies project to the CN in a tono-topically organised fashion and bifurcate to innervate both the VCN and DCN. The CN comprises two main divisions, \VCN and \DCN, plus the \GCD. Type I \ANFs are categorised into two groups based on their spontaneous rate: high (HSR, solid line) and low (LSR, dashed line). Only LSR and smaller type II ANFs project to the \GCD.  Golgi cells in the \GCD are the only known source of GABAergic cells within the \VCN, and it is presumed that they synapse with TS and DS cells \citep{FerragamoGoldingEtAl:1998}. Glycinergic DS cells project to wide areas of the VCN, DCN, and contralateral CN. DS cells are broadly tuned and respond best at the onset of a tone, with a small number of precisely timed spikes, and respond strongly to broad-band noise.  In the deep layer of the DCN, TV cells provide a narrow-band on-frequency source of glycinergic inhibition to the VCN. These neurons respond poorly to clicks and broad-band noise, due to wide-band inhibition from DS cells \citep{SpirouDavisEtAl:1999}.}
 #+LABEL: fig:GA:CNdiagram
 [[../GAChapter/gfx/CNConnections3.pdf]]
 
@@ -1125,7 +1125,7 @@ distinct repetitions of the \ANF input for both target and candidate genomes.
   \begin{figure}[t!]
     \figfont{A}\hspace{2in}\figfont{B}\hspace{1.8in}\figfont{C}\\
     \includegraphics[width=\textwidth,keepaspectratio]{../GAChapter/gfx/All100GAPerf-Stretch.pdf}
-    \caption: [Performance of the GA (100 repetitions)]{Performance of the GAs
+    \caption[Performance of the GA (100 repetitions)]{Performance of the GAs
       best performing genome run with 100 repetitions in the fitness function. GA
       simulations run with 25 repetitions are shown in grey. The mark to the right
       of each graph is the mean score and error bars showing the range of 2 times
